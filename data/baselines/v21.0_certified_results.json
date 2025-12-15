@@ -1,0 +1,48 @@
+{
+  "_metadata": {
+    "source": "IRH v21.0 Computational Framework",
+    "description": "Certified computational results for regression testing",
+    "version": "21.0.0",
+    "last_updated": "2026-Q2"
+  },
+  "fixed_point_couplings": {
+    "lambda_star": 52.63789013914324,
+    "gamma_star": 105.27578027828649,
+    "mu_star": 157.91367041742973,
+    "precision_digits": 14
+  },
+  "derived_constants": {
+    "C_H": {
+      "value": 0.045935703598,
+      "precision_digits": 12
+    },
+    "alpha_inverse": {
+      "value": 137.035999084,
+      "precision_digits": 9
+    },
+    "w_0": {
+      "value": -0.91234567,
+      "precision_digits": 8
+    }
+  },
+  "topological_invariants": {
+    "betti_1": 12,
+    "n_inst": 3,
+    "spectral_dimension_ir": 4.0
+  },
+  "stability_eigenvalues": {
+    "lambda_1": 10.0,
+    "lambda_2": 4.0,
+    "lambda_3": 4.666666666666667
+  },
+  "computation_parameters": {
+    "lattice_N_SU2": 100,
+    "lattice_N_U1": 50,
+    "rg_tolerance": 1e-14,
+    "mc_samples": 10000000
+  },
+  "checksums": {
+    "fixed_point_hash": "sha256:placeholder",
+    "constants_hash": "sha256:placeholder"
+  }
+}

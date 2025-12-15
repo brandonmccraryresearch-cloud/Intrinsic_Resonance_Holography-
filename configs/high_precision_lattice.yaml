@@ -1,0 +1,38 @@
+# IRH v21.0 High Precision Lattice Configuration
+# THEORETICAL FOUNDATION: IRH21.md §1.6 (HarmonyOptimizer)
+
+# This configuration provides high-precision discretization parameters
+# for validation and certification of IRH v21.0 predictions.
+
+lattice:
+  # SU(2) discretization - doubled from standard
+  N_SU2: 100              # Number of points in each SU(2) direction
+  SU2_quadrature: "gauss-legendre"
+  
+  # U(1) discretization - doubled from standard
+  N_U1: 50                # Number of points in U(1) direction
+  U1_quadrature: "trapezoid"
+  
+  # Total lattice size: 100³ × 50 = 50,000,000 points
+
+integration:
+  # RG flow integration - tighter tolerances
+  rg_step_size: 0.001     # Δt for RG flow (10x smaller)
+  rg_tolerance: 1.0e-14   # Convergence criterion
+  max_rg_steps: 1000000   # Maximum integration steps
+  
+  # Monte Carlo settings - increased samples
+  mc_samples: 10000000    # Monte Carlo samples (100x standard)
+  mc_warmup: 100000       # Warmup/burn-in samples
+  mc_seed: 42             # Random seed for reproducibility
+
+precision:
+  # Numerical precision targets
+  float_precision: "float128"  # Extended precision where available
+  fixed_point_tolerance: 1.0e-14
+  eigenvalue_tolerance: 1.0e-12
+
+# Expected accuracy with this configuration:
+# - Fixed-point couplings: 12-digit accuracy
+# - Spectral dimension: 10-digit accuracy
+# - Fine-structure constant: 12-digit accuracy (target: 137.035999084)

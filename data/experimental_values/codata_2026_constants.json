@@ -1,0 +1,102 @@
+{
+  "_metadata": {
+    "source": "CODATA 2022 (projected to 2026 values)",
+    "description": "Fundamental physical constants for comparison",
+    "url": "https://physics.nist.gov/cuu/Constants/",
+    "last_updated": "2026-projected"
+  },
+  "speed_of_light": {
+    "symbol": "c",
+    "value": 299792458,
+    "uncertainty": 0,
+    "unit": "m/s",
+    "note": "Exact by definition"
+  },
+  "planck_constant": {
+    "symbol": "h",
+    "value": 6.62607015e-34,
+    "uncertainty": 0,
+    "unit": "J·s",
+    "note": "Exact by definition"
+  },
+  "reduced_planck_constant": {
+    "symbol": "ℏ",
+    "value": 1.054571817e-34,
+    "uncertainty": 0,
+    "unit": "J·s"
+  },
+  "elementary_charge": {
+    "symbol": "e",
+    "value": 1.602176634e-19,
+    "uncertainty": 0,
+    "unit": "C",
+    "note": "Exact by definition"
+  },
+  "fine_structure_constant": {
+    "symbol": "α",
+    "value": 7.2973525693e-3,
+    "uncertainty": 1.1e-12,
+    "unit": "dimensionless"
+  },
+  "fine_structure_constant_inverse": {
+    "symbol": "α⁻¹",
+    "value": 137.035999084,
+    "uncertainty": 2.1e-8,
+    "unit": "dimensionless"
+  },
+  "gravitational_constant": {
+    "symbol": "G",
+    "value": 6.67430e-11,
+    "uncertainty": 1.5e-15,
+    "unit": "m³/(kg·s²)"
+  },
+  "planck_length": {
+    "symbol": "ℓ_P",
+    "value": 1.616255e-35,
+    "uncertainty": 1.8e-40,
+    "unit": "m"
+  },
+  "planck_mass": {
+    "symbol": "m_P",
+    "value": 2.176434e-8,
+    "uncertainty": 2.4e-13,
+    "unit": "kg"
+  },
+  "planck_time": {
+    "symbol": "t_P",
+    "value": 5.391247e-44,
+    "uncertainty": 6.0e-49,
+    "unit": "s"
+  },
+  "electron_mass": {
+    "symbol": "m_e",
+    "value": 9.1093837015e-31,
+    "uncertainty": 2.8e-40,
+    "unit": "kg"
+  },
+  "proton_mass": {
+    "symbol": "m_p",
+    "value": 1.67262192369e-27,
+    "uncertainty": 5.1e-37,
+    "unit": "kg"
+  },
+  "proton_electron_mass_ratio": {
+    "value": 1836.15267343,
+    "uncertainty": 1.1e-7,
+    "unit": "dimensionless"
+  },
+  "avogadro_constant": {
+    "symbol": "N_A",
+    "value": 6.02214076e23,
+    "uncertainty": 0,
+    "unit": "mol⁻¹",
+    "note": "Exact by definition"
+  },
+  "boltzmann_constant": {
+    "symbol": "k_B",
+    "value": 1.380649e-23,
+    "uncertainty": 0,
+    "unit": "J/K",
+    "note": "Exact by definition"
+  }
+}

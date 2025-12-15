@@ -1,0 +1,112 @@
+{
+  "_metadata": {
+    "source": "IRH21.md v21.0",
+    "description": "Physical constants derived from the Cosmic Fixed Point",
+    "last_updated": "2026-Q2"
+  },
+  "electromagnetic": {
+    "alpha_inverse": {
+      "value": 137.035999084,
+      "uncertainty": 1e-9,
+      "unit": "dimensionless",
+      "reference": "§3.2, Eq. 3.4-3.5",
+      "experimental_value": 137.035999084,
+      "experimental_uncertainty": 2.1e-9
+    }
+  },
+  "cosmological": {
+    "w_0": {
+      "value": -0.91234567,
+      "uncertainty": 8e-8,
+      "unit": "dimensionless",
+      "description": "Dark energy equation of state parameter",
+      "reference": "Eq. 2.21-2.23"
+    },
+    "spectral_dimension_ir": {
+      "value": 4.0,
+      "uncertainty": 1e-10,
+      "unit": "dimensionless",
+      "reference": "Eq. 2.9"
+    }
+  },
+  "topological_complexity_eigenvalues": {
+    "K_1": {
+      "value": 1.000,
+      "uncertainty": 0.001,
+      "description": "First generation (e, u, d)",
+      "reference": "Appendix E.1"
+    },
+    "K_2": {
+      "value": 206.77,
+      "uncertainty": 0.02,
+      "description": "Second generation (μ, c, s)",
+      "reference": "Appendix E.1"
+    },
+    "K_3": {
+      "value": 3477.15,
+      "uncertainty": 0.35,
+      "description": "Third generation (τ, t, b)",
+      "reference": "Appendix E.1"
+    }
+  },
+  "lorentz_violation": {
+    "xi": {
+      "value": 1.93e-4,
+      "uncertainty": 0.01e-4,
+      "unit": "dimensionless",
+      "description": "LIV parameter",
+      "reference": "Eq. 2.26"
+    }
+  },
+  "higgs_sector": {
+    "higgs_mass": {
+      "value": 125.25,
+      "uncertainty": 0.17,
+      "unit": "GeV",
+      "reference": "§3.3.2"
+    },
+    "lambda_HHH": {
+      "value": 125.25,
+      "uncertainty": 1.25,
+      "unit": "GeV",
+      "description": "Higgs trilinear coupling",
+      "reference": "Appendix J.4"
+    }
+  },
+  "neutrinos": {
+    "sum_masses": {
+      "value": 0.058,
+      "uncertainty": 0.006,
+      "unit": "eV",
+      "reference": "Appendix E.3"
+    },
+    "hierarchy": "normal",
+    "nature": "majorana",
+    "sin2_theta_12": {
+      "value": 0.306,
+      "uncertainty": 0.003
+    },
+    "sin2_theta_23": {
+      "value": 0.550,
+      "uncertainty": 0.006
+    },
+    "sin2_theta_13": {
+      "value": 0.0221,
+      "uncertainty": 0.0002
+    },
+    "delta_cp": {
+      "value": 237,
+      "uncertainty": 15,
+      "unit": "degrees"
+    }
+  },
+  "muon_g_minus_2": {
+    "delta_a_mu": {
+      "value": 251e-11,
+      "uncertainty": 50e-11,
+      "unit": "dimensionless",
+      "description": "IRH contribution to muon anomalous magnetic moment",
+      "reference": "Appendix J.3"
+    }
+  }
+}

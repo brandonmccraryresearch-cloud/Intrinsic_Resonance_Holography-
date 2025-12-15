@@ -1,0 +1,50 @@
+# IRH v21.0 RG Flow Settings
+# THEORETICAL FOUNDATION: IRH21.md §1.2-1.3
+
+# Configuration for Wetterich equation integration and fixed-point finding
+
+wetterich_equation:
+  # Regulator choice
+  regulator_type: "optimized_litim"  # R_k(p) = Z_k(k² - p²)θ(k² - p²)
+  
+  # Scale parameter
+  lambda_uv: 1.0          # UV cutoff (in Planck units)
+  lambda_ir: 1.0e-10      # IR cutoff target
+  
+  # Integration scheme
+  integrator: "runge-kutta-4"
+  adaptive_stepping: true
+  min_step_size: 1.0e-8
+  max_step_size: 0.1
+
+beta_functions:
+  # Truncation order
+  truncation: "one-loop"  # Options: one-loop, two-loop, full
+  
+  # One-loop coefficients (Eq. 1.13)
+  # β_λ = -2λ̃ + (9/8π²)λ̃²
+  # β_γ = 0·γ̃ + (3/4π²)λ̃γ̃
+  # β_μ = 2μ̃ + (1/2π²)λ̃μ̃
+  
+  verify_analytically: true
+
+fixed_point:
+  # Search parameters
+  initial_guess:
+    lambda: 52.64         # Near λ̃* = 48π²/9 ≈ 52.64
+    gamma: 105.27         # Near γ̃* = 32π²/3 ≈ 105.27
+    mu: 157.91            # Near μ̃* = 16π² ≈ 157.91
+  
+  # Newton-Raphson settings
+  max_iterations: 1000
+  convergence_tolerance: 1.0e-14
+  
+  # Verification
+  verify_stability: true
+  compute_eigenvalues: true
+
+output:
+  # Output settings
+  save_flow_trajectory: true
+  trajectory_resolution: 1000  # Points to save along flow
+  output_format: "hdf5"

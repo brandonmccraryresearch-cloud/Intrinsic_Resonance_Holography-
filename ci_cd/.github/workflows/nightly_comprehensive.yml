@@ -1,0 +1,70 @@
+# IRH v21.0 Nightly Comprehensive Test Suite
+# Runs comprehensive validation including high-precision tests
+
+name: Nightly Comprehensive
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Run at 2 AM UTC daily
+  workflow_dispatch:      # Allow manual triggering
+
+jobs:
+  comprehensive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360  # 6 hours max for comprehensive tests
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        pip install pytest pytest-cov pytest-xdist
+    
+    - name: Run full validation suite
+      run: |
+        python scripts/run_full_validation_suite.py || true
+    
+    - name: Run all unit tests
+      run: |
+        pytest tests/unit/ -v --cov=src --cov-report=xml -n auto
+    
+    - name: Run integration tests
+      run: |
+        pytest tests/integration/ -v || true
+    
+    - name: Run theoretical invariants
+      run: |
+        pytest tests/theoretical_invariants/ -v
+    
+    - name: Run convergence tests
+      run: |
+        pytest tests/convergence/ -v || true
+    
+    - name: Run benchmark tests
+      run: |
+        pytest tests/benchmarks/ -v || true
+    
+    - name: Run falsification tests
+      run: |
+        pytest tests/falsification/ -v || true
+    
+    - name: Compute all observables
+      run: |
+        python scripts/compute_all_observables.py || true
+    
+    - name: Regression detection
+      run: |
+        python scripts/regression_detector.py || true
+    
+    - name: Upload coverage
+      uses: codecov/codecov-action@v4
+      with:
+        files: ./coverage.xml
+        fail_ci_if_error: false

@@ -1,0 +1,165 @@
+{
+  "_metadata": {
+    "source": "Particle Data Group 2024",
+    "url": "https://pdg.lbl.gov/",
+    "description": "Experimental values for comparison with IRH predictions",
+    "last_updated": "2024"
+  },
+  "electromagnetic": {
+    "alpha_inverse": {
+      "value": 137.035999084,
+      "uncertainty": 2.1e-9,
+      "source": "CODATA 2022"
+    },
+    "electron_mass": {
+      "value": 0.51099895,
+      "uncertainty": 1.5e-10,
+      "unit": "MeV/c²"
+    },
+    "muon_mass": {
+      "value": 105.6583755,
+      "uncertainty": 2.3e-6,
+      "unit": "MeV/c²"
+    },
+    "tau_mass": {
+      "value": 1776.86,
+      "uncertainty": 0.12,
+      "unit": "MeV/c²"
+    }
+  },
+  "quarks": {
+    "up_mass": {
+      "value": 2.16,
+      "uncertainty_upper": 0.49,
+      "uncertainty_lower": 0.26,
+      "unit": "MeV/c²",
+      "scale": "2 GeV MS-bar"
+    },
+    "down_mass": {
+      "value": 4.67,
+      "uncertainty_upper": 0.48,
+      "uncertainty_lower": 0.17,
+      "unit": "MeV/c²",
+      "scale": "2 GeV MS-bar"
+    },
+    "strange_mass": {
+      "value": 93.4,
+      "uncertainty_upper": 8.6,
+      "uncertainty_lower": 3.4,
+      "unit": "MeV/c²",
+      "scale": "2 GeV MS-bar"
+    },
+    "charm_mass": {
+      "value": 1.27,
+      "uncertainty": 0.02,
+      "unit": "GeV/c²"
+    },
+    "bottom_mass": {
+      "value": 4.18,
+      "uncertainty_upper": 0.03,
+      "uncertainty_lower": 0.02,
+      "unit": "GeV/c²"
+    },
+    "top_mass": {
+      "value": 172.69,
+      "uncertainty": 0.30,
+      "unit": "GeV/c²"
+    }
+  },
+  "gauge_bosons": {
+    "W_mass": {
+      "value": 80.3692,
+      "uncertainty": 0.0133,
+      "unit": "GeV/c²"
+    },
+    "Z_mass": {
+      "value": 91.1876,
+      "uncertainty": 0.0021,
+      "unit": "GeV/c²"
+    }
+  },
+  "higgs": {
+    "mass": {
+      "value": 125.25,
+      "uncertainty": 0.17,
+      "unit": "GeV/c²"
+    }
+  },
+  "neutrinos": {
+    "delta_m21_squared": {
+      "value": 7.53e-5,
+      "uncertainty": 0.18e-5,
+      "unit": "eV²"
+    },
+    "delta_m32_squared": {
+      "value": 2.453e-3,
+      "uncertainty": 0.033e-3,
+      "unit": "eV²",
+      "note": "Normal ordering"
+    },
+    "sin2_theta_12": {
+      "value": 0.307,
+      "uncertainty": 0.013
+    },
+    "sin2_theta_23": {
+      "value": 0.546,
+      "uncertainty_upper": 0.021,
+      "uncertainty_lower": 0.023,
+      "note": "Normal ordering"
+    },
+    "sin2_theta_13": {
+      "value": 0.0220,
+      "uncertainty": 0.0007
+    }
+  },
+  "muon_g_minus_2": {
+    "experimental_anomaly": {
+      "value": 249e-11,
+      "uncertainty": 48e-11,
+      "source": "Fermilab E989 (2023)"
+    },
+    "sm_prediction": {
+      "value": 116591810e-11,
+      "uncertainty": 43e-11,
+      "source": "Theory Initiative 2020"
+    }
+  },
+  "ckm_matrix": {
+    "V_ud": {
+      "value": 0.97370,
+      "uncertainty": 0.00014
+    },
+    "V_us": {
+      "value": 0.2245,
+      "uncertainty": 0.0008
+    },
+    "V_ub": {
+      "value": 0.00382,
+      "uncertainty": 0.00024
+    },
+    "V_cd": {
+      "value": 0.221,
+      "uncertainty": 0.004
+    },
+    "V_cs": {
+      "value": 0.987,
+      "uncertainty": 0.011
+    },
+    "V_cb": {
+      "value": 0.0410,
+      "uncertainty": 0.0014
+    },
+    "V_td": {
+      "value": 0.0080,
+      "uncertainty": 0.0003
+    },
+    "V_ts": {
+      "value": 0.0388,
+      "uncertainty": 0.0011
+    },
+    "V_tb": {
+      "value": 1.013,
+      "uncertainty": 0.030
+    }
+  }
+}

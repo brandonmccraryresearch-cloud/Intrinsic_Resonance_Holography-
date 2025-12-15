@@ -1,0 +1,56 @@
+{
+  "_metadata": {
+    "source": "IRH21.md v21.0",
+    "section": "Appendix D",
+    "description": "Topological invariants at the Cosmic Fixed Point",
+    "last_updated": "2026-Q2"
+  },
+  "betti_numbers": {
+    "beta_0": {
+      "value": 1,
+      "description": "Number of connected components"
+    },
+    "beta_1": {
+      "value": 12,
+      "description": "First Betti number - yields gauge group generators",
+      "implication": "SU(3)×SU(2)×U(1) = 8+3+1 generators",
+      "reference": "Appendix D.1",
+      "derivation_method": "homology_computation"
+    },
+    "beta_2": {
+      "value": 0,
+      "description": "Second Betti number"
+    }
+  },
+  "instanton_number": {
+    "n_inst": {
+      "value": 3,
+      "description": "Number of stable instanton configurations",
+      "implication": "Three fermion generations",
+      "reference": "Appendix D.2",
+      "derivation_method": "morse_theory"
+    }
+  },
+  "homology_group": {
+    "H_1_M3_Z": {
+      "value": "Z^12",
+      "description": "First homology group H₁(M³;ℤ) ≅ ℤ¹²",
+      "structure": "Z^8 ⊕ Z^3 ⊕ Z^1",
+      "reference": "Appendix D.1"
+    }
+  },
+  "manifold_properties": {
+    "M3_construction": "resonance_quotient",
+    "base_manifold": "G_inf = SU(2) × U(1)",
+    "quotient_rules": "phase_coherence_condensate"
+  },
+  "gauge_group_emergence": {
+    "total_generators": 12,
+    "decomposition": {
+      "SU3": 8,
+      "SU2": 3,
+      "U1": 1
+    },
+    "isomorphism": "H₁(M³;ℤ) → Lie(SU(3)×SU(2)×U(1))"
+  }
+}

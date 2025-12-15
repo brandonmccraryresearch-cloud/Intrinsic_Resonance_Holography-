@@ -1,0 +1,83 @@
+{
+  "_metadata": {
+    "source": "Planck Collaboration 2018 Results",
+    "url": "https://arxiv.org/abs/1807.06209",
+    "description": "Cosmological parameters from Planck CMB observations",
+    "last_updated": "2018"
+  },
+  "cosmological_parameters": {
+    "H_0": {
+      "value": 67.4,
+      "uncertainty": 0.5,
+      "unit": "km/s/Mpc",
+      "description": "Hubble constant"
+    },
+    "Omega_b_h2": {
+      "value": 0.02237,
+      "uncertainty": 0.00015,
+      "description": "Physical baryon density"
+    },
+    "Omega_c_h2": {
+      "value": 0.1200,
+      "uncertainty": 0.0012,
+      "description": "Physical cold dark matter density"
+    },
+    "Omega_m": {
+      "value": 0.315,
+      "uncertainty": 0.007,
+      "description": "Total matter density"
+    },
+    "Omega_Lambda": {
+      "value": 0.685,
+      "uncertainty": 0.007,
+      "description": "Dark energy density"
+    },
+    "sigma_8": {
+      "value": 0.811,
+      "uncertainty": 0.006,
+      "description": "Amplitude of matter fluctuations"
+    },
+    "n_s": {
+      "value": 0.9649,
+      "uncertainty": 0.0042,
+      "description": "Scalar spectral index"
+    },
+    "tau": {
+      "value": 0.054,
+      "uncertainty": 0.007,
+      "description": "Optical depth to reionization"
+    }
+  },
+  "dark_energy_equation_of_state": {
+    "w_0": {
+      "value": -1.03,
+      "uncertainty": 0.03,
+      "description": "Present-day dark energy EoS (w_0-w_a model)",
+      "note": "Planck+BAO+SNe constraint"
+    },
+    "w_a": {
+      "value": -0.13,
+      "uncertainty_upper": 0.38,
+      "uncertainty_lower": 0.28,
+      "description": "Time evolution of dark energy EoS"
+    }
+  },
+  "neutrino_constraints": {
+    "sum_m_nu": {
+      "value_upper_limit": 0.12,
+      "confidence": "95%",
+      "unit": "eV",
+      "description": "Upper limit on sum of neutrino masses"
+    },
+    "N_eff": {
+      "value": 2.99,
+      "uncertainty": 0.17,
+      "description": "Effective number of relativistic species"
+    }
+  },
+  "age_of_universe": {
+    "value": 13.799,
+    "uncertainty": 0.021,
+    "unit": "Gyr"
+  }
+}

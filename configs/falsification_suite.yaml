@@ -1,0 +1,90 @@
+# IRH v21.0 Falsification Suite Configuration
+# THEORETICAL FOUNDATION: IRH21.md §8, Appendix J
+
+# Configuration for experimental prediction calculations
+
+predictions:
+  # Fine-structure constant (§3.2, Eq. 3.4-3.5)
+  alpha_inverse:
+    target_value: 137.035999084
+    target_uncertainty: 1.0e-9
+    theoretical_uncertainty: 1.0e-9
+    priority: "critical"
+  
+  # Universal exponent (Eq. 1.16)
+  C_H:
+    target_value: 0.045935703598
+    theoretical_uncertainty: 1.0e-12
+    priority: "critical"
+  
+  # Dark energy equation of state (Eq. 2.21-2.23)
+  w_0:
+    target_value: -0.91234567
+    target_uncertainty: 0.00000008
+    experimental_comparison: "Euclid/Roman (2029)"
+    priority: "critical"
+  
+  # Lorentz Invariance Violation (Eq. 2.24-2.26)
+  xi_liv:
+    target_value: 1.93e-4
+    target_uncertainty: 0.01e-4
+    experimental_comparison: "CTA (2029)"
+    priority: "critical"
+  
+  # Muon g-2 anomaly (Appendix J.3)
+  delta_g_minus_2_muon:
+    target_value: 251.0e-11
+    target_uncertainty: 50.0e-11
+    experimental_comparison: "Fermilab E989"
+    priority: "high"
+  
+  # Higgs trilinear coupling (Appendix J.4)
+  lambda_HHH:
+    target_value: 125.25  # GeV
+    target_uncertainty: 1.25  # GeV
+    experimental_comparison: "FCC (2035+)"
+    priority: "medium"
+  
+  # Neutrino parameters (Appendix E.3)
+  neutrinos:
+    sum_masses:
+      target_value: 0.058  # eV
+      target_uncertainty: 0.006  # eV
+    hierarchy: "normal"
+    nature: "majorana"
+    sin2_theta_12:
+      target_value: 0.306
+      target_uncertainty: 0.003
+    sin2_theta_23:
+      target_value: 0.550
+      target_uncertainty: 0.006
+    sin2_theta_13:
+      target_value: 0.0221
+      target_uncertainty: 0.0002
+    delta_cp:
+      target_value: 237  # degrees
+      target_uncertainty: 15  # degrees
+    experimental_comparison: "JUNO, DUNE (2029)"
+    priority: "critical"
+
+topological_invariants:
+  # First Betti number (Appendix D.1)
+  betti_1:
+    target_value: 12
+    verification_method: "homology_computation"
+    priority: "critical"
+  
+  # Instanton number (Appendix D.2)
+  n_inst:
+    target_value: 3
+    verification_method: "morse_theory"
+    priority: "critical"
+
+# Falsification timeline (§8.7)
+timeline:
+  2029:
+    - "JUNO neutrino hierarchy"
+    - "Euclid/Roman dark energy w(z)"
+    - "CTA Lorentz invariance bounds"
+  2030:
+    - "Paradigm assessment"
