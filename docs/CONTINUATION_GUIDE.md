@@ -39,7 +39,11 @@ This document provides a comprehensive continuation guide for developers, contri
 | **QNCD Metric** | `src/primitives/qncd.py` | 10+ tests | ✅ Complete |
 | **cGFT Actions** | `src/cgft/actions.py` | 19+ tests | ✅ Complete |
 | **cGFT Fields** | `src/cgft/fields.py` | 6+ tests | ✅ Complete |
-| **RG Validation** | `src/rg_flow/validation.py` | 5+ tests | ✅ Complete |
+| **RG Validation** | `src/rg_flow/validation.py` | 31+ tests | ✅ Complete |
+| **Beta Functions** | `src/rg_flow/beta_functions.py` | 15+ tests | ✅ Complete |
+| **Fixed Points** | `src/rg_flow/fixed_points.py` | 22+ tests | ✅ Complete |
+| **Alpha Inverse** | `src/observables/alpha_inverse.py` | — | ✅ Complete |
+| **Universal Exponent** | `src/observables/universal_exponent.py` | — | ✅ Complete |
 | **Documentation** | `docs/TECHNICAL_REFERENCE.md` | N/A | ✅ Complete |
 | **Installation Guide** | `README.md` | N/A | ✅ Complete |
 | **.deb Roadmap** | `docs/DEB_PACKAGE_ROADMAP.md` | N/A | ✅ Complete |
@@ -54,23 +58,36 @@ This document provides a comprehensive continuation guide for developers, contri
 | §1.2 Wetterich | Eq. 1.12 | ✅ |
 | §1.2 β-functions | Eq. 1.13 | ✅ |
 | §1.3 Fixed Point | Eq. 1.14 | ✅ |
+| §1.3 C_H | Eq. 1.16 | ✅ |
+| §3.2 α⁻¹ | Eq. 3.4-3.5 | ✅ |
 | Appendix A QNCD | A.1-A.7 | ✅ |
 | Appendix B RG | B.1-B.6 | ✅ |
 
-### 1.3 Remaining Work
+### 1.3 Phase I Status: COMPLETE ✅
 
-| Component | Priority | Complexity | Estimated Effort |
-|-----------|----------|------------|------------------|
-| RG Flow Solver | HIGH | High | 2-3 weeks |
-| Spectral Dimension | HIGH | Medium | 1-2 weeks |
-| Topology (β₁, n_inst) | HIGH | High | 2-3 weeks |
-| α⁻¹ Derivation | CRITICAL | High | 2-3 weeks |
-| Emergent Spacetime | MEDIUM | High | 3-4 weeks |
-| Standard Model | MEDIUM | Very High | 4-6 weeks |
-| Cosmology | MEDIUM | Medium | 2-3 weeks |
-| QM Emergence | LOW | Medium | 2-3 weeks |
-| Predictions | HIGH | Medium | 2-3 weeks |
-| Desktop App | LOW | Very High | 6+ months |
+**Phase I: Core RG Infrastructure** is now complete. The following modules have been implemented:
+
+- `src/rg_flow/beta_functions.py` - BetaFunctions class with β_λ, β_γ, β_μ
+- `src/rg_flow/fixed_points.py` - CosmicFixedPoint class with find_fixed_point()
+- `src/observables/alpha_inverse.py` - Fine-structure constant computation
+- `src/observables/universal_exponent.py` - C_H computation
+
+**Test Count**: 74+ tests passing in `tests/unit/test_rg_flow/`
+
+### 1.4 Remaining Work (Updated)
+
+| Component | Priority | Complexity | Status |
+|-----------|----------|------------|--------|
+| ~~RG Flow Solver~~ | ~~HIGH~~ | ~~High~~ | ✅ Phase I Complete |
+| ~~α⁻¹ Derivation~~ | ~~CRITICAL~~ | ~~High~~ | ✅ Phase I Complete |
+| Spectral Dimension | **HIGH** | Medium | 🟡 Phase II - Next |
+| Topology (β₁, n_inst) | HIGH | High | 🔴 Phase III |
+| Emergent Spacetime | MEDIUM | High | 🔴 Phase II |
+| Standard Model | MEDIUM | Very High | 🔴 Phase IV |
+| Cosmology | MEDIUM | Medium | 🔴 Phase IV |
+| QM Emergence | LOW | Medium | 🔴 Phase V |
+| Predictions | HIGH | Medium | 🔴 Phase V |
+| Desktop App | LOW | Very High | 🔴 Phase VI |
 
 ---
 
