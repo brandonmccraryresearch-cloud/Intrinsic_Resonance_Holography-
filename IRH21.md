@@ -8,16 +8,14 @@
 *Independent Theoretical Physics Researcher*
 
 **OCRID:** [https://orcid.org/0009-0008-2804-7165](https://orcid.org/0009-0008-2804-7165)
-
+**GitHub:** [https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git)
 **Date:** December 3, 2026
 
-**GitHub:** [https://github.com/dragonspider1991/Intrinsic-Resonance-Holography-.git](https://github.com/dragonspider1991/Intrinsic-Resonance-Holography-.git)
-
------
+------
 
 ## Prologue: The Epistemological Architecture of Fundamental Theory
 
-The endeavor to construct a unified theoretical framework that derives the observed structure of physical reality from axiomatically minimal principles represents the apex of scientific ambition. Intrinsic Resonance Holography (IRH) culminates this pursuit, not merely as a technical update, but as a **reconstructed theoretical edifice** forged through rigorous meta-theoretical critique and dialectical synthesis. This version explicitly embraces the **Epistemic Stratification Principle**, recognizing that fundamental theory must stratify into: (a) *primitive ontology* (axiomatic commitments), (b) *structural dynamics* (mathematical laws governing primitives), and (c) *phenomenological emergence* (observable consequences). IRH achieves maximal compression by minimizing its primitive ontology while maximizing its explanatory range.
+he endeavor to construct a unified theoretical framework that derives the observed structure of physical reality from axiomatically minimal principles represents the apex of scientific ambition. Intrinsic Resonance Holography (IRH) culminates this pursuit, not merely as a technical update, but as a **reconstructed theoretical edifice** forged through rigorous meta-theoretical critique and dialectical synthesis. This version explicitly embraces the **Epistemic Stratification Principle**, recognizing that fundamental theory must stratify into: (a) *primitive ontology* (axiomatic commitments), (b) *structural dynamics* (mathematical laws governing primitives), and (c) *phenomenological emergence* (observable consequences). IRH achieves maximal compression by minimizing its primitive ontology while maximizing its explanatory range.
 
 This reconstruction is founded on the explicit commitment to **computational realism**: the assertion that reality *is* an information-processing substrate, and that algorithmic complexity is the fundamental measure of its structure and dynamics. This perspective posits **quantum information as ontologically primitive**, from which the specific structure of observed quantum mechanics, general relativity, and the Standard Model are rigorously derived. This reversal constitutes a fundamental reconceptualization of the explanatory hierarchy in theoretical physics: compression complexity, or algorithmic irreducibility, generates the very notion of "microscopic dynamics" as an emergent, coarse-grained description.
 
