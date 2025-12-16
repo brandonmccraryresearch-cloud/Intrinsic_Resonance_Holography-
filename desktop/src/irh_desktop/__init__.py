@@ -23,12 +23,32 @@ __author__ = "Brandon D. McCrary"
 from irh_desktop.app import IRHDesktopApp
 from irh_desktop.core.engine_manager import EngineManager
 from irh_desktop.core.config_manager import ConfigManager
+from irh_desktop.core.computation_runner import (
+    ComputationRunner,
+    ComputationParameters,
+    ComputationResult,
+    ComputationType,
+)
+from irh_desktop.core.job_queue import JobQueueManager, JobPriority
+from irh_desktop.core.result_exporter import ResultExporter, export_results
 from irh_desktop.transparency.engine import TransparencyEngine
 
 __all__ = [
+    # Main app
     "IRHDesktopApp",
+    # Core services
     "EngineManager",
     "ConfigManager",
+    "ComputationRunner",
+    "ComputationParameters",
+    "ComputationResult",
+    "ComputationType",
+    "JobQueueManager",
+    "JobPriority",
+    "ResultExporter",
+    "export_results",
+    # Transparency
     "TransparencyEngine",
+    # Version
     "__version__",
 ]
