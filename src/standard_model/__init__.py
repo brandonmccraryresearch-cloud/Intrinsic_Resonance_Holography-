@@ -15,7 +15,7 @@ Key Results:
 
 Modules:
     gauge_groups: SU(3)×SU(2)×U(1) from β₁=12
-    fermion_masses: Yukawa couplings, 𝒦_f values (Table 3.1)
+    fermion_masses: Yukawa couplings (Eq. 3.6), 𝒦_f values (Table 3.1)
     gauge_bosons: W, Z, γ, g masses and couplings
     higgs_sector: VEV, λ_H, electroweak symmetry breaking
     neutrinos: Masses, mixing, Majorana nature (Appendix E.3)
@@ -35,6 +35,16 @@ Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §3.1-3.4"
 
+# Import from fermion_masses module (§3.2, Eq. 3.6)
+from .fermion_masses import (
+    compute_fermion_mass,
+    yukawa_coupling,
+    mass_hierarchy,
+    verify_mass_ratios,
+    TOPOLOGICAL_COMPLEXITY,
+    HIGGS_VEV,
+)
+
 # Topological complexity eigenvalues (Appendix E.1)
 K_1 = 1.000          # First generation (electron, u, d)
 K_2 = 206.77         # Second generation (muon, c, s)
@@ -46,31 +56,34 @@ __all__ = [
     'K_2',
     'K_3',
     
-    # gauge_groups exports
-    'derive_gauge_group',
-    'verify_su3_su2_u1',
-    
-    # fermion_masses exports
+    # fermion_masses exports (§3.2, Eq. 3.6)
     'compute_fermion_mass',
     'yukawa_coupling',
     'mass_hierarchy',
+    'verify_mass_ratios',
+    'TOPOLOGICAL_COMPLEXITY',
+    'HIGGS_VEV',
     
-    # gauge_bosons exports
+    # gauge_groups exports (placeholder)
+    'derive_gauge_group',
+    'verify_su3_su2_u1',
+    
+    # gauge_bosons exports (placeholder)
     'w_boson_mass',
     'z_boson_mass',
     'gluon_properties',
     
-    # higgs_sector exports
+    # higgs_sector exports (placeholder)
     'higgs_vev',
     'higgs_mass',
     'higgs_quartic_coupling',
     
-    # neutrinos exports
+    # neutrinos exports (placeholder)
     'neutrino_masses',
     'pmns_matrix',
     'verify_normal_hierarchy',
     
-    # strong_cp exports
+    # strong_cp exports (placeholder)
     'algorithmic_axion',
     'theta_angle',
 ]

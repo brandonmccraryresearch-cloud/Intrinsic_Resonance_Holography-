@@ -14,10 +14,9 @@ Ontological Commitments:
     - Quaternionic algebra ℍ provides algebraic necessity for 4D spacetime
 
 Modules:
-    quantum_information: Hilbert space representations, quantum states, K_Q complexity
-    group_manifolds: SU(2) and U(1) Lie group operations, Haar measure
     quaternions: ℍ arithmetic, conjugation, quaternionic products
-    algorithmic_measures: QNCD metric, universal quantum compressor infrastructure
+    group_manifold: SU(2) and U(1) Lie group operations, Haar measure
+    qncd: QNCD metric, algorithmic distance on G_inf
 
 Design Principles:
     1. Theory-agnostic: Could be reused for other quantum information theories
@@ -28,95 +27,117 @@ Design Principles:
 Dependencies:
     - NumPy (numerical linear algebra)
     - SciPy (special functions, optimization)
-    - SymPy (symbolic mathematics for formal verification)
 
 Authors: IRH Computational Framework Team
-Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with IRH21.md v21.0)
 """
 
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §1.0.1"
 
-# Module exports will be populated as implementations are added
+# Import quaternion algebra (§1.1.1)
+from .quaternions import (
+    Quaternion,
+    quaternion_conjugate,
+    quaternion_product,
+    quaternion_norm,
+    quaternion_dot,
+    quaternion_exp,
+    quaternion_log,
+    quaternion_slerp,
+    verify_quaternion_algebra,
+)
+
+# Import group manifold (§1.1)
+from .group_manifold import (
+    SU2Element,
+    U1Phase,
+    GInfElement,
+    haar_measure_SU2_sample,
+    haar_measure_U1_sample,
+    haar_measure_GInf_sample,
+    haar_integrate_SU2,
+    haar_integrate_U1,
+    haar_integrate_GInf,
+    compute_GInf_distance,
+    verify_group_axioms,
+)
+
+# Import QNCD metric (Appendix A)
+from .qncd import (
+    encode_quaternion,
+    encode_GInf_element,
+    compute_QNCD,
+    compute_QNCD_from_product,
+    compute_pairwise_QNCD_sum,
+    verify_QNCD_metric_axioms,
+    verify_QUCC_theorem,
+)
+
 __all__ = [
-    # quantum_information exports
-    'HilbertSpace',
-    'QuantumState',
-    'quantum_kolmogorov_complexity',
-    'QNCD_distance',
-    
-    # group_manifolds exports
-    'SU2_element',
-    'U1_phase',
-    'G_inf_element',
-    'haar_measure_SU2',
-    'haar_measure_U1',
-    
-    # quaternions exports
+    # Quaternion exports
     'Quaternion',
     'quaternion_conjugate',
     'quaternion_product',
     'quaternion_norm',
+    'quaternion_dot',
+    'quaternion_exp',
+    'quaternion_log',
+    'quaternion_slerp',
+    'verify_quaternion_algebra',
     
-    # algorithmic_measures exports
-    'UniversalQuantumCompressor',
+    # Group manifold exports
+    'SU2Element',
+    'U1Phase',
+    'GInfElement',
+    'haar_measure_SU2_sample',
+    'haar_measure_U1_sample',
+    'haar_measure_GInf_sample',
+    'haar_integrate_SU2',
+    'haar_integrate_U1',
+    'haar_integrate_GInf',
+    'compute_GInf_distance',
+    'verify_group_axioms',
+    
+    # QNCD exports
+    'encode_quaternion',
+    'encode_GInf_element',
     'compute_QNCD',
+    'compute_QNCD_from_product',
+    'compute_pairwise_QNCD_sum',
+    'verify_QNCD_metric_axioms',
     'verify_QUCC_theorem',
 ]
 
-# Placeholder imports - to be implemented
-# from .quantum_information import (
-#     HilbertSpace,
-#     QuantumState,
-#     quantum_kolmogorov_complexity,
-#     QNCD_distance
-# )
-#
-# from .group_manifolds import (
-#     SU2_element,
-#     U1_phase,
-#     G_inf_element,
-#     haar_measure_SU2,
-#     haar_measure_U1
-# )
-#
-# from .quaternions import (
-#     Quaternion,
-#     quaternion_conjugate,
-#     quaternion_product,
-#     quaternion_norm
-# )
-#
-# from .algorithmic_measures import (
-#     UniversalQuantumCompressor,
-#     compute_QNCD,
-#     verify_QUCC_theorem
-# )
 
-
-def _verify_primitive_consistency():
+def verify_all_primitives() -> dict:
     """
-    Runtime validation of primitive mathematical structures.
-    Ensures foundational axioms are computationally satisfied.
+    Comprehensive verification of all primitive mathematical structures.
     
-    This function is called on module import to verify:
-    - SU(2) group axioms: closure, associativity, identity, inverses
-    - Quaternion algebra: associativity, conjugation involution
-    - QNCD metric axioms: positivity, symmetry, triangle inequality
+    This function validates:
+    - Quaternion algebra axioms
+    - Group manifold axioms (closure, associativity, identity, inverse)
+    - QNCD metric axioms (positivity, symmetry, triangle inequality)
+    - QUCC-Theorem compliance
     
-    Note: Currently a placeholder - will be activated when implementations exist.
+    Returns
+    -------
+    dict
+        Complete verification results
     """
-    # TODO: Implement verification when modules are complete
-    # from .group_manifolds import verify_group_axioms
-    # assert verify_group_axioms('SU2'), "SU(2) group axioms violated"
-    #
-    # from .quaternions import verify_quaternion_algebra
-    # assert verify_quaternion_algebra(), "Quaternion algebra axioms violated"
-    #
-    # from .algorithmic_measures import verify_QNCD_metric_axioms
-    # assert verify_QNCD_metric_axioms(), "QNCD metric axioms violated"
-    pass
-
-
-# Verify consistency on import (when implementations exist)
-# _verify_primitive_consistency()
+    results = {
+        'quaternion_algebra': verify_quaternion_algebra(),
+        'group_axioms': verify_group_axioms(),
+        'qncd_metric': verify_QNCD_metric_axioms(),
+        'qucc_theorem': verify_QUCC_theorem(),
+    }
+    
+    results['all_passed'] = all(
+        r.get('all_passed', r.get('passed', False))
+        for r in results.values()
+        if isinstance(r, dict)
+    )
+    
+    results['theoretical_reference'] = 'IRH21.md §1.0.1, §1.1, Appendix A'
+    
+    return results

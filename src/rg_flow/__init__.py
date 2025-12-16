@@ -17,6 +17,7 @@ Key Equations:
     - Eq. 1.16: Universal exponent C_H = 0.045935703598...
 
 Modules:
+    validation: Phase IV validation and verification (NEW)
     wetterich: Exact RG equation integrator
     beta_functions: β_λ, β_γ, β_μ (Eq. 1.13)
     fixed_points: Cosmic Fixed Point solver
@@ -28,7 +29,7 @@ Dependencies:
     - src.cgft (Layer 1)
 
 Authors: IRH Computational Framework Team
-Last Updated: 2026-Q2 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with IRH21.md v21.0)
 """
 
 __version__ = "21.0.0"
@@ -44,6 +45,34 @@ MU_STAR = 16 * math.pi**2             # μ̃* = 16π²
 # Universal exponent (Eq. 1.16)
 C_H = 0.045935703598  # First analytically computed constant of Nature
 
+# Import validation module (Phase IV)
+from .validation import (
+    # Beta functions
+    beta_lambda,
+    beta_gamma,
+    beta_mu,
+    compute_all_betas,
+    
+    # Fixed points
+    FixedPointResult,
+    verify_fixed_point,
+    find_fixed_point,
+    compute_universal_exponent,
+    
+    # RG flow
+    RGFlowTrajectory,
+    integrate_rg_flow,
+    
+    # Stability
+    compute_stability_matrix,
+    analyze_fixed_point_stability,
+    
+    # Benchmarks
+    BenchmarkResult,
+    run_analytical_benchmarks,
+    generate_benchmark_report,
+)
+
 __all__ = [
     # Constants
     'LAMBDA_STAR',
@@ -51,27 +80,36 @@ __all__ = [
     'MU_STAR',
     'C_H',
     
-    # wetterich exports
-    'WetterichEquation',
-    'integrate_rg_flow',
-    
-    # beta_functions exports
+    # Beta functions (from validation)
     'beta_lambda',
     'beta_gamma',
     'beta_mu',
     'compute_all_betas',
     
-    # fixed_points exports
-    'find_fixed_point',
+    # Fixed points (from validation)
+    'FixedPointResult',
     'verify_fixed_point',
-    'compute_C_H',
+    'find_fixed_point',
+    'compute_universal_exponent',
     
-    # running_couplings exports
+    # RG flow (from validation)
+    'RGFlowTrajectory',
+    'integrate_rg_flow',
+    
+    # Stability (from validation)
+    'compute_stability_matrix',
+    'analyze_fixed_point_stability',
+    
+    # Benchmarks (from validation)
+    'BenchmarkResult',
+    'run_analytical_benchmarks',
+    'generate_benchmark_report',
+    
+    # Legacy exports (placeholders for future implementation)
+    'WetterichEquation',
     'lambda_running',
     'gamma_running',
     'mu_running',
-    
-    # stability_analysis exports
     'stability_matrix',
     'compute_eigenvalues',
     'verify_ir_attractiveness',
