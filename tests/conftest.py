@@ -8,12 +8,14 @@ without shadowing Python's standard library modules.
 import sys
 from pathlib import Path
 
-# Add the repository root to sys.path
-repo_root = Path(__file__).parent.parent
-if str(repo_root) not in sys.path:
-    sys.path.insert(0, str(repo_root))
+# Add the repository root to sys.path (use absolute path)
+repo_root = Path(__file__).parent.parent.resolve()
+repo_root_str = str(repo_root)
+if repo_root_str not in sys.path:
+    sys.path.insert(0, repo_root_str)
 
-# Add src directory to sys.path for direct imports
+# Add src directory to sys.path for direct imports (use absolute path)
 src_path = repo_root / "src"
-if str(src_path) not in sys.path:
-    sys.path.insert(0, str(src_path))
+src_path_str = str(src_path)
+if src_path_str not in sys.path:
+    sys.path.insert(0, src_path_str)
