@@ -39,7 +39,7 @@ class TestEquationReference:
         assert ref.section == "1.1"
         assert ref.equation_number == "1.1"
         assert ref.description == "S_kin kinetic term"
-        assert ref.manuscript == "Intrinsic_Resonance_Holography-v21.1.md"
+        assert ref.manuscript == "IRH v21.1 Manuscript"
     
     def test_string_representation(self):
         """Test __str__ method."""
@@ -48,7 +48,7 @@ class TestEquationReference:
             equation_number="1.1",
             description="S_kin kinetic term",
         )
-        assert str(ref) == "Intrinsic_Resonance_Holography-v21.1.md §1.1, Eq. 1.1"
+        assert str(ref) == "IRH v21.1 Manuscript §1.1, Eq. 1.1"
     
     def test_to_dict(self):
         """Test dictionary serialization."""
@@ -61,7 +61,7 @@ class TestEquationReference:
         assert d["section"] == "2.3"
         assert d["equation_number"] == "2.17"
         assert d["description"] == "ρ_hum calculation"
-        assert d["manuscript"] == "Intrinsic_Resonance_Holography-v21.1.md"
+        assert d["manuscript"] == "IRH v21.1 Manuscript"
 
 
 class TestEquationImplementation:

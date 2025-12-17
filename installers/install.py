@@ -2,7 +2,7 @@
 """
 Intrinsic Resonance Holography (IRH) v21.1 - Cross-Platform Python Installer
 
-THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §1.6
+THEORETICAL FOUNDATION: IRH v21.1 Manuscript (Part 1, Part 2) §1.6
 Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
 
 This script provides a cross-platform installation method for IRH.
@@ -371,7 +371,7 @@ def print_completion_message(install_dir: Path):
 
 {Colors.BOLD}Documentation:{Colors.END}
   - README: {install_dir}/README.md
-  - Theory: {install_dir}/Intrinsic_Resonance_Holography-v21.1.md
+  - Theory: {install_dir}/IRH v21.1 Manuscript (Part 1, Part 2)
   - Notebooks: {install_dir}/notebooks/
 
 {Colors.BOLD}Citation:{Colors.END}

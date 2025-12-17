@@ -1,14 +1,14 @@
 # IRH v21.1: Code ↔ Theory Correspondence Map
 
 **Last Updated**: 2025-Q4  
-**Manuscript Version**: Intrinsic_Resonance_Holography-v21.1.md v21.1  
+**Manuscript Version**: IRH v21.1 ([Part 1](./Intrinsic_Resonance_Holography-v21.1-Part1.md), [Part 2](./Intrinsic_Resonance_Holography-v21.1-Part2.md))  
 **Repository Commit**: `[auto-generated]`
 
 ---
 
 ## Overview
 
-This document maintains a **living, bidirectional mapping** between the theoretical formalism in `Intrinsic_Resonance_Holography-v21.1.md` and its computational implementation. It serves as:
+This document maintains a **living, bidirectional mapping** between the theoretical formalism in the IRH v21.1 Manuscript ([Part 1](./Intrinsic_Resonance_Holography-v21.1-Part1.md): Sections 1-4, [Part 2](./Intrinsic_Resonance_Holography-v21.1-Part2.md): Sections 5-8 + Appendices) and its computational implementation. It serves as:
 
 1. **Equation Registry**: Which equations are implemented, where, and how
 2. **Coverage Tracker**: Implementation completeness metrics

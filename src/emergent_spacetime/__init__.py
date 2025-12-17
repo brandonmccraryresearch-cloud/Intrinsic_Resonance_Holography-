@@ -1,7 +1,7 @@
 """
 Emergent Spacetime Layer for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §2.1-2.5
+THEORETICAL FOUNDATION: IRH v21.1 Manuscript Part 1 §2.1-2.5
 
 This module implements the emergence of 4-dimensional Lorentzian spacetime
 from the RG flow of the cGFT. The spectral dimension flows from fractal UV
@@ -31,7 +31,7 @@ Last Updated: December 2024
 """
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §2.1-2.5"
+__theoretical_foundation__ = "IRH v21.1 Manuscript Part 1 §2.1-2.5"
 
 # Spectral dimension constants
 from .spectral_dimension import (

@@ -35,7 +35,7 @@ DOCUMENTATION
 -------------
 
   - README.md - Quick start guide
-  - Intrinsic_Resonance_Holography-v21.1.md - Full theory manuscript
+  - IRH v21.1 Manuscript (Part 1, Part 2) - Full theory manuscript
   - notebooks/ - Interactive Jupyter notebooks
   - docs/ - Additional documentation
 
