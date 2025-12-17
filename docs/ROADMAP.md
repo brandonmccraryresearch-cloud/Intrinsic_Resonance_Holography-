@@ -1,4 +1,4 @@
-# IRH v21.0 Development Roadmap
+# IRH v21.1 Development Roadmap
 
 **Version**: 1.1  
 **Status**: Active Planning  
@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-This roadmap outlines planned features and enhancements for the Intrinsic Resonance Holography (IRH) v21.0 computational framework. The Enhancement Phase (Visualization, Reporting, Logging) has been completed. Focus areas moving forward include performance optimization, interactive notebooks, web interface, and ML integration.
+This roadmap outlines planned features and enhancements for the Intrinsic Resonance Holography (IRH) v21.1 computational framework. The Enhancement Phase (Visualization, Reporting, Logging) has been completed. Focus areas moving forward include performance optimization, interactive notebooks, web interface, and ML integration.
 
 ---
 
@@ -112,7 +112,7 @@ src/visualization/
 
 1. **LaTeX Report Generator**
    - Automatic compilation of computation results
-   - Includes theoretical references (IRH21.md citations)
+   - Includes theoretical references (Intrinsic_Resonance_Holography-v21.1.md citations)
    - Equation rendering with SymPy
    - Figure inclusion from visualization module
 
@@ -492,7 +492,7 @@ webapp/
 
 - Follow PEP 8 style guide
 - Use type hints for all functions
-- Docstrings with IRH21.md references
+- Docstrings with Intrinsic_Resonance_Holography-v21.1.md references
 - Minimum 90% test coverage for new code
 - Performance benchmarks for optimization work
 
@@ -514,7 +514,7 @@ webapp/
 Why is this feature needed? What problem does it solve?
 
 ### Theoretical Foundation
-IRH21.md sections relevant to this feature.
+Intrinsic_Resonance_Holography-v21.1.md sections relevant to this feature.
 
 ### Design
 High-level architecture and API design.
@@ -629,17 +629,108 @@ We welcome community input on feature prioritization and new ideas.
 
 ---
 
+## 12. Tiered Development Structure
+
+### Overview
+
+The IRH development roadmap is organized into **4 tiers**, each containing **5-10 phases**. This structure ensures systematic, incremental progress from core foundation to advanced applications.
+
+### Tier 1: Foundation (COMPLETE ✅)
+
+**Focus**: Core theoretical implementation and verification
+
+| Phase | Description | Status | Tests |
+|-------|-------------|--------|-------|
+| 1.1 | Primitives (Quaternions, Group Manifolds, QNCD) | ✅ Complete | 45+ |
+| 1.2 | cGFT Action (S_kin, S_int, S_hol) | ✅ Complete | 25+ |
+| 1.3 | RG Flow Infrastructure (β-functions, Fixed Points) | ✅ Complete | 74+ |
+| 1.4 | Emergent Geometry (Spectral Dimension, Metric) | ✅ Complete | 33+ |
+| 1.5 | Topological Physics (β₁=12, n_inst=3, VWP) | ✅ Complete | 53+ |
+| 1.6 | Standard Model Emergence | ✅ Complete | 65+ |
+| 1.7 | Cosmology & Predictions | ✅ Complete | 51+ |
+
+**Tier 1 Total**: 346+ tests | All critical equations implemented
+
+### Tier 2: Application Layer (COMPLETE ✅)
+
+**Focus**: User-facing applications and developer tools
+
+| Phase | Description | Status | Tests |
+|-------|-------------|--------|-------|
+| 2.1 | Desktop Application (PyQt6 GUI) | ✅ Complete | 36+ |
+| 2.2 | Transparency Engine | ✅ Complete | Included |
+| 2.3 | Visualization System (RG flow, manifolds) | ✅ Complete | 32+ |
+| 2.4 | Report Generation (LaTeX, HTML, Markdown) | ✅ Complete | 30+ |
+| 2.5 | Advanced Logging & Provenance | ✅ Complete | 39+ |
+| 2.6 | Installation Scripts (.sh, .bat, .py, .exe) | ✅ Complete | N/A |
+| 2.7 | Interactive Notebooks (Colab) | ✅ Complete | N/A |
+
+**Tier 2 Total**: 137+ tests | Complete application stack
+
+### Tier 3: Optimization & Scaling (PLANNED - 2026)
+
+**Focus**: Performance, parallelization, and scalability
+
+| Phase | Description | Target | Priority |
+|-------|-------------|--------|----------|
+| 3.1 | NumPy Vectorization | Q1 2026 | HIGH |
+| 3.2 | Caching & Memoization | Q1 2026 | HIGH |
+| 3.3 | Memory Optimization | Q2 2026 | MEDIUM |
+| 3.4 | MPI Parallelization | Q2 2026 | MEDIUM |
+| 3.5 | GPU Acceleration (JAX/CuPy) | Q3 2026 | LOW-MED |
+| 3.6 | Distributed Computing (Dask/Ray) | Q4 2026 | LOW |
+| 3.7 | Performance Benchmarking Suite | Q2 2026 | HIGH |
+| 3.8 | Profiling & Bottleneck Analysis | Q2 2026 | MEDIUM |
+
+**Tier 3 Goals**: 
+- 10x speedup on key computations
+- Support for HPC clusters
+- GPU-accelerated RG flow integration
+
+### Tier 4: Ecosystem & Community (PLANNED - 2026-2027)
+
+**Focus**: Broader ecosystem, community tools, and experimental integration
+
+| Phase | Description | Target | Priority |
+|-------|-------------|--------|----------|
+| 4.1 | Web Interface (FastAPI + React) | Q3 2026 | MEDIUM |
+| 4.2 | Cloud Deployment (Docker/K8s) | Q3 2026 | MEDIUM |
+| 4.3 | ML Surrogate Models | Q4 2026 | LOW |
+| 4.4 | Experimental Data Pipeline | Q4 2026 | MEDIUM |
+| 4.5 | Automated PDG/CODATA Updates | Q1 2027 | MEDIUM |
+| 4.6 | Plugin System | Q1 2027 | LOW |
+| 4.7 | Collaboration Tools | Q2 2027 | LOW |
+| 4.8 | Video Tutorial Library | Q2 2027 | LOW |
+| 4.9 | Community Forum Integration | Q3 2027 | LOW |
+| 4.10 | Research Paper Template Generator | Q2 2027 | MEDIUM |
+
+**Tier 4 Goals**:
+- Accessible web interface for non-programmers
+- Integration with experimental physics databases
+- Active research community
+
+### Tier Milestones Summary
+
+| Tier | Focus | Phases | Timeline | Status |
+|------|-------|--------|----------|--------|
+| **Tier 1** | Foundation | 7 | 2025 | ✅ COMPLETE |
+| **Tier 2** | Applications | 7 | 2025 | ✅ COMPLETE |
+| **Tier 3** | Optimization | 8 | 2026 | 🔄 PLANNED |
+| **Tier 4** | Ecosystem | 10 | 2026-2027 | 📋 FUTURE |
+
+---
+
 ## Appendix A: Related Documents
 
 - [`TECHNICAL_REFERENCE.md`](./TECHNICAL_REFERENCE.md) - Complete technical specifications
 - [`CONTINUATION_GUIDE.md`](./CONTINUATION_GUIDE.md) - Phase-by-phase implementation guide
 - [`DEB_PACKAGE_ROADMAP.md`](./DEB_PACKAGE_ROADMAP.md) - Desktop application roadmap
 - [`CONTRIBUTING.md`](../CONTRIBUTING.md) - Contribution guidelines
-- [`IRH21.md`](../IRH21.md) - Canonical theoretical manuscript
+- [`Intrinsic_Resonance_Holography-v21.1.md`](../Intrinsic_Resonance_Holography-v21.1.md) - Canonical theoretical manuscript
 
 ---
 
 *This roadmap is a living document and will be updated as development progresses.*
 
-**Last Updated**: December 16, 2025  
+**Last Updated**: December 17, 2025  
 **Next Review**: March 2026

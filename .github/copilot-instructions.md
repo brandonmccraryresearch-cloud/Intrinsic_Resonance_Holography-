@@ -4,7 +4,7 @@
 
 ### Executive Mandate
 
-This repository implements a comprehensive, systematic verification protocol ensuring that every algorithmic implementation, computational construct, and symbolic representation constitutes a **faithful, structure-preserving homomorphism** of the mathematical edifice articulated in the theoretical manuscript `IRH21.md`. This transcends mere code-documentation correspondence; it demands an **isomorphic embedding** whereby the computational substrate recapitulates, with maximal fidelity, the axiomatic structure, constraint topology, dynamical evolution operators, and emergent phenomenology specified in the rigorous mathematical formalism.
+This repository implements a comprehensive, systematic verification protocol ensuring that every algorithmic implementation, computational construct, and symbolic representation constitutes a **faithful, structure-preserving homomorphism** of the mathematical edifice articulated in the theoretical manuscript `Intrinsic_Resonance_Holography-v21.1.md`. This transcends mere code-documentation correspondence; it demands an **isomorphic embedding** whereby the computational substrate recapitulates, with maximal fidelity, the axiomatic structure, constraint topology, dynamical evolution operators, and emergent phenomenology specified in the rigorous mathematical formalism.
 
 The ultimate objective is to **transmute the repository into an executable instantiation of the theoretical formalism itself**, collapsing the distinction between "code that models theory" and "theory rendered computable" into identity.
 
@@ -19,11 +19,11 @@ IRH is a theoretical physics framework that derives fundamental constants and ph
 - Exascale-ready implementation with certified numerical precision (12+ decimal places)
 - Multi-version architecture (v16, v18, v21) with incremental enhancements
 - Complete physics derivations: Quantum Mechanics, General Relativity, Standard Model
-- **Full theoretical traceability** - every function cites specific equations from IRH21.md
+- **Full theoretical traceability** - every function cites specific equations from Intrinsic_Resonance_Holography-v21.1.md
 
 **Target Audience:** Theoretical physicists, computational scientists, researchers in quantum gravity and emergent spacetime
 
-## Theoretical Foundation (IRH21.md)
+## Theoretical Foundation (Intrinsic_Resonance_Holography-v21.1.md)
 
 ### Core Mathematical Structure
 
@@ -89,7 +89,7 @@ Intrinsic-Resonance-Holography-/
 │   │   ├── core/
 │   │   │   ├── v16/          # v16 implementation (ACW, AHS, ARO, NCD, Harmony)
 │   │   │   ├── v18/          # v18 cGFT implementation (analytical derivations)
-│   │   │   └── v21/          # v21 quaternionic cGFT (full IRH21.md implementation)
+│   │   │   └── v21/          # v21 quaternionic cGFT (full Intrinsic_Resonance_Holography-v21.1.md implementation)
 │   │   ├── predictions/      # Physical constant predictions
 │   │   └── ...
 │   └── tests/
@@ -97,11 +97,11 @@ Intrinsic-Resonance-Holography-/
 │       ├── v18/              # v18 unit tests
 │       └── v21/              # v21 verification suite
 ├── docs/
-│   ├── manuscripts/          # Theory manuscripts (IRHv16.md, IRH18.md, IRH21.md)
+│   ├── manuscripts/          # Theory manuscripts (IRHv16.md, IRH18.md, Intrinsic_Resonance_Holography-v21.1.md)
 │   ├── code_theory_map.html  # Interactive code↔theory cross-reference
 │   └── ...
 ├── configs/                  # Configuration files for validation
-├── IRH21.md                  # Primary theoretical manuscript
+├── Intrinsic_Resonance_Holography-v21.1.md                  # Primary theoretical manuscript
 ├── webapp/                   # Web interface (FastAPI + Streamlit)
 ├── notebooks/                # Jupyter notebooks for demonstrations
 └── pyproject.toml
@@ -111,7 +111,7 @@ Intrinsic-Resonance-Holography-/
 
 ### Phase I: Structural Verification
 
-Every computational implementation must realize a **structure-preserving map** from theoretical objects in `IRH21.md`:
+Every computational implementation must realize a **structure-preserving map** from theoretical objects in `Intrinsic_Resonance_Holography-v21.1.md`:
 
 1. **Group Manifold Representation**
    - SU(2) via quaternionic parameterization: u = q₀ + iq₁ + jq₂ + kq₃
@@ -636,7 +636,7 @@ class AlgorithmicHolonomicState:
 5. **Documentation**: Link all code to manuscript equations
 6. **Backward compatibility**: v16 extends v15 without breaking changes
 7. **Incremental implementation**: Test each component before integration
-8. **Theoretical Traceability**: Every function cites specific equations from IRH21.md
+8. **Theoretical Traceability**: Every function cites specific equations from Intrinsic_Resonance_Holography-v21.1.md
 9. **Algorithmic Transparency**: Runtime instrumentation emits theoretical context
 10. **Uncertainty Quantification**: All outputs include rigorous error propagation
 
@@ -645,7 +645,7 @@ class AlgorithmicHolonomicState:
 ### Unit Tests with Theoretical Grounding
 
 Every function must include:
-- Docstring citing IRH21.md reference
+- Docstring citing Intrinsic_Resonance_Holography-v21.1.md reference
 - Unit test validating theoretical properties
 
 ```python
@@ -654,7 +654,7 @@ def compute_laplace_beltrami(phi, generator_idx, arg_idx, group_lattice):
     Compute Laplace-Beltrami operator Δₐ^(i) acting on cGFT field.
     
     Theoretical Reference:
-        IRH21.md §1.1, Eq. 1.1
+        Intrinsic_Resonance_Holography-v21.1.md §1.1, Eq. 1.1
         Kinetic term: S_kin = ∫[∏dg_i] φ̄·[Σₐ Σᵢ Δₐ^(i)]·φ
     """
 ```
@@ -719,7 +719,7 @@ Critical computations must be verified via independent algorithms:
 
 Every contribution to the IRH codebase must satisfy:
 
-**✓** Theoretical Traceability: Every function cites specific equations from `IRH21.md`  
+**✓** Theoretical Traceability: Every function cites specific equations from `Intrinsic_Resonance_Holography-v21.1.md`  
 **✓** Algorithmic Transparency: Runtime instrumentation emits theoretical context  
 **✓** Uncertainty Quantification: All outputs include rigorous error propagation  
 **✓** Cross-Validation: Critical computations verified via independent algorithms  
@@ -1137,8 +1137,8 @@ After each development session or major change, ensure the repository is well-or
 #### 1. File Organization Standards
 
 **Manuscripts and Theory Documents**:
-- All theory manuscripts (IRHv15.md, IRHv16.md, IRH21.md, etc.) should be in `docs/manuscripts/`
-- Keep IRH21.md in root as the canonical reference (with symlink if needed)
+- All theory manuscripts (IRHv15.md, IRHv16.md, Intrinsic_Resonance_Holography-v21.1.md, etc.) should be in `docs/manuscripts/`
+- Keep Intrinsic_Resonance_Holography-v21.1.md in root as the canonical reference (with symlink if needed)
 - Update any documentation references when moving files
 
 **Source Code Organization**:
@@ -1166,7 +1166,7 @@ docs/
 ├── manuscripts/           # Theory documents
 │   ├── IRHv15.md
 │   ├── IRHv16.md
-│   └── IRH21.md (optional copy)
+│   └── Intrinsic_Resonance_Holography-v21.1.md (optional copy)
 ├── TECHNICAL_REFERENCE.md # Complete technical specs
 ├── CONTINUATION_GUIDE.md  # Next phase instructions
 ├── ROADMAP.md            # Future features roadmap
@@ -1267,7 +1267,7 @@ After each development session, verify:
 ```bash
 # 1. Review root directory - should only contain:
 #    - README.md, LICENSE, CONTRIBUTING.md, THEORETICAL_CORRESPONDENCE.md
-#    - IRH21.md (canonical reference)
+#    - Intrinsic_Resonance_Holography-v21.1.md (canonical reference)
 #    - requirements.txt, pyproject.toml, setup.py
 #    - .gitignore, .github/
 
@@ -1384,7 +1384,7 @@ Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`
 - ✅ Clear, unabbreviated names
 - ✅ Separate test and source directories
 - ✅ Remove dead code, don't comment it out
-- ✅ Cite IRH21.md sections in all implementations
+- ✅ Cite Intrinsic_Resonance_Holography-v21.1.md sections in all implementations
 
 ---
 

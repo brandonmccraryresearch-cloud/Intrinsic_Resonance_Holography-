@@ -1,14 +1,14 @@
-# IRH v21.0: Code ↔ Theory Correspondence Map
+# IRH v21.1: Code ↔ Theory Correspondence Map
 
 **Last Updated**: 2025-Q4  
-**Manuscript Version**: IRH21.md v21.0  
+**Manuscript Version**: Intrinsic_Resonance_Holography-v21.1.md v21.1  
 **Repository Commit**: `[auto-generated]`
 
 ---
 
 ## Overview
 
-This document maintains a **living, bidirectional mapping** between the theoretical formalism in `IRH21.md` and its computational implementation. It serves as:
+This document maintains a **living, bidirectional mapping** between the theoretical formalism in `Intrinsic_Resonance_Holography-v21.1.md` and its computational implementation. It serves as:
 
 1. **Equation Registry**: Which equations are implemented, where, and how
 2. **Coverage Tracker**: Implementation completeness metrics
@@ -232,8 +232,8 @@ This document maintains a **living, bidirectional mapping** between the theoreti
 
 | Date | Version | Changes |
 |------|---------|---------|
-| 2024-12 | v21.0.1 | Phase I-VI implementation: Quaternions, group manifolds, QNCD, RG flow validation, cross-validation, documentation infrastructure. 100% critical equation coverage. |
-| 2026-Q2 | v21.0 | Initial scaffold creation |
+| 2024-12 | v21.1.1 | Phase I-VI implementation: Quaternions, group manifolds, QNCD, RG flow validation, cross-validation, documentation infrastructure. 100% critical equation coverage. |
+| 2026-Q2 | v21.1 | Initial scaffold creation |
 
 ---
 

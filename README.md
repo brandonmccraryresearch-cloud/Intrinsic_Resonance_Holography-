@@ -1,8 +1,14 @@
-# Intrinsic Resonance Holography v21.0: Computational Framework
+# Intrinsic Resonance Holography v21.1: Computational Framework
+
+<div align="right">
+
+[![Cite this Repository](https://img.shields.io/badge/Cite-Repository-orange?logo=github)](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-#-citation) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/notebooks/00_quickstart.ipynb)
+
+</div>
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-541%2B%20passing-brightgreen.svg)](./tests/)
+[![Tests](https://img.shields.io/badge/tests-629%2B%20passing-brightgreen.svg)](./tests/)
 [![Coverage](https://img.shields.io/badge/critical%20equations-100%25-brightgreen.svg)](./THEORETICAL_CORRESPONDENCE.md)
 
 **A complete computational framework deriving fundamental physics from quantum-informational first principles—with desktop application and 100% theoretical coverage.**
@@ -13,22 +19,22 @@
 
 | Document | Description |
 |----------|-------------|
+| [**IRH v21.1 Manuscript**](./Intrinsic_Resonance_Holography-v21.1.md) | 📖 Canonical theoretical manuscript (master reference) |
 | [**Technical Reference Manual**](./docs/TECHNICAL_REFERENCE.md) | Exhaustive specifications for all modules, APIs, and implementations |
 | [**Continuation Guide**](./docs/CONTINUATION_GUIDE.md) | Next phases, priority tasks, and implementation roadmap |
 | [**Theoretical Correspondence Map**](./THEORETICAL_CORRESPONDENCE.md) | Bidirectional mapping between code and manuscript equations |
 | [**Architecture Overview**](./docs/architectural_overview.md) | System design and ontological layer structure |
 | [**Desktop App Roadmap**](./docs/DEB_PACKAGE_ROADMAP.md) | Implementation plan for .deb desktop application |
-| [**IRH21.md**](./IRH21.md) | Canonical theoretical manuscript (master reference) |
 | [**Contributing Guidelines**](./CONTRIBUTING.md) | How to contribute to the project |
 
 ---
 
 ## 🎯 Overview
 
-**Intrinsic Resonance Holography (IRH) v21.0** is a unified theory deriving all fundamental physical laws, constants, and observable phenomena from axiomatically minimal quantum-informational principles. This repository provides the complete computational implementation, achieving:
+**Intrinsic Resonance Holography (IRH) v21.1** is a unified theory deriving all fundamental physical laws, constants, and observable phenomena from axiomatically minimal quantum-informational principles. This repository provides the complete computational implementation, achieving:
 
-- ✅ **100% theoretical coverage**: All 17 critical equations from [`IRH21.md`](./IRH21.md) implemented
-- ✅ **541+ passing tests**: Comprehensive validation across 6 implementation phases
+- ✅ **100% theoretical coverage**: All 17 critical equations from [`Intrinsic_Resonance_Holography-v21.1.md`](./Intrinsic_Resonance_Holography-v21.1.md) implemented
+- ✅ **629+ passing tests**: Comprehensive validation across 6 implementation phases + enhancements
 - ✅ **Desktop application**: User-friendly GUI with transparency engine and auto-updates
 - ✅ **12-digit precision**: Fine-structure constant α⁻¹ = 137.035999084 and other predictions
 
@@ -62,7 +68,7 @@
 
 ### Implementation Status
 
-**All 6 phases complete** (as of December 2025):
+**All 6 phases complete + Enhancement Phase** (as of December 2025):
 
 | Phase | Focus | Tests | Status |
 |-------|-------|-------|--------|
@@ -72,8 +78,9 @@
 | **Phase IV** | Standard Model (gauge groups, fermions, Higgs) | 65+ | ✅ Complete |
 | **Phase V** | Cosmology & Predictions (dark energy, LIV) | 51+ | ✅ Complete |
 | **Phase VI** | Desktop Application (GUI, packaging) | 36+ | ✅ Complete |
+| **Enhancement** | Visualization, Reporting, Logging | 101+ | ✅ Complete |
 
-**Total**: 541+ tests | 100% critical equation coverage (17/17)
+**Total**: 629+ tests | 100% critical equation coverage (17/17)
 
 ---
 
@@ -83,6 +90,19 @@
 - **Python**: 3.10+ (3.11+ recommended)
 - **OS**: Linux, macOS, Windows (Ubuntu 22.04+ recommended)
 - **RAM**: 4 GB minimum, 16 GB recommended
+
+### One-Line Installation
+
+**Linux/macOS:**
+```bash
+curl -sSL https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/main/installers/install.sh | bash
+```
+
+**Windows (PowerShell):**
+```powershell
+# Download and run the Python installer
+python -c "import urllib.request; urllib.request.urlretrieve('https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/main/installers/install.py', 'install.py')" && python install.py
+```
 
 ### Install from Source
 
@@ -124,7 +144,7 @@ See [`docs/DEB_PACKAGE_ROADMAP.md`](./docs/DEB_PACKAGE_ROADMAP.md) for desktop a
 ### Run Tests
 
 ```bash
-# Run all tests (541+ tests)
+# Run all tests (629+ tests)
 pytest tests/ -v
 
 # Run with coverage
@@ -321,7 +341,7 @@ standard_model → cosmology → quantum_mechanics → falsifiable_predictions
 
 | Component | Description | IRH Reference |
 |-----------|-------------|---------------|
-| **`IRH21.md`** | Canonical theoretical manuscript (master reference) | All sections |
+| **`Intrinsic_Resonance_Holography-v21.1.md`** | Canonical theoretical manuscript (master reference) | All sections |
 | **`src/primitives/`** | Quaternions, group manifolds (G_inf), QNCD metric | §1.0.1 |
 | **`src/cgft/`** | Field theory action S_kin + S_int + S_hol | §1.1 (Eqs. 1.1-1.4) |
 | **`src/rg_flow/`** | β-functions, Cosmic Fixed Point, Wetterich equation | §1.2-1.3 (Eqs. 1.12-1.14) |
@@ -332,9 +352,11 @@ standard_model → cosmology → quantum_mechanics → falsifiable_predictions
 | **`src/quantum_mechanics/`** | Born rule, decoherence, emergent Hilbert space | §5.1-5.2 |
 | **`src/falsifiable_predictions/`** | LIV, muon g-2, gravitational sidebands | §8, Appendix J |
 | **`src/observables/`** | Physical constant extraction (α⁻¹, C_H) | §3.2 |
-| **`tests/`** | 541+ tests ensuring theoretical fidelity | — |
+| **`tests/`** | 629+ tests ensuring theoretical fidelity | — |
 | **`desktop/`** | PyQt6 desktop application with transparency engine | — |
 | **`docs/`** | Technical reference, continuation guide, roadmap | — |
+| **`installers/`** | Cross-platform installation scripts (.sh, .bat, .py) | — |
+| **`notebooks/`** | Interactive Colab notebooks with "Open in Colab" buttons | — |
 
 See [`docs/architectural_overview.md`](./docs/architectural_overview.md) for detailed design rationale.
 
@@ -387,7 +409,7 @@ See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for complete feature specifications a
 
 All contributions must maintain:
 
-- ✅ **Theoretical traceability**: Every function cites IRH21.md sections/equations
+- ✅ **Theoretical traceability**: Every function cites Intrinsic_Resonance_Holography-v21.1.md sections/equations
 - ✅ **Test coverage**: ≥90% coverage with theoretical invariant tests
 - ✅ **Documentation**: Inline theoretical context and references
 - ✅ **Code quality**: PEP 8 compliance, type hints, docstrings
@@ -402,17 +424,17 @@ If using this framework in research, please cite:
 
 ```bibtex
 @software{IRH_v21_computational_2025,
-  title={Intrinsic Resonance Holography v21.0: Computational Framework},
+  title={Intrinsic Resonance Holography v21.1: Computational Framework},
   author={McCrary, Brandon D.},
   year={2025},
   month={December},
-  version={21.0.0},
+  version={21.1.0},
   url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-},
-  note={Complete computational implementation with 541+ tests and 100\% equation coverage}
+  note={Complete computational implementation with 629+ tests and 100\% equation coverage}
 }
 
 @article{IRH_v21_theory_2025,
-  title={Intrinsic Resonance Holography v21.0: Unified Theory of Emergent Reality},
+  title={Intrinsic Resonance Holography v21.1: Unified Theory of Emergent Reality},
   author={McCrary, Brandon D.},
   journal={SSRN preprint},
   year={2025},
@@ -426,9 +448,9 @@ If using this framework in research, please cite:
 
 When using IRH in your research:
 1. **Cite both** the software (computational) and theory paper (theoretical foundation)
-2. **Specify version** (v16, v18, or v21) and which modules/equations were used
+2. **Specify version** (v16, v18, or v21.1) and which modules/equations were used
 3. **Report verification**: Test results, precision achieved, convergence details
-4. **Reference sections**: Cite specific IRH21.md sections (e.g., "using Eq. 3.4-3.5 from §3.2")
+4. **Reference sections**: Cite specific Intrinsic_Resonance_Holography-v21.1.md sections (e.g., "using Eq. 3.4-3.5 from §3.2")
 
 ### Author Information
 
@@ -466,8 +488,8 @@ This work builds upon decades of research in:
 - **Algorithmic Information Theory** (Kolmogorov, Chaitin, Solomonoff)
 - **Renormalization Group Methods** (Wilson, Wetterich, et al.)
 
-See [`IRH21.md`](./IRH21.md) for complete references.
+See [`Intrinsic_Resonance_Holography-v21.1.md`](./Intrinsic_Resonance_Holography-v21.1.md) for complete references.
 
 ---
 
-> **Living Framework**: This codebase evolves in lockstep with theoretical refinements to [`IRH21.md`](./IRH21.md). Always verify you're using the latest manuscript version for reproducibility.
+> **Living Framework**: This codebase evolves in lockstep with theoretical refinements to [`Intrinsic_Resonance_Holography-v21.1.md`](./Intrinsic_Resonance_Holography-v21.1.md). Always verify you're using the latest manuscript version for reproducibility.
