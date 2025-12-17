@@ -1,7 +1,7 @@
 """
 IRH Output Standardization - Phase VIII Implementation.
 
-THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §1 (IRH-DEF traceability)
+THEORETICAL FOUNDATION: IRH v21.1 Manuscript Part 1 §1 (IRH-DEF traceability)
 
 This module implements the complete output standardization infrastructure
 per the IRH v21.0 verification protocol from copilot21promtMAX.md.
@@ -14,8 +14,10 @@ Components:
 - MetadataManager: Reproducibility tracking
 
 Theoretical Reference:
-    Intrinsic_Resonance_Holography-v21.1.md - Final Compliance Checklist
-    "All outputs must conform to IRH-DEF standard format"
+    IRH v21.1 Manuscript (Part 1: Sections 1-4, Part 2: Sections 5-8 + Appendices)
+    - Intrinsic_Resonance_Holography-v21.1-Part1.md
+    - Intrinsic_Resonance_Holography-v21.1-Part2.md
+    Final Compliance Checklist: "All outputs must conform to IRH-DEF standard format"
 """
 
 from dataclasses import dataclass, field
@@ -49,13 +51,13 @@ class TheoreticalAnnotation:
     Theoretical annotation for output values.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Theoretical Traceability requirement
-        "Every function cites specific equations from Intrinsic_Resonance_Holography-v21.1.md"
+        IRH v21.1 Manuscript - Theoretical Traceability requirement
+        "Every function cites specific equations from IRH v21.1 Manuscript"
     """
     equation_number: str
     section: str
     description: str
-    manuscript: str = "Intrinsic_Resonance_Holography-v21.1.md"
+    manuscript: str = "IRH v21.1 Manuscript (Part 1: Sections 1-4, Part 2: Sections 5-8 + Appendices)"
 
 
 @dataclass
@@ -64,7 +66,7 @@ class UncertaintyInfo:
     Uncertainty information for computed values.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Uncertainty Quantification requirement
+        IRH v21.1 Manuscript - Uncertainty Quantification requirement
         "All outputs include rigorous error propagation"
     """
     value: float
@@ -98,7 +100,7 @@ class ProvenanceInfo:
     Computational provenance for reproducibility.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Reproducibility requirement
+        IRH v21.1 Manuscript - Reproducibility requirement
         "Complete provenance metadata enables exact reproduction"
     """
     timestamp: str = field(default_factory=lambda: datetime.now(timezone.utc).isoformat())
@@ -135,7 +137,7 @@ class ValidationInfo:
     Validation status for computed values.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Regression Protection requirement
+        IRH v21.1 Manuscript - Regression Protection requirement
         "Automated detection of deviations from certified baselines"
     """
     passed: bool
@@ -162,7 +164,7 @@ class IRHDEFSchema:
     ensuring consistent structure across all computational results.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Schema Compliance requirement
+        IRH v21.1 Manuscript - Schema Compliance requirement
         "All outputs conform to IRH-DEF standard format"
     
     Attributes
@@ -258,7 +260,7 @@ class OutputFormatter:
     Converts IRHDEFSchema to various output formats.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Output Contextualization
+        IRH v21.1 Manuscript - Output Contextualization
         All numerical outputs must include theoretical provenance
     """
     
@@ -322,7 +324,7 @@ class OutputFormatter:
             # Add theoretical context
             context = self.schema.theoretical_context.get(name)
             if context:
-                lines.append(f"  - *Reference:* {context.get('manuscript', 'Intrinsic_Resonance_Holography-v21.1.md')} "
+                lines.append(f"  - *Reference:* {context.get('manuscript', 'IRH v21.1 Manuscript (Part 1: Sections 1-4, Part 2: Sections 5-8 + Appendices)')} "
                            f"{context.get('section', '')} {context.get('equation', '')}")
         
         lines.extend([
@@ -456,7 +458,7 @@ class ReportGenerator:
     validation results, and reproducibility information.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Documentation requirements
+        IRH v21.1 Manuscript - Documentation requirements
         "Complete theoretical provenance chain"
     """
     
@@ -698,7 +700,7 @@ class ComplianceChecker:
     Validates outputs against the IRH-DEF standard requirements.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Schema Compliance requirement
+        IRH v21.1 Manuscript - Schema Compliance requirement
         "All outputs conform to IRH-DEF standard format"
     """
     
@@ -820,7 +822,7 @@ class MetadataManager:
     Manages computational provenance and ensures reproducibility.
     
     Theoretical Reference:
-        Intrinsic_Resonance_Holography-v21.1.md - Reproducibility requirement
+        IRH v21.1 Manuscript - Reproducibility requirement
         "Complete provenance metadata enables exact reproduction"
     """
     

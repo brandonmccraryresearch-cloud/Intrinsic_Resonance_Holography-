@@ -78,7 +78,7 @@ Colab notebooks auto-install dependencies.
 ## Theoretical Reference
 
 All notebooks reference the canonical manuscript:
-[Intrinsic_Resonance_Holography-v21.1.md](../Intrinsic_Resonance_Holography-v21.1.md)
+[IRH v21.1 Manuscript ([Part 1](../Intrinsic_Resonance_Holography-v21.1-Part1.md), [Part 2](../Intrinsic_Resonance_Holography-v21.1-Part2.md))](../IRH v21.1 Manuscript ([Part 1](../Intrinsic_Resonance_Holography-v21.1-Part1.md), [Part 2](../Intrinsic_Resonance_Holography-v21.1-Part2.md)))
 
 ## Citation
 

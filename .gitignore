@@ -142,3 +142,6 @@ benchmarks/scaling_studies/*.json
 # Temporary files
 /tmp/
 *.tmp
+*.zip
+lint/
+validate*/

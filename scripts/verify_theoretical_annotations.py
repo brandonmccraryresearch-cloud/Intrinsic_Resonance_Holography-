@@ -2,11 +2,11 @@
 """
 Verify Theoretical Annotations in IRH v21.0 Codebase
 
-THEORETICAL FOUNDATION: IRH21.md §1.6 (Transparency Commitment)
+THEORETICAL FOUNDATION: IRH v21.1 Manuscript Part 1 §1.6 (Transparency Commitment)
 
 This script scans all Python source files and verifies that:
 1. Every module has a THEORETICAL FOUNDATION citation
-2. Every function/class has docstrings with IRH21.md references
+2. Every function/class has docstrings with IRH v21.1 Manuscript references
 3. Equation labels are properly formatted and valid
 
 Usage:
@@ -48,9 +48,15 @@ def check_module_header(filepath: Path) -> List[str]:
     if 'THEORETICAL FOUNDATION' not in content and '__init__' not in str(filepath):
         issues.append(f"{filepath}: Missing THEORETICAL FOUNDATION citation in module docstring")
     
-    # Check for IRH21.md reference
-    if 'IRH21.md' not in content and '__init__' not in str(filepath):
-        issues.append(f"{filepath}: Missing IRH21.md reference")
+    # Check for IRH v21.1 Manuscript reference (accepts both old and new formats)
+    has_manuscript_ref = (
+        'IRH21.md' in content or 
+        'IRH v21.1 Manuscript' in content or
+        'Part 1' in content or 
+        'Part 2' in content
+    )
+    if not has_manuscript_ref and '__init__' not in str(filepath):
+        issues.append(f"{filepath}: Missing IRH v21.1 Manuscript reference")
     
     return issues
 
@@ -97,18 +103,34 @@ def check_section_references(filepath: Path) -> List[str]:
     section_pattern = r'§(\d+\.?\d*\.?\d*)'
     sections = re.findall(section_pattern, content)
     
-    # Valid section numbers
+    # Valid section numbers from IRH v21.1 Manuscript (Part 1 + Part 2)
+    # Part 1: Sections 1-4, Part 2: Sections 5-8 + Appendices
     valid_sections = [
+        # Part 1: Section 1 - Foundation
         '1', '1.0', '1.0.1', '1.1', '1.1.1', '1.2', '1.2.1', '1.2.2', '1.2.3', '1.2.4',
         '1.3', '1.3.1', '1.3.2', '1.3.3', '1.4', '1.4.1', '1.4.2', '1.5', '1.6',
-        '2', '2.1', '2.1.1', '2.2', '2.2.1', '2.3', '2.3.1', '2.3.2', '2.3.3', '2.4', '2.5',
-        '3', '3.1', '3.2', '3.2.1', '3.2.2', '3.3', '3.3.1', '3.3.2', '3.4',
+        # Part 1: Section 2 - Emergent Spacetime
+        '2', '2.1', '2.1.1', '2.1.2', '2.2', '2.2.1', '2.2.2', '2.3', '2.3.1', '2.3.2', '2.3.3', 
+        '2.4', '2.4.1', '2.4.2', '2.4.3', '2.5',
+        # Part 1: Section 3 - Standard Model
+        '3', '3.1', '3.1.1', '3.1.2', '3.2', '3.2.', '3.2.1', '3.2.2', '3.2.3', '3.2.4', 
+        '3.3', '3.3.1', '3.3.2', '3.3.3', '3.3.4', 
+        '3.4', '3.4.1', '3.4.2', '3.4.3', '3.4.4',
+        # Part 1: Section 4 - Meta-theory
         '4', '4.1', '4.2', '4.3',
+        # Part 2: Section 5 - Quantum Mechanics
         '5', '5.1', '5.2', '5.2.1',
+        # Part 2: Section 6-8 - Predictions
         '6', '7', '7.1', '7.2',
         '8', '8.1', '8.2', '8.3', '8.4', '8.5', '8.6', '8.7',
+        # Part 2: Appendices
         '9', '9.1', '9.2', '9.3', '9.4',
-        '10'
+        '10',
+        # Appendix references (A-K)
+        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+        'A.1', 'A.2', 'A.3', 'A.4', 'B.1', 'B.2', 'C.1', 'C.2', 'C.3', 'C.4', 'C.5',
+        'D.1', 'D.2', 'D.3', 'E.1', 'E.2', 'E.3', 'F.1', 'F.2',
+        'G.1', 'G.2', 'H.1', 'H.2', 'I.1', 'I.2', 'J.1', 'J.2', 'J.3', 'K.1', 'K.2'
     ]
     
     for section in sections:

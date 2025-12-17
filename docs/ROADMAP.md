@@ -112,7 +112,7 @@ src/visualization/
 
 1. **LaTeX Report Generator**
    - Automatic compilation of computation results
-   - Includes theoretical references (Intrinsic_Resonance_Holography-v21.1.md citations)
+   - Includes theoretical references (IRH v21.1 Manuscript citations)
    - Equation rendering with SymPy
    - Figure inclusion from visualization module
 
@@ -492,7 +492,7 @@ webapp/
 
 - Follow PEP 8 style guide
 - Use type hints for all functions
-- Docstrings with Intrinsic_Resonance_Holography-v21.1.md references
+- Docstrings with IRH v21.1 Manuscript references
 - Minimum 90% test coverage for new code
 - Performance benchmarks for optimization work
 
@@ -514,7 +514,7 @@ webapp/
 Why is this feature needed? What problem does it solve?
 
 ### Theoretical Foundation
-Intrinsic_Resonance_Holography-v21.1.md sections relevant to this feature.
+IRH v21.1 Manuscript sections relevant to this feature.
 
 ### Design
 High-level architecture and API design.
@@ -726,7 +726,7 @@ The IRH development roadmap is organized into **4 tiers**, each containing **5-1
 - [`CONTINUATION_GUIDE.md`](./CONTINUATION_GUIDE.md) - Phase-by-phase implementation guide
 - [`DEB_PACKAGE_ROADMAP.md`](./DEB_PACKAGE_ROADMAP.md) - Desktop application roadmap
 - [`CONTRIBUTING.md`](../CONTRIBUTING.md) - Contribution guidelines
-- [`Intrinsic_Resonance_Holography-v21.1.md`](../Intrinsic_Resonance_Holography-v21.1.md) - Canonical theoretical manuscript
+- IRH v21.1 Manuscript ([Part 1](../Intrinsic_Resonance_Holography-v21.1-Part1.md), [Part 2](../Intrinsic_Resonance_Holography-v21.1-Part2.md)) - Canonical theoretical manuscript
 
 ---
 

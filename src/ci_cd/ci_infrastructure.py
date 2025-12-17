@@ -1,7 +1,7 @@
 """
 CI/CD Infrastructure for IRH v21.0 Verification Protocol
 
-THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §§1.2, 2.1.2, 3.1.1-3.1.2
+THEORETICAL FOUNDATION: IRH v21.1 Manuscript §§1.2, 2.1.2, 3.1.1-3.1.2
 
 This module implements Phase VII of the copilot21promtMAX.md verification protocol:
 - Pre-commit validation hooks
@@ -11,7 +11,7 @@ This module implements Phase VII of the copilot21promtMAX.md verification protoc
 
 Theoretical Reference:
     copilot21promtMAX.md Phase VII: CI/CD
-    Intrinsic_Resonance_Holography-v21.1.md - All equation references
+    IRH v21.1 Manuscript - All equation references
 """
 
 import ast
@@ -148,7 +148,7 @@ class TestResult:
     error_message : Optional[str]
         Error message if failed
     theoretical_reference : str
-        Intrinsic_Resonance_Holography-v21.1.md equation reference
+        IRH v21.1 Manuscript equation reference
     """
     test_name: str
     tier: TestTier
@@ -463,75 +463,75 @@ class RegressionDetector:
     """
     Detect regressions against certified baselines.
     
-    Compares computed values against certified baselines from Intrinsic_Resonance_Holography-v21.1.md
+    Compares computed values against certified baselines from IRH v21.1 Manuscript
     and reports any deviations exceeding specified tolerances.
     
     Theoretical Reference:
         copilot21promtMAX.md Phase VII: Regression Detection
-        Intrinsic_Resonance_Holography-v21.1.md - All certified values
+        IRH v21.1 Manuscript - All certified values
     """
     
-    # Certified baselines from Intrinsic_Resonance_Holography-v21.1.md
+    # Certified baselines from IRH v21.1 Manuscript
     BASELINES = {
         "C_H": {
             "value": 0.045935703598,
             "uncertainty": 1e-12,
             "tolerance": 1e-10,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §1.2, Eq. 1.16",
+            "reference": "IRH v21.1 Manuscript Part 1 §1.2, Eq. 1.16",
         },
         "lambda_star": {
             "value": 52.63789013914324,
             "uncertainty": 1e-10,
             "tolerance": 1e-8,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §1.2, Eq. 1.14",
+            "reference": "IRH v21.1 Manuscript Part 1 §1.2, Eq. 1.14",
         },
         "gamma_star": {
             "value": 105.27578027828649,
             "uncertainty": 1e-10,
             "tolerance": 1e-8,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §1.2, Eq. 1.14",
+            "reference": "IRH v21.1 Manuscript Part 1 §1.2, Eq. 1.14",
         },
         "mu_star": {
             "value": 157.91367041742973,
             "uncertainty": 1e-10,
             "tolerance": 1e-8,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §1.2, Eq. 1.14",
+            "reference": "IRH v21.1 Manuscript Part 1 §1.2, Eq. 1.14",
         },
         "alpha_inv": {
             "value": 137.035999,
             "uncertainty": 0.000008,
             "tolerance": 0.0001,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §3.2.2, Eq. 3.4",
+            "reference": "IRH v21.1 Manuscript Part 1 §3.2.2, Eq. 3.4",
         },
         "w0": {
             "value": -0.91234567,
             "uncertainty": 0.00000008,
             "tolerance": 0.000001,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §2.3.3",
+            "reference": "IRH v21.1 Manuscript Part 1 §2.3.3",
         },
         "spectral_dim_uv": {
             "value": 2.0,
             "uncertainty": 0.01,
             "tolerance": 0.1,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §2.1.2, Eq. 2.9",
+            "reference": "IRH v21.1 Manuscript Part 1 §2.1.2, Eq. 2.9",
         },
         "spectral_dim_ir": {
             "value": 4.0,
             "uncertainty": 0.01,
             "tolerance": 0.1,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §2.1.2",
+            "reference": "IRH v21.1 Manuscript Part 1 §2.1.2",
         },
         "beta_1": {
             "value": 12,
             "uncertainty": 0,
             "tolerance": 0,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §3.1.1",
+            "reference": "IRH v21.1 Manuscript Part 1 §3.1.1",
         },
         "n_inst": {
             "value": 3,
             "uncertainty": 0,
             "tolerance": 0,
-            "reference": "Intrinsic_Resonance_Holography-v21.1.md §3.1.2",
+            "reference": "IRH v21.1 Manuscript Part 1 §3.1.2",
         },
     }
     
@@ -919,7 +919,7 @@ class BaselineManager:
         tolerance : float
             Regression tolerance
         reference : str
-            Intrinsic_Resonance_Holography-v21.1.md reference
+            IRH v21.1 Manuscript reference
         """
         self.baselines[name] = {
             "value": value,
@@ -946,7 +946,7 @@ class CoverageReporter:
     """
     Generate coverage reports with theoretical mapping.
     
-    Maps code coverage to Intrinsic_Resonance_Holography-v21.1.md equation implementations
+    Maps code coverage to IRH v21.1 Manuscript equation implementations
     to ensure all theoretical components are tested.
     
     Theoretical Reference:
