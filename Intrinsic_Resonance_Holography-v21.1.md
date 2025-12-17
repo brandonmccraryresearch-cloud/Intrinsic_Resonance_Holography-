@@ -1,5 +1,6 @@
 # Intrinsic Resonance Holography: The Unified Theory of Emergent Reality
-### Analytically Verified Unification of QM, GR, and the Standard Model
+## Analytically Verified Unification of QM, GR, and the Standard Model
+
 
 **Author:** Brandon D. McCrary
 *Independent Theoretical Physics Researcher*
