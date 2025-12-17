@@ -744,7 +744,7 @@ Depends: python3 (>= 3.10), python3-pyqt6, python3-numpy, python3-scipy,
 Recommends: python3-sympy, python3-h5py
 Suggests: irh-engine, jupyter
 Maintainer: Brandon D. McCrary <brandon@irhresearch.org>
-Homepage: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
+Homepage: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
 Description: Intrinsic Resonance Holography Desktop Interface
  IRH Desktop provides a feature-rich graphical interface for the
  Intrinsic Resonance Holography v21.0 computational framework.

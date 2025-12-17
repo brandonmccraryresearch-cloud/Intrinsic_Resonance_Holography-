@@ -45,7 +45,7 @@ def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         prog='irh-desktop',
         description='Intrinsic Resonance Holography Desktop Application',
-        epilog='For more information, visit: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-'
+        epilog='For more information, visit: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-'
     )
     
     parser.add_argument(
@@ -124,7 +124,7 @@ def show_version() -> None:
 ║  Author: Brandon D. McCrary                                              ║
 ║  License: MIT                                                            ║
 ║  Repository: github.com/brandonmccraryresearch-cloud/                    ║
-║              Intrinsic_Resonace_Holography-                              ║
+║              Intrinsic_Resonance_Holography-                              ║
 ║                                                                          ║
 ╚══════════════════════════════════════════════════════════════════════════╝
 """)

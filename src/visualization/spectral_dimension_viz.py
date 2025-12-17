@@ -1,7 +1,7 @@
 """
 Spectral Dimension Visualization Module for IRH v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §2.1, Eq. 2.8-2.9, Theorem 2.1
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §2.1, Eq. 2.8-2.9, Theorem 2.1
 
 This module provides visualization tools for spectral dimension flow:
     - d_spec(k) scale-dependent spectral dimension
@@ -47,14 +47,14 @@ except ImportError:
     go = None
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §2.1, Eq. 2.8-2.9, Theorem 2.1"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §2.1, Eq. 2.8-2.9, Theorem 2.1"
 
 
 # =============================================================================
 # Physical Constants
 # =============================================================================
 
-# Fixed point values (IRH21.md Eq. 1.14)
+# Fixed point values (Intrinsic_Resonance_Holography-v21.1.md Eq. 1.14)
 LAMBDA_STAR = 48 * np.pi**2 / 9
 GAMMA_STAR = 32 * np.pi**2 / 3
 
@@ -77,7 +77,7 @@ def spectral_dimension(
     Compute spectral dimension d_spec(k).
     
     Theoretical Reference:
-        IRH21.md §2.1, Eq. 2.8-2.9
+        Intrinsic_Resonance_Holography-v21.1.md §2.1, Eq. 2.8-2.9
         
     Parameters
     ----------
@@ -120,7 +120,7 @@ def graviton_correction(k: Union[float, np.ndarray], k_c: float = 1.0) -> Union[
     Compute graviton correction Δ_grav(k) to spectral dimension.
     
     Theoretical Reference:
-        IRH21.md §2.1.2
+        Intrinsic_Resonance_Holography-v21.1.md §2.1.2
         Graviton propagator correction that ensures d_spec → 4 exactly.
     """
     k = np.asarray(k)
@@ -167,7 +167,7 @@ class SpectralDimensionAnimator:
     Visualization system for spectral dimension flow.
     
     Theoretical Reference:
-        IRH21.md §2.1, Theorem 2.1
+        Intrinsic_Resonance_Holography-v21.1.md §2.1, Theorem 2.1
         d_spec flows from ~2 (UV) to exactly 4 (IR).
     """
     figsize: Tuple[float, float] = (12, 6)
@@ -234,7 +234,7 @@ class SpectralDimensionAnimator:
         ax.set_xscale('log')
         ax.set_xlabel('RG scale k/k_c', fontsize=12)
         ax.set_ylabel(r'Spectral dimension $d_{spec}$', fontsize=12)
-        ax.set_title('Spectral Dimension Flow (IRH21.md §2.1, Theorem 2.1)', fontsize=14)
+        ax.set_title('Spectral Dimension Flow (Intrinsic_Resonance_Holography-v21.1.md §2.1, Theorem 2.1)', fontsize=14)
         ax.legend(loc='center right', fontsize=10)
         ax.grid(True, alpha=0.3)
         ax.set_ylim(1.5, 4.5)
@@ -297,7 +297,7 @@ class SpectralDimensionAnimator:
         
         ax.set_xlabel('RG time t = log(k/k_c)', fontsize=12)
         ax.set_ylabel(r'$d_{spec}(t)$', fontsize=12)
-        ax.set_title('Spectral Dimension vs RG Time (IRH21.md Eq. 2.8-2.9)', fontsize=14)
+        ax.set_title('Spectral Dimension vs RG Time (Intrinsic_Resonance_Holography-v21.1.md Eq. 2.8-2.9)', fontsize=14)
         ax.grid(True, alpha=0.3)
         ax.set_ylim(1.5, 4.5)
         
@@ -354,7 +354,7 @@ class SpectralDimensionAnimator:
         ax.set_xscale('log')
         ax.set_xlabel('RG scale k/k_c', fontsize=12)
         ax.set_ylabel(r'Graviton correction $\Delta_{grav}$', fontsize=12)
-        ax.set_title('Graviton Contribution to Spectral Dimension (IRH21.md §2.1.2)', fontsize=14)
+        ax.set_title('Graviton Contribution to Spectral Dimension (Intrinsic_Resonance_Holography-v21.1.md §2.1.2)', fontsize=14)
         ax.legend()
         ax.grid(True, alpha=0.3)
         
@@ -458,7 +458,7 @@ def plot_spectral_dimension_flow(**kwargs) -> Tuple[Figure, Axes]:
     Plot spectral dimension vs RG scale.
     
     Theoretical Reference:
-        IRH21.md §2.1, Theorem 2.1
+        Intrinsic_Resonance_Holography-v21.1.md §2.1, Theorem 2.1
     """
     animator = SpectralDimensionAnimator()
     return animator.plot_flow(**kwargs)
@@ -469,7 +469,7 @@ def plot_spectral_dimension_vs_scale(**kwargs) -> Tuple[Figure, Axes]:
     Plot spectral dimension vs RG time.
     
     Theoretical Reference:
-        IRH21.md §2.1, Eq. 2.8-2.9
+        Intrinsic_Resonance_Holography-v21.1.md §2.1, Eq. 2.8-2.9
     """
     animator = SpectralDimensionAnimator()
     return animator.plot_vs_t(**kwargs)
@@ -480,7 +480,7 @@ def create_spectral_animation(**kwargs) -> FuncAnimation:
     Create animated spectral dimension visualization.
     
     Theoretical Reference:
-        IRH21.md §2.1
+        Intrinsic_Resonance_Holography-v21.1.md §2.1
     """
     animator = SpectralDimensionAnimator()
     return animator.create_animation(**kwargs)
@@ -498,7 +498,7 @@ def create_interactive_spectral_plot(
     Create interactive spectral dimension plot using Plotly.
     
     Theoretical Reference:
-        IRH21.md §2.1
+        Intrinsic_Resonance_Holography-v21.1.md §2.1
         
     Returns
     -------
@@ -535,7 +535,7 @@ def create_interactive_spectral_plot(
     fig.add_hline(y=2.0, line_dash="dot", line_color="purple", annotation_text="d=2 (UV)")
     
     fig.update_layout(
-        title='Interactive Spectral Dimension Flow (IRH21.md §2.1)',
+        title='Interactive Spectral Dimension Flow (Intrinsic_Resonance_Holography-v21.1.md §2.1)',
         xaxis_title='RG scale k/k_c',
         yaxis_title='d_spec',
         xaxis_type='log',

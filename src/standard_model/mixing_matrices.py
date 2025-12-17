@@ -1,7 +1,7 @@
 """
 Mixing Matrices: CKM and PMNS from VWP Overlaps
 
-THEORETICAL FOUNDATION: IRH21.md §3.2.3, Appendix E.2
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.2.3, Appendix E.2
 
 This module derives the CKM (quark mixing) and PMNS (lepton mixing) matrices
 from the overlap integrals of Vortex Wave Patterns (VWPs).
@@ -32,7 +32,7 @@ Mathematical Foundation:
                  | U_τ1  U_τ2  U_τ3 |
 
 Authors: IRH Computational Framework Team
-Last Updated: December 2024 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with Intrinsic_Resonance_Holography-v21.1.md v21.0)
 """
 
 import math
@@ -42,7 +42,7 @@ from typing import Dict, Optional, Tuple
 import numpy as np
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §3.2.3, Appendix E.2"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §3.2.3, Appendix E.2"
 
 
 # Universal exponent (Eq. 1.16)
@@ -55,7 +55,7 @@ class CKMMatrix:
     Cabibbo-Kobayashi-Maskawa quark mixing matrix.
     
     Theoretical Reference:
-        IRH21.md §3.2.3
+        Intrinsic_Resonance_Holography-v21.1.md §3.2.3
         
     The CKM matrix emerges from quark VWP overlap integrals.
     We use the Wolfenstein parameterization:
@@ -120,7 +120,7 @@ class CKMMatrix:
         Compute the Jarlskog invariant J.
         
         Theoretical Reference:
-            IRH21.md §3.2.3
+            Intrinsic_Resonance_Holography-v21.1.md §3.2.3
             
         J = Im(V_us V_cb V_ub* V_cs*)
         
@@ -157,7 +157,7 @@ class CKMMatrix:
             'max_deviation_left': deviation_left,
             'max_deviation_right': deviation_right,
             'is_unitary': max(deviation_left, deviation_right) < 1e-10,
-            'theoretical_reference': 'IRH21.md §3.2.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3',
         }
     
     def compare_experimental(self) -> Dict:
@@ -210,7 +210,7 @@ class CKMMatrix:
             'comparisons': comparisons,
             'jarlskog': self.jarlskog_invariant(),
             'jarlskog_exp': 3.18e-5,
-            'theoretical_reference': 'IRH21.md §3.2.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3',
         }
     
     def to_dict(self) -> Dict:
@@ -230,7 +230,7 @@ class CKMMatrix:
             },
             'magnitudes': self.magnitudes.tolist(),
             'jarlskog_invariant': self.jarlskog_invariant(),
-            'theoretical_reference': 'IRH21.md §3.2.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3',
         }
 
 
@@ -240,7 +240,7 @@ class PMNSMatrix:
     Pontecorvo-Maki-Nakagawa-Sakata lepton mixing matrix.
     
     Theoretical Reference:
-        IRH21.md §3.2.3, Appendix E.3
+        Intrinsic_Resonance_Holography-v21.1.md §3.2.3, Appendix E.3
         
     The PMNS matrix emerges from lepton VWP overlap integrals,
     with larger mixing angles than quarks due to different
@@ -331,7 +331,7 @@ class PMNSMatrix:
         return {
             'is_unitary': deviation < 1e-10,
             'max_deviation': deviation,
-            'theoretical_reference': 'IRH21.md §3.2.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3',
         }
     
     def oscillation_parameters(self) -> Dict:
@@ -355,7 +355,7 @@ class PMNSMatrix:
                 'sin2_theta_13': 0.0220,  # Reactor
                 'delta_cp_degrees': 217,  # T2K + NOvA
             },
-            'theoretical_reference': 'IRH21.md §3.2.3, Appendix E.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3, Appendix E.3',
         }
     
     def compare_experimental(self) -> Dict:
@@ -377,7 +377,7 @@ class PMNSMatrix:
         return {
             'comparisons': comparisons,
             'jarlskog': self.jarlskog_invariant(),
-            'theoretical_reference': 'IRH21.md §3.2.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3',
         }
     
     def to_dict(self) -> Dict:
@@ -396,7 +396,7 @@ class PMNSMatrix:
             'magnitudes_squared': self.magnitudes.tolist(),
             'oscillation_parameters': self.oscillation_parameters(),
             'jarlskog_invariant': self.jarlskog_invariant(),
-            'theoretical_reference': 'IRH21.md §3.2.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3',
         }
 
 
@@ -405,7 +405,7 @@ def compute_ckm_matrix() -> CKMMatrix:
     Compute the CKM matrix from IRH theory.
     
     Theoretical Reference:
-        IRH21.md §3.2.3
+        Intrinsic_Resonance_Holography-v21.1.md §3.2.3
         
     Returns
     -------
@@ -420,7 +420,7 @@ def compute_pmns_matrix() -> PMNSMatrix:
     Compute the PMNS matrix from IRH theory.
     
     Theoretical Reference:
-        IRH21.md §3.2.3, Appendix E.3
+        Intrinsic_Resonance_Holography-v21.1.md §3.2.3, Appendix E.3
         
     Returns
     -------
@@ -453,7 +453,7 @@ def verify_mixing_matrices() -> Dict:
             'unitarity': pmns.unitarity_check(),
             'experimental_comparison': pmns.compare_experimental(),
         },
-        'theoretical_reference': 'IRH21.md §3.2.3',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3',
     }
 
 

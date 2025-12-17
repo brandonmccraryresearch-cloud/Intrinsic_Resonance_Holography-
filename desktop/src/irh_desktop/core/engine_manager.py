@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 # Default installation paths
 DEFAULT_ENGINE_DIR = Path("/opt/irh/engine")
 USER_ENGINE_DIR = Path.home() / ".local/share/irh/engine"
-GITHUB_REPO = "brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-"
+GITHUB_REPO = "brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-"
 GITHUB_URL = f"https://github.com/{GITHUB_REPO}"
 
 

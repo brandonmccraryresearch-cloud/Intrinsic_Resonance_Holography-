@@ -1,7 +1,7 @@
 """
 Betti Number Computation for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §3.1.1, Appendix D.1
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1
 
 This module computes the first Betti number β₁ of the emergent 3-manifold M³,
 which determines the gauge group of particle physics:
@@ -33,7 +33,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 
 # ============================================================================
-# Physical Constants (IRH21.md §3.1.1)
+# Physical Constants (Intrinsic_Resonance_Holography-v21.1.md §3.1.1)
 # ============================================================================
 
 # First Betti number - exactly 12
@@ -61,7 +61,7 @@ class BettiNumberResult:
     Result of Betti number computation.
     
     Theoretical Reference:
-        IRH21.md §3.1.1, Appendix D.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1
     """
     betti_0: int  # Connected components
     betti_1: int  # First Betti number (gauge generators)
@@ -71,7 +71,7 @@ class BettiNumberResult:
     gauge_group: str  # Derived gauge group
     generators: Dict[str, int]  # Decomposition
     is_verified: bool
-    theoretical_reference: str = "IRH21.md §3.1.1, Appendix D.1"
+    theoretical_reference: str = "Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1"
 
 
 @dataclass
@@ -80,7 +80,7 @@ class GaugeGroupDecomposition:
     Decomposition of the Standard Model gauge group from β₁ = 12.
     
     Theoretical Reference:
-        IRH21.md §3.1.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.1
     """
     su3_dim: int = SU3_GENERATORS  # dim(SU(3)) = 8
     su2_dim: int = SU2_GENERATORS  # dim(SU(2)) = 3
@@ -98,7 +98,7 @@ class ResonanceQuotient:
     The resonance quotient M³ = G_inf / Γ_R.
     
     Theoretical Reference:
-        IRH21.md Appendix D.1
+        Intrinsic_Resonance_Holography-v21.1.md Appendix D.1
     
     The emergent 3-manifold is constructed as the quotient of the
     informational group manifold G_inf = SU(2) × U(1)_φ by the
@@ -128,7 +128,7 @@ def compute_betti_1(
     """
     Compute the first Betti number β₁ of the emergent 3-manifold.
     
-    THEORETICAL FOUNDATION: IRH21.md §3.1.1, Appendix D.1
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1
     
     The first Betti number β₁ = 12 emerges from the topology of the
     resonance quotient M³ = G_inf / Γ_R. This determines the gauge
@@ -165,8 +165,8 @@ def compute_betti_1(
     
     References
     ----------
-    .. [1] IRH21.md §3.1.1 - Gauge Group Emergence
-    .. [2] IRH21.md Appendix D.1 - Proof of β₁ = 12
+    .. [1] Intrinsic_Resonance_Holography-v21.1.md §3.1.1 - Gauge Group Emergence
+    .. [2] Intrinsic_Resonance_Holography-v21.1.md Appendix D.1 - Proof of β₁ = 12
     """
     if verbose:
         print("[TOPOLOGY] Computing first Betti number β₁")
@@ -228,7 +228,7 @@ def verify_betti_12(tolerance: float = 0) -> Dict:
     """
     Verify that β₁ = 12 exactly.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.1
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.1
     
     Parameters
     ----------
@@ -269,7 +269,7 @@ def verify_betti_12(tolerance: float = 0) -> Dict:
         },
         'decomposition_verified': decomposition.verify(),
         'euler_characteristic': result.euler_characteristic,
-        'theoretical_reference': 'IRH21.md Appendix D.1, Theorem D.1'
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Appendix D.1, Theorem D.1'
     }
 
 
@@ -277,7 +277,7 @@ def gauge_group_from_betti(betti_1: int) -> Dict:
     """
     Derive the gauge group from the first Betti number.
     
-    THEORETICAL FOUNDATION: IRH21.md §3.1.1
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.1
     
     Parameters
     ----------
@@ -317,7 +317,7 @@ def gauge_group_from_betti(betti_1: int) -> Dict:
             'W_bosons': 3,    # W⁺, W⁻, Z (after mixing)
             'photon': 1       # γ (after mixing)
         },
-        'theoretical_reference': 'IRH21.md §3.1.1'
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.1.1'
     }
 
 
@@ -325,7 +325,7 @@ def compute_homology_groups() -> Dict:
     """
     Compute the homology groups H_k(M³; ℤ) of the resonance quotient.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.1
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.1
     
     Returns
     -------
@@ -348,7 +348,7 @@ def compute_homology_groups() -> Dict:
         'betti_numbers': (1, 12, 12, 1),
         'euler_characteristic': 0,
         'poincare_duality': 'β_k = β_{3-k} verified',
-        'theoretical_reference': 'IRH21.md Appendix D.1'
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Appendix D.1'
     }
 
 
@@ -390,7 +390,7 @@ def _resonance_quotient_construction() -> ResonanceQuotient:
     """
     Construct the resonance quotient M³ = G_inf / Γ_R.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.1
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.1
     
     The emergent 3-manifold M³ is constructed as follows:
     1. Start with G_inf = SU(2) × U(1)_φ (4-dimensional)
@@ -422,7 +422,7 @@ def generate_betti_number_summary() -> str:
                     IRH v21.0 Topological Physics Layer
 ================================================================================
 
-THEORETICAL FOUNDATION: IRH21.md §3.1.1, Appendix D.1
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1
 
 EMERGENT 3-MANIFOLD M³:
   Construction: M³ = G_inf / Γ_R (resonance quotient)

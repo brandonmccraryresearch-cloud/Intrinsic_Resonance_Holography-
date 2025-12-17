@@ -6,7 +6,7 @@
 
 **OCRID:** [https://orcid.org/0009-0008-2804-7165](https://orcid.com/0009-0008-2804-7165)
 
-**GitHub:** [https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git)
+**GitHub:** [https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git)
 
 **Date:** December 16, 2025
 

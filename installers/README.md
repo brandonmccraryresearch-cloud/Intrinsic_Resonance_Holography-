@@ -8,11 +8,11 @@ This directory contains installation scripts for Intrinsic Resonance Holography 
 
 ```bash
 # Download and run the installer
-curl -sSL https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/main/installers/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/main/installers/install.sh | bash
 
 # Or clone and run locally
-git clone https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git
-cd Intrinsic_Resonace_Holography-/installers
+git clone https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git
+cd Intrinsic_Resonance_Holography-/installers
 chmod +x install.sh
 ./install.sh
 ```
@@ -90,8 +90,8 @@ irh shell      # Python shell with IRH
 
 ## Support
 
-- **Repository**: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
-- **Issues**: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/issues
+- **Repository**: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
+- **Issues**: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/issues
 
 ## Citation
 
@@ -100,6 +100,6 @@ irh shell      # Python shell with IRH
   title={Intrinsic Resonance Holography v21.1: Computational Framework},
   author={McCrary, Brandon D.},
   year={2025},
-  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-}
+  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-}
 }
 ```

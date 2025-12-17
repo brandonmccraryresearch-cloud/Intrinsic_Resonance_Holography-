@@ -394,7 +394,7 @@ if HAS_PYQT6:
                 
                 if finish_page.view_docs.isChecked():
                     import webbrowser
-                    webbrowser.open("https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/docs/TECHNICAL_REFERENCE.md")
+                    webbrowser.open("https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/docs/TECHNICAL_REFERENCE.md")
                 
                 if finish_page.launch_app.isChecked():
                     # Would launch main app here

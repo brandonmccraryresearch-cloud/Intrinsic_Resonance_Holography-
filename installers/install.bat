@@ -3,7 +3,7 @@ REM ============================================================================
 REM Intrinsic Resonance Holography (IRH) v21.1 - Windows Installation Script
 REM 
 REM THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §1.6
-REM Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
+REM Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
 REM
 REM This script installs IRH and all dependencies on Windows systems.
 REM ==============================================================================
@@ -11,7 +11,7 @@ REM ============================================================================
 setlocal EnableDelayedExpansion
 
 REM Configuration
-set "REPO_URL=https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git"
+set "REPO_URL=https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git"
 set "INSTALL_DIR=%USERPROFILE%\IRH"
 set "VENV_NAME=irh_venv"
 set "PYTHON_MIN_VERSION=3.10"
@@ -86,7 +86,7 @@ echo   - README: %INSTALL_DIR%\README.md
 echo   - Theory: %INSTALL_DIR%\Intrinsic_Resonance_Holography-v21.1.md
 echo   - Notebooks: %INSTALL_DIR%\notebooks\
 echo.
-echo Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
+echo Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
 echo.
 pause
 goto :eof
@@ -256,7 +256,7 @@ echo echo   verify     Verify theoretical annotations
 echo echo   compute    Compute all observables
 echo echo   shell      Open Python shell with IRH loaded
 echo echo.
-echo echo Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
+echo echo Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
 ) > irh.bat
 
 echo [+] Launcher script created

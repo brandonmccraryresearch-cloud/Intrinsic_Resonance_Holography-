@@ -1,7 +1,7 @@
 """
 Lorentz Invariance Violation Predictions
 
-THEORETICAL FOUNDATION: IRH21.md §2.4, Eq. 2.24-2.26, Appendix J.1
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §2.4, Eq. 2.24-2.26, Appendix J.1
 
 Implements:
 - LIV parameter ξ = C_H/(24π²) ≈ 1.93×10⁻⁴
@@ -41,7 +41,7 @@ class LIVParameter:
     Lorentz Invariance Violation parameter.
     
     Theoretical Reference:
-        IRH21.md §2.4.1, Eq. 2.24
+        Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Eq. 2.24
         
     The LIV parameter ξ quantifies the leading-order deviation from
     exact Lorentz invariance due to the discrete nature of spacetime
@@ -66,7 +66,7 @@ class LIVParameter:
             'xi': self.xi,
             'xi_uncertainty': self.xi_uncertainty,
             'formula': self.formula,
-            'theoretical_reference': 'IRH21.md §2.4.1, Eq. 2.24'
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Eq. 2.24'
         }
 
 
@@ -75,7 +75,7 @@ def compute_liv_parameter() -> LIVParameter:
     Compute the universal LIV parameter ξ.
     
     Theoretical Reference:
-        IRH21.md §2.4.1, Eq. 2.24
+        Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Eq. 2.24
         
     Mathematical Foundation:
         ξ = C_H / (24π²)
@@ -104,7 +104,7 @@ class ModifiedDispersion:
     Modified dispersion relation due to LIV.
     
     Theoretical Reference:
-        IRH21.md §2.4.2, Eq. 2.25
+        Intrinsic_Resonance_Holography-v21.1.md §2.4.2, Eq. 2.25
         
     E² = p²c² + m²c⁴ + ξ × E³/E_Pl
     
@@ -124,7 +124,7 @@ class ModifiedDispersion:
             'mass_GeV': self.mass,
             'liv_correction': self.liv_correction,
             'effective_velocity_c': self.effective_velocity,
-            'theoretical_reference': 'IRH21.md §2.4.2, Eq. 2.25'
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §2.4.2, Eq. 2.25'
         }
 
 
@@ -137,7 +137,7 @@ def compute_modified_dispersion(
     Compute modified dispersion relation with LIV correction.
     
     Theoretical Reference:
-        IRH21.md §2.4.2, Eq. 2.25
+        Intrinsic_Resonance_Holography-v21.1.md §2.4.2, Eq. 2.25
         
     Parameters
     ----------
@@ -193,7 +193,7 @@ class GenerationLIV:
     Generation-specific LIV thresholds.
     
     Theoretical Reference:
-        IRH21.md Appendix J.1
+        Intrinsic_Resonance_Holography-v21.1.md Appendix J.1
         
     Different fermion generations have different LIV thresholds
     due to their different topological complexities K_f.
@@ -212,7 +212,7 @@ class GenerationLIV:
             'K_f': self.K_f,
             'xi_f': self.xi_f,
             'threshold_energy_GeV': self.threshold_energy,
-            'theoretical_reference': 'IRH21.md Appendix J.1'
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Appendix J.1'
         }
 
 
@@ -235,7 +235,7 @@ def compute_generation_liv(fermion_type: str) -> GenerationLIV:
     Compute generation-specific LIV threshold.
     
     Theoretical Reference:
-        IRH21.md Appendix J.1, Eq. J.1
+        Intrinsic_Resonance_Holography-v21.1.md Appendix J.1, Eq. J.1
         
     The LIV parameter for fermion type f is:
         ξ_f = ξ × [1 + β₁(K_f/K_ref - 1) + β₂(K_f/K_ref - 1)²]
@@ -295,7 +295,7 @@ class PhotonDispersion:
     Photon velocity dispersion from LIV.
     
     Theoretical Reference:
-        IRH21.md §2.4.3, Eq. 2.26
+        Intrinsic_Resonance_Holography-v21.1.md §2.4.3, Eq. 2.26
         
     High-energy photons travel slightly slower than low-energy photons
     due to LIV effects.
@@ -314,7 +314,7 @@ class PhotonDispersion:
             'time_delay_s': self.time_delay,
             'distance_Mpc': self.distance,
             'delta_v_over_c': self.delta_v_over_c,
-            'theoretical_reference': 'IRH21.md §2.4.3, Eq. 2.26'
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §2.4.3, Eq. 2.26'
         }
 
 
@@ -327,7 +327,7 @@ def compute_photon_time_delay(
     Compute photon time delay from LIV.
     
     Theoretical Reference:
-        IRH21.md §2.4.3, Eq. 2.26
+        Intrinsic_Resonance_Holography-v21.1.md §2.4.3, Eq. 2.26
         
     Higher-energy photons are delayed relative to lower-energy ones.
     
@@ -371,7 +371,7 @@ class GammaRayTest:
     Gamma-ray burst test of LIV.
     
     Theoretical Reference:
-        IRH21.md §8.3
+        Intrinsic_Resonance_Holography-v21.1.md §8.3
         
     GRBs provide the best current constraints on LIV through
     photon time-of-flight measurements.
@@ -392,7 +392,7 @@ class GammaRayTest:
             'predicted_delay_s': self.predicted_delay,
             'current_bound_s': self.current_bound,
             'detectable': self.detectable,
-            'theoretical_reference': 'IRH21.md §8.3'
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §8.3'
         }
 
 
@@ -406,7 +406,7 @@ def analyze_grb_liv_test(
     Analyze LIV test from gamma-ray burst.
     
     Theoretical Reference:
-        IRH21.md §8.3
+        Intrinsic_Resonance_Holography-v21.1.md §8.3
         
     Parameters
     ----------
@@ -488,7 +488,7 @@ def verify_liv_predictions() -> Dict:
         'generation_ordering': generation_ordering,
         'subluminal_verified': subluminal,
         'all_verified': all([xi_verified, formula_verified, generation_ordering, subluminal]),
-        'theoretical_reference': 'IRH21.md §2.4'
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §2.4'
     }
 
 

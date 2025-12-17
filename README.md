@@ -2,7 +2,7 @@
 
 <div align="right">
 
-[![Cite this Repository](https://img.shields.io/badge/Cite-Repository-orange?logo=github)](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-#-citation) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/notebooks/00_quickstart.ipynb)
+[![Cite this Repository](https://img.shields.io/badge/Cite-Repository-orange?logo=github)](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-#-citation) [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb)
 
 </div>
 
@@ -95,21 +95,21 @@
 
 **Linux/macOS:**
 ```bash
-curl -sSL https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/main/installers/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/main/installers/install.sh | bash
 ```
 
 **Windows (PowerShell):**
 ```powershell
 # Download and run the Python installer
-python -c "import urllib.request; urllib.request.urlretrieve('https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/main/installers/install.py', 'install.py')" && python install.py
+python -c "import urllib.request; urllib.request.urlretrieve('https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/main/installers/install.py', 'install.py')" && python install.py
 ```
 
 ### Install from Source
 
 ```bash
 # Clone repository
-git clone https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git
-cd Intrinsic_Resonace_Holography-
+git clone https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git
+cd Intrinsic_Resonance_Holography-
 
 # Create virtual environment
 python -m venv venv
@@ -129,7 +129,7 @@ Install the `.deb` package for a user-friendly GUI:
 
 ```bash
 # Download latest .deb package
-wget https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/releases/latest/irh-desktop.deb
+wget https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/releases/latest/irh-desktop.deb
 
 # Install
 sudo dpkg -i irh-desktop.deb
@@ -429,7 +429,7 @@ If using this framework in research, please cite:
   year={2025},
   month={December},
   version={21.1.0},
-  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-},
+  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-},
   note={Complete computational implementation with 629+ tests and 100\% equation coverage}
 }
 
@@ -469,8 +469,8 @@ This project is licensed under the **GNU General Public License v3.0**. See [`LI
 ## 📞 Contact & Support
 
 ### Issues & Discussions
-- **Bug reports**: [GitHub Issues](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/issues)
-- **Feature requests**: [GitHub Discussions](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/discussions)
+- **Bug reports**: [GitHub Issues](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/issues)
+- **Feature requests**: [GitHub Discussions](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/discussions)
 - **Pull requests**: See [`CONTRIBUTING.md`](./CONTRIBUTING.md)
 
 ### Research Collaboration

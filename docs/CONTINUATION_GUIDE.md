@@ -1171,8 +1171,8 @@ cd docs/ && make html
 
 ```bash
 # Clone and setup
-git clone https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git
-cd Intrinsic_Resonace_Holography-
+git clone https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git
+cd Intrinsic_Resonance_Holography-
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt

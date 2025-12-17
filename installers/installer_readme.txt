@@ -42,8 +42,8 @@ DOCUMENTATION
 SUPPORT
 -------
 
-  Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
-  Issues: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/issues
+  Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
+  Issues: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/issues
 
 CITATION
 --------
@@ -54,7 +54,7 @@ If you use IRH in your research, please cite:
   title={Intrinsic Resonance Holography v21.1: Computational Framework},
   author={McCrary, Brandon D.},
   year={2025},
-  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-}
+  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-}
 }
 
 LICENSE

@@ -50,7 +50,7 @@ except ImportError:
     go = None
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §3.1, Appendix D"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §3.1, Appendix D"
 
 
 # =============================================================================

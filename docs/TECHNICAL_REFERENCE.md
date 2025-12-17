@@ -793,8 +793,8 @@ pytest tests/ -n auto
 
 ```bash
 # Clone repository
-git clone https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git
-cd Intrinsic_Resonace_Holography-
+git clone https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git
+cd Intrinsic_Resonance_Holography-
 
 # Create virtual environment
 python -m venv venv
@@ -900,7 +900,7 @@ python scripts/run_full_validation_suite.py
 
 ### 12.3 Getting Help
 
-- **Issues**: [GitHub Issue Tracker](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/issues)
+- **Issues**: [GitHub Issue Tracker](https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/issues)
 - **Theory Questions**: Consult `IRH21.md` in repository root
 - **Implementation Questions**: See `CONTRIBUTING.md`
 

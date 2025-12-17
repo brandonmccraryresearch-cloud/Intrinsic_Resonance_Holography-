@@ -1,7 +1,7 @@
 """
 Lorentzian Signature Module for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §2.4.1, Appendix H.1, Theorem H.1
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Appendix H.1, Theorem H.1
 
 This module implements the emergence of Lorentzian signature (-,+,+,+)
 from spontaneous ℤ₂ symmetry breaking in the U(1)_φ condensate. The
@@ -35,7 +35,7 @@ import numpy as np
 
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §2.4.1, Appendix H.1, Theorem H.1"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Appendix H.1, Theorem H.1"
 
 
 # ============================================================================
@@ -64,7 +64,7 @@ class SignatureResult:
     """
     Result of signature computation and verification.
     
-    THEORETICAL REFERENCE: IRH21.md §2.4.1, Theorem H.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Theorem H.1
     
     Attributes
     ----------
@@ -79,14 +79,14 @@ class SignatureResult:
     symmetry_breaking_scale : float
         Scale at which ℤ₂ symmetry breaks
     theoretical_reference : str
-        Reference to IRH21.md
+        Reference to Intrinsic_Resonance_Holography-v21.1.md
     """
     signature: Tuple[int, ...]
     n_timelike: int
     n_spacelike: int
     is_lorentzian: bool
     symmetry_breaking_scale: float
-    theoretical_reference: str = "IRH21.md §2.4.1, Theorem H.1"
+    theoretical_reference: str = "Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Theorem H.1"
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary."""
@@ -105,7 +105,7 @@ class Z2SymmetryBreaking:
     """
     ℤ₂ symmetry breaking dynamics for Lorentzian signature emergence.
     
-    THEORETICAL REFERENCE: IRH21.md §2.4.1, Appendix H.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Appendix H.1
     
     The global ℤ₂ symmetry (complex conjugation) is spontaneously broken
     by the U(1)_φ condensate, inducing a preferred timelike direction.
@@ -204,7 +204,7 @@ def verify_lorentzian(
     """
     Verify that signature is Lorentzian (-,+,+,+).
     
-    THEORETICAL REFERENCE: IRH21.md Theorem H.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md Theorem H.1
     
     Parameters
     ----------
@@ -228,7 +228,7 @@ def z2_symmetry_breaking(
     """
     Model ℤ₂ symmetry breaking phase transition.
     
-    THEORETICAL REFERENCE: IRH21.md §2.4.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.4.1
     
     Parameters
     ----------
@@ -267,7 +267,7 @@ def signature_from_condensate(
     """
     Compute metric signature from condensate VEV.
     
-    THEORETICAL REFERENCE: IRH21.md §2.4.1, Theorem H.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Theorem H.1
     
     Parameters
     ----------
@@ -310,7 +310,7 @@ def verify_theorem_h1(tolerance: float = 1e-10) -> Dict[str, Any]:
     """
     Verify Theorem H.1: Lorentzian Signature Emergence.
     
-    THEORETICAL REFERENCE: IRH21.md Appendix H.1, Theorem H.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md Appendix H.1, Theorem H.1
     
     Statement: The emergent spacetime metric g_μν(x) spontaneously
     acquires a Lorentzian signature (-,+,+,+) in the deep IR limit
@@ -351,7 +351,7 @@ def verify_theorem_h1(tolerance: float = 1e-10) -> Dict[str, Any]:
         'stability_check': stability_check,
         'unitarity_check': unitarity_check,
         'mechanism': 'Spontaneous ℤ₂ symmetry breaking',
-        'theoretical_reference': 'IRH21.md Appendix H.1, Theorem H.1',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Appendix H.1, Theorem H.1',
         'proof_elements': [
             'ℤ₂ symmetry (complex conjugation) spontaneously broken',
             'Timelike direction emerges dynamically',
@@ -451,9 +451,9 @@ def generate_lorentzian_signature_summary() -> Dict[str, Any]:
         },
         
         'references': [
-            'IRH21.md §2.4.1',
-            'IRH21.md Appendix H.1',
-            'IRH21.md Theorem H.1',
+            'Intrinsic_Resonance_Holography-v21.1.md §2.4.1',
+            'Intrinsic_Resonance_Holography-v21.1.md Appendix H.1',
+            'Intrinsic_Resonance_Holography-v21.1.md Theorem H.1',
         ],
     }
 

@@ -271,22 +271,22 @@ class TestTheoreticalGrounding:
         """Module should reference IRH21.md."""
         from src.visualization import rg_flow_plots
         assert hasattr(rg_flow_plots, '__theoretical_foundation__')
-        assert 'IRH21' in rg_flow_plots.__theoretical_foundation__
+        assert 'Intrinsic_Resonance_Holography-v21.1.md' in rg_flow_plots.__theoretical_foundation__
     
     def test_manifold_module_foundation(self):
         """Module should reference IRH21.md."""
         from src.visualization import manifold_viz
         assert hasattr(manifold_viz, '__theoretical_foundation__')
-        assert 'IRH21' in manifold_viz.__theoretical_foundation__
+        assert 'Intrinsic_Resonance_Holography-v21.1.md' in manifold_viz.__theoretical_foundation__
     
     def test_spectral_module_foundation(self):
         """Module should reference IRH21.md."""
         from src.visualization import spectral_dimension_viz
         assert hasattr(spectral_dimension_viz, '__theoretical_foundation__')
-        assert 'IRH21' in spectral_dimension_viz.__theoretical_foundation__
+        assert 'Intrinsic_Resonance_Holography-v21.1.md' in spectral_dimension_viz.__theoretical_foundation__
     
     def test_topology_module_foundation(self):
         """Module should reference IRH21.md."""
         from src.visualization import topology_viz
         assert hasattr(topology_viz, '__theoretical_foundation__')
-        assert 'IRH21' in topology_viz.__theoretical_foundation__
+        assert 'Intrinsic_Resonance_Holography-v21.1.md' in topology_viz.__theoretical_foundation__

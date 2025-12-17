@@ -1,7 +1,7 @@
 """
 Metric Tensor Module for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §2.2.1, Eq. 2.10
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §2.2.1, Eq. 2.10
 
 This module implements the emergence of the classical spacetime metric
 g_μν(x) from the cGFT condensate at the Cosmic Fixed Point. The metric
@@ -42,7 +42,7 @@ import numpy as np
 
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §2.2.1, Eq. 2.10"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §2.2.1, Eq. 2.10"
 
 
 # ============================================================================
@@ -68,7 +68,7 @@ class MetricTensor:
     """
     Emergent metric tensor g_μν(x) from cGFT condensate.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.1, Eq. 2.10
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.1, Eq. 2.10
     
     Attributes
     ----------
@@ -83,14 +83,14 @@ class MetricTensor:
     determinant : float
         Metric determinant det(g_μν)
     theoretical_reference : str
-        Reference to IRH21.md
+        Reference to Intrinsic_Resonance_Holography-v21.1.md
     """
     components: np.ndarray
     position: np.ndarray = field(default_factory=lambda: np.zeros(4))
     signature: Tuple[int, ...] = field(init=False)
     is_lorentzian: bool = field(init=False)
     determinant: float = field(init=False)
-    theoretical_reference: str = "IRH21.md §2.2.1, Eq. 2.10"
+    theoretical_reference: str = "Intrinsic_Resonance_Holography-v21.1.md §2.2.1, Eq. 2.10"
     
     def __post_init__(self):
         """Compute derived properties."""
@@ -164,7 +164,7 @@ class EmergentGeometry:
     """
     Complete emergent geometry from cGFT condensate.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2
     
     This class encapsulates the full emergent geometry including:
     - Metric tensor field
@@ -307,7 +307,7 @@ def minkowski_metric(position: Optional[np.ndarray] = None) -> MetricTensor:
     """
     Construct Minkowski (flat) metric η_μν = diag(-1, 1, 1, 1).
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.1
     
     The Minkowski metric is the leading-order emergent metric in the
     IR limit of the cGFT, before curvature corrections.
@@ -339,7 +339,7 @@ def schwarzschild_metric(
     """
     Construct Schwarzschild metric for mass M.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.2
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.2
     
     ds² = -(1 - r_s/r)c²dt² + (1 - r_s/r)⁻¹dr² + r²dΩ²
     
@@ -389,7 +389,7 @@ def metric_from_condensate(
     """
     Construct metric tensor from cGFT condensate.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.1, Eq. 2.10
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.1, Eq. 2.10
     
     The classical spacetime metric g_μν(x) is derived from the
     infrared fixed-point phase of the cGFT. At the Cosmic Fixed Point,
@@ -439,7 +439,7 @@ def emergent_metric(
     """
     Compute emergent metric at given RG scale.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.1, Eq. 2.10
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.1, Eq. 2.10
     
     Parameters
     ----------
@@ -470,14 +470,14 @@ def verify_lorentzian_signature(metric: MetricTensor) -> Dict[str, Any]:
     """
     Verify metric has Lorentzian signature (-,+,+,+).
     
-    THEORETICAL REFERENCE: IRH21.md §2.4.1, Theorem H.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Theorem H.1
     """
     return {
         'signature': metric.signature,
         'expected': MINKOWSKI_SIGNATURE,
         'is_lorentzian': metric.is_lorentzian,
         'determinant': metric.determinant,
-        'theoretical_reference': 'IRH21.md §2.4.1, Theorem H.1',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §2.4.1, Theorem H.1',
     }
 
 
@@ -510,7 +510,7 @@ def verify_metric_properties(metric: MetricTensor) -> Dict[str, Any]:
         'all_checks_passed': (
             is_symmetric and is_invertible and metric.is_lorentzian
         ),
-        'theoretical_reference': 'IRH21.md §2.2.1, Eq. 2.10',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §2.2.1, Eq. 2.10',
     }
 
 
@@ -543,9 +543,9 @@ def generate_metric_tensor_summary() -> Dict[str, Any]:
         ],
         
         'references': [
-            'IRH21.md §2.2.1',
-            'IRH21.md Eq. 2.10',
-            'IRH21.md §2.4.1 (Lorentzian signature)',
+            'Intrinsic_Resonance_Holography-v21.1.md §2.2.1',
+            'Intrinsic_Resonance_Holography-v21.1.md Eq. 2.10',
+            'Intrinsic_Resonance_Holography-v21.1.md §2.4.1 (Lorentzian signature)',
         ],
     }
 

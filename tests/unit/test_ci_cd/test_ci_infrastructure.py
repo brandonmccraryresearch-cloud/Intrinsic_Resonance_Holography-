@@ -625,5 +625,5 @@ class TestCICDIntegration:
         detector = RegressionDetector()
         report = detector.check_observable("C_H", 0.045935703598)
         
-        assert "IRH21.md" in report.theoretical_reference
+        assert "Intrinsic_Resonance_Holography-v21.1.md" in report.theoretical_reference
         assert "Eq. 1.16" in report.theoretical_reference

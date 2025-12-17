@@ -377,14 +377,14 @@ class TestTheoreticalGrounding:
         """Module should reference IRH21.md."""
         from src import emergent_spacetime
         
-        assert 'IRH21.md' in emergent_spacetime.__theoretical_foundation__
+        assert 'Intrinsic_Resonance_Holography-v21.1.md' in emergent_spacetime.__theoretical_foundation__
         assert '§2' in emergent_spacetime.__theoretical_foundation__
     
     def test_spectral_dimension_foundation(self):
         """Spectral dimension should reference Eq. 2.8-2.9."""
         from src.emergent_spacetime import spectral_dimension
         
-        assert 'IRH21.md' in spectral_dimension.__theoretical_foundation__
+        assert 'Intrinsic_Resonance_Holography-v21.1.md' in spectral_dimension.__theoretical_foundation__
         assert 'Eqs. 2' in spectral_dimension.__theoretical_foundation__
 
 

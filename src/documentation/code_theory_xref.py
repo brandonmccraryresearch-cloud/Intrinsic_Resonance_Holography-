@@ -1,12 +1,14 @@
 """
 Code↔Theory Cross-Reference Generator for IRH v21.0
 
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §1 (verification traceability)
+
 This module provides tools for generating interactive documentation
-that maps between theoretical equations in IRH21.md and their
+that maps between theoretical equations in Intrinsic_Resonance_Holography-v21.1.md and their
 computational implementations.
 
 Theoretical Reference:
-    IRH21.md - Verification Protocol Requirements
+    Intrinsic_Resonance_Holography-v21.1.md - Verification Protocol Requirements
     copilot21promtMAX.md - Phase VI: Documentation Infrastructure
 """
 
@@ -27,7 +29,7 @@ class EquationReference:
     section: str
     equation_number: str
     description: str
-    manuscript: str = "IRH21.md"
+    manuscript: str = "Intrinsic_Resonance_Holography-v21.1.md"
     
     def __str__(self) -> str:
         return f"{self.manuscript} §{self.section}, Eq. {self.equation_number}"
@@ -142,7 +144,7 @@ class CodeTheoryXRef:
         re.IGNORECASE
     )
     
-    # Known equations in IRH21.md
+    # Known equations in Intrinsic_Resonance_Holography-v21.1.md
     CRITICAL_EQUATIONS = {
         "1.1": "S_kin kinetic term",
         "1.2": "S_int interaction term",

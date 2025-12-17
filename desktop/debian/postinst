@@ -68,7 +68,7 @@ case "$1" in
         echo "║  Or launch IRH Desktop from your application menu.                       ║"
         echo "║                                                                          ║"
         echo "║  Documentation: https://github.com/brandonmccraryresearch-cloud/         ║"
-        echo "║                 Intrinsic_Resonace_Holography-                           ║"
+        echo "║                 Intrinsic_Resonance_Holography-                           ║"
         echo "║                                                                          ║"
         echo "╚══════════════════════════════════════════════════════════════════════════╝"
         echo ""

@@ -1,7 +1,7 @@
 """
 Standard Model Emergence Layer for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §3.1-3.4
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1-3.4
 
 This module derives the Standard Model of particle physics from the topological
 structure of the IR fixed point. Gauge groups emerge from β₁=12, fermion
@@ -29,11 +29,11 @@ Dependencies:
     - src.topology (Layer 4)
 
 Authors: IRH Computational Framework Team
-Last Updated: December 2024 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with Intrinsic_Resonance_Holography-v21.1.md v21.0)
 """
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §3.1-3.4"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §3.1-3.4"
 
 # Import from fermion_masses module (§3.2, Eq. 3.6)
 from .fermion_masses import (

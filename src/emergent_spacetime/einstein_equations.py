@@ -1,7 +1,7 @@
 """
 Einstein Equations Module for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §2.2.2, Appendix C.3, Theorem C.3
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §2.2.2, Appendix C.3, Theorem C.3
 
 This module implements the derivation of Einstein Field Equations from
 the Harmony Functional. The Einstein-Hilbert action emerges as the
@@ -41,7 +41,7 @@ import numpy as np
 
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §2.2.2, Appendix C.3, Theorem C.3"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §2.2.2, Appendix C.3, Theorem C.3"
 
 
 # ============================================================================
@@ -79,7 +79,7 @@ class EinsteinTensor:
     """
     Einstein tensor G_μν = R_μν - ½ g_μν R.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.2
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.2
     
     Attributes
     ----------
@@ -110,7 +110,7 @@ class EinsteinTensor:
             'ricci_scalar': self.ricci_scalar,
             'trace': self.trace,
             'position': self.position.tolist(),
-            'theoretical_reference': 'IRH21.md §2.2.2',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §2.2.2',
         }
 
 
@@ -119,7 +119,7 @@ class EinsteinFieldEquations:
     """
     Complete Einstein Field Equations with cosmological constant.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.2, Theorem C.3
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.2, Theorem C.3
     
     G_μν + Λ g_μν = 8πG T_μν
     
@@ -165,7 +165,7 @@ class EinsteinFieldEquations:
             'cosmological_constant': self.cosmological_constant,
             'stress_energy_tensor': self.stress_energy_tensor.tolist(),
             'metric_tensor': self.metric_tensor.tolist(),
-            'theoretical_reference': 'IRH21.md §2.2.2, Theorem C.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §2.2.2, Theorem C.3',
         }
 
 
@@ -174,7 +174,7 @@ class HarmonyFunctional:
     """
     The Harmony Functional Γ[Σ] that generates Einstein equations.
     
-    THEORETICAL FOUNDATION: IRH21.md Eq. 2.14, Theorem C.3
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Eq. 2.14, Theorem C.3
     
     Γ[Σ] = Tr(L[Σ]²) - C_H log det' L[Σ]
     
@@ -233,7 +233,7 @@ class HarmonyFunctional:
         """
         Cosmological constant from fixed-point structure.
         
-        THEORETICAL REFERENCE: IRH21.md Eq. 2.17, Appendix C.4
+        THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md Eq. 2.17, Appendix C.4
         
         Λ = μ̃*/(64π²) × (Planck scale factor)
         
@@ -265,7 +265,7 @@ def compute_einstein_tensor(
     """
     Compute Einstein tensor G_μν = R_μν - ½ g_μν R.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.2
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.2
     
     Parameters
     ----------
@@ -307,7 +307,7 @@ def einstein_hilbert_action(
     """
     Compute Einstein-Hilbert action with cosmological constant.
     
-    THEORETICAL REFERENCE: IRH21.md Theorem C.3
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md Theorem C.3
     
     S_EH = ∫d⁴x √(-g) [(1/16πG)(R - 2Λ)]
     
@@ -342,7 +342,7 @@ def derive_einstein_equations(
     """
     Derive Einstein equations from Harmony Functional.
     
-    THEORETICAL REFERENCE: IRH21.md §2.2.2, Theorem C.3
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.2.2, Theorem C.3
     
     Parameters
     ----------
@@ -410,7 +410,7 @@ def derive_einstein_equations(
     else:
         raise ValueError(f"Unknown method: {method}")
     
-    result['theoretical_reference'] = 'IRH21.md §2.2.2, Theorem C.3'
+    result['theoretical_reference'] = 'Intrinsic_Resonance_Holography-v21.1.md §2.2.2, Theorem C.3'
     result['C_H_value'] = harmony_functional.C_H
     
     return result
@@ -423,7 +423,7 @@ def compute_cosmological_constant(
     """
     Compute emergent cosmological constant from fixed point.
     
-    THEORETICAL REFERENCE: IRH21.md Eq. 2.17, Appendix C.4
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md Eq. 2.17, Appendix C.4
     
     Parameters
     ----------
@@ -460,7 +460,7 @@ def compute_cosmological_constant(
         'lambda_planck': lambda_planck,
         'lambda_si': lambda_si,
         'formula': 'Λ = μ̃*/(64π²)',
-        'theoretical_reference': 'IRH21.md Eq. 2.17',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Eq. 2.17',
         'note': 'Full calculation requires Holographic Hum derivation',
     }
 
@@ -469,7 +469,7 @@ def verify_theorem_c3() -> Dict[str, Any]:
     """
     Verify Theorem C.3: Einstein-Hilbert from Harmony Functional.
     
-    THEORETICAL REFERENCE: IRH21.md Appendix C.3, Theorem C.3
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md Appendix C.3, Theorem C.3
     
     Returns
     -------
@@ -498,7 +498,7 @@ def verify_theorem_c3() -> Dict[str, Any]:
             'field_equations': derivation['field_equations'],
             'cosmological_origin': 'Fixed-point structure (μ̃*)',
         },
-        'theoretical_reference': 'IRH21.md Appendix C.3, Theorem C.3',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Appendix C.3, Theorem C.3',
         'proof_elements': [
             '1. Harmony Functional Γ[Σ] is effective action',
             '2. Heat kernel expansion gives √(-g) and R√(-g) terms',
@@ -574,9 +574,9 @@ def generate_einstein_equations_summary() -> Dict[str, Any]:
         },
         
         'references': [
-            'IRH21.md §2.2.2',
-            'IRH21.md Appendix C.3',
-            'IRH21.md Theorem C.3',
+            'Intrinsic_Resonance_Holography-v21.1.md §2.2.2',
+            'Intrinsic_Resonance_Holography-v21.1.md Appendix C.3',
+            'Intrinsic_Resonance_Holography-v21.1.md Theorem C.3',
         ],
     }
 

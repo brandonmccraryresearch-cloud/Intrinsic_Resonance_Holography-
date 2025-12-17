@@ -1,7 +1,7 @@
 """
 Vortex Wave Pattern (VWP) Module for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §3.1.2, Appendix D.2-D.3
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.2, Appendix D.2-D.3
 
 This module implements Vortex Wave Patterns (VWPs) - the topological defects
 in the cGFT condensate that represent elementary fermions.
@@ -60,7 +60,7 @@ class VortexWavePattern:
     """
     A Vortex Wave Pattern - a fermionic topological defect.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.2
     
     VWPs are stable, localized excitations of the cGFT condensate.
     They are identified with elementary fermions (quarks and leptons).
@@ -101,7 +101,7 @@ class VortexWavePattern:
         """
         Compute fermion mass from topological complexity.
         
-        THEORETICAL FOUNDATION: IRH21.md Eq. 3.6
+        THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Eq. 3.6
         """
         # Normalize to electron mass
         if self.generation == 1:
@@ -118,7 +118,7 @@ class VortexWavePattern:
         """
         Get the Yukawa coupling y_f ∝ K_f.
         
-        THEORETICAL FOUNDATION: IRH21.md Eq. 3.6
+        THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Eq. 3.6
         """
         return self.topological_complexity / K_3  # Normalized to top quark
     
@@ -138,7 +138,7 @@ class VWPSpectrum:
     """
     The complete spectrum of Vortex Wave Patterns.
     
-    THEORETICAL FOUNDATION: IRH21.md §3.1.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.2
     """
     leptons: List[VortexWavePattern]
     quarks: List[VortexWavePattern]
@@ -171,7 +171,7 @@ class ComplexityOperator:
     """
     The topological complexity operator C.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.3, Eq. 3.6
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.3, Eq. 3.6
     
     The complexity operator extracts the topological invariant K_f
     from a VWP solution: C|VWP_f⟩ = K_f|VWP_f⟩
@@ -216,7 +216,7 @@ def create_standard_model_vwps() -> VWPSpectrum:
     """
     Create the complete Standard Model VWP spectrum.
     
-    THEORETICAL FOUNDATION: IRH21.md §3.1.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.2
     
     Returns
     -------
@@ -298,7 +298,7 @@ def find_stable_vwps(verbose: bool = False) -> List[VortexWavePattern]:
     """
     Find all stable VWP configurations.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.2
     
     Parameters
     ----------
@@ -326,7 +326,7 @@ def compute_vwp_mass(vwp: VortexWavePattern) -> Dict:
     """
     Compute the mass of a VWP from its topological complexity.
     
-    THEORETICAL FOUNDATION: IRH21.md Eq. 3.6
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Eq. 3.6
     
     Parameters
     ----------
@@ -345,7 +345,7 @@ def compute_vwp_mass(vwp: VortexWavePattern) -> Dict:
         'yukawa_coupling': vwp.yukawa_coupling,
         'mass_mev': vwp.mass_mev,
         'mass_gev': vwp.mass_mev / 1000,
-        'theoretical_reference': 'IRH21.md Eq. 3.6'
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Eq. 3.6'
     }
 
 
@@ -353,7 +353,7 @@ def topological_complexity_operator() -> ComplexityOperator:
     """
     Get the topological complexity operator C.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.3
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.3
     
     The complexity operator C has eigenvalues K_1, K_2, K_3 corresponding
     to the three fermion generations.
@@ -370,7 +370,7 @@ def vwp_overlap_integral(vwp1: VortexWavePattern, vwp2: VortexWavePattern) -> fl
     """
     Compute the overlap integral between two VWPs.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.3, Eq. D.7
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.3, Eq. D.7
     
     This determines the mixing matrix elements (CKM, PMNS).
     
@@ -407,7 +407,7 @@ def verify_vwp_stability() -> Dict:
     """
     Verify that all three VWP generations are stable.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.2
     
     Returns
     -------
@@ -427,7 +427,7 @@ def verify_vwp_stability() -> Dict:
         'by_generation': stability,
         'total_stable': len([p for p in spectrum.all_particles if p.is_stable()]),
         'morse_theory': 'Exactly 3 stable minima proven',
-        'theoretical_reference': 'IRH21.md Appendix D.2'
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Appendix D.2'
     }
 
 
@@ -454,7 +454,7 @@ def generate_vwp_summary() -> str:
                     IRH v21.0 Topological Physics Layer
 ================================================================================
 
-THEORETICAL FOUNDATION: IRH21.md §3.1.2, Appendix D.2-D.3
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.2, Appendix D.2-D.3
 
 WHAT ARE VWPs?
   Vortex Wave Patterns are stable, localized topological defects in the

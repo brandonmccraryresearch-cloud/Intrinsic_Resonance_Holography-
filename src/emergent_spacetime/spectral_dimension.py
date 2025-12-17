@@ -1,7 +1,7 @@
 """
 Spectral Dimension Module for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §2.1, Eqs. 2.8-2.9
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §2.1, Eqs. 2.8-2.9
 
 This module implements the spectral dimension flow from the UV fractal behavior
 (d_spec* = 42/11 ≈ 3.818) to exactly 4 in the infrared. The key mechanism is 
@@ -39,11 +39,11 @@ from scipy.interpolate import interp1d
 
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §2.1, Eqs. 2.8-2.9"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §2.1, Eqs. 2.8-2.9"
 
 
 # ============================================================================
-# Physical Constants from Theory (IRH21.md §2.1)
+# Physical Constants from Theory (Intrinsic_Resonance_Holography-v21.1.md §2.1)
 # ============================================================================
 
 # One-loop spectral dimension (before graviton corrections)
@@ -71,7 +71,7 @@ class SpectralDimensionResult:
     """
     Result of spectral dimension computation.
     
-    THEORETICAL REFERENCE: IRH21.md §2.1, Eq. 2.9
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.1, Eq. 2.9
     
     Attributes
     ----------
@@ -88,7 +88,7 @@ class SpectralDimensionResult:
     is_exact_4d : bool
         Whether d_spec = 4.0 within numerical precision
     theoretical_reference : str
-        Reference to IRH21.md equation
+        Reference to Intrinsic_Resonance_Holography-v21.1.md equation
     """
     d_spec: float
     scale: float
@@ -96,7 +96,7 @@ class SpectralDimensionResult:
     graviton_correction: float
     precision: int = 12
     is_exact_4d: bool = field(init=False)
-    theoretical_reference: str = "IRH21.md §2.1, Eq. 2.9"
+    theoretical_reference: str = "Intrinsic_Resonance_Holography-v21.1.md §2.1, Eq. 2.9"
     
     def __post_init__(self):
         """Determine if spectral dimension is exactly 4."""
@@ -122,7 +122,7 @@ class SpectralDimensionFlow:
     """
     RG flow of spectral dimension from UV to IR.
     
-    THEORETICAL REFERENCE: IRH21.md §2.1, Eq. 2.8
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.1, Eq. 2.8
     
     Flow equation:
         ∂_t d_spec(k) = η(k)(d_spec(k) - 4) + Δ_grav(k)
@@ -171,7 +171,7 @@ class SpectralDimensionFlow:
         """
         Verify Theorem 2.1: d_spec → 4 exactly in IR.
         
-        THEORETICAL REFERENCE: IRH21.md Theorem 2.1
+        THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md Theorem 2.1
         """
         d_ir = self.ir_limit
         is_verified = abs(d_ir - 4.0) < tolerance
@@ -184,7 +184,7 @@ class SpectralDimensionFlow:
             'deviation': d_ir - 4.0,
             'tolerance': tolerance,
             'is_verified': is_verified,
-            'theoretical_reference': 'IRH21.md Theorem 2.1',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Theorem 2.1',
         }
     
     def to_dict(self) -> Dict[str, Any]:
@@ -208,7 +208,7 @@ def anomalous_dimension(k: float, k0: float = 1.0) -> float:
     """
     Compute anomalous dimension η(k).
     
-    THEORETICAL REFERENCE: IRH21.md §2.1.2
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.1.2
     
     At the Cosmic Fixed Point, η* = 0, but it has non-trivial running
     away from the fixed point.
@@ -240,7 +240,7 @@ def graviton_correction(k: float, k0: float = 1.0) -> float:
     """
     Compute graviton fluctuation correction Δ_grav(k).
     
-    THEORETICAL REFERENCE: IRH21.md §2.1.2, Appendix C.3, Theorem C.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.1.2, Appendix C.3, Theorem C.1
     
     The graviton correction is topologically quantized (Theorem C.1):
         Δ_grav = -2/11 (at one-loop)
@@ -290,7 +290,7 @@ def spectral_dimension_flow_equation(
     """
     RHS of spectral dimension flow equation.
     
-    THEORETICAL REFERENCE: IRH21.md §2.1.2, Eq. 2.8
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.1.2, Eq. 2.8
     
     ∂_t d_spec(k) = η(k)(d_spec(k) - 4) + Δ_grav(k)
     
@@ -322,7 +322,7 @@ def compute_spectral_dimension(
     """
     Compute spectral dimension at given scale.
     
-    THEORETICAL REFERENCE: IRH21.md §2.1, Eq. 2.9
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.1, Eq. 2.9
     
     Parameters
     ----------
@@ -385,7 +385,7 @@ def spectral_dimension_flow(
     """
     Compute full RG flow of spectral dimension.
     
-    THEORETICAL REFERENCE: IRH21.md §2.1.2, Eq. 2.8
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.1.2, Eq. 2.8
     
     Integrates the flow equation:
         ∂_t d_spec(k) = η(k)(d_spec(k) - 4) + Δ_grav(k)
@@ -452,7 +452,7 @@ def verify_theorem_2_1(tolerance: float = 1e-10) -> Dict[str, Any]:
     """
     Verify Theorem 2.1: Exact 4D Spacetime.
     
-    THEORETICAL REFERENCE: IRH21.md Theorem 2.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md Theorem 2.1
     
     Statement: The RG flow of the quaternionic-weighted cGFT possesses
     a unique IR fixed point at which d_spec = 4 exactly.
@@ -508,7 +508,7 @@ def verify_theorem_2_1(tolerance: float = 1e-10) -> Dict[str, Any]:
         'graviton_correction': grav_correction,
         'cancellation_residual': cancellation,
         'tolerance': tolerance,
-        'theoretical_reference': 'IRH21.md Theorem 2.1',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Theorem 2.1',
         'proof_elements': [
             'One-loop fixed point: d_spec* = 42/11',
             'Graviton correction: Δ_grav = +2/11 (topologically quantized)',
@@ -525,7 +525,7 @@ def heat_kernel_spectral_dimension(
     """
     Compute spectral dimension from heat kernel.
     
-    THEORETICAL REFERENCE: IRH21.md §2.1.1
+    THEORETICAL REFERENCE: Intrinsic_Resonance_Holography-v21.1.md §2.1.1
     
     d_spec(s) = -2 d/d(log s) log P(s)
     
@@ -607,10 +607,10 @@ def generate_spectral_dimension_summary() -> Dict[str, Any]:
         },
         
         'references': [
-            'IRH21.md §2.1',
-            'IRH21.md Eq. 2.8-2.9',
-            'IRH21.md Theorem 2.1',
-            'IRH21.md Appendix C.3 (Theorem C.1)',
+            'Intrinsic_Resonance_Holography-v21.1.md §2.1',
+            'Intrinsic_Resonance_Holography-v21.1.md Eq. 2.8-2.9',
+            'Intrinsic_Resonance_Holography-v21.1.md Theorem 2.1',
+            'Intrinsic_Resonance_Holography-v21.1.md Appendix C.3 (Theorem C.1)',
         ],
     }
 

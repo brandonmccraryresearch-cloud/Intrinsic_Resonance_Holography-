@@ -44,7 +44,7 @@ class UniversalExponentPlugin(IRHPlugin):
         description="Computes the universal exponent C_H from fixed point values",
         category=PluginCategory.COMPUTATION,
         requires=[],
-        homepage="https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-",
+        homepage="https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-",
     )
     
     parameters = {

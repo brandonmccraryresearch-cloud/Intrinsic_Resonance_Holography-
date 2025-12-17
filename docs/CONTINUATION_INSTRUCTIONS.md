@@ -135,7 +135,7 @@ The complete IRH v21.0 verification protocol from copilot21promtMAX.md has been 
 
 1. **Start with Phase I completion:**
    ```bash
-   cd /home/runner/work/Intrinsic_Resonace_Holography-/Intrinsic_Resonace_Holography-
+   cd /home/runner/work/Intrinsic_Resonance_Holography-/Intrinsic_Resonance_Holography-
    export PYTHONPATH=$PWD
    ```
 

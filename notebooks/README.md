@@ -1,6 +1,6 @@
 # IRH Interactive Notebooks
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/notebooks/00_quickstart.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb)
 
 Interactive Jupyter notebooks for exploring Intrinsic Resonance Holography (IRH) v21.1.
 
@@ -12,11 +12,11 @@ Click any "Open in Colab" button to run notebooks directly in Google Colab - no 
 
 | Notebook | Description | Colab Link |
 |----------|-------------|------------|
-| **00_quickstart** | Quick introduction to IRH | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/notebooks/00_quickstart.ipynb) |
-| **01_group_manifold_visualization** | Visualize G_inf = SU(2)×U(1)_φ | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/notebooks/01_group_manifold_visualization.ipynb) |
-| **02_rg_flow_interactive** | Explore RG flow and β-functions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/notebooks/02_rg_flow_interactive.ipynb) |
-| **03_observable_extraction** | Extract physical constants | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/notebooks/03_observable_extraction.ipynb) |
-| **04_falsification_analysis** | Falsifiable predictions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/notebooks/04_falsification_analysis.ipynb) |
+| **00_quickstart** | Quick introduction to IRH | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb) |
+| **01_group_manifold_visualization** | Visualize G_inf = SU(2)×U(1)_φ | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/01_group_manifold_visualization.ipynb) |
+| **02_rg_flow_interactive** | Explore RG flow and β-functions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/02_rg_flow_interactive.ipynb) |
+| **03_observable_extraction** | Extract physical constants | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/03_observable_extraction.ipynb) |
+| **04_falsification_analysis** | Falsifiable predictions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/04_falsification_analysis.ipynb) |
 
 ## Topics Covered
 
@@ -87,6 +87,6 @@ All notebooks reference the canonical manuscript:
   title={Intrinsic Resonance Holography v21.1: Computational Framework},
   author={McCrary, Brandon D.},
   year={2025},
-  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-}
+  url={https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-}
 }
 ```

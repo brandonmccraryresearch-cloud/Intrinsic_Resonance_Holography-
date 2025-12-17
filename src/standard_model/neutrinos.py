@@ -1,7 +1,7 @@
 """
 Neutrino Sector Implementation
 
-THEORETICAL FOUNDATION: IRH21.md §3.2.4, Appendix E.3
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.2.4, Appendix E.3
 
 This module implements the neutrino sector derived from VWP topology,
 including masses, hierarchy, Majorana nature, and mixing.
@@ -20,7 +20,7 @@ Mathematical Foundation:
     neutrino VWP complexity K_ν.
 
 Authors: IRH Computational Framework Team
-Last Updated: December 2024 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with Intrinsic_Resonance_Holography-v21.1.md v21.0)
 """
 
 import math
@@ -30,7 +30,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §3.2.4, Appendix E.3"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §3.2.4, Appendix E.3"
 
 
 # Universal exponent (Eq. 1.16)
@@ -54,7 +54,7 @@ class NeutrinoMasses:
     Neutrino mass predictions from IRH topology.
     
     Theoretical Reference:
-        IRH21.md §3.2.4, Appendix E.3
+        Intrinsic_Resonance_Holography-v21.1.md §3.2.4, Appendix E.3
         
     The normal hierarchy is predicted:
         m₁ < m₂ < m₃
@@ -122,7 +122,7 @@ class NeutrinoMasses:
                 'relative_error': abs(self.delta_m32_sq - DELTA_M32_SQ) / DELTA_M32_SQ,
                 'agrees': abs(self.delta_m32_sq - DELTA_M32_SQ) / DELTA_M32_SQ < 0.1,
             },
-            'theoretical_reference': 'IRH21.md §3.2.4',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.4',
         }
     
     def cosmological_constraints(self) -> Dict:
@@ -148,7 +148,7 @@ class NeutrinoMasses:
             },
             'beta_decay_bound': 0.8,  # KATRIN
             'satisfies_katrin': self.m1 < 0.8,
-            'theoretical_reference': 'IRH21.md §3.2.4',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.4',
         }
     
     def to_dict(self) -> Dict:
@@ -166,7 +166,7 @@ class NeutrinoMasses:
                 'delta_m32_sq': self.delta_m32_sq,
                 'delta_m31_sq': self.delta_m31_sq,
             },
-            'theoretical_reference': 'IRH21.md §3.2.4, Appendix E.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.4, Appendix E.3',
         }
 
 
@@ -176,7 +176,7 @@ class MajoranaNature:
     Majorana nature of neutrinos from topological constraints.
     
     Theoretical Reference:
-        IRH21.md §3.2.4, Appendix E.3
+        Intrinsic_Resonance_Holography-v21.1.md §3.2.4, Appendix E.3
         
     In IRH, neutrinos are necessarily Majorana due to the
     topological structure of the VWP sector.
@@ -247,7 +247,7 @@ class MajoranaNature:
             'testable': m_bb_max > 0.01,  # Next-gen sensitivity
             'experiments': ['nEXO', 'LEGEND-1000', 'CUPID'],
             'half_life_prediction': f'T₁/₂ > 10²⁶ years',
-            'theoretical_reference': 'IRH21.md §3.2.4',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.4',
         }
     
     def to_dict(self) -> Dict:
@@ -260,7 +260,7 @@ class MajoranaNature:
             },
             'theoretical_basis': 'Topological constraint from VWP structure',
             'testable_via': 'Neutrinoless double beta decay',
-            'theoretical_reference': 'IRH21.md §3.2.4',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.4',
         }
 
 
@@ -315,7 +315,7 @@ def verify_neutrino_sector() -> Dict:
             'confidence': 'High (topological)',
             'experimental_preference': 'normal (3σ from oscillations)',
         },
-        'theoretical_reference': 'IRH21.md §3.2.4, Appendix E.3',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.4, Appendix E.3',
     }
 
 

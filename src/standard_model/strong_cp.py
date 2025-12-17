@@ -1,7 +1,7 @@
 """
 Strong CP Problem Resolution via Algorithmic Axion
 
-THEORETICAL FOUNDATION: IRH21.md §3.4, Appendix E.4
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.4, Appendix E.4
 
 This module implements the resolution of the strong CP problem through
 the emergent algorithmic axion mechanism.
@@ -26,7 +26,7 @@ Mathematical Foundation:
     where f_a ≈ 10¹² GeV is the axion decay constant.
 
 Authors: IRH Computational Framework Team
-Last Updated: December 2024 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with Intrinsic_Resonance_Holography-v21.1.md v21.0)
 """
 
 import math
@@ -36,7 +36,7 @@ from typing import Dict, Optional
 import numpy as np
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §3.4, Appendix E.4"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §3.4, Appendix E.4"
 
 
 # Universal exponent (Eq. 1.16)
@@ -56,7 +56,7 @@ class StrongCPResolution:
     Resolution of the strong CP problem.
     
     Theoretical Reference:
-        IRH21.md §3.4.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.4.1
         
     In IRH, θ_QCD = 0 is not fine-tuned but emerges from the
     QNCD metric structure which enforces topological quantization.
@@ -82,7 +82,7 @@ class StrongCPResolution:
             'satisfies_bound': abs(self.theta_qcd) < self.theta_bound,
             'mechanism': 'QNCD topological constraint',
             'no_fine_tuning': True,
-            'theoretical_reference': 'IRH21.md §3.4.1',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.4.1',
         }
     
     def peccei_quinn_symmetry(self) -> Dict:
@@ -100,7 +100,7 @@ class StrongCPResolution:
             'breaking_scale': '10¹² GeV (from fixed point)',
             'pseudo_goldstone': 'Algorithmic axion',
             'anomaly_coefficient': 1,  # N = 1 (DFSZ-like)
-            'theoretical_reference': 'IRH21.md §3.4.2',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.4.2',
         }
     
     def to_dict(self) -> Dict:
@@ -110,7 +110,7 @@ class StrongCPResolution:
             'mechanism': 'QNCD topological quantization',
             'pq_symmetry': self.peccei_quinn_symmetry(),
             'verification': self.verify_theta_zero(),
-            'theoretical_reference': 'IRH21.md §3.4',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.4',
         }
 
 
@@ -120,7 +120,7 @@ class AlgorithmicAxion:
     The algorithmic axion from cGFT phase fluctuations.
     
     Theoretical Reference:
-        IRH21.md §3.4.2, Appendix E.4
+        Intrinsic_Resonance_Holography-v21.1.md §3.4.2, Appendix E.4
         
     The axion emerges as fluctuations of the condensate phase:
         a(x) = f_a × δθ(x)
@@ -187,7 +187,7 @@ class AlgorithmicAxion:
             'is_dm_candidate': 0.01 < omega_a < 1.0,
             'initial_angle': theta_i,
             'can_explain_all_dm': abs(omega_a - 0.12) < 0.05,
-            'theoretical_reference': 'IRH21.md §3.4.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.4.3',
         }
     
     def experimental_detection(self) -> Dict:
@@ -229,7 +229,7 @@ class AlgorithmicAxion:
             },
             'most_sensitive_to_prediction': 'ADMX',
             'discovery_timeline': '2025-2030',
-            'theoretical_reference': 'IRH21.md §3.4.4',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.4.4',
         }
     
     def astrophysical_bounds(self) -> Dict:
@@ -270,7 +270,7 @@ class AlgorithmicAxion:
                 self.f_a > horizontal_branch_lower and
                 self.f_a < cosmology_upper
             ),
-            'theoretical_reference': 'IRH21.md §3.4.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.4.3',
         }
     
     def to_dict(self) -> Dict:
@@ -284,7 +284,7 @@ class AlgorithmicAxion:
             'dark_matter': self.dark_matter_density(),
             'detection': self.experimental_detection(),
             'astrophysical_bounds': self.astrophysical_bounds(),
-            'theoretical_reference': 'IRH21.md §3.4.2',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.4.2',
         }
 
 
@@ -341,7 +341,7 @@ def verify_strong_cp_sector() -> Dict:
             'decay_constant_GeV': axion.f_a,
             'is_dark_matter': axion.dark_matter_density()['is_dm_candidate'],
         },
-        'theoretical_reference': 'IRH21.md §3.4',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.4',
     }
 
 

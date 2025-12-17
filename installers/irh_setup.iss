@@ -2,7 +2,7 @@
 ; Intrinsic Resonance Holography (IRH) v21.1 - Windows Installer Script
 ;
 ; THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §1.6
-; Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
+; Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
 ;
 ; This Inno Setup script creates a Windows installer (.exe) for IRH.
 ;
@@ -17,7 +17,7 @@
 #define MyAppName "Intrinsic Resonance Holography"
 #define MyAppVersion "21.1.0"
 #define MyAppPublisher "Brandon D. McCrary"
-#define MyAppURL "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-"
+#define MyAppURL "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-"
 #define MyAppExeName "irh.bat"
 #define MyAppAssocName MyAppName + " File"
 #define MyAppAssocExt ".irh"

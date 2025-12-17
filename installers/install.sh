@@ -3,7 +3,7 @@
 # Intrinsic Resonance Holography (IRH) v21.1 - Installation Script
 # 
 # THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §1.6
-# Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
+# Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
 #
 # This script installs IRH and all dependencies on Linux/macOS systems.
 # ==============================================================================
@@ -18,7 +18,7 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-REPO_URL="https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git"
+REPO_URL="https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git"
 INSTALL_DIR="${IRH_INSTALL_DIR:-$HOME/IRH}"
 VENV_NAME="irh_venv"
 PYTHON_MIN_VERSION="3.10"
@@ -33,7 +33,7 @@ print_header() {
     echo "║     Intrinsic Resonance Holography (IRH) v21.1 - Installation Script       ║"
     echo "║                                                                            ║"
     echo "║  Unified Theory of Emergent Reality from Quantum-Informational Principles  ║"
-    echo "║  https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography- ║"
+    echo "║  https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography- ║"
     echo "╚════════════════════════════════════════════════════════════════════════════╝"
     echo -e "${NC}"
 }
@@ -263,7 +263,7 @@ case "$1" in
         echo "  compute    Compute all observables"
         echo "  shell      Open Python shell with IRH loaded"
         echo ""
-        echo "Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-"
+        echo "Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-"
         ;;
 esac
 EOF
@@ -353,7 +353,7 @@ main() {
     echo "  - Theory: ${INSTALL_DIR}/Intrinsic_Resonance_Holography-v21.1.md"
     echo "  - Notebooks: ${INSTALL_DIR}/notebooks/"
     echo ""
-    echo "Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-"
+    echo "Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-"
     echo ""
 }
 

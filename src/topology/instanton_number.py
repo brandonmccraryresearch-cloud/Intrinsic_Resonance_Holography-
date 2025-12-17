@@ -1,7 +1,7 @@
 """
 Instanton Number Computation for Intrinsic Resonance Holography v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §3.1.2, Appendix D.2
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.2, Appendix D.2
 
 This module computes the instanton number n_inst = 3 which determines
 the number of fermion generations in the Standard Model.
@@ -31,7 +31,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 
 # ============================================================================
-# Physical Constants (IRH21.md §3.1.2)
+# Physical Constants (Intrinsic_Resonance_Holography-v21.1.md §3.1.2)
 # ============================================================================
 
 # Instanton number - exactly 3
@@ -61,14 +61,14 @@ class InstantonResult:
     Result of instanton number computation.
     
     Theoretical Reference:
-        IRH21.md §3.1.2, Appendix D.2
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.2, Appendix D.2
     """
     n_inst: int
     topological_charges: List[int]
     stable_vacua: int
     generations: int
     is_verified: bool
-    theoretical_reference: str = "IRH21.md §3.1.2, Appendix D.2"
+    theoretical_reference: str = "Intrinsic_Resonance_Holography-v21.1.md §3.1.2, Appendix D.2"
 
 
 @dataclass
@@ -77,7 +77,7 @@ class TopologicalCharge:
     A topological charge configuration for VWP solutions.
     
     Theoretical Reference:
-        IRH21.md Appendix D.2
+        Intrinsic_Resonance_Holography-v21.1.md Appendix D.2
     """
     charge: int
     winding_number: int
@@ -96,7 +96,7 @@ class VortexWavePatternConfig:
     Configuration for a Vortex Wave Pattern (fermionic defect).
     
     Theoretical Reference:
-        IRH21.md Appendix D.2-D.3
+        Intrinsic_Resonance_Holography-v21.1.md Appendix D.2-D.3
     """
     generation: int
     topological_complexity: float
@@ -111,7 +111,7 @@ class FermionGeneration:
     A fermion generation derived from instanton topology.
     
     Theoretical Reference:
-        IRH21.md §3.1.2
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.2
     """
     number: int  # 1, 2, or 3
     leptons: List[str]
@@ -136,7 +136,7 @@ def compute_instanton_number(
     """
     Compute the instanton number n_inst of the cGFT fixed point.
     
-    THEORETICAL FOUNDATION: IRH21.md §3.1.2, Appendix D.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.2, Appendix D.2
     
     The instanton number n_inst = 3 emerges from the topology of the
     fixed-point effective potential. Morse theory proves that exactly
@@ -173,8 +173,8 @@ def compute_instanton_number(
     
     References
     ----------
-    .. [1] IRH21.md §3.1.2 - Three Fermion Generations
-    .. [2] IRH21.md Appendix D.2 - Proof of n_inst = 3
+    .. [1] Intrinsic_Resonance_Holography-v21.1.md §3.1.2 - Three Fermion Generations
+    .. [2] Intrinsic_Resonance_Holography-v21.1.md Appendix D.2 - Proof of n_inst = 3
     """
     if verbose:
         print("[TOPOLOGY] Computing instanton number n_inst")
@@ -215,7 +215,7 @@ def verify_three_generations(tolerance: float = 0) -> Dict:
     """
     Verify that exactly 3 fermion generations emerge from topology.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.2
     
     Parameters
     ----------
@@ -258,7 +258,7 @@ def verify_three_generations(tolerance: float = 0) -> Dict:
             'K_2': K_2,
             'K_3': K_3
         },
-        'theoretical_reference': 'IRH21.md Appendix D.2, Theorem D.2'
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md Appendix D.2, Theorem D.2'
     }
 
 
@@ -266,7 +266,7 @@ def get_fermion_generations() -> List[FermionGeneration]:
     """
     Get the three fermion generations derived from instanton topology.
     
-    THEORETICAL FOUNDATION: IRH21.md §3.1.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.2
     
     Returns
     -------
@@ -310,7 +310,7 @@ def topological_complexity(generation: int) -> float:
     """
     Get the topological complexity K_f for a given generation.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.3, Eq. 3.6
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.3, Eq. 3.6
     
     The topological complexity determines the fermion mass hierarchy:
         m_f = y_f × v* where y_f ∝ K_f
@@ -348,7 +348,7 @@ def compute_mass_hierarchy_ratios() -> Dict:
     """
     Compute fermion mass hierarchy ratios from topological complexity.
     
-    THEORETICAL FOUNDATION: IRH21.md §3.2.3, Appendix D.3
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.2.3, Appendix D.3
     
     Returns
     -------
@@ -370,7 +370,7 @@ def compute_mass_hierarchy_ratios() -> Dict:
             'K_3/K_1': f'{K_3/K_1:.0f} ≈ mτ/mₑ (tau/electron mass ratio)',
             'K_3/K_2': f'{K_3/K_2:.1f} ≈ mτ/mμ (tau/muon mass ratio)'
         },
-        'theoretical_reference': 'IRH21.md §3.2.3, Eq. 3.6'
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.3, Eq. 3.6'
     }
 
 
@@ -382,7 +382,7 @@ def find_stable_vwps(verbose: bool = False) -> List[VortexWavePatternConfig]:
     """
     Find the stable Vortex Wave Patterns (fermionic defects).
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.2
     
     VWPs are topological defects in the cGFT condensate that represent
     fermions. The fixed-point potential has exactly 3 stable VWP
@@ -449,7 +449,7 @@ def vwp_topological_charge(vwp: VortexWavePatternConfig) -> int:
     """
     Compute the topological charge (Pontryagin index) of a VWP.
     
-    THEORETICAL FOUNDATION: IRH21.md Appendix D.2
+    THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix D.2
     
     Parameters
     ----------
@@ -533,7 +533,7 @@ def generate_instanton_number_summary() -> str:
                     IRH v21.0 Topological Physics Layer
 ================================================================================
 
-THEORETICAL FOUNDATION: IRH21.md §3.1.2, Appendix D.2
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.2, Appendix D.2
 
 INSTANTON NUMBER:
   n_inst = {n_inst}

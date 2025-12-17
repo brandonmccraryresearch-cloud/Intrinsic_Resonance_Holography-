@@ -1,5 +1,7 @@
 # src/validation/cross_validation.py
 """
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md Appendix A.5, Eq. 1.12
+
 Phase V: Cross-Validation and Convergence Analysis
 
 Implements systematic validation infrastructure for IRH computations:
@@ -8,9 +10,9 @@ Implements systematic validation infrastructure for IRH computations:
 - Error propagation framework with uncertainty quantification
 
 Theoretical References:
-    IRH21.md Appendix A.5: Convergence to continuum limit
-    IRH21.md Eq. 1.12: Wetterich equation (exact differential equation)
-    IRH21.md Appendix A.4: QUCC-Theorem (compressor independence)
+    Intrinsic_Resonance_Holography-v21.1.md Appendix A.5: Convergence to continuum limit
+    Intrinsic_Resonance_Holography-v21.1.md Eq. 1.12: Wetterich equation (exact differential equation)
+    Intrinsic_Resonance_Holography-v21.1.md Appendix A.4: QUCC-Theorem (compressor independence)
 """
 
 from dataclasses import dataclass, field
@@ -34,7 +36,7 @@ class ConvergenceResult:
     Result of a convergence study.
     
     Theoretical Reference:
-        IRH21.md Appendix A.5: Error ~ O(δ²) for lattice spacing δ
+        Intrinsic_Resonance_Holography-v21.1.md Appendix A.5: Error ~ O(δ²) for lattice spacing δ
     """
     observable_name: str
     parameter_name: str
@@ -44,7 +46,7 @@ class ConvergenceResult:
     convergence_rate: float  # B in exp(-B*N) fit
     relative_error: float  # vs extrapolated limit
     status: ValidationStatus
-    theoretical_reference: str = "IRH21.md Appendix A.5"
+    theoretical_reference: str = "Intrinsic_Resonance_Holography-v21.1.md Appendix A.5"
     
     def is_converged(self, threshold: float = 1e-4) -> bool:
         """Check if convergence achieved within threshold."""
@@ -72,7 +74,7 @@ class CrossValidationResult:
     Result of algorithmic cross-validation between methods.
     
     Theoretical Reference:
-        IRH21.md: Critical computations verified via independent algorithms
+        Intrinsic_Resonance_Holography-v21.1.md: Critical computations verified via independent algorithms
     """
     computation_name: str
     method1_name: str
@@ -82,7 +84,7 @@ class CrossValidationResult:
     relative_difference: float
     status: ValidationStatus
     threshold: float = 1e-5
-    theoretical_reference: str = "IRH21.md Phase V"
+    theoretical_reference: str = "Intrinsic_Resonance_Holography-v21.1.md Phase V"
     
     def methods_agree(self) -> bool:
         """Check if methods agree within threshold."""
@@ -108,7 +110,7 @@ class ConvergenceAnalysis:
     Verifies numerical results approach continuum limit.
     
     Theoretical Reference:
-        IRH21.md Appendix A.5: Exponential convergence to continuum
+        Intrinsic_Resonance_Holography-v21.1.md Appendix A.5: Exponential convergence to continuum
     """
     
     # Known fixed point values for reference (Eq. 1.14)
@@ -137,7 +139,7 @@ class ConvergenceAnalysis:
         
         Theoretical Expectation:
             Error ~ O(δ²) where δ = 1/N is lattice spacing
-            IRH21.md Appendix A.5: Exponential convergence to continuum
+            Intrinsic_Resonance_Holography-v21.1.md Appendix A.5: Exponential convergence to continuum
         
         Parameters
         ----------
@@ -298,7 +300,7 @@ class ConvergenceAnalysis:
             convergence_rate=convergence_order,
             relative_error=rel_error,
             status=status,
-            theoretical_reference="IRH21.md Eq. 1.12 (Wetterich equation)"
+            theoretical_reference="Intrinsic_Resonance_Holography-v21.1.md Eq. 1.12 (Wetterich equation)"
         )
         
         self._log(f"  RG step: order={convergence_order:.2f}, {status.name}")
@@ -358,7 +360,7 @@ class AlgorithmicCrossValidation:
     Validate critical computations via independent algorithmic approaches.
     
     Theoretical Reference:
-        IRH21.md: Cross-validation requirements for critical computations
+        Intrinsic_Resonance_Holography-v21.1.md: Cross-validation requirements for critical computations
     """
     
     # Fixed point values (Eq. 1.14)
@@ -381,8 +383,8 @@ class AlgorithmicCrossValidation:
         Find fixed point via: (1) RG flow integration, (2) Newton-Raphson on β=0.
         
         Theoretical Reference:
-            IRH21.md Eq. 1.13: Beta functions
-            IRH21.md Eq. 1.14: Fixed point values
+            Intrinsic_Resonance_Holography-v21.1.md Eq. 1.13: Beta functions
+            Intrinsic_Resonance_Holography-v21.1.md Eq. 1.14: Fixed point values
         
         Returns
         -------
@@ -428,7 +430,7 @@ class AlgorithmicCrossValidation:
                 relative_difference=rel_diff,
                 status=status,
                 threshold=1e-8,
-                theoretical_reference="IRH21.md Eqs. 1.13-1.14"
+                theoretical_reference="Intrinsic_Resonance_Holography-v21.1.md Eqs. 1.13-1.14"
             )
             
             results.append(result)
@@ -442,7 +444,7 @@ class AlgorithmicCrossValidation:
         Return fixed point couplings from Eq. 1.14.
         
         The fixed point values are derived from the complete RG analysis
-        in IRH21.md, which includes non-perturbative effects beyond
+        in Intrinsic_Resonance_Holography-v21.1.md, which includes non-perturbative effects beyond
         the one-loop beta functions of Eq. 1.13.
         
         Fixed Point Values (Eq. 1.14):
@@ -475,7 +477,7 @@ class AlgorithmicCrossValidation:
         Cross-validate Laplacian via: (1) finite differences, (2) spectral methods.
         
         Theoretical Reference:
-            IRH21.md §1.1: Laplace-Beltrami operator on SU(2)
+            Intrinsic_Resonance_Holography-v21.1.md §1.1: Laplace-Beltrami operator on SU(2)
         
         Parameters
         ----------
@@ -521,7 +523,7 @@ class AlgorithmicCrossValidation:
             relative_difference=rel_error,
             status=status,
             threshold=1e-3,
-            theoretical_reference="IRH21.md §1.1, Eq. 1.1"
+            theoretical_reference="Intrinsic_Resonance_Holography-v21.1.md §1.1, Eq. 1.1"
         )
         
         self._log(f"  Laplacian: rel_diff={rel_error:.2e}, {status.name}")
@@ -590,7 +592,7 @@ class AlgorithmicCrossValidation:
         Cross-validate beta functions via analytical and numerical derivatives.
         
         Theoretical Reference:
-            IRH21.md Eq. 1.13: One-loop beta functions
+            Intrinsic_Resonance_Holography-v21.1.md Eq. 1.13: One-loop beta functions
         
         Returns
         -------
@@ -634,7 +636,7 @@ class AlgorithmicCrossValidation:
                 relative_difference=rel_diff,
                 status=status,
                 threshold=1e-6,
-                theoretical_reference="IRH21.md Eq. 1.13"
+                theoretical_reference="Intrinsic_Resonance_Holography-v21.1.md Eq. 1.13"
             )
             
             results.append(result)
@@ -689,7 +691,7 @@ class ErrorPropagation:
     Implements systematic uncertainty quantification with source tracking.
     
     Theoretical Reference:
-        IRH21.md: Uncertainty quantification requirements
+        Intrinsic_Resonance_Holography-v21.1.md: Uncertainty quantification requirements
         copilot21promtMAX.md Phase III: Output contextualization
     """
     

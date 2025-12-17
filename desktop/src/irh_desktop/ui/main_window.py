@@ -631,7 +631,7 @@ if HAS_PYQT6:
         def show_documentation(self):
             """Show documentation."""
             import webbrowser
-            webbrowser.open("https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/docs/TECHNICAL_REFERENCE.md")
+            webbrowser.open("https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/docs/TECHNICAL_REFERENCE.md")
         
         def show_about(self):
             """Show about dialog."""

@@ -39,7 +39,7 @@ class TestEquationReference:
         assert ref.section == "1.1"
         assert ref.equation_number == "1.1"
         assert ref.description == "S_kin kinetic term"
-        assert ref.manuscript == "IRH21.md"
+        assert ref.manuscript == "Intrinsic_Resonance_Holography-v21.1.md"
     
     def test_string_representation(self):
         """Test __str__ method."""
@@ -48,7 +48,7 @@ class TestEquationReference:
             equation_number="1.1",
             description="S_kin kinetic term",
         )
-        assert str(ref) == "IRH21.md §1.1, Eq. 1.1"
+        assert str(ref) == "Intrinsic_Resonance_Holography-v21.1.md §1.1, Eq. 1.1"
     
     def test_to_dict(self):
         """Test dictionary serialization."""
@@ -61,7 +61,7 @@ class TestEquationReference:
         assert d["section"] == "2.3"
         assert d["equation_number"] == "2.17"
         assert d["description"] == "ρ_hum calculation"
-        assert d["manuscript"] == "IRH21.md"
+        assert d["manuscript"] == "Intrinsic_Resonance_Holography-v21.1.md"
 
 
 class TestEquationImplementation:
@@ -445,7 +445,7 @@ class TestRealSourceScan:
     @pytest.fixture
     def src_path(self):
         """Get the actual src directory path."""
-        return Path("/home/runner/work/Intrinsic_Resonace_Holography-/Intrinsic_Resonace_Holography-/src")
+        return Path("/home/runner/work/Intrinsic_Resonance_Holography-/Intrinsic_Resonance_Holography-/src")
     
     def test_scan_actual_source(self, src_path):
         """Test scanning the actual source code."""

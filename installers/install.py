@@ -3,7 +3,7 @@
 Intrinsic Resonance Holography (IRH) v21.1 - Cross-Platform Python Installer
 
 THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §1.6
-Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-
+Repository: https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-
 
 This script provides a cross-platform installation method for IRH.
 Works on Windows, Linux, and macOS.
@@ -31,9 +31,9 @@ from typing import Optional
 # Configuration
 # ==============================================================================
 
-REPO_URL = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-.git"
+REPO_URL = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-.git"
 MIN_PYTHON_VERSION = (3, 10)
-GITHUB_CITATION = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-"
+GITHUB_CITATION = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-"
 
 # ==============================================================================
 # Color Output

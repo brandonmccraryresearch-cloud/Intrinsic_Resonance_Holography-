@@ -1,7 +1,7 @@
 """
 Gauge Group Emergence from Topological Structure
 
-THEORETICAL FOUNDATION: IRH21.md §3.1.1, Appendix D.1
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1
 
 This module derives the Standard Model gauge group SU(3)×SU(2)×U(1) from
 the first Betti number β₁ = 12 of the resonance manifold M³.
@@ -25,7 +25,7 @@ Mathematical Foundation:
         - U(1)_Y: Weak hypercharge (1 generator)
 
 Authors: IRH Computational Framework Team
-Last Updated: December 2024 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with Intrinsic_Resonance_Holography-v21.1.md v21.0)
 """
 
 import math
@@ -35,7 +35,7 @@ from typing import Dict, List, Optional, Tuple
 import numpy as np
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §3.1.1, Appendix D.1"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1"
 
 
 # First Betti number (Appendix D.1)
@@ -56,7 +56,7 @@ class GaugeGroup:
     Represents a simple gauge group factor.
     
     Theoretical Reference:
-        IRH21.md §3.1.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.1
     """
     name: str
     rank: int
@@ -133,7 +133,7 @@ class StandardModelGaugeStructure:
     Complete Standard Model gauge structure from β₁ = 12.
     
     Theoretical Reference:
-        IRH21.md §3.1.1, Appendix D.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1
         
     The gauge group SU(3)×SU(2)×U(1) emerges uniquely from:
         1. β₁ = 12 (total rank/generators)
@@ -173,7 +173,7 @@ class StandardModelGaugeStructure:
         Verify that gauge anomalies cancel.
         
         Theoretical Reference:
-            IRH21.md §3.1.1
+            Intrinsic_Resonance_Holography-v21.1.md §3.1.1
             
         Anomaly cancellation requires:
             Tr(Y³) = 0 for each generation
@@ -222,7 +222,7 @@ class StandardModelGaugeStructure:
                 abs(tr_t2_y) < 1e-10,
                 abs(tr_c2_y) < 1e-10,
             ]),
-            'theoretical_reference': 'IRH21.md §3.1.1',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.1.1',
         }
     
     def to_dict(self) -> Dict:
@@ -237,7 +237,7 @@ class StandardModelGaugeStructure:
             },
             'total_generators': self.total_generators,
             'gauge_bosons': self.gauge_bosons,
-            'theoretical_reference': 'IRH21.md §3.1.1, Appendix D.1',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1',
         }
 
 
@@ -246,7 +246,7 @@ def derive_gauge_group(betti_1: int = BETTI_1) -> StandardModelGaugeStructure:
     Derive the Standard Model gauge group from β₁.
     
     Theoretical Reference:
-        IRH21.md §3.1.1, Appendix D.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.1, Appendix D.1
         
     Parameters
     ----------
@@ -280,7 +280,7 @@ def verify_su3_su2_u1() -> Dict:
     Verify the SU(3)×SU(2)×U(1) gauge structure.
     
     Theoretical Reference:
-        IRH21.md §3.1.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.1
         
     Returns
     -------
@@ -300,7 +300,7 @@ def verify_su3_su2_u1() -> Dict:
             sm.total_generators == 12 and
             anomalies['all_anomalies_cancel']
         ),
-        'theoretical_reference': 'IRH21.md §3.1.1',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.1.1',
     }
 
 
@@ -310,7 +310,7 @@ class GaugeCouplingUnification:
     Gauge coupling unification at the UV fixed point.
     
     Theoretical Reference:
-        IRH21.md §3.1.2
+        Intrinsic_Resonance_Holography-v21.1.md §3.1.2
         
     At the cosmic fixed point, all gauge couplings unify:
         g_1 = g_2 = g_3 = g_* ≈ 0.527
@@ -359,7 +359,7 @@ class GaugeCouplingUnification:
         Compute Weinberg angle at given scale.
         
         Theoretical Reference:
-            IRH21.md §3.3.1
+            Intrinsic_Resonance_Holography-v21.1.md §3.3.1
             
         sin²θ_W = g'² / (g² + g'²)
         
@@ -381,7 +381,7 @@ class GaugeCouplingUnification:
             'g2': g2,
             'experimental_value': 0.23122,  # PDG 2023
             'agreement': abs(sin2_theta_w - 0.23122) < 0.01,
-            'theoretical_reference': 'IRH21.md §3.3.1',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3.1',
         }
     
     def unification_test(self) -> Dict:
@@ -414,7 +414,7 @@ class GaugeCouplingUnification:
             'unification_scale': self.M_star,
             'unified_coupling': self.g_star,
             'converges_at_UV': results[-1]['spread'] < 0.01,
-            'theoretical_reference': 'IRH21.md §3.1.2',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.1.2',
         }
 
 

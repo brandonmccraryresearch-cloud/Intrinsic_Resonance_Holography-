@@ -17,7 +17,7 @@ IRH Desktop provides a feature-rich graphical interface for the IRH computationa
 
 ```bash
 # Download the package
-wget https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/releases/download/v21.0.0/irh-desktop_21.0.0-1_all.deb
+wget https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/releases/download/v21.0.0/irh-desktop_21.0.0-1_all.deb
 
 # Install
 sudo dpkg -i irh-desktop_21.0.0-1_all.deb

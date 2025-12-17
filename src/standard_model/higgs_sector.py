@@ -1,7 +1,7 @@
 """
 Higgs Sector Implementation
 
-THEORETICAL FOUNDATION: IRH21.md §3.3, Appendix F
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.3, Appendix F
 
 This module implements the Higgs sector derived from the cGFT fixed point,
 including the Higgs VEV, mass, and self-coupling.
@@ -23,7 +23,7 @@ Mathematical Foundation:
     where M_* is the UV cutoff scale.
 
 Authors: IRH Computational Framework Team
-Last Updated: December 2024 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with Intrinsic_Resonance_Holography-v21.1.md v21.0)
 """
 
 import math
@@ -33,7 +33,7 @@ from typing import Dict, Optional
 import numpy as np
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §3.3, Appendix F"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §3.3, Appendix F"
 
 
 # Fixed-point couplings (Eq. 1.14)
@@ -55,7 +55,7 @@ class HiggsSector:
     Complete Higgs sector from cGFT fixed point.
     
     Theoretical Reference:
-        IRH21.md §3.3
+        Intrinsic_Resonance_Holography-v21.1.md §3.3
         
     The Higgs VEV and mass emerge from the fixed-point structure:
         v = √(μ̃*/λ̃*) × M_eff
@@ -97,7 +97,7 @@ class HiggsSector:
         Verify Higgs VEV derivation from fixed point.
         
         Theoretical Reference:
-            IRH21.md §3.3.1
+            Intrinsic_Resonance_Holography-v21.1.md §3.3.1
         """
         # The VEV emerges from the ratio μ̃*/λ̃*
         # v² ∝ μ̃*/λ̃* with dimensional transmutation
@@ -111,7 +111,7 @@ class HiggsSector:
             'vev_ratio_from_fp': predicted_ratio,
             'mu_star_over_lambda_star': MU_STAR / LAMBDA_STAR,
             'agrees': abs(self.higgs_vev - HIGGS_VEV) < 1.0,
-            'theoretical_reference': 'IRH21.md §3.3.1',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3.1',
         }
     
     def verify_mass(self) -> Dict:
@@ -119,7 +119,7 @@ class HiggsSector:
         Verify Higgs mass derivation.
         
         Theoretical Reference:
-            IRH21.md §3.3.2
+            Intrinsic_Resonance_Holography-v21.1.md §3.3.2
         """
         # m_H² = 2λ_H v²
         predicted_mass = math.sqrt(2 * self.lambda_H) * self.higgs_vev
@@ -130,7 +130,7 @@ class HiggsSector:
             'quartic_coupling': self.lambda_H,
             'relative_error': abs(predicted_mass - HIGGS_MASS_EXP) / HIGGS_MASS_EXP,
             'agrees': abs(predicted_mass - HIGGS_MASS_EXP) < 2.0,  # 2 GeV tolerance
-            'theoretical_reference': 'IRH21.md §3.3.2',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3.2',
         }
     
     def trilinear_prediction(self) -> Dict:
@@ -138,7 +138,7 @@ class HiggsSector:
         Predict Higgs trilinear coupling (testable at HL-LHC/FCC).
         
         Theoretical Reference:
-            IRH21.md §3.3.3
+            Intrinsic_Resonance_Holography-v21.1.md §3.3.3
             
         λ_HHH = 3 × m_H² / v (SM prediction)
         IRH predicts small deviations due to C_H corrections.
@@ -159,7 +159,7 @@ class HiggsSector:
             'testable_at': 'HL-LHC (3 ab⁻¹), FCC-hh',
             'current_precision': '±50%',  # Current LHC sensitivity
             'future_precision': '±5%',    # HL-LHC projection
-            'theoretical_reference': 'IRH21.md §3.3.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3.3',
         }
     
     def electroweak_symmetry_breaking(self) -> Dict:
@@ -167,7 +167,7 @@ class HiggsSector:
         Describe electroweak symmetry breaking mechanism.
         
         Theoretical Reference:
-            IRH21.md §3.3.4
+            Intrinsic_Resonance_Holography-v21.1.md §3.3.4
         """
         return {
             'mechanism': 'Spontaneous symmetry breaking',
@@ -184,7 +184,7 @@ class HiggsSector:
                 'neutral_cp_odd': 'G⁰ (eaten by Z)',
                 'neutral_cp_even': 'H (physical Higgs)',
             },
-            'theoretical_reference': 'IRH21.md §3.3.4',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3.4',
         }
     
     def to_dict(self) -> Dict:
@@ -197,7 +197,7 @@ class HiggsSector:
             'quadrilinear_coupling': self.lambda_HHHH,
             'potential_minimum_GeV4': self.potential_minimum,
             'fixed_point_ratio': self.vev_ratio,
-            'theoretical_reference': 'IRH21.md §3.3',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3',
         }
 
 
@@ -207,7 +207,7 @@ class GaugeBosonMasses:
     W and Z boson masses from electroweak symmetry breaking.
     
     Theoretical Reference:
-        IRH21.md §3.3.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.3.1
     """
     higgs_vev: float = HIGGS_VEV
     
@@ -259,7 +259,7 @@ class GaugeBosonMasses:
                 'SM_tree_level': 1.0,
                 'experimental': 1.00037,
             },
-            'theoretical_reference': 'IRH21.md §3.3.1',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3.1',
         }
     
     def to_dict(self) -> Dict:
@@ -273,7 +273,7 @@ class GaugeBosonMasses:
                 'g2_SU2': self.g2,
                 'g1_U1': self.g1,
             },
-            'theoretical_reference': 'IRH21.md §3.3.1',
+            'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3.1',
         }
 
 
@@ -325,7 +325,7 @@ def verify_electroweak_sector() -> Dict:
             'parameters': bosons.to_dict(),
             'mass_verification': bosons.verify_masses(),
         },
-        'theoretical_reference': 'IRH21.md §3.3',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.3',
     }
 
 

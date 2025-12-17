@@ -1,7 +1,7 @@
 """
 Fermion Mass Implementation for IRH v21.0
 
-THEORETICAL FOUNDATION: IRH21.md §3.2
+THEORETICAL FOUNDATION: Intrinsic_Resonance_Holography-v21.1.md §3.2
 
 This module derives fermion masses from topological complexity eigenvalues 𝒦_f
 through the Yukawa coupling formula (Eq. 3.6).
@@ -18,7 +18,7 @@ where C_H = 0.045935703598... is the universal exponent (Eq. 1.16)
 and v = 246.22 GeV is the Higgs VEV.
 
 Authors: IRH Computational Framework Team
-Last Updated: December 2024 (synchronized with IRH21.md v21.0)
+Last Updated: December 2024 (synchronized with Intrinsic_Resonance_Holography-v21.1.md v21.0)
 """
 
 import math
@@ -27,7 +27,7 @@ from typing import Dict, Optional
 import numpy as np
 
 __version__ = "21.0.0"
-__theoretical_foundation__ = "IRH21.md §3.2, Eq. 3.6"
+__theoretical_foundation__ = "Intrinsic_Resonance_Holography-v21.1.md §3.2, Eq. 3.6"
 
 
 # Universal exponent (Eq. 1.16)
@@ -69,7 +69,7 @@ def compute_fermion_mass(fermion: str, higgs_vev: float = HIGGS_VEV) -> Dict:
     Compute fermion mass from topological complexity per §3.2.
 
     Theoretical Reference:
-        IRH21.md §3.2, Table 3.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.2, Table 3.1
         m_f = (C_H / √(8π²)) × √(𝒦_f × λ̃*) × v
 
     Parameters
@@ -99,7 +99,7 @@ def compute_fermion_mass(fermion: str, higgs_vev: float = HIGGS_VEV) -> Dict:
     return {
         'mass_GeV': mass_gev,
         'K_f': k_f,
-        'theoretical_reference': 'IRH21.md §3.2, Table 3.1',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2, Table 3.1',
     }
 
 
@@ -108,7 +108,7 @@ def yukawa_coupling(fermion: str, higgs_vev: float = HIGGS_VEV) -> Dict:
     Compute Yukawa coupling for a fermion per Eq. 3.6.
 
     Theoretical Reference:
-        IRH21.md §3.2, Eq. 3.6
+        Intrinsic_Resonance_Holography-v21.1.md §3.2, Eq. 3.6
         y_f = √(2) × m_f / v
 
     Mathematical Foundation:
@@ -135,7 +135,7 @@ def yukawa_coupling(fermion: str, higgs_vev: float = HIGGS_VEV) -> Dict:
 
     Notes
     -----
-    Implements Eq. 3.6 from IRH21.md: y_f = √(2) m_f / v
+    Implements Eq. 3.6 from Intrinsic_Resonance_Holography-v21.1.md: y_f = √(2) m_f / v
 
     The Yukawa coupling hierarchy emerges directly from the
     topological complexity spectrum 𝒦_f without fine-tuning.
@@ -150,7 +150,7 @@ def yukawa_coupling(fermion: str, higgs_vev: float = HIGGS_VEV) -> Dict:
         'yukawa': yukawa,
         'mass_GeV': mass_gev,
         'K_f': mass_result['K_f'],
-        'theoretical_reference': 'IRH21.md §3.2, Eq. 3.6',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2, Eq. 3.6',
     }
 
 
@@ -159,7 +159,7 @@ def mass_hierarchy() -> Dict:
     Compute the full fermion mass hierarchy from topological complexity.
 
     Theoretical Reference:
-        IRH21.md §3.2, Table 3.1
+        Intrinsic_Resonance_Holography-v21.1.md §3.2, Table 3.1
 
     Returns
     -------
@@ -182,7 +182,7 @@ def mass_hierarchy() -> Dict:
 
     return {
         'masses': hierarchy,
-        'theoretical_reference': 'IRH21.md §3.2, Table 3.1',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2, Table 3.1',
     }
 
 
@@ -191,7 +191,7 @@ def verify_mass_ratios() -> Dict:
     Verify predicted mass ratios against experimental values.
 
     Theoretical Reference:
-        IRH21.md §3.2.2
+        Intrinsic_Resonance_Holography-v21.1.md §3.2.2
 
     Returns
     -------
@@ -232,7 +232,7 @@ def verify_mass_ratios() -> Dict:
 
     return {
         'comparisons': comparisons,
-        'theoretical_reference': 'IRH21.md §3.2.2',
+        'theoretical_reference': 'Intrinsic_Resonance_Holography-v21.1.md §3.2.2',
     }
 
 

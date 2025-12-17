@@ -58,10 +58,10 @@ irh-desktop = "irh_desktop.main:main"
 irh-desktop-gui = "irh_desktop.main:main"
 
 [project.urls]
-Homepage = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-"
-Documentation = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/blob/main/docs/TECHNICAL_REFERENCE.md"
-Repository = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-"
-Issues = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonace_Holography-/issues"
+Homepage = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-"
+Documentation = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/docs/TECHNICAL_REFERENCE.md"
+Repository = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-"
+Issues = "https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
