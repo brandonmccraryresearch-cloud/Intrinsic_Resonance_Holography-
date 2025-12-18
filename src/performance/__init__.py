@@ -9,6 +9,7 @@ This module provides comprehensive performance optimization capabilities:
     - Performance profiling and benchmarking utilities
     - Memory optimization tools (array pooling, sparse arrays, GC tuning)
     - MPI parallelization for distributed computing
+    - GPU acceleration using JAX/CuPy
 
 The optimization layer maintains theoretical fidelity while achieving
 significant speedups for exascale-ready computations.
@@ -21,7 +22,7 @@ Implementation Timeline:
     Phase 3.2: Caching & Memoization (Q1 2026) ✅
     Phase 3.3: Memory Optimization (Q1 2026) ✅
     Phase 3.4: MPI Parallelization (Q2 2026) ✅
-    Phase 3.5: GPU Acceleration (Q3 2026)
+    Phase 3.5: GPU Acceleration (Q3 2026) ✅
 """
 
 from __future__ import annotations
@@ -84,6 +85,20 @@ from .mpi_parallel import (
     get_mpi_info,
 )
 
+from .gpu_acceleration import (
+    GPUBackend,
+    GPUContext,
+    gpu_beta_functions,
+    gpu_rg_flow_integration,
+    gpu_qncd_matrix,
+    gpu_quaternion_multiply,
+    is_gpu_available,
+    get_gpu_info,
+    get_available_backends,
+    set_default_backend,
+    benchmark_gpu_performance,
+)
+
 __all__ = [
     # Cache Management
     'CacheManager',
@@ -134,4 +149,17 @@ __all__ = [
     'domain_decomposition',
     'is_mpi_available',
     'get_mpi_info',
+    
+    # GPU Acceleration
+    'GPUBackend',
+    'GPUContext',
+    'gpu_beta_functions',
+    'gpu_rg_flow_integration',
+    'gpu_qncd_matrix',
+    'gpu_quaternion_multiply',
+    'is_gpu_available',
+    'get_gpu_info',
+    'get_available_backends',
+    'set_default_backend',
+    'benchmark_gpu_performance',
 ]

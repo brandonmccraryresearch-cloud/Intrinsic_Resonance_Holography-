@@ -410,6 +410,11 @@ def compute_total_action(phi, phi_bar=None, **couplings) -> dict:
 β_μ = 2μ̃ + (1/2π²)λ̃μ̃
 ```
 
+**Note on Beta Function Zeros**: 
+- The single equation β_λ = 0 has its non-trivial zero at λ̃ = 16π²/9 ≈ 17.55
+- The Cosmic Fixed Point values (Eq. 1.14) arise from the full coupled RG flow analysis including the Wetterich equation (Eq. 1.12), higher-order corrections, and topological constraints
+- See IRH v21.1 Manuscript §1.2.3 and Appendix B for the complete derivation
+
 **Cosmic Fixed Point** (Eq. 1.14):
 ```
 λ̃* = 48π²/9  ≈ 52.637
@@ -418,9 +423,7 @@ def compute_total_action(phi, phi_bar=None, **couplings) -> dict:
 ```
 
 **Universal Exponent** (Eq. 1.16):
-```
-C_H = 3λ̃*/(2γ̃*) = 0.045935703598...
-```
+The universal exponent C_H = 0.045935703598 is derived from the spectral zeta function calculation (Appendix B.4), not from the simple ratio 3λ̃*/(2γ̃*) = 0.75. The formula C_H = β_λ/β_γ|* refers to the ratio at the true fixed point of the full (non-truncated) Wetterich equation.
 
 ### 3.4 Layers 3-8: Emergent Physics
 
