@@ -1118,6 +1118,9 @@ python -m pytest tests/unit/test_phase_v.py -v
 # Run Phase VI tests (36 tests)
 cd desktop && python -m pytest tests/test_phase_vi.py -v
 
+# Run Performance tests (210 tests)
+python -m pytest tests/unit/test_performance/ -v
+
 # Test core functionality
 python -c "from src.rg_flow import find_fixed_point; print(find_fixed_point())"
 python -c "from src.emergent_spacetime import verify_theorem_2_1; print(verify_theorem_2_1())"
@@ -1125,7 +1128,51 @@ python -c "from src.topology import verify_betti_12; print(verify_betti_12())"
 python -c "from src.standard_model import derive_gauge_group; print(derive_gauge_group())"
 python -c "from src.cosmology import compute_dark_energy_eos; print(compute_dark_energy_eos())"
 python -c "from src.falsifiable_predictions import compute_liv_parameter; print(compute_liv_parameter())"
+
+# Test MPI parallelization (with serial fallback)
+python -c "from src.performance import MPIContext, distributed_rg_flow; print('MPI available:', is_mpi_available())"
 ```
+
+### Tier 3 Phase 3.4: MPI Parallelization (COMPLETE ✅)
+
+The MPI parallelization module has been implemented with the following features:
+
+**MPI Module** (`src/performance/mpi_parallel.py`):
+- `MPIContext` - MPI environment management with graceful serial fallback
+- `MPIBackend` - Unified interface for parallel operations
+- `distributed_rg_flow()` - Parallel RG trajectory integration
+- `scatter_initial_conditions()` - Work distribution across processes
+- `gather_results()` - Result aggregation from all processes
+- `parallel_fixed_point_search()` - Parallel Newton-Raphson fixed point search
+- `parallel_qncd_matrix()` - Parallel QNCD distance matrix computation
+- `domain_decomposition()` - Lattice decomposition for cGFT field computations
+
+**Usage Example**:
+```python
+from src.performance import (
+    MPIContext, distributed_rg_flow, parallel_fixed_point_search,
+    is_mpi_available
+)
+import numpy as np
+
+# Check MPI availability
+print(f"MPI available: {is_mpi_available()}")
+
+# Run distributed RG flow integration
+with MPIContext() as ctx:
+    initial_conditions = np.random.rand(100, 3) * 100
+    result = distributed_rg_flow(initial_conditions, t_range=(-10, 10), ctx=ctx)
+    if ctx.is_root:
+        print(f"Integrated {result['timing']['n_trajectories']} trajectories")
+        print(f"Converged: {np.sum(result['converged'])}")
+
+# Parallel fixed point search
+guesses = np.array([[50, 100, 150], [55, 110, 165], [45, 90, 135]])
+fp_result = parallel_fixed_point_search(guesses)
+print(f"Found fixed points: {len(fp_result['unique_fixed_points'])}")
+```
+
+**Test Count**: 54 tests in `tests/unit/test_performance/test_mpi_parallel.py`
 
 ---
 

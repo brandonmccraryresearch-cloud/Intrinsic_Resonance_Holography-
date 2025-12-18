@@ -8,6 +8,7 @@ This module provides comprehensive performance optimization capabilities:
     - Vectorized numerical routines for large-scale operations
     - Performance profiling and benchmarking utilities
     - Memory optimization tools (array pooling, sparse arrays, GC tuning)
+    - MPI parallelization for distributed computing
 
 The optimization layer maintains theoretical fidelity while achieving
 significant speedups for exascale-ready computations.
@@ -19,7 +20,7 @@ Implementation Timeline:
     Phase 3.1: NumPy Vectorization (Q1 2026) ✅
     Phase 3.2: Caching & Memoization (Q1 2026) ✅
     Phase 3.3: Memory Optimization (Q1 2026) ✅
-    Phase 3.4: MPI Parallelization (Q2 2026)
+    Phase 3.4: MPI Parallelization (Q2 2026) ✅
     Phase 3.5: GPU Acceleration (Q3 2026)
 """
 
@@ -70,6 +71,19 @@ from .memory_optimization import (
     estimate_memory_usage,
 )
 
+from .mpi_parallel import (
+    MPIContext,
+    MPIBackend,
+    distributed_rg_flow,
+    scatter_initial_conditions,
+    gather_results,
+    parallel_fixed_point_search,
+    parallel_qncd_matrix,
+    domain_decomposition,
+    is_mpi_available,
+    get_mpi_info,
+)
+
 __all__ = [
     # Cache Management
     'CacheManager',
@@ -108,4 +122,16 @@ __all__ = [
     'optimize_gc',
     'create_memory_mapped_array',
     'estimate_memory_usage',
+    
+    # MPI Parallelization
+    'MPIContext',
+    'MPIBackend',
+    'distributed_rg_flow',
+    'scatter_initial_conditions',
+    'gather_results',
+    'parallel_fixed_point_search',
+    'parallel_qncd_matrix',
+    'domain_decomposition',
+    'is_mpi_available',
+    'get_mpi_info',
 ]
