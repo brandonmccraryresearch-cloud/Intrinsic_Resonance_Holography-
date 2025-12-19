@@ -1,0 +1,8 @@
+# IRH v21.1 Kubernetes Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: irh
+  labels:
+    app.kubernetes.io/name: intrinsic-resonance-holography
+    app.kubernetes.io/version: "21.1.0"

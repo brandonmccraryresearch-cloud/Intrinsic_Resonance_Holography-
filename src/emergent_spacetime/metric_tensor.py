@@ -575,6 +575,10 @@ def metric_from_condensate(
     -----
     This is the complete implementation of Eq. 2.10:
         g_μν(x) emerges from ⟨φ⟩ ≠ 0 at the Cosmic Fixed Point
+    
+    Note: The simplified perturbation method (use_full_derivation=False)
+    uses a seeded RNG for reproducibility. Set random_seed parameter
+    to control behavior.
     """
     eta = np.diag([-1.0, 1.0, 1.0, 1.0])
     
@@ -583,8 +587,11 @@ def metric_from_condensate(
     
     if not use_full_derivation:
         # Simplified perturbation method (legacy behavior)
+        # Use seeded RNG based on condensate data for reproducibility
+        seed = int(np.abs(np.sum(condensate_field)) * 1e6) % (2**31)
+        rng = np.random.default_rng(seed)
         amplitude = np.mean(np.abs(condensate_field))
-        h = 0.01 * amplitude * np.random.randn(4, 4)
+        h = 0.01 * amplitude * rng.standard_normal((4, 4))
         h = 0.5 * (h + h.T)
         return MetricTensor(components=eta + h)
     

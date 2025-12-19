@@ -505,55 +505,60 @@ cd webapp/frontend && npm install && npm run dev
 
 **Remaining Priority Tasks** (See [`docs/ROADMAP.md`](./ROADMAP.md) for details):
 
-1. **Cloud Deployment** (Phase 4.2, 4 weeks, MEDIUM priority)
-   - Docker containerization
-   - Kubernetes orchestration
-   - Scalable compute backend
+1. **Cloud Deployment** (Phase 4.2) ✅ **COMPLETE**
+   - ✅ Docker containerization (`deploy/docker/`)
+   - ✅ Kubernetes orchestration (`deploy/kubernetes/`)
+   - ✅ Production-ready with health checks and autoscaling
 
-2. **WebSocket & Real-time Updates** (Phase 4.1 enhancement, 2 weeks, LOW priority)
-   - WebSocket support for long computations
-   - Progress streaming for RG flow
-   - Celery task queue
+2. **ML Surrogate Models** (Phase 4.3, 16+ weeks, LOW priority)
+   - Neural network approximations for RG flow
+   - Uncertainty quantification
+   - Automated parameter tuning
 
-3. **Interactive Notebooks** (Q1 2026, MEDIUM priority)
+3. **Interactive Notebooks Enhancement** (Q1 2026, MEDIUM priority)
    - Jupyter notebook tutorials
    - Interactive demonstrations
    - Educational content
    - Binder integration
 
-4. **ML Integration** (Phase 4.3, 16+ weeks, LOW priority)
-   - Neural network surrogates
-   - Uncertainty quantification
-   - Automated parameter tuning
+4. **Experimental Data Pipeline** (Phase 4.4, MEDIUM priority)
+   - Automated PDG/CODATA updates
+   - Real-time experimental comparison
+   - Alert system for new measurements
 
-### 2.3 Development Plan: Replacing Placeholder Implementations
+### 2.3 Development Plan: Placeholder Implementations Status
 
 **Goal**: Replace stub/placeholder implementations with full theoretical implementations
 
-The following placeholders have been identified in the codebase and should be replaced with real implementations in future development phases:
+✅ **ALL PRIORITY PLACEHOLDERS HAVE BEEN IMPLEMENTED** (December 2025)
 
-#### Priority 1: Core Physics (HIGH)
+#### Priority 1: Core Physics (HIGH) - COMPLETE ✅
 
-| Module | Placeholder | Full Implementation Required | Reference |
-|--------|-------------|------------------------------|-----------|
-| `src/emergent_spacetime/metric_tensor.py` | Line 419: "placeholder for full condensate-to-metric map" | Complete condensate field → metric tensor mapping | Eq. 2.10 |
-| `src/topology/manifold_construction.py` | Line 72: `raise NotImplementedError` | Full 3-manifold M³ = G_inf/Γ_R construction | Appendix D.1 |
-| `src/rg_flow/__init__.py` | TODO: wetterich module | Full Wetterich equation solver | Eq. 1.12 |
-| `src/rg_flow/__init__.py` | TODO: running_couplings module | Scale-dependent coupling evolution | §1.2 |
+| Module | Implementation | Status |
+|--------|----------------|--------|
+| `src/emergent_spacetime/metric_tensor.py` | Full condensate → metric mapping (Eq. 2.10) | ✅ Complete |
+| `src/topology/manifold_construction.py` | Full M³ = G_inf/Γ_R construction (App. D.1) | ✅ Complete |
+| `src/rg_flow/wetterich.py` | Full Wetterich equation solver (Eq. 1.12) | ✅ **NEW** |
+| `src/rg_flow/running_couplings.py` | Scale-dependent coupling evolution (§1.2) | ✅ **NEW** |
 
-#### Priority 2: Observables (MEDIUM)
+#### Priority 2: Observables (MEDIUM) - COMPLETE ✅
 
-| Module | Placeholder | Full Implementation Required | Reference |
-|--------|-------------|------------------------------|-----------|
-| `src/observables/__init__.py` | TODO: physical_constants | Complete constant database with uncertainties | §3.2 |
-| `src/observables/__init__.py` | TODO: experimental_comparison | Full σ-analysis vs PDG/CODATA data | §8 |
+| Module | Implementation | Status |
+|--------|----------------|--------|
+| `src/observables/physical_constants.py` | Complete constant database (12 constants) | ✅ **NEW** |
+| `src/observables/experimental_comparison.py` | Full σ-analysis vs PDG/CODATA | ✅ **NEW** |
 
-#### Priority 3: Infrastructure (LOW)
+#### Priority 3: Infrastructure (LOW) - COMPLETE ✅
 
-| Module | Placeholder | Description |
-|--------|-------------|-------------|
-| `src/utilities/__init__.py` | Line 77-98: placeholder exports | Integration, optimization, special functions, lattice, parallel computing utilities |
-| `src/cgft/__init__.py` | Line 69-73: placeholder exports | cGFT operators and interaction exports |
+| Module | Implementation | Status |
+|--------|----------------|--------|
+| `src/utilities/integration.py` | Group manifold quadrature (SU(2), U(1), G_inf) | ✅ **NEW** |
+| `src/utilities/optimization.py` | Fixed-point Newton, minimization, root-finding | ✅ **NEW** |
+| `src/utilities/special_functions.py` | Bessel, hypergeometric, Wigner D-matrices | ✅ **NEW** |
+| `src/utilities/lattice_discretization.py` | Finite-volume approximations | ✅ **NEW** |
+| `src/utilities/parallel_computing.py` | Parallel map, distributed sum | ✅ **NEW** |
+| `src/cgft/operators.py` | Laplace-Beltrami, functional derivatives | ✅ **NEW** |
+| `src/cgft/interactions.py` | QNCD kernels, interaction terms | ✅ **NEW** |
 
 #### Implementation Guidelines
 
@@ -1410,22 +1415,22 @@ pytest tests/ -v
 
 **Tier 3 Total**: 301+ tests | All phases complete
 
-### B.2 Tier 4: Ecosystem & Community (2026-2027) - NEXT
+### B.2 Tier 4: Ecosystem & Community (2025-2027) - IN PROGRESS
 
 **Focus**: Broader ecosystem, community tools, experimental integration
 
-| Phase | Description | Target | Priority |
-|-------|-------------|--------|----------|
-| 4.1 | Web Interface (FastAPI + React) | Q1 2026 | MEDIUM |
-| 4.2 | Cloud Deployment | Q1 2026 | MEDIUM |
-| 4.3 | ML Surrogate Models | Q2 2026 | LOW |
-| 4.4 | Experimental Data Pipeline | Q2 2026 | MEDIUM |
-| 4.5 | PDG/CODATA Integration | Q3 2026 | MEDIUM |
-| 4.6 | Plugin System | Q3 2026 | LOW |
-| 4.7 | Collaboration Tools | Q4 2026 | LOW |
-| 4.8 | Video Tutorials | Q4 2026 | LOW |
-| 4.9 | Community Forum | Q1 2027 | LOW |
-| 4.10 | Paper Template Generator | Q4 2026 | MEDIUM |
+| Phase | Description | Target | Priority | Status |
+|-------|-------------|--------|----------|--------|
+| 4.1 | Web Interface (FastAPI + React) | Q4 2025 | MEDIUM | ✅ Complete |
+| 4.2 | Cloud Deployment (Docker/K8s) | Q4 2025 | MEDIUM | ✅ Complete |
+| 4.3 | ML Surrogate Models | Q2 2026 | LOW | 📋 Planned |
+| 4.4 | Experimental Data Pipeline | Q2 2026 | MEDIUM | 📋 Planned |
+| 4.5 | PDG/CODATA Integration | Q3 2026 | MEDIUM | 📋 Planned |
+| 4.6 | Plugin System | Q3 2026 | LOW | 📋 Planned |
+| 4.7 | Collaboration Tools | Q4 2026 | LOW | 📋 Planned |
+| 4.8 | Video Tutorials | Q4 2026 | LOW | 📋 Planned |
+| 4.9 | Community Forum | Q1 2027 | LOW | 📋 Planned |
+| 4.10 | Paper Template Generator | Q4 2026 | MEDIUM | 📋 Planned |
 
 ### B.3 Current Milestone Summary
 

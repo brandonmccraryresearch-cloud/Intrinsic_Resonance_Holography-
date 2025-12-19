@@ -26,6 +26,7 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple, Any
 from enum import Enum
 import numpy as np
+from scipy import stats
 
 from .physical_constants import (
     PhysicalConstant,
@@ -96,7 +97,6 @@ class StatisticalComparison:
         z = sigma  # z-score equals sigma deviation
         
         # p-value from normal distribution
-        from scipy import stats
         p = 2 * (1 - stats.norm.cdf(abs(z)))
         
         # Determine result

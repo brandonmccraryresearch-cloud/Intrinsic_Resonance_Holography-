@@ -785,8 +785,9 @@ Every contribution to the IRH codebase must satisfy:
 - **Conventions**: PEP 8, line length 100, NumPy docstrings with equation refs; phase wrapping via `np.mod(angle, 2*np.pi)` and `_wrapped_phase_difference` with `PHASE_TOLERANCE=1e-10`; input normalization via `_to_bytes`; wrap `np.exp(...)` in `complex(...)`.
 - **CI signals**: `.github/workflows/ci.yml` (pytest on `tests/`, ruff on `src/`, mypy on `src/irh_v10`) and `ci-cd.yml` (black/mypy, v16 legacy tests, python package tests/coverage, docs check, benchmarks, Wolfram notice, release stub). Prefer Python 3.12 and correct PYTHONPATH to mirror CI.
 - **Agent reminders**: keep changes minimal, place new code in `python/src/irh/...` with matching tests in `python/tests/...`, avoid new deps unless required, and trust these instructions before searching.
-- **Repository organization**: Status documents in `docs/status/`, handoff docs in `docs/handoff/`, legacy files in `archive/`, webapp in `webapp/`.
-- **Current Phase**: Tier 4 Phase 4.2 - Cloud Deployment (Docker/K8s) - Phase 4.1 Web Interface complete ✅
+- **Repository organization**: Status documents in `docs/status/`, handoff docs in `docs/handoff/`, legacy files in `archive/`, webapp in `webapp/`, deployment configs in `deploy/`.
+- **Current Phase**: Tier 4 Phase 4.3 - ML Surrogate Models - Phases 4.1 (Web Interface) & 4.2 (Cloud Deployment) complete ✅
+- **Deployment Ready**: Docker/Kubernetes configs in `deploy/` - see `deploy/README.md` for production deployment
 - **Notebook findings**: See `docs/NOTEBOOK_FINDINGS.md` for computational discrepancies (beta functions, fermion masses)
 
 ## v18 Module Summary (15 modules)
@@ -1306,46 +1307,63 @@ results = distributed_map(lambda x: x ** 2, list(range(100)))
 
 **Tier 3 Complete**: All 8 phases (301+ tests total)
 
-### Tier 4 Phase 4.1: Web Interface (BACKEND COMPLETE ✅)
+### Tier 4 Phase 4.1: Web Interface (COMPLETE ✅)
 
-The FastAPI backend for the web interface has been implemented.
+The complete web interface has been implemented with FastAPI backend and React frontend.
 
-**Web API** (`webapp/backend/app.py`):
+**Backend** (`webapp/backend/app.py`):
 - FastAPI REST API with 13 endpoints
 - Pydantic models for request/response validation
 - CORS middleware for frontend access
 - Swagger UI at `/docs` and ReDoc at `/redoc`
 
-**API Endpoints**:
-- `GET /` - API info and links
-- `GET /health` - Health check
-- `GET /api/v1/fixed-point` - Cosmic Fixed Point (Eq. 1.14)
-- `POST /api/v1/rg-flow` - RG flow integration
-- `GET /api/v1/observables/C_H` - Universal exponent (Eq. 1.16)
-- `GET /api/v1/observables/alpha` - Fine-structure constant (Eq. 3.4-3.5)
-- `GET /api/v1/observables/dark-energy` - Dark energy w₀ (§2.3)
-- `GET /api/v1/observables/liv` - LIV parameter ξ (§2.5)
-- `GET /api/v1/standard-model/gauge-group` - Gauge group derivation
-- `GET /api/v1/standard-model/neutrinos` - Neutrino predictions
-- `GET /api/v1/falsification/summary` - All testable predictions
+**Frontend** (`webapp/frontend/`):
+- React + Vite modern build tooling
+- 6 pages: Dashboard, Fixed Point, RG Flow, Observables, Standard Model, Falsification
+- Dark theme CSS styling
+- React Router navigation, React Query data fetching
 
-**Usage**:
+**Quick Start**:
 ```bash
-# Start the backend
-cd webapp/backend
-pip install -r requirements.txt
-uvicorn app:app --reload
+# Backend
+cd webapp/backend && pip install -r requirements.txt && uvicorn app:app --reload
 
-# API available at http://localhost:8000
-# Docs at http://localhost:8000/docs
+# Frontend
+cd webapp/frontend && npm install && npm run dev
+
+# API at http://localhost:8000, UI at http://localhost:3000
 ```
 
 **Test Count**: 13 tests in `webapp/backend/tests/test_api.py`
 
-**Next Steps for Phase 4.1**:
-- React/Vue frontend implementation
-- WebSocket support for real-time updates
-- Celery task queue for long computations
+### Tier 4 Phase 4.2: Cloud Deployment (COMPLETE ✅)
+
+Production-ready Docker and Kubernetes configurations.
+
+**Docker** (`deploy/docker/`):
+- `Dockerfile.backend` - Multi-stage Python build
+- `Dockerfile.frontend` - Multi-stage Node/nginx build
+- `docker-compose.yml` - Full stack with health checks
+- `nginx.conf` - Frontend reverse proxy
+
+**Kubernetes** (`deploy/kubernetes/`):
+- `namespace.yaml` - IRH namespace
+- `backend-deployment.yaml` - Backend pods + service
+- `frontend-deployment.yaml` - Frontend pods + service
+- `ingress.yaml` - TLS-enabled ingress controller
+- `hpa.yaml` - Horizontal Pod Autoscaler (2-10 replicas)
+- `configmap.yaml` - Configuration with physical constants
+
+**Quick Start**:
+```bash
+# Docker
+cd deploy/docker && docker-compose up -d
+
+# Kubernetes
+kubectl apply -f deploy/kubernetes/
+```
+
+See `deploy/README.md` for full deployment guide.
 
 ---
 

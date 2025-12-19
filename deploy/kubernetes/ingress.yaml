@@ -1,0 +1,55 @@
+# IRH v21.1 Ingress Configuration
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: irh-ingress
+  namespace: irh
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "10m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "120"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "120"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - irh.example.com
+    secretName: irh-tls
+  rules:
+  - host: irh.example.com
+    http:
+      paths:
+      # API routes
+      - path: /api
+        pathType: Prefix
+        backend:
+          service:
+            name: irh-backend
+            port:
+              number: 8000
+      # Health check
+      - path: /health
+        pathType: Exact
+        backend:
+          service:
+            name: irh-backend
+            port:
+              number: 8000
+      # Swagger docs
+      - path: /docs
+        pathType: Prefix
+        backend:
+          service:
+            name: irh-backend
+            port:
+              number: 8000
+      # Frontend (default)
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: irh-frontend
+            port:
+              number: 3000

@@ -127,15 +127,26 @@ def wigner_d_matrix(
         (factorial(jmp) * factorial(jmmp))
     )
     
-    # Trig factors
+    # Trig factors with proper handling of negative powers
     power_c = m + mp
     power_s = m - mp
     
-    trig = (c ** abs(power_c)) * (s ** abs(power_s))
-    if power_c < 0:
-        trig *= (-1) ** abs(power_c)
-    if power_s < 0:
-        trig *= (-1) ** abs(power_s)
+    # Handle negative powers by using 1/c^|power| or 1/s^|power|
+    if power_c >= 0:
+        trig_c = c ** power_c
+    else:
+        if abs(c) < 1e-10:
+            return 0.0  # Avoid division by zero
+        trig_c = 1.0 / (c ** abs(power_c))
+    
+    if power_s >= 0:
+        trig_s = s ** power_s
+    else:
+        if abs(s) < 1e-10:
+            return 0.0  # Avoid division by zero
+        trig_s = 1.0 / (s ** abs(power_s))
+    
+    trig = trig_c * trig_s
     
     # Jacobi polynomial
     n = int(j - max(m, mp))

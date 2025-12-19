@@ -1,0 +1,83 @@
+# IRH v21.1 Docker Compose Configuration
+# Production-ready multi-container setup
+
+version: '3.8'
+
+services:
+  # Backend API service
+  backend:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile.backend
+    container_name: irh-backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - LOG_LEVEL=INFO
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - irh-network
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+
+  # Frontend service
+  frontend:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile.frontend
+    container_name: irh-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - irh-network
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+        reservations:
+          cpus: '0.1'
+          memory: 64M
+
+  # Redis cache (optional, for future use)
+  redis:
+    image: redis:7-alpine
+    container_name: irh-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    networks:
+      - irh-network
+    command: redis-server --appendonly yes
+    deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 128M
+
+networks:
+  irh-network:
+    driver: bridge
+
+volumes:
+  redis-data:
+    driver: local

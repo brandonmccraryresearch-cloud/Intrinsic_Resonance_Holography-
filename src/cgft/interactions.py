@@ -140,8 +140,8 @@ def QNCD_weighted_kernel(
     
     # Compute relative phase
     if len(g1_flat) > 0 and len(g2_flat) > 0:
-        dot = np.dot(g1_flat[:min(len(g1_flat), len(g2_flat))], 
-                     g2_flat[:min(len(g1_flat), len(g2_flat))])
+        min_len = min(len(g1_flat), len(g2_flat))
+        dot = np.dot(g1_flat[:min_len], g2_flat[:min_len])
         norm1 = np.linalg.norm(g1_flat)
         norm2 = np.linalg.norm(g2_flat)
         if norm1 > 0 and norm2 > 0:
