@@ -76,7 +76,21 @@ This roadmap outlines planned features and enhancements for the Intrinsic Resona
 - BayesianOptimizer and ActiveLearningOptimizer for parameter exploration
 - Full integration with existing RG flow modules
 
-**Total**: 970+ tests passing | 100% critical equation coverage
+✅ **Tier 4.4: Experimental Data Pipeline (32+ tests)** - COMPLETE
+- PDG parser for particle data (masses, widths, lifetimes)
+- CODATA database for fundamental constants
+- Data catalog with version control
+- Statistical comparison framework
+
+✅ **Tier 4.5: Automated PDG/CODATA Updates (27+ tests)** - COMPLETE
+- CacheManager for local caching and offline operation
+- Online API integration for CODATA constants
+- Online API integration for PDG particle data
+- Version comparison and diff reporting
+- Alert system for significant changes
+- Report generation (Markdown, text, JSON)
+
+**Total**: 1000+ tests passing | 100% critical equation coverage
 
 ---
 

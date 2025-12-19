@@ -315,7 +315,7 @@ class TestReporting:
     
     def test_generate_markdown_report(self, sample_results):
         """Test Markdown report generation."""
-        report = generate_change_report(sample_results, format='markdown')
+        report = generate_change_report(sample_results, output_format='markdown')
         
         assert '# Experimental Data Update Report' in report
         assert 'CODATA' in report
@@ -324,14 +324,14 @@ class TestReporting:
     
     def test_generate_text_report(self, sample_results):
         """Test text report generation."""
-        report = generate_change_report(sample_results, format='text')
+        report = generate_change_report(sample_results, output_format='text')
         
         assert 'EXPERIMENTAL DATA UPDATE REPORT' in report
         assert 'CODATA' in report
     
     def test_generate_json_report(self, sample_results):
         """Test JSON report generation."""
-        report = generate_change_report(sample_results, format='json')
+        report = generate_change_report(sample_results, output_format='json')
         
         data = json.loads(report)
         assert 'codata' in data
@@ -415,7 +415,7 @@ class TestIntegration:
             assert 'pdg' in results
             
             # 3. Generate report
-            report = generate_change_report(results, format='markdown')
+            report = generate_change_report(results, output_format='markdown')
             assert '# Experimental Data Update Report' in report
             
             # 4. Generate alerts

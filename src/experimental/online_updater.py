@@ -19,7 +19,7 @@ Example:
     >>> from src.experimental.online_updater import update_codata, update_pdg
     >>> # Update CODATA constants
     >>> result = update_codata()
-    >>> print(f"Updated {result['updated_count']} constants")
+    >>> print(f"Updated {result.updated_count} constants")
     
     >>> # Check for updates without downloading
     >>> changes = check_for_updates()
@@ -783,7 +783,7 @@ def update_all(
 
 def generate_change_report(
     results: Dict[str, UpdateResult],
-    format: str = 'markdown',
+    output_format: str = 'markdown',
 ) -> str:
     """
     Generate a human-readable change report.
@@ -792,7 +792,7 @@ def generate_change_report(
     ----------
     results : dict
         Update results from update_all()
-    format : str
+    output_format : str
         Output format ('markdown', 'text', 'json')
         
     Returns
@@ -800,12 +800,12 @@ def generate_change_report(
     str
         Formatted report
     """
-    if format == 'json':
+    if output_format == 'json':
         return json.dumps({k: v.to_dict() for k, v in results.items()}, indent=2)
     
     lines = []
     
-    if format == 'markdown':
+    if output_format == 'markdown':
         lines.append("# Experimental Data Update Report")
         lines.append(f"\n**Generated**: {datetime.now().isoformat()}")
         lines.append("")
