@@ -1,7 +1,7 @@
 """
 Experimental Data Pipeline
 
-THEORETICAL FOUNDATION: IRH21.md §7 - Falsifiable Predictions
+THEORETICAL FOUNDATION: IRH v21.1 Manuscript §7 - Falsifiable Predictions
 
 This package provides tools for ingesting, managing, and comparing experimental
 data with IRH predictions. It supports automated updates from standard sources
@@ -12,6 +12,7 @@ Modules:
     codata_database: CODATA fundamental constants
     data_catalog: Version-controlled data management
     comparison: Statistical comparison framework
+    online_updater: Automated online updates from PDG/CODATA (Phase 4.5)
 
 Authors: IRH Computational Framework Team
 Last Updated: December 2025
@@ -87,8 +88,65 @@ def compare_with_experiment(irh_value: float, experimental_name: str, uncertaint
     return _compare(irh_value, experimental_name, uncertainty)
 
 
+def update_codata_online(use_cache: bool = True, force_refresh: bool = False):
+    """
+    Update CODATA constants from online source.
+    
+    Parameters
+    ----------
+    use_cache : bool
+        Whether to use/update cache
+    force_refresh : bool
+        Force refresh even if cache is fresh
+        
+    Returns
+    -------
+    UpdateResult
+        Update results with changes
+    """
+    from .online_updater import update_codata as _update
+    return _update(use_cache=use_cache, force_refresh=force_refresh)
+
+
+def update_pdg_online(use_cache: bool = True, force_refresh: bool = False):
+    """
+    Update PDG particle data from online source.
+    
+    Parameters
+    ----------
+    use_cache : bool
+        Whether to use/update cache
+    force_refresh : bool
+        Force refresh even if cache is fresh
+        
+    Returns
+    -------
+    UpdateResult
+        Update results with changes
+    """
+    from .online_updater import update_pdg as _update
+    return _update(use_cache=use_cache, force_refresh=force_refresh)
+
+
+def check_for_data_updates():
+    """
+    Check for available updates without downloading full data.
+    
+    Returns
+    -------
+    dict
+        Status of each data source
+    """
+    from .online_updater import check_for_updates as _check
+    return _check()
+
+
 __all__ = [
     'get_pdg_value',
     'get_codata_value', 
     'compare_with_experiment',
+    # Phase 4.5: Online updates
+    'update_codata_online',
+    'update_pdg_online',
+    'check_for_data_updates',
 ]
