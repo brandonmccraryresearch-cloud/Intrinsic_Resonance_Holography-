@@ -29,7 +29,7 @@ import time
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any, Dict, Optional
+from typing import Any, Dict, Optional, Union
 
 __version__ = "1.0.0"
 __module_type__ = "infrastructure"
@@ -115,7 +115,7 @@ class CacheManager:
     
     def __init__(
         self,
-        cache_dir: Path | str = "data/cache/experimental",
+        cache_dir: Union[Path, str] = "data/cache/experimental",
         default_ttl: float = 86400.0  # 24 hours
     ):
         self.cache_dir = Path(cache_dir)
