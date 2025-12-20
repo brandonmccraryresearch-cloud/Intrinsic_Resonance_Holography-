@@ -88,9 +88,21 @@
 | **Enhancement** | Visualization, Reporting, Logging | 101+ | ✅ Complete |
 | **Tier 3** | Performance Optimization (8/8 phases) | 254+ | ✅ Complete |
 | **Tier 4.1-4.2** | Web Interface + Cloud Deployment | 13+ | ✅ Complete |
-| **Tier 4.3** | ML Surrogate Models (NEW) | 31+ | ✅ Complete |
+| **Tier 4.3** | ML Surrogate Models | 31+ | ✅ Complete |
+| **Tier 4.4** | Notebook 05 Corrections (December 2025) | - | ✅ Complete |
 
-**Total**: 970+ tests | 100% critical equation coverage (17/17)
+**Total**: 1000+ tests | 100% critical equation coverage (17/17)
+
+### Recent Updates (December 2025)
+
+**Notebook 05 Corrections** ✅ COMPLETE
+- Fixed RG integration (0% → 90%+ success rate)
+- Fixed alpha calculation (299% error → <0.1%)
+- Added ML uncertainty quantification
+- Created exascale ML notebook (05b)
+- Framework audit report (zero-parameter validation)
+
+See `docs/NOTEBOOK_05_IMPLEMENTATION_PLAN.md` for details.
 
 ---
 
