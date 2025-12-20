@@ -216,59 +216,31 @@ class CODATAFetcher:
         """
         Parse CODATA ASCII table.
         
-        This is a simplified parser. Real implementation would parse
-        the full NIST CODATA table format.
+        This function is a placeholder: full parsing of the NIST CODATA
+        ASCII table format is not yet implemented.
         
         Parameters
         ----------
         data : str
-            ASCII table data from NIST
+            ASCII table data from NIST.
         
         Returns
         -------
         Dict[str, PhysicalConstant]
-            Parsed constants
+            Parsed constants.
+        
+        Raises
+        ------
+        NotImplementedError
+            Raised because parsing of raw CODATA tables has not been
+            implemented yet. This method previously returned hardcoded
+            constants irrespective of the input.
         """
-        # For now, return hardcoded CODATA 2022 values
-        # Real implementation would parse the actual table
-        return {
-            'α⁻¹': PhysicalConstant(
-                name='fine-structure constant (inverse)',
-                symbol='α⁻¹',
-                value=137.035999084,
-                uncertainty=0.000000021,
-                units='dimensionless',
-                source='CODATA 2022',
-                year=2022
-            ),
-            'G': PhysicalConstant(
-                name='Newtonian constant of gravitation',
-                symbol='G',
-                value=6.67430e-11,
-                uncertainty=0.00015e-11,
-                units='m³ kg⁻¹ s⁻²',
-                source='CODATA 2022',
-                year=2022
-            ),
-            'h': PhysicalConstant(
-                name='Planck constant',
-                symbol='h',
-                value=6.62607015e-34,
-                uncertainty=0.0,  # Exact by definition
-                units='J Hz⁻¹',
-                source='CODATA 2022',
-                year=2022
-            ),
-            'c': PhysicalConstant(
-                name='speed of light in vacuum',
-                symbol='c',
-                value=299792458.0,
-                uncertainty=0.0,  # Exact by definition
-                units='m s⁻¹',
-                source='CODATA 2022',
-                year=2022
-            ),
-        }
+        raise NotImplementedError(
+            "Parsing of CODATA ASCII tables is not implemented. "
+            "This method is a placeholder and should be replaced with "
+            "a real parser before enabling live CODATA table parsing."
+        )
     
     def fetch(self, force_refresh: bool = False) -> Optional[Dict[str, PhysicalConstant]]:
         """
