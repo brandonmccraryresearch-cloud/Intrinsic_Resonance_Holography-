@@ -8,10 +8,10 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Tests](https://img.shields.io/badge/tests-970%2B%20passing-brightgreen.svg)](./tests/)
+[![Tests](https://img.shields.io/badge/tests-1000%2B%20passing-brightgreen.svg)](./tests/)
 [![Coverage](https://img.shields.io/badge/critical%20equations-100%25-brightgreen.svg)](./THEORETICAL_CORRESPONDENCE.md)
 
-**A complete computational framework deriving fundamental physics from quantum-informational first principles—with web interface, desktop application, ML surrogates, and 100% theoretical coverage.**
+**A complete computational framework deriving fundamental physics from quantum-informational first principles—with web interface, desktop application, ML surrogates, experimental data pipeline, and 100% theoretical coverage.**
 
 ---
 
@@ -35,10 +35,11 @@
 **Intrinsic Resonance Holography (IRH) v21.1** is a unified theory deriving all fundamental physical laws, constants, and observable phenomena from axiomatically minimal quantum-informational principles. This repository provides the complete computational implementation, achieving:
 
 - ✅ **100% theoretical coverage**: All 17 critical equations from the IRH v21.1 Manuscript ([Part 1](./Intrinsic_Resonance_Holography-v21.1-Part1.md), [Part 2](./Intrinsic_Resonance_Holography-v21.1-Part2.md)) implemented
-- ✅ **970+ passing tests**: Comprehensive validation across 6 implementation phases + optimization tiers + ML
+- ✅ **1000+ passing tests**: Comprehensive validation across 6 implementation phases + optimization tiers + ML + experimental pipeline
 - ✅ **Web interface**: FastAPI backend + React frontend with interactive visualizations
 - ✅ **Desktop application**: User-friendly GUI with transparency engine and auto-updates
 - ✅ **ML surrogate models**: Neural network approximations for fast RG flow evaluation
+- ✅ **Experimental data pipeline**: Automated PDG/CODATA updates with version tracking
 - ✅ **12-digit precision**: Fine-structure constant α⁻¹ = 137.035999084 and other predictions
 - ✅ **MPI parallelization**: Distributed computing support for HPC clusters
 - ✅ **GPU acceleration**: JAX/CuPy backends with automatic CPU fallback
@@ -74,7 +75,7 @@
 
 ### Implementation Status
 
-**All 6 phases complete + Enhancement Phase + Optimization Tiers** (as of December 2025):
+**All 6 phases complete + Enhancement Phase + Optimization Tiers + Experimental Pipeline** (as of December 2025):
 
 | Phase | Focus | Tests | Status |
 |-------|-------|-------|--------|
@@ -87,9 +88,11 @@
 | **Enhancement** | Visualization, Reporting, Logging | 101+ | ✅ Complete |
 | **Tier 3** | Performance Optimization (8/8 phases) | 254+ | ✅ Complete |
 | **Tier 4.1-4.2** | Web Interface + Cloud Deployment | 13+ | ✅ Complete |
-| **Tier 4.3** | ML Surrogate Models (NEW) | 31+ | ✅ Complete |
+| **Tier 4.3** | ML Surrogate Models | 31+ | ✅ Complete |
+| **Tier 4.4** | Experimental Data Pipeline | 32+ | ✅ Complete |
+| **Tier 4.5** | Automated PDG/CODATA Updates (NEW) | 27+ | ✅ Complete |
 
-**Total**: 970+ tests | 100% critical equation coverage (17/17)
+**Total**: 1000+ tests | 100% critical equation coverage (17/17)
 
 ---
 
@@ -104,13 +107,20 @@
 
 **Linux/macOS:**
 ```bash
+# Standard installation
 curl -sSL https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/main/installers/install.sh | bash
+
+# Full installation (with web app and dev tools)
+curl -sSL https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/main/installers/install.sh | bash -s -- --full
 ```
 
 **Windows (PowerShell):**
 ```powershell
 # Download and run the Python installer
 python -c "import urllib.request; urllib.request.urlretrieve('https://raw.githubusercontent.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/main/installers/install.py', 'install.py')" && python install.py
+
+# Full installation (with web app and dev tools)
+python install.py --full
 ```
 
 ### Install from Source
@@ -125,12 +135,33 @@ python -m venv venv
 source venv/bin/activate  # Linux/macOS
 # or: venv\Scripts\activate  # Windows
 
-# Install dependencies
+# Install core dependencies
 pip install -r requirements.txt
+
+# (Optional) Install web application dependencies
+pip install fastapi uvicorn pydantic
+
+# (Optional) Install development dependencies
+pip install black isort flake8 mypy pytest-cov hypothesis
 
 # Verify installation
 python -c "from src.primitives.quaternions import Quaternion; print('✓ Installation successful')"
+
+# Run tests (1000+ tests)
+export PYTHONPATH=$PWD
+pytest tests/unit/ -v
 ```
+
+### Installation Options
+
+The installer supports multiple modes:
+
+| Option | Description |
+|--------|-------------|
+| `--dev` | Install development dependencies (black, mypy, pytest-cov) |
+| `--webapp` | Install web application dependencies (fastapi, uvicorn) |
+| `--full` | Full installation with all components |
+| `--dir <path>` | Custom installation directory |
 
 ### Desktop Application (Linux)
 
@@ -153,7 +184,7 @@ See [`docs/DEB_PACKAGE_ROADMAP.md`](./docs/DEB_PACKAGE_ROADMAP.md) for desktop a
 ### Run Tests
 
 ```bash
-# Run all tests (629+ tests)
+# Run all tests (1000+ tests)
 pytest tests/ -v
 
 # Run with coverage
@@ -163,6 +194,7 @@ pytest tests/ --cov=src --cov-report=html
 pytest tests/unit/test_rg_flow/ -v      # Phase I: RG flow
 pytest tests/unit/test_topology/ -v     # Phase III: Topology
 pytest tests/unit/test_standard_model/ -v  # Phase IV: Standard Model
+pytest tests/unit/test_experimental/ -v    # Phase 4.4-4.5: Experimental pipeline
 ```
 
 <details>
@@ -372,6 +404,27 @@ npm run dev
 | **Standard Model** | Gauge group and fermion emergence | §3.1 |
 | **Falsification** | Testable predictions timeline | §7 |
 
+### Google Cloud Run Deployment (Recommended)
+
+**One-command deployment to serverless cloud:**
+
+```bash
+# Quick deploy (automated)
+./deploy-to-cloudrun.sh YOUR_PROJECT_ID
+
+# Or use Cloud Build directly
+gcloud builds submit --config cloudbuild.yaml
+```
+
+**Features:**
+- ✅ **Fully serverless**: Auto-scaling from 0 to N instances
+- ✅ **Cost-effective**: Pay only for actual request time
+- ✅ **Fast deployment**: 5-10 minutes from code to production
+- ✅ **HTTPS included**: Automatic TLS certificates
+- ✅ **Global CDN**: Low latency worldwide
+
+See [`CLOUD_RUN_DEPLOYMENT.md`](./CLOUD_RUN_DEPLOYMENT.md) for complete guide.
+
 ### Docker Deployment
 
 ```bash
@@ -452,12 +505,19 @@ Explore IRH with interactive Jupyter notebooks - click "Open in Colab" to run di
 
 | Notebook | Description | Colab |
 |----------|-------------|-------|
-| **00_quickstart** | Quick introduction | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb) |
-| **01_group_manifold_visualization** | G_inf visualization | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/01_group_manifold_visualization.ipynb) |
-| **02_rg_flow_interactive** | RG flow explorer | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/02_rg_flow_interactive.ipynb) |
-| **03_observable_extraction** | Physical constants | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/03_observable_extraction.ipynb) |
-| **04_falsification_analysis** | Predictions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/04_falsification_analysis.ipynb) |
+| **00_quickstart** | Quick introduction to IRH | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/00_quickstart.ipynb) |
+| **01_group_manifold_visualization** | G_inf = SU(2)×U(1) visualization | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/01_group_manifold_visualization.ipynb) |
+| **02_rg_flow_interactive** | RG flow and fixed point explorer | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/02_rg_flow_interactive.ipynb) |
+| **03_observable_extraction** | Physical constants derivation | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/03_observable_extraction.ipynb) |
+| **04_falsification_analysis** | Testable predictions | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/04_falsification_analysis.ipynb) |
 | **05_full_stack_execution** | **Complete demo with scale selection** | [![Open](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/blob/main/notebooks/05_full_stack_execution.ipynb) |
+
+### Recommended Learning Path
+
+1. **Beginners**: Start with `00_quickstart.ipynb` to understand IRH basics
+2. **Theoretical foundation**: Explore `02_rg_flow_interactive.ipynb` to see β-functions and the Cosmic Fixed Point
+3. **Physical constants**: Use `03_observable_extraction.ipynb` to derive α⁻¹, w₀, etc.
+4. **Full verification**: Run `05_full_stack_execution.ipynb` for complete IRH validation
 
 The **05_full_stack_execution** notebook features a computation scale selector:
 
@@ -467,6 +527,50 @@ The **05_full_stack_execution** notebook features a computation scale selector:
 | **standard** | ~2-5 min | Regular usage |
 | **full** | ~10-30 min | Research |
 | **exascale** | ~1+ hour | Maximum fidelity |
+
+---
+
+## 🧪 Experimental Data Pipeline
+
+### Automated PDG/CODATA Updates (Phase 4.5)
+
+The framework includes automated updating of experimental data from authoritative sources:
+
+```python
+from src.experimental import update_codata_online, update_pdg_online, check_for_data_updates
+
+# Check if updates are available
+status = check_for_data_updates()
+print(f"CODATA updates available: {status['sources']['codata']['has_updates']}")
+
+# Update CODATA constants
+result = update_codata_online()
+print(f"Updated {result.updated_count} constants")
+print(f"Significant changes: {result.has_significant_changes}")
+
+# Update PDG particle data
+pdg_result = update_pdg_online()
+
+# Generate change report
+from src.experimental.online_updater import generate_change_report
+report = generate_change_report({'codata': result, 'pdg': pdg_result})
+print(report)
+```
+
+### Compare IRH Predictions with Experiment
+
+```python
+from src.experimental import compare_with_experiment
+from src.observables.alpha_inverse import compute_fine_structure_constant
+
+# Compute IRH prediction
+irh_alpha = compute_fine_structure_constant()
+
+# Compare with CODATA experimental value
+comparison = compare_with_experiment(irh_alpha.alpha_inverse, 'alpha_inverse')
+print(f"σ deviation: {comparison['sigma_deviation']:.2f}")
+print(f"Consistent (2σ): {comparison['consistent_2sigma']}")
+```
 
 ---
 
@@ -494,8 +598,11 @@ standard_model → cosmology → quantum_mechanics → falsifiable_predictions
 | **`src/quantum_mechanics/`** | Born rule, decoherence, emergent Hilbert space | §5.1-5.2 |
 | **`src/falsifiable_predictions/`** | LIV, muon g-2, gravitational sidebands | §8, Appendix J |
 | **`src/observables/`** | Physical constant extraction (α⁻¹, C_H) | §3.2 |
-| **`tests/`** | 629+ tests ensuring theoretical fidelity | — |
+| **`src/experimental/`** | PDG/CODATA data pipeline with online updates | §7 |
+| **`src/ml/`** | Neural network surrogate models | — |
+| **`tests/`** | 1000+ tests ensuring theoretical fidelity | — |
 | **`desktop/`** | PyQt6 desktop application with transparency engine | — |
+| **`webapp/`** | FastAPI backend + React frontend | — |
 | **`docs/`** | Technical reference, continuation guide, roadmap | — |
 | **`installers/`** | Cross-platform installation scripts (.sh, .bat, .py) | — |
 | **`notebooks/`** | Interactive Colab notebooks with "Open in Colab" buttons | — |
@@ -521,8 +628,12 @@ See [`docs/architectural_overview.md`](./docs/architectural_overview.md) for det
 | Falsifiable Predictions | 26+ | §8, App. J | ✅ Complete |
 | Observables (α⁻¹, C_H) | 15+ | Eqs. 3.4-3.5 | ✅ Complete |
 | Desktop Application | 36+ | — | ✅ Complete |
+| Web Interface + Cloud | 13+ | — | ✅ Complete |
+| ML Surrogate Models | 31+ | — | ✅ Complete |
+| Experimental Pipeline | 32+ | §7 | ✅ Complete |
+| Online Data Updates | 27+ | §7 | ✅ Complete |
 
-**Total**: 541+ tests passing | 17/17 critical equations (100% coverage)
+**Total**: 1000+ tests passing | 17/17 critical equations (100% coverage)
 
 See [`THEORETICAL_CORRESPONDENCE.md`](./THEORETICAL_CORRESPONDENCE.md) for complete code-to-theory mapping.
 
@@ -530,20 +641,18 @@ See [`THEORETICAL_CORRESPONDENCE.md`](./THEORETICAL_CORRESPONDENCE.md) for compl
 
 ## 🔮 Future Development
 
-### Planned Features (2026+)
+### Next Phase: Tier 5 - Research Enhancement
 
-The roadmap includes advanced capabilities for research and education:
+The roadmap continues with advanced capabilities for research and education:
 
-| Feature | Priority | Timeline | Reference |
-|---------|----------|----------|-----------|
-| **Enhanced Visualization** | HIGH | Q1 2026 | RG flow phase diagrams, 3D manifolds, VWP topology |
-| **Report Generation** | HIGH | Q1 2026 | LaTeX/HTML reports with theoretical citations |
-| **Advanced Logging** | MEDIUM | Q1 2026 | Structured logging with provenance tracking |
-| **Performance Optimization** | MEDIUM | Q2 2026 | MPI/GPU parallelization, caching, vectorization |
-| **Interactive Notebooks** | MEDIUM | Q2 2026 | Tutorial library, research templates |
-| **Web Interface** | LOW-MED | Q3 2026 | FastAPI backend, React frontend, cloud deployment |
-| **ML Integration** | LOW | Q4 2026+ | Surrogate models, parameter space exploration |
-| **Experimental Pipeline** | MEDIUM | Q4 2026+ | Automated PDG/CODATA updates, falsification testing |
+| Feature | Priority | Timeline | Description |
+|---------|----------|----------|-------------|
+| **Interactive Visualization** | HIGH | Q1 2026 | 3D RG flow phase diagrams, VWP topology |
+| **LaTeX Report Generator** | HIGH | Q1 2026 | Publication-ready reports with citations |
+| **Advanced Logging** | MEDIUM | Q1 2026 | Structured JSON logging with provenance |
+| **Wolfram Integration** | MEDIUM | Q2 2026 | Mathematica verification pipeline |
+| **Paper Notebooks** | HIGH | Q2 2026 | Notebooks reproducing key results |
+| **CI/CD Enhancements** | MEDIUM | Q2 2026 | Automated falsification checks |
 
 See [`docs/ROADMAP.md`](./docs/ROADMAP.md) for complete feature specifications and implementation plans.
 
@@ -604,7 +713,8 @@ When using IRH in your research:
 
 ## 📄 License
 
-This project is licensed under the **GNU General Public License v3.0**. See [`LICENSE`](./LICENSE) for full details.
+**This work is licenced under:** [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+
 
 ---
 

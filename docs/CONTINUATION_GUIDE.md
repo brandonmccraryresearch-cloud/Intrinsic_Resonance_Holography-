@@ -526,25 +526,120 @@ result = optimize_parameters(objective_function, n_iterations=50)
 - PDG database (particle properties)
 
 ### 2.4 NEXT PHASE: Tier 5 Development
+### 2.3 Phase 4.4: Experimental Data Pipeline - COMPLETE ✅
 
 **Goal**: Automated PDG/CODATA updates and experimental comparison
 
-**Planned Implementation**:
-- `src/experimental/` - Experimental data ingestion
-  - PDG data parser
-  - CODATA values database
-  - Version-controlled data catalogs
-- `src/experimental/comparison.py` - Statistical comparison
-  - σ-analysis framework
-  - Systematic uncertainty handling
-  - Publication-ready tables
+**Completed** (December 2025):
 
-**Dependencies**: 
-- `requests` for API access
-- `pandas` for data handling
-- `scipy.stats` for statistical tests
+**Experimental Module** (`src/experimental/`):
+- ✅ `codata_database.py` - CODATA 2018/2022 fundamental constants
+  - 25+ constants (α, G, ℏ, masses, coupling constants)
+  - `ExperimentalValue` class with uncertainty tracking
+  - IRH prediction comparison helpers
+  - `get_codata_value()`, `list_constants()` API
+- ✅ `pdg_parser.py` - PDG 2024 particle data
+  - 12+ particles (leptons, quarks, gauge bosons, Higgs)
+  - `Particle` dataclass with properties
+  - `get_pdg_value()`, `mass_ratio()` API
+- ✅ `comparison.py` - Statistical comparison framework
+  - `ComparisonResult` with σ-deviation analysis
+  - `chi_squared_test()` for multi-parameter tests
+  - `generate_comparison_table()` (Markdown, LaTeX, HTML)
+  - `full_irh_comparison_report()` 
+- ✅ `data_catalog.py` - Version-controlled data catalog
+  - `DataCatalog` unified data access interface
+  - Search and filtering by category/tags
+  - Version tracking with checksums
 
-**Reference**: docs/ROADMAP.md §4.4
+**Test Count**: 32 tests passing in `tests/unit/test_experimental/`
+
+**Quick Usage**:
+```python
+from src.experimental import get_pdg_value, get_codata_value, compare_with_experiment
+
+# Get CODATA constant
+alpha = get_codata_value('alpha_inverse')
+print(f"α⁻¹ = {alpha.value} ± {alpha.uncertainty}")  # 137.035999084 ± 2.1e-8
+
+# Get particle mass
+top = get_pdg_value('top', 'mass')
+print(f"m_t = {top.value} {top.unit}")  # 172760 MeV/c²
+
+# Compare IRH prediction with experiment
+from src.experimental.comparison import compare_single
+result = compare_single(137.035999084, 'alpha_inverse', 1e-9)
+print(f"σ deviation: {result.sigma_deviation:.2f}")  # ~0.00σ
+```
+
+### 2.4 Phase 4.5: Automated PDG/CODATA Updates - COMPLETE ✅
+
+**Goal**: Automated online updates from PDG and CODATA APIs
+
+**Completed** (December 2025):
+
+**Online Updater Module** (`src/experimental/online_updater.py`):
+- ✅ `CacheManager` class for local caching and offline operation
+  - Cache freshness checking with configurable validity period
+  - Save/load cache with metadata and checksums
+  - Clear cache by source or all sources
+- ✅ `update_codata()` function for CODATA constants
+  - HTTP-based API integration with rate limiting
+  - Comparison with existing database values
+  - Change detection (value changes, uncertainty changes, new constants)
+- ✅ `update_pdg()` function for PDG particle data
+  - Support for existing static data export
+  - Future extensibility for PDG API (when available)
+- ✅ `check_for_updates()` status checking
+  - Check cache freshness without downloading
+  - Report last update time and version
+- ✅ `generate_change_report()` report generation
+  - Markdown format with tables
+  - Text format for logging
+  - JSON format for programmatic use
+- ✅ `generate_alerts()` notification system
+  - Alert levels: info, warning, critical
+  - Significance threshold (σ-based)
+  - Failed update alerts
+
+**Test Count**: 27 tests passing in `tests/unit/test_experimental/test_online_updater.py`
+
+**Quick Usage**:
+```python
+from src.experimental import update_codata_online, update_pdg_online, check_for_data_updates
+
+# Check for available updates
+status = check_for_data_updates()
+print(f"CODATA cache age: {status['sources']['codata']['cache_age_hours']:.1f} hours")
+
+# Update CODATA constants
+result = update_codata_online(force_refresh=True)
+print(f"Updated {result.updated_count} constants")
+print(f"Significant changes: {result.has_significant_changes}")
+
+# Generate report
+from src.experimental.online_updater import generate_change_report, generate_alerts
+report = generate_change_report({'codata': result}, format='markdown')
+alerts = generate_alerts({'codata': result}, sigma_threshold=2.0)
+for alert in alerts:
+    print(f"[{alert.level}] {alert.message}")
+```
+
+**Reference**: docs/ROADMAP.md §4.5
+
+### 2.5 NEXT PHASE: Tier 5 - Research Enhancement
+
+**Goal**: Advanced features for research and publication
+
+**Planned Implementation** (Q1-Q2 2026):
+1. **Interactive Visualization** - 3D RG flow phase diagrams
+2. **LaTeX Report Generator** - Publication-ready reports
+3. **Wolfram Integration** - Mathematica verification
+4. **Paper Notebooks** - Notebooks reproducing key results
+
+**Reference**: docs/ROADMAP.md §5
+
+---
 
 **Goal**: Replace stub/placeholder implementations with full theoretical implementations
 

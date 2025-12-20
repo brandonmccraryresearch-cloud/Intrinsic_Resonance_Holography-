@@ -788,8 +788,12 @@ Every contribution to the IRH codebase must satisfy:
 - **Agent reminders**: keep changes minimal, place new code in `python/src/irh/...` with matching tests in `python/tests/...`, avoid new deps unless required, and trust these instructions before searching.
 - **Repository organization**: Status documents in `docs/status/`, handoff docs in `docs/handoff/`, legacy files in `archive/`, webapp in `webapp/`, deployment configs in `deploy/`.
 - **Current Phase**: Tier 4 Phase 4.5 COMPLETE ✅ - All Phases 4.1-4.5 complete, ready for Tier 5
+- **Current Phase**: Tier 4 Phase 4.5 COMPLETE ✅ - Automated PDG/CODATA Updates - All Tier 4 phases complete
 - **Deployment Ready**: Docker/Kubernetes configs in `deploy/` - see `deploy/README.md` for production deployment
 - **ML Surrogate Models**: `src/ml/` module complete - 31 tests (Phase 4.3 ✅)
+- **Experimental Pipeline**: `src/experimental/` module complete - 59 tests (Phases 4.4-4.5 ✅)
+- **Online Data Updates**: `src/experimental/online_updater.py` - Automated CODATA/PDG updates with caching
+- **Next Phase**: Tier 5 - Research Enhancement (Interactive visualization, LaTeX reports, Wolfram integration)
 - **Notebook findings**: See `docs/NOTEBOOK_FINDINGS.md` for computational discrepancies (beta functions, fermion masses)
 
 ## v18 Module Summary (15 modules)

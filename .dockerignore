@@ -1,0 +1,107 @@
+# IRH Docker Build Context - Ignore unnecessary files
+# Optimizes build time and reduces image size
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+azure-pipelines.yml
+
+# Documentation (not needed in runtime)
+docs/
+*.md
+!README.md
+LICENSE
+
+# Tests
+tests/
+test_*.py
+*_test.py
+pytest.ini
+.pytest_cache/
+
+# Notebooks
+notebooks/
+*.ipynb
+.ipynb_checkpoints/
+
+# Data files (should be externalized)
+data/
+*.csv
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Archives
+archive/
+*.tar.gz
+*.zip
+*.tar
+*.gz
+
+# Desktop app
+desktop/
+installers/
+
+# Frontend (using backend only for Cloud Run)
+webapp/frontend/
+node_modules/
+
+# Kubernetes configs (not needed in image)
+deploy/kubernetes/
+
+# Other Docker files
+Dockerfile*
+!Dockerfile.cloudrun
+docker-compose*.yml
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.log
+
+# Scripts (not needed in runtime)
+scripts/
+ci_cd/
+
+# Config samples
+*.example
+*.sample

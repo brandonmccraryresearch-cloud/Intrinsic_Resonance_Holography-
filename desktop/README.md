@@ -11,17 +11,44 @@ IRH Desktop provides a feature-rich graphical interface for the IRH computationa
 - **Customization**: Easy modification of parameters and configurations
 - **Visualization**: Interactive plots for RG flow and emergent physics
 
+## Building the .deb Package
+
+### Quick Build (using dpkg-deb)
+
+```bash
+cd desktop
+./build-deb.sh
+```
+
+This creates `dist/irh-desktop_21.0.0-1_all.deb`.
+
+### Full Debian Build (optional, requires devscripts)
+
+```bash
+cd desktop
+./build-deb.sh --full
+```
+
+### Build Requirements
+
+- `dpkg-deb` (from dpkg package)
+- Python 3.10+
+- Optional: `debhelper`, `dh-python`, `debuild` for full build
+
 ## Installation
 
 ### From .deb Package (Debian/Ubuntu)
 
 ```bash
-# Download the package
-wget https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/releases/download/v21.0.0/irh-desktop_21.0.0-1_all.deb
-
-# Install
+# Install from local build
+cd desktop/dist
 sudo dpkg -i irh-desktop_21.0.0-1_all.deb
 sudo apt-get install -f  # Install dependencies
+
+# Or download from releases
+wget https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography-/releases/download/v21.0.0/irh-desktop_21.0.0-1_all.deb
+sudo dpkg -i irh-desktop_21.0.0-1_all.deb
+sudo apt-get install -f
 ```
 
 ### From Source

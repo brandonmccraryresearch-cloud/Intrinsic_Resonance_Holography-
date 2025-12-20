@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import json
 import logging
+import pickle
 import time
 from dataclasses import dataclass
 from pathlib import Path
@@ -33,7 +34,7 @@ from typing import Any, Dict, Optional, Union
 __version__ = "1.0.0"
 __module_type__ = "infrastructure"
 
-# Configure module logger
+# Set up logger for cache operations
 logger = logging.getLogger(__name__)
 
 
@@ -108,7 +109,7 @@ class CacheManager:
     def __init__(
         self,
         cache_dir: Union[Path, str] = "data/cache/experimental",
-        default_ttl: float = 86400.0,  # 24 hours
+        default_ttl: float = 86400.0  # 24 hours
     ):
         self.cache_dir = Path(cache_dir)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -138,10 +139,9 @@ class CacheManager:
                     # Remove expired file
                     cache_file.unlink()
             except Exception as e:
-                # Log and skip corrupted cache files
+                # Skip corrupted cache files but log for debugging
                 logger.warning(
-                    f"Failed to load cache file {cache_file}: {e}. "
-                    "Skipping corrupted cache entry."
+                    f"Skipping corrupted cache file '{cache_file.name}': {type(e).__name__}: {e}"
                 )
                 continue
 

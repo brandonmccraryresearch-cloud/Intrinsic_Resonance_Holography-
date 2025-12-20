@@ -1,0 +1,92 @@
+# Google Cloud Build Configuration for IRH v21.1
+# THEORETICAL FOUNDATION: IRH v21.1 Manuscript
+# 
+# This configuration automates the build and deployment of the IRH
+# computational framework to Google Cloud Run.
+#
+# Usage:
+#   gcloud builds submit --config cloudbuild.yaml
+#
+# Or trigger automatically via GitHub integration:
+#   gcloud builds triggers create github \
+#     --repo-name=Intrinsic_Resonance_Holography- \
+#     --repo-owner=brandonmccraryresearch-cloud \
+#     --branch-pattern="^main$" \
+#     --build-config=cloudbuild.yaml
+
+steps:
+  # Step 1: Build the Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'build-image'
+    args:
+      - 'build'
+      - '-f'
+      - 'Dockerfile.cloudrun'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/irh-backend:$COMMIT_SHA'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/irh-backend:latest'
+      - '.'
+    timeout: 1200s  # 20 minutes for build
+
+  # Step 2: Push the image to Google Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-image'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/irh-backend:$COMMIT_SHA'
+    waitFor: ['build-image']
+
+  # Step 3: Push latest tag
+  - name: 'gcr.io/cloud-builders/docker'
+    id: 'push-latest'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/irh-backend:latest'
+    waitFor: ['build-image']
+
+  # Step 4: Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'deploy-cloud-run'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'irh-backend'
+      - '--image=gcr.io/$PROJECT_ID/irh-backend:$COMMIT_SHA'
+      - '--region=us-central1'
+      - '--platform=managed'
+      - '--allow-unauthenticated'  # Change to --no-allow-unauthenticated for private
+      - '--memory=2Gi'
+      - '--cpu=2'
+      - '--timeout=60s'
+      - '--concurrency=80'
+      - '--min-instances=0'
+      - '--max-instances=10'
+      - '--set-env-vars=PYTHONPATH=/app,LOG_LEVEL=INFO'
+    waitFor: ['push-image', 'push-latest']
+
+# Images to be pushed to Container Registry
+images:
+  - 'gcr.io/$PROJECT_ID/irh-backend:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/irh-backend:latest'
+
+# Build timeout (30 minutes total)
+timeout: 1800s
+
+# Build options
+options:
+  machineType: 'N1_HIGHCPU_8'  # Use high-CPU machine for faster builds
+  diskSizeGb: 50
+  logging: CLOUD_LOGGING_ONLY
+
+# Substitutions (can be overridden)
+substitutions:
+  _REGION: 'us-central1'
+  _SERVICE_NAME: 'irh-backend'
+  _MEMORY: '2Gi'
+  _CPU: '2'
+  _MAX_INSTANCES: '10'
+
+# Tags for organizing builds
+tags: ['irh', 'backend', 'v21.1', 'cloud-run']

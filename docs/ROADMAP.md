@@ -76,7 +76,21 @@ This roadmap outlines planned features and enhancements for the Intrinsic Resona
 - BayesianOptimizer and ActiveLearningOptimizer for parameter exploration
 - Full integration with existing RG flow modules
 
-**Total**: 970+ tests passing | 100% critical equation coverage
+✅ **Tier 4.4: Experimental Data Pipeline (32+ tests)** - COMPLETE
+- PDG parser for particle data (masses, widths, lifetimes)
+- CODATA database for fundamental constants
+- Data catalog with version control
+- Statistical comparison framework
+
+✅ **Tier 4.5: Automated PDG/CODATA Updates (27+ tests)** - COMPLETE
+- CacheManager for local caching and offline operation
+- Online API integration for CODATA constants
+- Online API integration for PDG particle data
+- Version comparison and diff reporting
+- Alert system for significant changes
+- Report generation (Markdown, text, JSON)
+
+**Total**: 1000+ tests passing | 100% critical equation coverage
 
 ---
 
@@ -723,9 +737,9 @@ The IRH development roadmap is organized into **4 tiers**, each containing **5-1
 |-------|-------------|--------|----------|--------|
 | 4.1 | Web Interface (FastAPI + React) | Q4 2025 | MEDIUM | ✅ Complete |
 | 4.2 | Cloud Deployment (Docker/K8s) | Q4 2025 | MEDIUM | ✅ Complete |
-| 4.3 | ML Surrogate Models | Q2 2026 | LOW | 📋 Planned |
-| 4.4 | Experimental Data Pipeline | Q2 2026 | MEDIUM | 📋 Planned |
-| 4.5 | Automated PDG/CODATA Updates | Q3 2026 | MEDIUM | 📋 Planned |
+| 4.3 | ML Surrogate Models | Q4 2025 | LOW | ✅ Complete |
+| 4.4 | Experimental Data Pipeline | Q4 2025 | MEDIUM | ✅ Complete |
+| 4.5 | Automated PDG/CODATA Updates | Q2 2026 | MEDIUM | 📋 Planned |
 | 4.6 | Plugin System | Q3 2026 | LOW | 📋 Planned |
 | 4.7 | Collaboration Tools | Q4 2026 | LOW | 📋 Planned |
 | 4.8 | Video Tutorial Library | Q4 2026 | LOW | 📋 Planned |
@@ -745,12 +759,25 @@ The IRH development roadmap is organized into **4 tiers**, each containing **5-1
 - ✅ Horizontal Pod Autoscaler for elastic scaling
 - ✅ ConfigMap with IRH physical constants
 
+**Phase 4.3 Complete** ✅:
+- ✅ RGFlowSurrogate neural network (`src/ml/rg_flow_surrogate.py`)
+- ✅ EnsembleUncertainty and MCDropoutUncertainty (`src/ml/uncertainty_quantification.py`)
+- ✅ BayesianOptimizer and ActiveLearningOptimizer (`src/ml/parameter_optimizer.py`)
+- ✅ 31 tests passing in `tests/unit/test_ml/`
+
+**Phase 4.4 Complete** ✅:
+- ✅ CODATA database (`src/experimental/codata_database.py`) - 25+ constants
+- ✅ PDG parser (`src/experimental/pdg_parser.py`) - 12+ particles
+- ✅ Comparison framework (`src/experimental/comparison.py`) - σ-analysis, χ² tests
+- ✅ Data catalog (`src/experimental/data_catalog.py`) - Version-controlled data
+- ✅ 32 tests passing in `tests/unit/test_experimental/`
+
 **Tier 4 Goals**:
 - Accessible web interface for non-programmers
 - Integration with experimental physics databases
 - Active research community
 
-**Current Phase**: 4.3 ML Surrogate Models - Neural network approximations for RG flow next.
+**Current Phase**: 4.5 Automated PDG/CODATA Updates - Online API integration next.
 
 ### Tier Milestones Summary
 
@@ -759,7 +786,7 @@ The IRH development roadmap is organized into **4 tiers**, each containing **5-1
 | **Tier 1** | Foundation | 7 | 2025 | ✅ COMPLETE |
 | **Tier 2** | Applications | 7 | 2025 | ✅ COMPLETE |
 | **Tier 3** | Optimization | 8 | 2025 | ✅ COMPLETE |
-| **Tier 4** | Ecosystem | 10 | 2025-2027 | 🔄 IN PROGRESS (2/10 complete) |
+| **Tier 4** | Ecosystem | 10 | 2025-2027 | 🔄 IN PROGRESS (4/10 complete) |
 
 ---
 

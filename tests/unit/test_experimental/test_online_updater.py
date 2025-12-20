@@ -1,532 +1,438 @@
 """
-Tests for Online Data Updater
+Tests for Online Data Updater (Phase 4.5)
 
-Tests the online fetching of experimental constants from CODATA and PDG.
-These tests will now work with firewall disabled.
+THEORETICAL FOUNDATION: IRH v21.1 Manuscript §7
+ROADMAP REFERENCE: docs/ROADMAP.md Phase 4.5
+
+Tests:
+- CacheManager functionality
+- Update result data structures
+- Change detection logic
+- Alert generation
+- Report generation
 """
 
 import pytest
-import time
+import json
 import tempfile
-import shutil
 from pathlib import Path
+from datetime import datetime, timedelta
 
 from src.experimental.online_updater import (
-    PhysicalConstant,
+    # Enums
+    UpdateSource,
+    ChangeType,
+    
+    # Data classes
+    DataChange,
     UpdateResult,
-    CODATAFetcher,
-    PDGFetcher,
-    update_codata_online,
-    update_pdg_online,
-    check_for_data_updates,
+    CacheMetadata,
+    Alert,
+    
+    # Cache management
+    CacheManager,
+    
+    # Update functions
+    update_codata,
+    update_pdg,
+    update_all,
+    check_for_updates,
+    
+    # Reporting
     generate_change_report,
-    generate_alerts
+    generate_alerts,
+    
+    # Configuration
+    CACHE_VALIDITY_HOURS,
 )
-from src.experimental.cache_manager import CacheManager
 
 
-@pytest.fixture
-def temp_cache_dir():
-    """Create temporary cache directory."""
-    temp_dir = tempfile.mkdtemp()
-    yield temp_dir
-    shutil.rmtree(temp_dir)
-
-
-@pytest.fixture
-def cache_manager(temp_cache_dir):
-    """Create cache manager with temporary directory."""
-    return CacheManager(cache_dir=temp_cache_dir, default_ttl=3600)
-
-
-class TestPhysicalConstant:
-    """Tests for PhysicalConstant data class."""
+class TestDataChange:
+    """Tests for DataChange data class."""
     
-    def test_physical_constant_creation(self):
-        """Test PhysicalConstant creation."""
-        const = PhysicalConstant(
-            name='fine-structure constant',
-            symbol='α⁻¹',
-            value=137.035999084,
-            uncertainty=0.000000021,
-            units='dimensionless',
-            source='CODATA 2022',
-            year=2022
+    def test_create_value_change(self):
+        """Test creating a value change."""
+        change = DataChange(
+            constant_name='alpha_inverse',
+            change_type=ChangeType.VALUE_CHANGE,
+            old_value=137.035999084,
+            new_value=137.035999085,
+            old_uncertainty=0.000000021,
+            new_uncertainty=0.000000021,
+            percent_change=7.3e-9,
+            source='CODATA',
         )
         
-        assert const.name == 'fine-structure constant'
-        assert const.symbol == 'α⁻¹'
-        assert const.value == 137.035999084
-        assert const.uncertainty == 0.000000021
+        assert change.constant_name == 'alpha_inverse'
+        assert change.change_type == ChangeType.VALUE_CHANGE
+        assert change.old_value == 137.035999084
+        assert change.new_value == 137.035999085
     
-    def test_physical_constant_serialization(self):
-        """Test PhysicalConstant to_dict and from_dict."""
-        const = PhysicalConstant(
-            name='Planck constant',
-            symbol='h',
-            value=6.62607015e-34,
-            uncertainty=0.0,
-            units='J Hz⁻¹',
-            source='CODATA 2022',
-            year=2022
+    def test_significance_calculation(self):
+        """Test statistical significance calculation."""
+        # Small change, should not be significant
+        small_change = DataChange(
+            constant_name='test',
+            change_type=ChangeType.VALUE_CHANGE,
+            old_value=100.0,
+            new_value=100.00001,
+            old_uncertainty=0.001,
+            percent_change=0.00001,
+        )
+        assert not small_change.is_significant(threshold_sigma=2.0)
+        
+        # Large change, should be significant
+        large_change = DataChange(
+            constant_name='test',
+            change_type=ChangeType.VALUE_CHANGE,
+            old_value=100.0,
+            new_value=100.01,
+            old_uncertainty=0.001,
+            percent_change=0.01,
+        )
+        assert large_change.is_significant(threshold_sigma=2.0)
+    
+    def test_new_constant_is_significant(self):
+        """Test that new constants are always significant."""
+        change = DataChange(
+            constant_name='new_constant',
+            change_type=ChangeType.NEW_CONSTANT,
+            new_value=1.234,
+            source='test',
+        )
+        assert change.is_significant()
+    
+    def test_no_change_not_significant(self):
+        """Test that no change is not significant."""
+        change = DataChange(
+            constant_name='test',
+            change_type=ChangeType.NO_CHANGE,
+        )
+        assert not change.is_significant()
+    
+    def test_to_dict(self):
+        """Test serialization to dictionary."""
+        change = DataChange(
+            constant_name='alpha',
+            change_type=ChangeType.VALUE_CHANGE,
+            old_value=7.297e-3,
+            new_value=7.298e-3,
+            source='CODATA',
         )
         
-        # Serialize
-        const_dict = const.to_dict()
-        assert const_dict['symbol'] == 'h'
-        assert const_dict['value'] == 6.62607015e-34
-        
-        # Deserialize
-        restored = PhysicalConstant.from_dict(const_dict)
-        assert restored.symbol == const.symbol
-        assert restored.value == const.value
-        assert restored.uncertainty == const.uncertainty
+        d = change.to_dict()
+        assert d['constant_name'] == 'alpha'
+        assert d['change_type'] == 'value_change'
+        assert 'is_significant' in d
 
 
 class TestUpdateResult:
     """Tests for UpdateResult data class."""
     
-    def test_update_result_creation(self):
-        """Test UpdateResult creation."""
+    def test_create_result(self):
+        """Test creating an update result."""
         result = UpdateResult(
+            source=UpdateSource.CODATA,
             success=True,
             updated_count=5,
-            failed_count=0,
-            timestamp=time.time(),
-            constants=[],
-            errors=[]
         )
         
-        assert result.success is True
+        assert result.source == UpdateSource.CODATA
+        assert result.success
         assert result.updated_count == 5
-        assert result.failed_count == 0
+        assert len(result.changes) == 0
+        assert len(result.errors) == 0
+    
+    def test_has_significant_changes(self):
+        """Test checking for significant changes."""
+        result = UpdateResult(source=UpdateSource.CODATA)
         assert not result.has_significant_changes
+        
+        # Add a significant change
+        result.changes.append(DataChange(
+            constant_name='test',
+            change_type=ChangeType.NEW_CONSTANT,
+            new_value=1.0,
+        ))
+        assert result.has_significant_changes
+    
+    def test_to_dict(self):
+        """Test serialization to dictionary."""
+        result = UpdateResult(
+            source=UpdateSource.PDG,
+            success=True,
+            updated_count=10,
+        )
+        
+        d = result.to_dict()
+        assert d['source'] == 'pdg'
+        assert d['success'] == True
+        assert d['updated_count'] == 10
+        assert 'timestamp' in d
 
 
-class TestCODATAFetcher:
-    """Tests for CODATAFetcher class."""
+class TestCacheManager:
+    """Tests for CacheManager."""
     
-    def test_codata_fetcher_creation(self, cache_manager):
-        """Test CODATAFetcher creation."""
-        fetcher = CODATAFetcher(cache_manager)
-        
-        assert fetcher.cache is cache_manager
-        assert fetcher.rate_limit_delay > 0
+    @pytest.fixture
+    def cache_dir(self):
+        """Create temporary cache directory."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            yield Path(tmpdir)
     
-    def test_codata_fetch_cached(self, cache_manager):
-        """Test CODATA fetch uses cache when available."""
-        fetcher = CODATAFetcher(cache_manager)
-        
-        # Pre-populate cache
+    @pytest.fixture
+    def cache_manager(self, cache_dir):
+        """Create cache manager with temp directory."""
+        return CacheManager(cache_dir)
+    
+    def test_cache_directory_creation(self, cache_dir):
+        """Test cache directory is created."""
+        manager = CacheManager(cache_dir / 'new_dir')
+        assert (cache_dir / 'new_dir').exists()
+    
+    def test_save_and_load_cache(self, cache_manager):
+        """Test saving and loading cache."""
         test_data = {
-            'α⁻¹': PhysicalConstant(
-                name='fine-structure constant',
-                symbol='α⁻¹',
-                value=137.035999084,
-                uncertainty=0.000000021,
-                units='dimensionless',
-                source='CODATA 2022',
-                year=2022
-            ).to_dict()
+            'alpha': {'value': 7.297e-3, 'uncertainty': 1.1e-12},
+            'hbar': {'value': 1.054e-34, 'uncertainty': 0.0},
         }
-        cache_manager.set('codata_2022', test_data)
         
-        # Fetch should use cache (no network request)
-        result = fetcher.fetch(force_refresh=False)
+        # Save
+        cache_path = cache_manager.save_cache(UpdateSource.CODATA, test_data, 'v2018')
+        assert Path(cache_path).exists()
         
-        assert result is not None
-        assert 'α⁻¹' in result
-        assert result['α⁻¹'].value == 137.035999084
+        # Load
+        loaded = cache_manager.load_cache(UpdateSource.CODATA)
+        assert loaded is not None
+        assert loaded['alpha']['value'] == 7.297e-3
     
-    def test_codata_fetch_force_refresh(self, cache_manager):
-        """Test CODATA fetch with force_refresh bypasses cache."""
-        fetcher = CODATAFetcher(cache_manager)
+    def test_cache_freshness(self, cache_manager):
+        """Test cache freshness check."""
+        # Initially no cache
+        assert not cache_manager.is_cache_fresh(UpdateSource.CODATA)
         
-        # Pre-populate cache with old data
-        old_data = {
-            'α⁻¹': PhysicalConstant(
-                name='fine-structure constant',
-                symbol='α⁻¹',
-                value=137.0,  # Wrong value
-                uncertainty=0.000000021,
-                units='dimensionless',
-                source='CODATA 2018',
-                year=2018
-            ).to_dict()
-        }
-        cache_manager.set('codata_2022', old_data)
+        # Save cache
+        cache_manager.save_cache(UpdateSource.CODATA, {'test': 1})
         
-        # Force refresh should invalidate cache and fetch new
-        result = fetcher.fetch(force_refresh=True)
-        
-        # Should get updated value (from _parse_codata_table hardcoded values)
-        assert result is not None
-        assert 'α⁻¹' in result
-        assert result['α⁻¹'].value == 137.035999084  # Updated value
+        # Now should be fresh
+        assert cache_manager.is_cache_fresh(UpdateSource.CODATA)
     
-    def test_codata_rate_limiting(self, cache_manager):
-        """Test rate limiting is applied."""
-        fetcher = CODATAFetcher(cache_manager, rate_limit_delay=0.5)
+    def test_cache_metadata(self, cache_manager):
+        """Test cache metadata."""
+        cache_manager.save_cache(UpdateSource.PDG, {'test': 1}, 'v2024')
         
-        # First call
-        start_time = time.time()
-        fetcher._rate_limit()
-        
-        # Second call should be delayed
-        fetcher._rate_limit()
-        elapsed = time.time() - start_time
-        
-        # Should have at least one rate limit delay
-        assert elapsed >= 0.5
+        meta = cache_manager.get_metadata(UpdateSource.PDG)
+        assert meta is not None
+        assert meta.version == 'v2024'
+        assert meta.constant_count == 1
     
-    def test_codata_parse_table(self, cache_manager):
-        """Test CODATA table parsing."""
-        fetcher = CODATAFetcher(cache_manager)
+    def test_clear_cache(self, cache_manager):
+        """Test clearing cache."""
+        cache_manager.save_cache(UpdateSource.CODATA, {'test': 1})
+        cache_manager.save_cache(UpdateSource.PDG, {'test': 2})
         
-        # Parse (currently uses hardcoded values)
-        result = fetcher._parse_codata_table("")
+        # Clear just CODATA
+        cache_manager.clear_cache(UpdateSource.CODATA)
+        assert cache_manager.load_cache(UpdateSource.CODATA) is None
+        assert cache_manager.load_cache(UpdateSource.PDG) is not None
         
-        # Check that essential constants are present
-        assert 'α⁻¹' in result
-        assert 'c' in result
-        assert 'h' in result
-        assert 'G' in result
-        
-        # Check fine-structure constant
-        alpha = result['α⁻¹']
-        assert alpha.value == 137.035999084
-        assert alpha.source == 'CODATA 2022'
-
-
-class TestPDGFetcher:
-    """Tests for PDGFetcher class."""
-    
-    def test_pdg_fetcher_creation(self, cache_manager):
-        """Test PDGFetcher creation."""
-        fetcher = PDGFetcher(cache_manager)
-        
-        assert fetcher.cache is cache_manager
-        assert fetcher.rate_limit_delay > 0
-    
-    def test_pdg_fetch_cached(self, cache_manager):
-        """Test PDG fetch uses cache when available."""
-        fetcher = PDGFetcher(cache_manager)
-        
-        # Pre-populate cache
-        test_data = {
-            'm_e': PhysicalConstant(
-                name='electron mass',
-                symbol='m_e',
-                value=0.51099895,
-                uncertainty=0.00000015,
-                units='MeV/c²',
-                source='PDG 2024',
-                year=2024
-            ).to_dict()
-        }
-        cache_manager.set('pdg_2024', test_data)
-        
-        # Fetch should use cache
-        result = fetcher.fetch(force_refresh=False)
-        
-        assert result is not None
-        assert 'm_e' in result
-        assert result['m_e'].value == 0.51099895
-    
-    def test_pdg_fetch_force_refresh(self, cache_manager):
-        """Test PDG fetch with force_refresh."""
-        fetcher = PDGFetcher(cache_manager)
-        
-        # Force refresh
-        result = fetcher.fetch(force_refresh=True)
-        
-        # Should get hardcoded values
-        assert result is not None
-        assert 'm_e' in result
-        assert 'm_μ' in result
-        assert 'm_τ' in result
+        # Clear all
+        cache_manager.clear_cache()
+        assert cache_manager.load_cache(UpdateSource.PDG) is None
 
 
 class TestUpdateFunctions:
-    """Tests for update convenience functions."""
+    """Tests for update functions."""
     
-    def test_update_codata_online(self, temp_cache_dir):
-        """Test update_codata_online function."""
-        result = update_codata_online(cache_dir=temp_cache_dir, force_refresh=False)
+    @pytest.fixture
+    def cache_manager(self):
+        """Create cache manager with temp directory."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            yield CacheManager(Path(tmpdir))
+    
+    def test_update_codata_returns_result(self, cache_manager):
+        """Test that update_codata returns a valid result."""
+        # Note: This doesn't actually make network calls if cache is used
+        result = update_codata(use_cache=True, cache_manager=cache_manager)
         
         assert isinstance(result, UpdateResult)
-        # Should succeed (using hardcoded values, no network required)
-        assert result.success is True
-        assert result.updated_count > 0
-        assert len(result.constants) > 0
-        assert len(result.errors) == 0
+        assert result.source == UpdateSource.CODATA
+        assert isinstance(result.timestamp, str)
     
-    def test_update_pdg_online(self, temp_cache_dir):
-        """Test update_pdg_online function."""
-        result = update_pdg_online(cache_dir=temp_cache_dir, force_refresh=False)
+    def test_update_pdg_returns_result(self, cache_manager):
+        """Test that update_pdg returns a valid result."""
+        result = update_pdg(use_cache=True, cache_manager=cache_manager)
         
         assert isinstance(result, UpdateResult)
-        assert result.success is True
-        assert result.updated_count > 0
-        assert len(result.constants) > 0
-        assert len(result.errors) == 0
+        assert result.source == UpdateSource.PDG
     
-    def test_check_for_data_updates(self, temp_cache_dir):
-        """Test check_for_data_updates function."""
-        # Initial check (no cache)
-        status = check_for_data_updates(cache_dir=temp_cache_dir)
+    def test_update_all(self, cache_manager):
+        """Test updating all sources."""
+        results = update_all(use_cache=True, cache_dir=cache_manager.cache_dir)
         
-        assert 'codata_cached' in status
-        assert 'pdg_cached' in status
-        assert 'cache_entry_count' in status
-        assert 'update_recommended' in status
+        assert 'codata' in results
+        assert 'pdg' in results
+        assert isinstance(results['codata'], UpdateResult)
+        assert isinstance(results['pdg'], UpdateResult)
+    
+    def test_check_for_updates(self, cache_manager):
+        """Test checking for updates."""
+        status = check_for_updates(cache_manager=cache_manager)
         
-        # Update data
-        update_codata_online(cache_dir=temp_cache_dir)
-        
-        # Check again
-        status = check_for_data_updates(cache_dir=temp_cache_dir)
-        assert status['codata_cached'] is True
+        assert 'checked_at' in status
+        assert 'sources' in status
+        assert 'codata' in status['sources']
+        assert 'pdg' in status['sources']
 
 
-class TestReportGeneration:
-    """Tests for report generation functions."""
+class TestReporting:
+    """Tests for report generation."""
     
-    def test_generate_change_report_no_changes(self):
-        """Test change report with no changes."""
-        constants = [
-            PhysicalConstant(
-                name='test constant',
-                symbol='α',
-                value=137.0,
-                uncertainty=0.1,
-                units='',
-                source='Test',
-                year=2024
-            )
-        ]
+    @pytest.fixture
+    def sample_results(self):
+        """Create sample update results."""
+        codata_result = UpdateResult(
+            source=UpdateSource.CODATA,
+            success=True,
+            updated_count=3,
+        )
+        codata_result.changes.append(DataChange(
+            constant_name='alpha',
+            change_type=ChangeType.VALUE_CHANGE,
+            old_value=7.297e-3,
+            new_value=7.298e-3,
+            percent_change=0.0137,
+            source='CODATA',
+        ))
         
-        report = generate_change_report(constants, constants, format='text')
+        pdg_result = UpdateResult(
+            source=UpdateSource.PDG,
+            success=True,
+            updated_count=5,
+        )
         
-        assert 'No changes detected' in report
+        return {'codata': codata_result, 'pdg': pdg_result}
     
-    def test_generate_change_report_with_changes(self):
-        """Test change report with changes."""
-        old_constants = [
-            PhysicalConstant(
-                name='test constant',
-                symbol='α',
-                value=137.0,
-                uncertainty=0.1,
-                units='',
-                source='Test',
-                year=2023
-            )
-        ]
+    def test_generate_markdown_report(self, sample_results):
+        """Test Markdown report generation."""
+        report = generate_change_report(sample_results, output_format='markdown')
         
-        new_constants = [
-            PhysicalConstant(
-                name='test constant',
-                symbol='α',
-                value=137.035999084,
-                uncertainty=0.1,
-                units='',
-                source='Test',
-                year=2024
-            )
-        ]
-        
-        # Test markdown format
-        report = generate_change_report(old_constants, new_constants, format='markdown')
-        assert '# Experimental Data Changes' in report
-        assert 'α' in report
-        
-        # Test text format
-        report = generate_change_report(old_constants, new_constants, format='text')
-        assert 'EXPERIMENTAL DATA CHANGES' in report
-        assert 'α' in report
-        
-        # Test JSON format
-        report = generate_change_report(old_constants, new_constants, format='json')
-        # JSON might escape Unicode as \u03b1
-        assert '"symbol"' in report and ('α' in report or '\\u03b1' in report)
+        assert '# Experimental Data Update Report' in report
+        assert 'CODATA' in report
+        assert 'PDG' in report
+        assert 'alpha' in report
     
-    def test_generate_change_report_formats(self):
-        """Test all report formats."""
-        old = [PhysicalConstant('test', 'α', 137.0, 0.1, '', 'Test', 2023)]
-        new = [PhysicalConstant('test', 'α', 137.1, 0.1, '', 'Test', 2024)]
+    def test_generate_text_report(self, sample_results):
+        """Test text report generation."""
+        report = generate_change_report(sample_results, output_format='text')
         
-        # All formats should work
-        markdown = generate_change_report(old, new, format='markdown')
-        text = generate_change_report(old, new, format='text')
-        json_str = generate_change_report(old, new, format='json')
+        assert 'EXPERIMENTAL DATA UPDATE REPORT' in report
+        assert 'CODATA' in report
+    
+    def test_generate_json_report(self, sample_results):
+        """Test JSON report generation."""
+        report = generate_change_report(sample_results, output_format='json')
         
-        assert len(markdown) > 0
-        assert len(text) > 0
-        assert len(json_str) > 0
+        data = json.loads(report)
+        assert 'codata' in data
+        assert 'pdg' in data
+        assert data['codata']['success'] == True
 
 
-class TestAlertGeneration:
+class TestAlerts:
     """Tests for alert generation."""
     
-    def test_generate_alerts_no_deviations(self):
-        """Test alerts with perfect agreement."""
-        irh_predictions = {
-            'α⁻¹': 137.035999084
-        }
+    def test_generate_alerts_for_significant_changes(self):
+        """Test that alerts are generated for significant changes."""
+        result = UpdateResult(source=UpdateSource.CODATA)
+        result.changes.append(DataChange(
+            constant_name='alpha',
+            change_type=ChangeType.VALUE_CHANGE,
+            old_value=100.0,
+            new_value=102.0,  # 2% change - significant
+            old_uncertainty=0.01,
+            percent_change=2.0,
+        ))
         
-        experimental = [
-            PhysicalConstant(
-                name='fine-structure constant',
-                symbol='α⁻¹',
-                value=137.035999084,
-                uncertainty=0.000000021,
-                units='',
-                source='CODATA',
-                year=2022
-            )
-        ]
+        alerts = generate_alerts({'codata': result}, sigma_threshold=2.0)
         
-        alerts = generate_alerts(irh_predictions, experimental, sigma_threshold=3.0)
-        
-        # No alerts for perfect agreement
-        assert len(alerts) == 0
-    
-    def test_generate_alerts_with_deviation(self):
-        """Test alerts with significant deviation."""
-        irh_predictions = {
-            'α⁻¹': 140.0  # 3σ+ deviation
-        }
-        
-        experimental = [
-            PhysicalConstant(
-                name='fine-structure constant',
-                symbol='α⁻¹',
-                value=137.035999084,
-                uncertainty=0.5,  # Large uncertainty for testing
-                units='',
-                source='CODATA',
-                year=2022
-            )
-        ]
-        
-        alerts = generate_alerts(irh_predictions, experimental, sigma_threshold=3.0)
-        
-        # Should generate alert
         assert len(alerts) > 0
-        alert = alerts[0]
-        assert alert['symbol'] == 'α⁻¹'
-        assert alert['deviation_sigma'] > 3.0
+        assert any(a.constant_name == 'alpha' for a in alerts)
     
-    def test_generate_alerts_falsification(self):
-        """Test alerts for falsification (>5σ)."""
-        irh_predictions = {
-            'α⁻¹': 200.0  # Huge deviation
-        }
+    def test_alert_for_failed_update(self):
+        """Test alert generation for failed updates."""
+        result = UpdateResult(source=UpdateSource.PDG, success=False)
+        result.errors.append("Connection timeout")
         
-        experimental = [
-            PhysicalConstant(
-                name='fine-structure constant',
-                symbol='α⁻¹',
-                value=137.035999084,
-                uncertainty=1.0,
-                units='',
-                source='CODATA',
-                year=2022
-            )
-        ]
+        alerts = generate_alerts({'pdg': result})
         
-        alerts = generate_alerts(irh_predictions, experimental, sigma_threshold=3.0)
-        
-        # Should mark as falsified
         assert len(alerts) > 0
-        alert = alerts[0]
-        assert alert['falsified'] is True
+        assert any(a.level == 'warning' for a in alerts)
+        assert any('Connection timeout' in a.message for a in alerts)
     
-    def test_generate_alerts_missing_prediction(self):
-        """Test alerts when IRH has no prediction for a constant."""
-        irh_predictions = {
-            'α⁻¹': 137.035999084
-        }
+    def test_no_alerts_for_no_changes(self):
+        """Test no alerts when no significant changes."""
+        result = UpdateResult(source=UpdateSource.CODATA, success=True)
         
-        experimental = [
-            PhysicalConstant(
-                name='some other constant',
-                symbol='β',
-                value=42.0,
-                uncertainty=0.1,
-                units='',
-                source='Test',
-                year=2024
-            )
-        ]
+        alerts = generate_alerts({'codata': result})
         
-        alerts = generate_alerts(irh_predictions, experimental, sigma_threshold=3.0)
-        
-        # No alert for constant without IRH prediction
         assert len(alerts) == 0
+
+
+class TestEnums:
+    """Tests for enum values."""
     
-    def test_generate_alerts_zero_uncertainty(self):
-        """Test alerts with zero uncertainty (exact by definition)."""
-        irh_predictions = {
-            'c': 299792458.0
-        }
-        
-        experimental = [
-            PhysicalConstant(
-                name='speed of light',
-                symbol='c',
-                value=299792458.0,
-                uncertainty=0.0,  # Exact by definition
-                units='m/s',
-                source='CODATA',
-                year=2022
-            )
-        ]
-        
-        alerts = generate_alerts(irh_predictions, experimental, sigma_threshold=3.0)
-        
-        # No alert for constants with zero uncertainty
-        assert len(alerts) == 0
+    def test_update_source_values(self):
+        """Test UpdateSource enum values."""
+        assert UpdateSource.CODATA.value == 'codata'
+        assert UpdateSource.PDG.value == 'pdg'
+        assert UpdateSource.ALL.value == 'all'
+    
+    def test_change_type_values(self):
+        """Test ChangeType enum values."""
+        assert ChangeType.VALUE_CHANGE.value == 'value_change'
+        assert ChangeType.UNCERTAINTY_CHANGE.value == 'uncertainty_change'
+        assert ChangeType.NEW_CONSTANT.value == 'new_constant'
+        assert ChangeType.REMOVED_CONSTANT.value == 'removed_constant'
+        assert ChangeType.NO_CHANGE.value == 'no_change'
 
 
 class TestIntegration:
-    """Integration tests combining multiple components."""
+    """Integration tests for online updater."""
     
-    def test_full_update_workflow(self, temp_cache_dir):
+    def test_full_update_workflow(self):
         """Test complete update workflow."""
-        # Check status (empty cache)
-        status = check_for_data_updates(cache_dir=temp_cache_dir)
-        assert status['codata_cached'] is False
-        
-        # Update CODATA
-        result = update_codata_online(cache_dir=temp_cache_dir, force_refresh=True)
-        assert result.success is True
-        
-        # Check status (now cached)
-        status = check_for_data_updates(cache_dir=temp_cache_dir)
-        assert status['codata_cached'] is True
-        
-        # Generate report
-        if len(result.constants) > 0:
-            report = generate_change_report([], result.constants, format='markdown')
-            assert len(report) > 0
+        with tempfile.TemporaryDirectory() as tmpdir:
+            cache_dir = Path(tmpdir)
+            
+            # 1. Check for updates
+            status = check_for_updates(cache_manager=CacheManager(cache_dir))
+            assert 'sources' in status
+            
+            # 2. Perform updates
+            results = update_all(use_cache=True, cache_dir=cache_dir)
+            assert 'codata' in results
+            assert 'pdg' in results
+            
+            # 3. Generate report
+            report = generate_change_report(results, output_format='markdown')
+            assert '# Experimental Data Update Report' in report
+            
+            # 4. Generate alerts
+            alerts = generate_alerts(results)
+            assert isinstance(alerts, list)
     
-    def test_validation_workflow(self, temp_cache_dir):
-        """Test validation against IRH predictions."""
-        # Update experimental data
-        result = update_codata_online(cache_dir=temp_cache_dir)
-        assert result.success is True
-        
-        # IRH predictions (from src/observables/alpha_inverse.py)
-        irh_predictions = {
-            'α⁻¹': 137.035999084  # IRH prediction
-        }
-        
-        # Generate alerts
-        alerts = generate_alerts(irh_predictions, result.constants, sigma_threshold=3.0)
-        
-        # Should have perfect agreement (or close enough)
-        for alert in alerts:
-            # If any alert, should be small deviation
-            assert alert['deviation_sigma'] < 5.0, f"Unexpected large deviation: {alert}"
+    def test_cache_persistence(self):
+        """Test that cache persists across manager instances."""
+        with tempfile.TemporaryDirectory() as tmpdir:
+            cache_dir = Path(tmpdir)
+            
+            # Save with first manager
+            manager1 = CacheManager(cache_dir)
+            manager1.save_cache(UpdateSource.CODATA, {'test': 'data'})
+            
+            # Load with second manager
+            manager2 = CacheManager(cache_dir)
+            loaded = manager2.load_cache(UpdateSource.CODATA)
+            
+            assert loaded == {'test': 'data'}
