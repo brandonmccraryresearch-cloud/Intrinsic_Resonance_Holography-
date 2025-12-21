@@ -1,0 +1,123 @@
+name: Check Experimental Data Updates
+
+on:
+  schedule:
+    # Run daily at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .
+      
+      - name: Check for experimental data updates
+        id: check_updates
+        run: |
+          python -c "
+          from src.experimental.update_manager import UpdateManager
+          
+          manager = UpdateManager()
+          summary = manager.check_all_updates(force_refresh=True)
+          
+          print(f'Total updates: {summary.total_updates}')
+          print(f'Significant updates: {summary.significant_updates}')
+          print(f'Requires action: {summary.requires_action}')
+          
+          # Generate report
+          report = manager.generate_comprehensive_report(summary, format='markdown')
+          
+          # Save to file
+          with open('update_report.md', 'w') as f:
+              f.write(report)
+          
+          # Set outputs for GitHub Actions
+          import os
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as f:
+              f.write(f'total_updates={summary.total_updates}\n')
+              f.write(f'significant_updates={summary.significant_updates}\n')
+              f.write(f'requires_action={str(summary.requires_action).lower()}\n')
+          "
+      
+      - name: Create issue if significant updates found
+        if: steps.check_updates.outputs.requires_action == 'true'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.readFileSync('update_report.md', 'utf8');
+            
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '⚠️ Significant Experimental Data Updates Detected',
+              body: `
+            ${report}
+            
+            ---
+            
+            **Automated Check**: This issue was automatically created by the experimental data update workflow.
+            
+            **Next Steps**:
+            1. Review all significant changes (>3σ)
+            2. Verify updates are legitimate and not data errors
+            3. Update local database if changes are confirmed
+            4. Re-run IRH predictions with updated values
+            5. Update comparison tables in documentation
+            6. Close this issue when complete
+              `,
+              labels: ['experimental-data', 'needs-review', 'automated']
+            });
+      
+      - name: Post summary comment
+        if: steps.check_updates.outputs.total_updates > 0
+        run: |
+          echo "## Experimental Data Update Check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total Updates**: ${{ steps.check_updates.outputs.total_updates }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Significant Updates**: ${{ steps.check_updates.outputs.significant_updates }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Action Required**: ${{ steps.check_updates.outputs.requires_action }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          cat update_report.md >> $GITHUB_STEP_SUMMARY
+      
+      - name: Upload report artifact
+        if: steps.check_updates.outputs.total_updates > 0
+        uses: actions/upload-artifact@v4
+        with:
+          name: experimental-data-update-report
+          path: update_report.md
+          retention-days: 90
+      
+      - name: Send notification to Slack (optional)
+        if: steps.check_updates.outputs.requires_action == 'true' && vars.SLACK_WEBHOOK_URL != ''
+        run: |
+          curl -X POST ${{ vars.SLACK_WEBHOOK_URL }} \
+            -H 'Content-Type: application/json' \
+            -d '{
+              "text": "⚠️ Significant experimental data updates detected in IRH repository",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*Experimental Data Update Alert*\n\nSignificant updates detected (${{ steps.check_updates.outputs.significant_updates }} updates >3σ). Review required.\n\n<https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}|View Details>"
+                  }
+                }
+              ]
+            }'

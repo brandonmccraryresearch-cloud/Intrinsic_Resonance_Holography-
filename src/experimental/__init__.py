@@ -12,6 +12,9 @@ Modules:
     codata_database: CODATA fundamental constants
     data_catalog: Version-controlled data management
     comparison: Statistical comparison framework
+    codata_api: Online CODATA API client (Phase 4.5)
+    pdg_api: Online PDG API client (Phase 4.5)
+    update_manager: Unified update manager (Phase 4.5)
 
 Authors: IRH Computational Framework Team
 Last Updated: December 2025
@@ -87,8 +90,71 @@ def compare_with_experiment(irh_value: float, experimental_name: str, uncertaint
     return _compare(irh_value, experimental_name, uncertainty)
 
 
+def check_codata_updates(cache_ttl: int = 86400):
+    """
+    Check for CODATA constant updates.
+    
+    Parameters
+    ----------
+    cache_ttl : int
+        Cache time-to-live in seconds (default: 24 hours)
+    
+    Returns
+    -------
+    list of ConstantUpdate
+        All updates found
+    """
+    from .codata_api import check_codata_updates as _check
+    return _check(cache_ttl)
+
+
+def check_pdg_updates(cache_ttl: int = 86400):
+    """
+    Check for PDG particle updates.
+    
+    Parameters
+    ----------
+    cache_ttl : int
+        Cache time-to-live in seconds (default: 24 hours)
+    
+    Returns
+    -------
+    list of ParticleUpdate
+        All updates found
+    """
+    from .pdg_api import check_pdg_updates as _check
+    return _check(cache_ttl)
+
+
+def generate_update_report(output_file=None, format='markdown', force_refresh=False):
+    """
+    Generate comprehensive update report.
+    
+    Parameters
+    ----------
+    output_file : Path, optional
+        Output file path
+    format : str
+        Output format ('markdown', 'text', 'json', or 'html')
+    force_refresh : bool
+        Force fresh API calls
+    
+    Returns
+    -------
+    report : str
+        Report content
+    filepath : Path
+        Path to saved file
+    """
+    from .update_manager import generate_update_report as _generate
+    return _generate(output_file, format, force_refresh)
+
+
 __all__ = [
     'get_pdg_value',
     'get_codata_value', 
     'compare_with_experiment',
+    'check_codata_updates',
+    'check_pdg_updates',
+    'generate_update_report',
 ]
