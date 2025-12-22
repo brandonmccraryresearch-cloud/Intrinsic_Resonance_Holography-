@@ -1,8 +1,32 @@
-# Contributing to IRH v21.0 Computational Framework
+# Contributing to IRH v21.4 Computational Framework
 
 ## Overview
 
-Thank you for your interest in contributing to the Intrinsic Resonance Holography v21.0 Computational Framework. This repository instantiates a unified theoretical framework that derives fundamental physical laws from quantum-informational principles. Contributions must maintain **theoretical fidelity** to the canonical manuscript `IRH21.md`.
+Thank you for your interest in contributing to the Intrinsic Resonance Holography v21.4 Computational Framework. This repository instantiates a unified theoretical framework that derives fundamental physical laws from quantum-informational principles. Contributions must maintain **absolute theoretical fidelity** to the canonical manuscripts:
+- `Intrinsic-Resonance-Holography-21.4-Part1.md`
+- `Intrinsic-Resonance-Holography-21.4-Part2.md`
+
+---
+
+## 🔴 MANDATORY: Read This First
+
+**BEFORE making ANY contributions, you MUST read:**
+
+1. **[`.github/THEORETICAL_CORRESPONDENCE_MANDATE.md`](.github/THEORETICAL_CORRESPONDENCE_MANDATE.md)** - Zero-tolerance policy for theoretical approximations
+2. **[`.github/COMPREHENSIVE_AUDIT_REPORT.md`](.github/COMPREHENSIVE_AUDIT_REPORT.md)** - Complete analysis of current implementation gaps
+3. **[`.github/MANDATORY_AUDIT_PROTOCOL.md`](.github/MANDATORY_AUDIT_PROTOCOL.md)** - Required audit procedures
+
+**Key Standards:**
+- ✅ Complete formulas (no oversimplifications)
+- ✅ Manuscript citations required (IRH v21.4 Part 1/2, §X.Y, Eq. Z)
+- ✅ Transparency Engine integration (all computations must emit provenance)
+- ✅ Zero hardcoded constants (all values computed or explicitly justified)
+- ✅ Non-perturbative corrections included
+- ✅ Error bounds specified for all approximations
+
+**Violations will result in immediate PR rejection.**
+
+---
 
 ### 🤖 GitHub Copilot Users
 
@@ -14,6 +38,31 @@ If you're using GitHub Copilot, please review our comprehensive [Copilot Instruc
 
 The instructions help Copilot provide better suggestions that align with our theoretical framework and coding practices.
 
+---
+
+## Pre-Commit Compliance Check
+
+**REQUIRED:** Run compliance verification before committing:
+
+```bash
+# Verify your changes comply with IRH v21.4 standards
+python scripts/verify_compliance.py --verbose
+
+# Generate compliance report
+python scripts/verify_compliance.py --report compliance_report.json
+```
+
+The compliance checker verifies:
+- ✅ Manuscript citations in all functions
+- ✅ No hardcoded physical constants
+- ✅ Transparency Engine usage
+- ✅ Test coverage and passing tests
+- ✅ Documentation consistency
+
+**Non-compliant code will not be merged.**
+
+---
+
 ## Core Principles
 
 ### 1. Theoretical Traceability
@@ -22,41 +71,59 @@ The instructions help Copilot provide better suggestions that align with our the
 
 All functions, classes, and modules must include:
 
-- **Section references**: `# IRH21.md §2.3.3`
+- **Manuscript reference**: `# IRH v21.4 Part 1 §2.3.3`
 - **Equation labels**: `# Implements Eq. 2.21-2.23`
 - **Appendix citations**: `# Derivation in Appendix C.6`
 
-Example docstring:
+**REQUIRED docstring format (IRH v21.4):**
 
 ```python
 def compute_beta_lambda(lambda_k: float, gamma_k: float) -> float:
     """
     Compute the beta function for the interaction coupling λ.
     
-    THEORETICAL FOUNDATION: IRH21.md §1.2.2 (Eq. 1.13)
+    Theoretical Reference:
+        IRH v21.4 Part 1, §1.2.2, Eq. 1.13
     
-    The one-loop beta function for the dimensionless coupling λ̃:
+    Mathematical Foundation:
+        The one-loop beta function for the dimensionless coupling λ̃:
+        
+            β_λ = ∂_t λ̃ = -2λ̃ + (9/8π²)λ̃²
+        
+        This drives the flow toward the Cosmic Fixed Point at λ̃* = 48π²/9.
     
-        β_λ = ∂_t λ̃ = -2λ̃ + (9/8π²)λ̃²
-    
-    This drives the flow toward the Cosmic Fixed Point.
+    Formula (Complete):
+        β_λ(λ̃, γ̃) = -2λ̃ + (9/8π²)λ̃²
     
     Parameters
     ----------
     lambda_k : float
-        Running interaction coupling at scale k
+        Running interaction coupling at scale k (dimensionless)
     gamma_k : float
-        Running QNCD coupling at scale k
+        Running QNCD coupling at scale k (dimensionless)
         
     Returns
     -------
     float
         Value of β_λ at the given couplings
         
+    Notes
+    -----
+    This is the ONE-LOOP approximation. For full non-perturbative result,
+    use solve_wetterich_equation() from src/rg_flow/wetterich.py.
+    
+    The fixed point occurs at λ̃* where β_λ = 0, yielding λ̃* ≈ 52.64.
+        
     References
     ----------
-    IRH21.md §1.2.2, Eq. 1.13
+    IRH v21.4 Part 1, §1.2.2, Eq. 1.13
     Appendix B.1.1 for canonical dimension derivation
+    Appendix B.3 for two-loop corrections
+    
+    Examples
+    --------
+    >>> beta = compute_beta_lambda(LAMBDA_STAR, GAMMA_STAR)
+    >>> assert np.isclose(beta, 0.0, atol=1e-10)  # At fixed point
     """
     pass
 ```
@@ -126,12 +193,16 @@ docs/spectral-dimension-derivation
 ### 4. Pull Request
 
 PRs must include:
-- [ ] Theoretical traceability (equation/section references)
-- [ ] Unit tests for new functionality
-- [ ] Theoretical invariant tests (if applicable)
-- [ ] Convergence tests (for numerical methods)
-- [ ] Updated `THEORETICAL_CORRESPONDENCE.md`
-- [ ] Docstrings with IRH21.md citations
+- [ ] **Theoretical traceability** - All functions cite IRH v21.4 Part 1/2
+- [ ] **Complete formulas** - No oversimplifications (see MANDATE)
+- [ ] **Transparency Engine** - Integrated where required
+- [ ] **Unit tests** for all new functionality
+- [ ] **Theoretical invariant tests** (if applicable)
+- [ ] **Convergence tests** (for numerical methods)
+- [ ] **Updated documentation**
+- [ ] **Compliance verification passed** - Run `python scripts/verify_compliance.py`
+
+**Use the PR template:** `.github/pull_request_template.md` will auto-populate with full compliance checklist.
 
 ## Code Style
 
