@@ -35,7 +35,7 @@ if str(_repo_root) not in sys.path:
     sys.path.insert(0, str(_repo_root))
 
 from src.standard_model.yukawa_rg_running import compute_yukawa_rg_running
-from src.topology.complexity_operator import compute_topological_complexity
+from src.topology.complexity_operator import get_topological_complexity
 
 __version__ = "21.4.0"
 __theoretical_foundation__ = "IRH v21.4 Part 1 §3.2, Eq. 3.6"
@@ -169,9 +169,7 @@ def compute_fermion_mass(
     # Step 1: Get topological complexity 𝓚_f
     if use_dynamic_K_f:
         # Compute dynamically from complexity operator (Appendix E.1)
-        generation = FERMION_GENERATIONS[fermion]
-        K_f_result = compute_topological_complexity(generation=generation)
-        K_f = K_f_result.K_f
+        K_f = get_topological_complexity(fermion=fermion, verbosity=0)
         K_f_source = "dynamically computed (Appendix E.1)"
     else:
         # Use manuscript reference value
