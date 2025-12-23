@@ -1,0 +1,769 @@
+2025-12-23T01:28:58.8206836Z Current runner version: '2.330.0'
+2025-12-23T01:28:58.8230689Z ##[group]Runner Image Provisioner
+2025-12-23T01:28:58.8231412Z Hosted Compute Agent
+2025-12-23T01:28:58.8232486Z Version: 20251211.462
+2025-12-23T01:28:58.8233091Z Commit: 6cbad8c2bb55d58165063d031ccabf57e2d2db61
+2025-12-23T01:28:58.8233778Z Build Date: 2025-12-11T16:28:49Z
+2025-12-23T01:28:58.8234472Z Worker ID: {2ad2cb09-4a99-4818-9a36-46839e056dca}
+2025-12-23T01:28:58.8235164Z ##[endgroup]
+2025-12-23T01:28:58.8235661Z ##[group]Operating System
+2025-12-23T01:28:58.8236249Z Ubuntu
+2025-12-23T01:28:58.8236718Z 24.04.3
+2025-12-23T01:28:58.8237124Z LTS
+2025-12-23T01:28:58.8237621Z ##[endgroup]
+2025-12-23T01:28:58.8238099Z ##[group]Runner Image
+2025-12-23T01:28:58.8238635Z Image: ubuntu-24.04
+2025-12-23T01:28:58.8239130Z Version: 20251215.174.1
+2025-12-23T01:28:58.8240159Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20251215.174/images/ubuntu/Ubuntu2404-Readme.md
+2025-12-23T01:28:58.8241645Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20251215.174
+2025-12-23T01:28:58.8242987Z ##[endgroup]
+2025-12-23T01:28:58.8244025Z ##[group]GITHUB_TOKEN Permissions
+2025-12-23T01:28:58.8245773Z Contents: read
+2025-12-23T01:28:58.8246316Z Metadata: read
+2025-12-23T01:28:58.8246877Z ##[endgroup]
+2025-12-23T01:28:58.8248977Z Secret source: Actions
+2025-12-23T01:28:58.8250093Z Prepare workflow directory
+2025-12-23T01:28:58.8583026Z Prepare all required actions
+2025-12-23T01:28:58.8620009Z Getting action download info
+2025-12-23T01:28:59.1976244Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2025-12-23T01:28:59.3023186Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2025-12-23T01:28:59.8216729Z Complete job name: validate (3.11)
+2025-12-23T01:28:59.8979912Z ##[group]Run actions/checkout@v4
+2025-12-23T01:28:59.8980989Z with:
+2025-12-23T01:28:59.8981837Z   repository: brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography
+2025-12-23T01:28:59.8983374Z   token: ***
+2025-12-23T01:28:59.8983976Z   ssh-strict: true
+2025-12-23T01:28:59.8984586Z   ssh-user: git
+2025-12-23T01:28:59.8985206Z   persist-credentials: true
+2025-12-23T01:28:59.8985894Z   clean: true
+2025-12-23T01:28:59.8986513Z   sparse-checkout-cone-mode: true
+2025-12-23T01:28:59.8987225Z   fetch-depth: 1
+2025-12-23T01:28:59.8987815Z   fetch-tags: false
+2025-12-23T01:28:59.8988434Z   show-progress: true
+2025-12-23T01:28:59.8989051Z   lfs: false
+2025-12-23T01:28:59.8989656Z   submodules: false
+2025-12-23T01:28:59.8990295Z   set-safe-directory: true
+2025-12-23T01:28:59.8991260Z ##[endgroup]
+2025-12-23T01:29:00.0059383Z Syncing repository: brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography
+2025-12-23T01:29:00.0062190Z ##[group]Getting Git version info
+2025-12-23T01:29:00.0063511Z Working directory is '/home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography'
+2025-12-23T01:29:00.0065254Z [command]/usr/bin/git version
+2025-12-23T01:29:00.0147203Z git version 2.52.0
+2025-12-23T01:29:00.0173761Z ##[endgroup]
+2025-12-23T01:29:00.0187420Z Temporarily overriding HOME='/home/runner/work/_temp/fa90bccb-30b6-49d4-8741-c7e94f45deec' before making global git config changes
+2025-12-23T01:29:00.0189856Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-23T01:29:00.0192261Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography
+2025-12-23T01:29:00.0231428Z Deleting the contents of '/home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography'
+2025-12-23T01:29:00.0234787Z ##[group]Initializing the repository
+2025-12-23T01:29:00.0240094Z [command]/usr/bin/git init /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography
+2025-12-23T01:29:00.0349361Z hint: Using 'master' as the name for the initial branch. This default branch name
+2025-12-23T01:29:00.0350831Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2025-12-23T01:29:00.0353068Z hint: to use in all of your new repositories, which will suppress this warning,
+2025-12-23T01:29:00.0354242Z hint: call:
+2025-12-23T01:29:00.0355481Z hint:
+2025-12-23T01:29:00.0356761Z hint: 	git config --global init.defaultBranch <name>
+2025-12-23T01:29:00.0358258Z hint:
+2025-12-23T01:29:00.0359740Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2025-12-23T01:29:00.0361853Z hint: 'development'. The just-created branch can be renamed via this command:
+2025-12-23T01:29:00.0363747Z hint:
+2025-12-23T01:29:00.0364853Z hint: 	git branch -m <name>
+2025-12-23T01:29:00.0366067Z hint:
+2025-12-23T01:29:00.0367615Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2025-12-23T01:29:00.0370410Z Initialized empty Git repository in /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography/.git/
+2025-12-23T01:29:00.0374416Z [command]/usr/bin/git remote add origin https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography
+2025-12-23T01:29:00.0402766Z ##[endgroup]
+2025-12-23T01:29:00.0404619Z ##[group]Disabling automatic garbage collection
+2025-12-23T01:29:00.0406702Z [command]/usr/bin/git config --local gc.auto 0
+2025-12-23T01:29:00.0436150Z ##[endgroup]
+2025-12-23T01:29:00.0438025Z ##[group]Setting up auth
+2025-12-23T01:29:00.0443804Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-23T01:29:00.0477162Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-23T01:29:00.0819781Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-23T01:29:00.0853483Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-23T01:29:00.1067804Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-23T01:29:00.1098875Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-23T01:29:00.1318473Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2025-12-23T01:29:00.1353097Z ##[endgroup]
+2025-12-23T01:29:00.1354238Z ##[group]Fetching the repository
+2025-12-23T01:29:00.1360707Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +2597cf6c0cfe872ecf8b70aeefdcccaf7e73ea52:refs/remotes/pull/60/merge
+2025-12-23T01:29:00.6278047Z From https://github.com/brandonmccraryresearch-cloud/Intrinsic_Resonance_Holography
+2025-12-23T01:29:00.6279524Z  * [new ref]         2597cf6c0cfe872ecf8b70aeefdcccaf7e73ea52 -> pull/60/merge
+2025-12-23T01:29:00.6310452Z ##[endgroup]
+2025-12-23T01:29:00.6311148Z ##[group]Determining the checkout info
+2025-12-23T01:29:00.6313159Z ##[endgroup]
+2025-12-23T01:29:00.6317932Z [command]/usr/bin/git sparse-checkout disable
+2025-12-23T01:29:00.6358197Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2025-12-23T01:29:00.6383507Z ##[group]Checking out the ref
+2025-12-23T01:29:00.6386878Z [command]/usr/bin/git checkout --progress --force refs/remotes/pull/60/merge
+2025-12-23T01:29:00.6935270Z Note: switching to 'refs/remotes/pull/60/merge'.
+2025-12-23T01:29:00.6936271Z 
+2025-12-23T01:29:00.6937031Z You are in 'detached HEAD' state. You can look around, make experimental
+2025-12-23T01:29:00.6939088Z changes and commit them, and you can discard any commits you make in this
+2025-12-23T01:29:00.6941147Z state without impacting any branches by switching back to a branch.
+2025-12-23T01:29:00.6942463Z 
+2025-12-23T01:29:00.6942935Z If you want to create a new branch to retain commits you create, you may
+2025-12-23T01:29:00.6944138Z do so (now or later) by using -c with the switch command. Example:
+2025-12-23T01:29:00.6945208Z 
+2025-12-23T01:29:00.6945519Z   git switch -c <new-branch-name>
+2025-12-23T01:29:00.6946266Z 
+2025-12-23T01:29:00.6946554Z Or undo this operation with:
+2025-12-23T01:29:00.6947158Z 
+2025-12-23T01:29:00.6947380Z   git switch -
+2025-12-23T01:29:00.6947674Z 
+2025-12-23T01:29:00.6948244Z Turn off this advice by setting config variable advice.detachedHead to false
+2025-12-23T01:29:00.6949304Z 
+2025-12-23T01:29:00.6950518Z HEAD is now at 2597cf6 Merge 7c944888b1a47b36cd9c81709daa24c0f6e10020 into 158c83d9504227487cba389a31a23f1c29855c27
+2025-12-23T01:29:00.6953769Z ##[endgroup]
+2025-12-23T01:29:00.6982155Z [command]/usr/bin/git log -1 --format=%H
+2025-12-23T01:29:00.7003626Z 2597cf6c0cfe872ecf8b70aeefdcccaf7e73ea52
+2025-12-23T01:29:00.7306235Z ##[group]Run actions/setup-python@v5
+2025-12-23T01:29:00.7307026Z with:
+2025-12-23T01:29:00.7307467Z   python-version: 3.11
+2025-12-23T01:29:00.7308046Z   check-latest: false
+2025-12-23T01:29:00.7308896Z   token: ***
+2025-12-23T01:29:00.7309400Z   update-environment: true
+2025-12-23T01:29:00.7310048Z   allow-prereleases: false
+2025-12-23T01:29:00.7310672Z   freethreaded: false
+2025-12-23T01:29:00.7311192Z ##[endgroup]
+2025-12-23T01:29:00.8985800Z ##[group]Installed versions
+2025-12-23T01:29:00.9110767Z Successfully set up CPython (3.11.14)
+2025-12-23T01:29:00.9112918Z ##[endgroup]
+2025-12-23T01:29:00.9309774Z ##[group]Run python -m pip install --upgrade pip
+2025-12-23T01:29:00.9310866Z [36;1mpython -m pip install --upgrade pip[0m
+2025-12-23T01:29:00.9311761Z [36;1mpip install -r requirements.txt[0m
+2025-12-23T01:29:00.9312754Z [36;1mpip install pytest pytest-cov[0m
+2025-12-23T01:29:00.9363973Z shell: /usr/bin/bash -e {0}
+2025-12-23T01:29:00.9364604Z env:
+2025-12-23T01:29:00.9365246Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:00.9366624Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2025-12-23T01:29:00.9367990Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:00.9369212Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:00.9370398Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:00.9371609Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2025-12-23T01:29:00.9372773Z ##[endgroup]
+2025-12-23T01:29:01.7563611Z Requirement already satisfied: pip in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (25.3)
+2025-12-23T01:29:02.5789326Z Collecting numpy>=1.24.0 (from -r requirements.txt (line 5))
+2025-12-23T01:29:02.6371014Z   Downloading numpy-2.4.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+2025-12-23T01:29:02.7536222Z Collecting scipy>=1.10.0 (from -r requirements.txt (line 6))
+2025-12-23T01:29:02.7581722Z   Downloading scipy-1.16.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (62 kB)
+2025-12-23T01:29:02.8014462Z Collecting sympy>=1.12 (from -r requirements.txt (line 7))
+2025-12-23T01:29:02.8051835Z   Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+2025-12-23T01:29:02.8401558Z Collecting pytest>=7.0.0 (from -r requirements.txt (line 10))
+2025-12-23T01:29:02.8458011Z   Downloading pytest-9.0.2-py3-none-any.whl.metadata (7.6 kB)
+2025-12-23T01:29:02.8682825Z Collecting pytest-cov>=4.0.0 (from -r requirements.txt (line 11))
+2025-12-23T01:29:02.8729250Z   Downloading pytest_cov-7.0.0-py3-none-any.whl.metadata (31 kB)
+2025-12-23T01:29:02.8947243Z Collecting pytest-xdist>=3.0.0 (from -r requirements.txt (line 12))
+2025-12-23T01:29:02.8984926Z   Downloading pytest_xdist-3.8.0-py3-none-any.whl.metadata (3.0 kB)
+2025-12-23T01:29:02.9478335Z Collecting black>=23.0.0 (from -r requirements.txt (line 15))
+2025-12-23T01:29:02.9532940Z   Downloading black-25.12.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (86 kB)
+2025-12-23T01:29:02.9914259Z Collecting isort>=5.12.0 (from -r requirements.txt (line 16))
+2025-12-23T01:29:02.9951514Z   Downloading isort-7.0.0-py3-none-any.whl.metadata (11 kB)
+2025-12-23T01:29:03.0189470Z Collecting flake8>=6.0.0 (from -r requirements.txt (line 17))
+2025-12-23T01:29:03.0224574Z   Downloading flake8-7.3.0-py2.py3-none-any.whl.metadata (3.8 kB)
+2025-12-23T01:29:03.1352364Z Collecting mypy>=1.0.0 (from -r requirements.txt (line 18))
+2025-12-23T01:29:03.1396598Z   Downloading mypy-1.19.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.2 kB)
+2025-12-23T01:29:03.1847900Z Collecting sphinx>=6.0.0 (from -r requirements.txt (line 21))
+2025-12-23T01:29:03.1887950Z   Downloading sphinx-9.0.4-py3-none-any.whl.metadata (5.8 kB)
+2025-12-23T01:29:03.2076033Z Collecting sphinx-rtd-theme>=1.2.0 (from -r requirements.txt (line 22))
+2025-12-23T01:29:03.2147149Z   Downloading sphinx_rtd_theme-3.0.2-py2.py3-none-any.whl.metadata (4.4 kB)
+2025-12-23T01:29:03.2520093Z Collecting pyyaml>=6.0 (from -r requirements.txt (line 25))
+2025-12-23T01:29:03.2575990Z   Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+2025-12-23T01:29:03.2995952Z Collecting h5py>=3.8.0 (from -r requirements.txt (line 26))
+2025-12-23T01:29:03.3031172Z   Downloading h5py-3.15.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+2025-12-23T01:29:03.3142894Z Collecting jupyter>=1.0.0 (from -r requirements.txt (line 29))
+2025-12-23T01:29:03.3238493Z   Downloading jupyter-1.1.1-py2.py3-none-any.whl.metadata (2.0 kB)
+2025-12-23T01:29:03.4069571Z Collecting jupyterlab>=4.0.0 (from -r requirements.txt (line 30))
+2025-12-23T01:29:03.4116787Z   Downloading jupyterlab-4.5.1-py3-none-any.whl.metadata (16 kB)
+2025-12-23T01:29:03.5437812Z Collecting matplotlib>=3.7.0 (from -r requirements.txt (line 31))
+2025-12-23T01:29:03.5481762Z   Downloading matplotlib-3.10.8-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (52 kB)
+2025-12-23T01:29:03.5854701Z Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.12->-r requirements.txt (line 7))
+2025-12-23T01:29:03.5891362Z   Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+2025-12-23T01:29:03.6031069Z Collecting iniconfig>=1.0.1 (from pytest>=7.0.0->-r requirements.txt (line 10))
+2025-12-23T01:29:03.6064965Z   Downloading iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+2025-12-23T01:29:03.6225298Z Collecting packaging>=22 (from pytest>=7.0.0->-r requirements.txt (line 10))
+2025-12-23T01:29:03.6259466Z   Downloading packaging-25.0-py3-none-any.whl.metadata (3.3 kB)
+2025-12-23T01:29:03.6393687Z Collecting pluggy<2,>=1.5 (from pytest>=7.0.0->-r requirements.txt (line 10))
+2025-12-23T01:29:03.6437875Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2025-12-23T01:29:03.6636238Z Collecting pygments>=2.7.2 (from pytest>=7.0.0->-r requirements.txt (line 10))
+2025-12-23T01:29:03.6692838Z   Downloading pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+2025-12-23T01:29:04.0318093Z Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov>=4.0.0->-r requirements.txt (line 11))
+2025-12-23T01:29:04.0354437Z   Downloading coverage-7.13.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (8.5 kB)
+2025-12-23T01:29:04.0524925Z Collecting execnet>=2.1 (from pytest-xdist>=3.0.0->-r requirements.txt (line 12))
+2025-12-23T01:29:04.0559590Z   Downloading execnet-2.1.2-py3-none-any.whl.metadata (2.9 kB)
+2025-12-23T01:29:04.0750321Z Collecting click>=8.0.0 (from black>=23.0.0->-r requirements.txt (line 15))
+2025-12-23T01:29:04.0783973Z   Downloading click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+2025-12-23T01:29:04.0888461Z Collecting mypy-extensions>=0.4.3 (from black>=23.0.0->-r requirements.txt (line 15))
+2025-12-23T01:29:04.0926082Z   Downloading mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+2025-12-23T01:29:04.1051301Z Collecting pathspec>=0.9.0 (from black>=23.0.0->-r requirements.txt (line 15))
+2025-12-23T01:29:04.1090244Z   Downloading pathspec-0.12.1-py3-none-any.whl.metadata (21 kB)
+2025-12-23T01:29:04.1297751Z Collecting platformdirs>=2 (from black>=23.0.0->-r requirements.txt (line 15))
+2025-12-23T01:29:04.1378556Z   Downloading platformdirs-4.5.1-py3-none-any.whl.metadata (12 kB)
+2025-12-23T01:29:04.1506508Z Collecting pytokens>=0.3.0 (from black>=23.0.0->-r requirements.txt (line 15))
+2025-12-23T01:29:04.1542555Z   Downloading pytokens-0.3.0-py3-none-any.whl.metadata (2.0 kB)
+2025-12-23T01:29:04.1668432Z Collecting mccabe<0.8.0,>=0.7.0 (from flake8>=6.0.0->-r requirements.txt (line 17))
+2025-12-23T01:29:04.1703597Z   Downloading mccabe-0.7.0-py2.py3-none-any.whl.metadata (5.0 kB)
+2025-12-23T01:29:04.1863767Z Collecting pycodestyle<2.15.0,>=2.14.0 (from flake8>=6.0.0->-r requirements.txt (line 17))
+2025-12-23T01:29:04.1910357Z   Downloading pycodestyle-2.14.0-py2.py3-none-any.whl.metadata (4.5 kB)
+2025-12-23T01:29:04.2055591Z Collecting pyflakes<3.5.0,>=3.4.0 (from flake8>=6.0.0->-r requirements.txt (line 17))
+2025-12-23T01:29:04.2094975Z   Downloading pyflakes-3.4.0-py2.py3-none-any.whl.metadata (3.5 kB)
+2025-12-23T01:29:04.2298618Z Collecting typing_extensions>=4.6.0 (from mypy>=1.0.0->-r requirements.txt (line 18))
+2025-12-23T01:29:04.2342461Z   Downloading typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+2025-12-23T01:29:04.3095343Z Collecting librt>=0.6.2 (from mypy>=1.0.0->-r requirements.txt (line 18))
+2025-12-23T01:29:04.3132695Z   Downloading librt-0.7.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (1.3 kB)
+2025-12-23T01:29:04.3254800Z Collecting sphinxcontrib-applehelp>=1.0.7 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.3291381Z   Downloading sphinxcontrib_applehelp-2.0.0-py3-none-any.whl.metadata (2.3 kB)
+2025-12-23T01:29:04.3743237Z Collecting sphinxcontrib-devhelp>=1.0.6 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.3782774Z   Downloading sphinxcontrib_devhelp-2.0.0-py3-none-any.whl.metadata (2.3 kB)
+2025-12-23T01:29:04.4045178Z Collecting sphinxcontrib-htmlhelp>=2.0.6 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.4080656Z   Downloading sphinxcontrib_htmlhelp-2.1.0-py3-none-any.whl.metadata (2.3 kB)
+2025-12-23T01:29:04.4177925Z Collecting sphinxcontrib-jsmath>=1.0.1 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.4216875Z   Downloading sphinxcontrib_jsmath-1.0.1-py2.py3-none-any.whl.metadata (1.4 kB)
+2025-12-23T01:29:04.4338404Z Collecting sphinxcontrib-qthelp>=1.0.6 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.4375957Z   Downloading sphinxcontrib_qthelp-2.0.0-py3-none-any.whl.metadata (2.3 kB)
+2025-12-23T01:29:04.4490872Z Collecting sphinxcontrib-serializinghtml>=1.1.9 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.4528218Z   Downloading sphinxcontrib_serializinghtml-2.0.0-py3-none-any.whl.metadata (2.4 kB)
+2025-12-23T01:29:04.4689503Z Collecting Jinja2>=3.1 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.4723878Z   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+2025-12-23T01:29:04.4943404Z Collecting docutils<0.23,>=0.20 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.4978223Z   Downloading docutils-0.22.4-py3-none-any.whl.metadata (15 kB)
+2025-12-23T01:29:04.5098179Z Collecting snowballstemmer>=2.2 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.5155198Z   Downloading snowballstemmer-3.0.1-py3-none-any.whl.metadata (7.9 kB)
+2025-12-23T01:29:04.5303231Z Collecting babel>=2.13 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.5338038Z   Downloading babel-2.17.0-py3-none-any.whl.metadata (2.0 kB)
+2025-12-23T01:29:04.5464678Z Collecting alabaster>=0.7.14 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.5501828Z   Downloading alabaster-1.0.0-py3-none-any.whl.metadata (2.8 kB)
+2025-12-23T01:29:04.5609476Z Collecting imagesize>=1.3 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.5664882Z   Downloading imagesize-1.4.1-py2.py3-none-any.whl.metadata (1.5 kB)
+2025-12-23T01:29:04.5914972Z Collecting requests>=2.30.0 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.5954407Z   Downloading requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+2025-12-23T01:29:04.6108015Z Collecting roman-numerals>=1.0.0 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.6145328Z   Downloading roman_numerals-4.1.0-py3-none-any.whl.metadata (3.3 kB)
+2025-12-23T01:29:04.6347757Z Collecting sphinx>=6.0.0 (from -r requirements.txt (line 21))
+2025-12-23T01:29:04.6388969Z   Downloading sphinx-8.2.3-py3-none-any.whl.metadata (7.0 kB)
+2025-12-23T01:29:04.6480992Z Collecting docutils<0.23,>=0.20 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.6517585Z   Downloading docutils-0.21.2-py3-none-any.whl.metadata (2.8 kB)
+2025-12-23T01:29:04.6637885Z Collecting sphinxcontrib-jquery<5,>=4 (from sphinx-rtd-theme>=1.2.0->-r requirements.txt (line 22))
+2025-12-23T01:29:04.6688668Z   Downloading sphinxcontrib_jquery-4.1-py2.py3-none-any.whl.metadata (2.6 kB)
+2025-12-23T01:29:04.6857165Z Collecting roman-numerals-py>=1.0.0 (from sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:04.6891566Z   Downloading roman_numerals_py-4.1.0-py3-none-any.whl.metadata (561 bytes)
+2025-12-23T01:29:04.7518654Z Collecting notebook (from jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:04.7573850Z   Downloading notebook-7.5.1-py3-none-any.whl.metadata (10 kB)
+2025-12-23T01:29:04.7744761Z Collecting jupyter-console (from jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:04.7812206Z   Downloading jupyter_console-6.6.3-py3-none-any.whl.metadata (5.8 kB)
+2025-12-23T01:29:04.8063399Z Collecting nbconvert (from jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:04.8100735Z   Downloading nbconvert-7.16.6-py3-none-any.whl.metadata (8.5 kB)
+2025-12-23T01:29:04.8463452Z Collecting ipykernel (from jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:04.8513822Z   Downloading ipykernel-7.1.0-py3-none-any.whl.metadata (4.5 kB)
+2025-12-23T01:29:04.8876688Z Collecting ipywidgets (from jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:04.8915142Z   Downloading ipywidgets-8.1.8-py3-none-any.whl.metadata (2.4 kB)
+2025-12-23T01:29:04.9250549Z Collecting async-lru>=1.0.0 (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:04.9310461Z   Downloading async_lru-2.0.5-py3-none-any.whl.metadata (4.5 kB)
+2025-12-23T01:29:04.9928003Z Collecting httpx<1,>=0.25.0 (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:04.9963949Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+2025-12-23T01:29:05.2395175Z Collecting jupyter-core (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:05.2429701Z   Downloading jupyter_core-5.9.1-py3-none-any.whl.metadata (1.5 kB)
+2025-12-23T01:29:05.7866705Z Collecting jupyter-lsp>=2.0.0 (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:05.7917532Z   Downloading jupyter_lsp-2.3.0-py3-none-any.whl.metadata (1.8 kB)
+2025-12-23T01:29:06.3150084Z Collecting jupyter-server<3,>=2.4.0 (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.3197239Z   Downloading jupyter_server-2.17.0-py3-none-any.whl.metadata (8.5 kB)
+2025-12-23T01:29:06.5535639Z Collecting jupyterlab-server<3,>=2.28.0 (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.5581387Z   Downloading jupyterlab_server-2.28.0-py3-none-any.whl.metadata (5.9 kB)
+2025-12-23T01:29:06.5741332Z Collecting notebook-shim>=0.2 (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.5792378Z   Downloading notebook_shim-0.2.4-py3-none-any.whl.metadata (4.0 kB)
+2025-12-23T01:29:06.5832584Z Requirement already satisfied: setuptools>=41.1.0 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from jupyterlab>=4.0.0->-r requirements.txt (line 30)) (79.0.1)
+2025-12-23T01:29:06.6147887Z Collecting tornado>=6.2.0 (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.6188465Z   Downloading tornado-6.5.4-cp39-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (2.8 kB)
+2025-12-23T01:29:06.6358377Z Collecting traitlets (from jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.6391604Z   Downloading traitlets-5.14.3-py3-none-any.whl.metadata (10 kB)
+2025-12-23T01:29:06.6606435Z Collecting anyio (from httpx<1,>=0.25.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.6648197Z   Downloading anyio-4.12.0-py3-none-any.whl.metadata (4.3 kB)
+2025-12-23T01:29:06.6847582Z Collecting certifi (from httpx<1,>=0.25.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.6881338Z   Downloading certifi-2025.11.12-py3-none-any.whl.metadata (2.5 kB)
+2025-12-23T01:29:06.7078567Z Collecting httpcore==1.* (from httpx<1,>=0.25.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.7124902Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2025-12-23T01:29:06.7283954Z Collecting idna (from httpx<1,>=0.25.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.7316784Z   Downloading idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+2025-12-23T01:29:06.7470637Z Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.25.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.7518329Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2025-12-23T01:29:06.7799334Z Collecting argon2-cffi>=21.1 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.7870742Z   Downloading argon2_cffi-25.1.0-py3-none-any.whl.metadata (4.1 kB)
+2025-12-23T01:29:06.8117755Z Collecting jupyter-client>=7.4.4 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.8154275Z   Downloading jupyter_client-8.7.0-py3-none-any.whl.metadata (8.3 kB)
+2025-12-23T01:29:06.8342810Z Collecting jupyter-events>=0.11.0 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.8378792Z   Downloading jupyter_events-0.12.0-py3-none-any.whl.metadata (5.8 kB)
+2025-12-23T01:29:06.8507222Z Collecting jupyter-server-terminals>=0.4.4 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.8543085Z   Downloading jupyter_server_terminals-0.5.3-py3-none-any.whl.metadata (5.6 kB)
+2025-12-23T01:29:06.8778138Z Collecting nbformat>=5.3.0 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.8815670Z   Downloading nbformat-5.10.4-py3-none-any.whl.metadata (3.6 kB)
+2025-12-23T01:29:06.8980444Z Collecting overrides>=5.0 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.9017172Z   Downloading overrides-7.7.0-py3-none-any.whl.metadata (5.8 kB)
+2025-12-23T01:29:06.9177233Z Collecting prometheus-client>=0.9 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:06.9259662Z   Downloading prometheus_client-0.23.1-py3-none-any.whl.metadata (1.9 kB)
+2025-12-23T01:29:07.1957162Z Collecting pyzmq>=24 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:07.1996362Z   Downloading pyzmq-27.1.0-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (6.0 kB)
+2025-12-23T01:29:07.2128055Z Collecting send2trash>=1.8.2 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:07.2168509Z   Downloading Send2Trash-1.8.3-py3-none-any.whl.metadata (4.0 kB)
+2025-12-23T01:29:07.2342091Z Collecting terminado>=0.8.3 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:07.2375955Z   Downloading terminado-0.18.1-py3-none-any.whl.metadata (5.8 kB)
+2025-12-23T01:29:07.2645981Z Collecting websocket-client>=1.7 (from jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:07.2733546Z   Downloading websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
+2025-12-23T01:29:07.2963523Z Collecting json5>=0.9.0 (from jupyterlab-server<3,>=2.28.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:07.3063381Z   Downloading json5-0.12.1-py3-none-any.whl.metadata (36 kB)
+2025-12-23T01:29:07.3355052Z Collecting jsonschema>=4.18.0 (from jupyterlab-server<3,>=2.28.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:07.3388219Z   Downloading jsonschema-4.25.1-py3-none-any.whl.metadata (7.6 kB)
+2025-12-23T01:29:07.4260048Z Collecting contourpy>=1.0.1 (from matplotlib>=3.7.0->-r requirements.txt (line 31))
+2025-12-23T01:29:07.4297442Z   Downloading contourpy-1.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (5.5 kB)
+2025-12-23T01:29:07.4440137Z Collecting cycler>=0.10 (from matplotlib>=3.7.0->-r requirements.txt (line 31))
+2025-12-23T01:29:07.4481619Z   Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+2025-12-23T01:29:07.6020824Z Collecting fonttools>=4.22.0 (from matplotlib>=3.7.0->-r requirements.txt (line 31))
+2025-12-23T01:29:07.6066516Z   Downloading fonttools-4.61.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (114 kB)
+2025-12-23T01:29:07.6765691Z Collecting kiwisolver>=1.3.1 (from matplotlib>=3.7.0->-r requirements.txt (line 31))
+2025-12-23T01:29:07.6805365Z   Downloading kiwisolver-1.4.9-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (6.3 kB)
+2025-12-23T01:29:07.9089802Z Collecting pillow>=8 (from matplotlib>=3.7.0->-r requirements.txt (line 31))
+2025-12-23T01:29:07.9129077Z   Downloading pillow-12.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (8.8 kB)
+2025-12-23T01:29:07.9399131Z Collecting pyparsing>=3 (from matplotlib>=3.7.0->-r requirements.txt (line 31))
+2025-12-23T01:29:07.9442615Z   Downloading pyparsing-3.3.0-py3-none-any.whl.metadata (5.6 kB)
+2025-12-23T01:29:07.9580893Z Collecting python-dateutil>=2.7 (from matplotlib>=3.7.0->-r requirements.txt (line 31))
+2025-12-23T01:29:07.9615321Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2025-12-23T01:29:07.9853209Z Collecting argon2-cffi-bindings (from argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:07.9891520Z   Downloading argon2_cffi_bindings-25.1.0-cp39-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (7.4 kB)
+2025-12-23T01:29:08.0303211Z Collecting comm>=0.1.1 (from ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.0338103Z   Downloading comm-0.2.3-py3-none-any.whl.metadata (3.7 kB)
+2025-12-23T01:29:08.1187002Z Collecting debugpy>=1.6.5 (from ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.1241442Z   Downloading debugpy-1.8.19-cp311-cp311-manylinux_2_34_x86_64.whl.metadata (1.4 kB)
+2025-12-23T01:29:08.1655431Z Collecting ipython>=7.23.1 (from ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.1698807Z   Downloading ipython-9.8.0-py3-none-any.whl.metadata (4.5 kB)
+2025-12-23T01:29:08.1972622Z Collecting matplotlib-inline>=0.1 (from ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.2008770Z   Downloading matplotlib_inline-0.2.1-py3-none-any.whl.metadata (2.3 kB)
+2025-12-23T01:29:08.2151111Z Collecting nest-asyncio>=1.4 (from ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.2190964Z   Downloading nest_asyncio-1.6.0-py3-none-any.whl.metadata (2.8 kB)
+2025-12-23T01:29:08.2829574Z Collecting psutil>=5.7 (from ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.2871768Z   Downloading psutil-7.1.3-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (23 kB)
+2025-12-23T01:29:08.3221408Z Collecting decorator>=4.3.2 (from ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.3257239Z   Downloading decorator-5.2.1-py3-none-any.whl.metadata (3.9 kB)
+2025-12-23T01:29:08.3362982Z Collecting ipython-pygments-lexers>=1.0.0 (from ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.3399312Z   Downloading ipython_pygments_lexers-1.1.1-py3-none-any.whl.metadata (1.1 kB)
+2025-12-23T01:29:08.3528565Z Collecting jedi>=0.18.1 (from ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.3574519Z   Downloading jedi-0.19.2-py2.py3-none-any.whl.metadata (22 kB)
+2025-12-23T01:29:08.3891259Z Collecting pexpect>4.3 (from ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.3925250Z   Downloading pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)
+2025-12-23T01:29:08.4228110Z Collecting prompt_toolkit<3.1.0,>=3.0.41 (from ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.4266901Z   Downloading prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)
+2025-12-23T01:29:08.4422494Z Collecting stack_data>=0.6.0 (from ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.4458566Z   Downloading stack_data-0.6.3-py3-none-any.whl.metadata (18 kB)
+2025-12-23T01:29:08.4656109Z Collecting wcwidth (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.4699237Z   Downloading wcwidth-0.2.14-py2.py3-none-any.whl.metadata (15 kB)
+2025-12-23T01:29:08.4885755Z Collecting parso<0.9.0,>=0.8.4 (from jedi>=0.18.1->ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:08.4934241Z   Downloading parso-0.8.5-py2.py3-none-any.whl.metadata (8.3 kB)
+2025-12-23T01:29:08.5493608Z Collecting MarkupSafe>=2.0 (from Jinja2>=3.1->sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:08.5532223Z   Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+2025-12-23T01:29:08.5712587Z Collecting attrs>=22.2.0 (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.28.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:08.5749359Z   Downloading attrs-25.4.0-py3-none-any.whl.metadata (10 kB)
+2025-12-23T01:29:08.5879305Z Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.28.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:08.5921712Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2025-12-23T01:29:08.6167915Z Collecting referencing>=0.28.4 (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.28.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:08.6229154Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2025-12-23T01:29:08.9530879Z Collecting rpds-py>=0.7.1 (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.28.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:08.9569537Z   Downloading rpds_py-0.30.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.1 kB)
+2025-12-23T01:29:09.0084331Z Collecting python-json-logger>=2.0.4 (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.0130343Z   Downloading python_json_logger-4.0.0-py3-none-any.whl.metadata (4.0 kB)
+2025-12-23T01:29:09.0260931Z Collecting rfc3339-validator (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.0303336Z   Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl.metadata (1.5 kB)
+2025-12-23T01:29:09.0397120Z Collecting rfc3986-validator>=0.1.1 (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.0453944Z   Downloading rfc3986_validator-0.1.1-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-12-23T01:29:09.0622934Z Collecting fqdn (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.0679137Z   Downloading fqdn-1.5.1-py3-none-any.whl.metadata (1.4 kB)
+2025-12-23T01:29:09.0776317Z Collecting isoduration (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.0817617Z   Downloading isoduration-20.11.0-py3-none-any.whl.metadata (5.7 kB)
+2025-12-23T01:29:09.0949996Z Collecting jsonpointer>1.13 (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.0991517Z   Downloading jsonpointer-3.0.0-py2.py3-none-any.whl.metadata (2.3 kB)
+2025-12-23T01:29:09.1100901Z Collecting rfc3987-syntax>=1.1.0 (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.1141304Z   Downloading rfc3987_syntax-1.1.0-py3-none-any.whl.metadata (7.7 kB)
+2025-12-23T01:29:09.1236336Z Collecting uri-template (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.1274142Z   Downloading uri_template-1.3.0-py3-none-any.whl.metadata (8.8 kB)
+2025-12-23T01:29:09.1425468Z Collecting webcolors>=24.6.0 (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.1466531Z   Downloading webcolors-25.10.0-py3-none-any.whl.metadata (2.2 kB)
+2025-12-23T01:29:09.1969547Z Collecting beautifulsoup4 (from nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.2007692Z   Downloading beautifulsoup4-4.14.3-py3-none-any.whl.metadata (3.8 kB)
+2025-12-23T01:29:09.2174966Z Collecting bleach!=5.0.0 (from bleach[css]!=5.0.0->nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.2210430Z   Downloading bleach-6.3.0-py3-none-any.whl.metadata (31 kB)
+2025-12-23T01:29:09.2336344Z Collecting defusedxml (from nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.2383463Z   Downloading defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+2025-12-23T01:29:09.2600758Z Collecting jupyterlab-pygments (from nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.2635547Z   Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl.metadata (4.4 kB)
+2025-12-23T01:29:09.2801716Z Collecting mistune<4,>=2.0.3 (from nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.2854245Z   Downloading mistune-3.1.4-py3-none-any.whl.metadata (1.8 kB)
+2025-12-23T01:29:09.3012683Z Collecting nbclient>=0.5.0 (from nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.3045188Z   Downloading nbclient-0.10.3-py3-none-any.whl.metadata (8.3 kB)
+2025-12-23T01:29:09.3236181Z Collecting pandocfilters>=1.4.1 (from nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.3270455Z   Downloading pandocfilters-1.5.1-py2.py3-none-any.whl.metadata (9.0 kB)
+2025-12-23T01:29:09.3503632Z Collecting webencodings (from bleach!=5.0.0->bleach[css]!=5.0.0->nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.3537885Z   Downloading webencodings-0.5.1-py2.py3-none-any.whl.metadata (2.1 kB)
+2025-12-23T01:29:09.3660843Z Collecting tinycss2<1.5,>=1.1.0 (from bleach[css]!=5.0.0->nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.3698706Z   Downloading tinycss2-1.4.0-py3-none-any.whl.metadata (3.0 kB)
+2025-12-23T01:29:09.4019219Z Collecting fastjsonschema>=2.15 (from nbformat>=5.3.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.4054139Z   Downloading fastjsonschema-2.21.2-py3-none-any.whl.metadata (2.3 kB)
+2025-12-23T01:29:09.4565319Z Collecting ptyprocess>=0.5 (from pexpect>4.3->ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.4613536Z   Downloading ptyprocess-0.7.0-py2.py3-none-any.whl.metadata (1.3 kB)
+2025-12-23T01:29:09.4927172Z Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib>=3.7.0->-r requirements.txt (line 31))
+2025-12-23T01:29:09.4961749Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2025-12-23T01:29:09.6000518Z Collecting charset_normalizer<4,>=2 (from requests>=2.30.0->sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:09.6036172Z   Downloading charset_normalizer-3.4.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (37 kB)
+2025-12-23T01:29:09.6360036Z Collecting urllib3<3,>=1.21.1 (from requests>=2.30.0->sphinx>=6.0.0->-r requirements.txt (line 21))
+2025-12-23T01:29:09.6409037Z   Downloading urllib3-2.6.2-py3-none-any.whl.metadata (6.6 kB)
+2025-12-23T01:29:09.6763649Z Collecting lark>=1.2.2 (from rfc3987-syntax>=1.1.0->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.6842483Z   Downloading lark-1.3.1-py3-none-any.whl.metadata (1.8 kB)
+2025-12-23T01:29:09.7474214Z Collecting executing>=1.2.0 (from stack_data>=0.6.0->ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.7518220Z   Downloading executing-2.2.1-py2.py3-none-any.whl.metadata (8.9 kB)
+2025-12-23T01:29:09.7663184Z Collecting asttokens>=2.1.0 (from stack_data>=0.6.0->ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.7704249Z   Downloading asttokens-3.0.1-py3-none-any.whl.metadata (4.9 kB)
+2025-12-23T01:29:09.7806145Z Collecting pure-eval (from stack_data>=0.6.0->ipython>=7.23.1->ipykernel->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.7878066Z   Downloading pure_eval-0.2.3-py3-none-any.whl.metadata (6.3 kB)
+2025-12-23T01:29:09.9203107Z Collecting cffi>=1.0.1 (from argon2-cffi-bindings->argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.9269768Z   Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.6 kB)
+2025-12-23T01:29:09.9417778Z Collecting pycparser (from cffi>=1.0.1->argon2-cffi-bindings->argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:09.9454917Z   Downloading pycparser-2.23-py3-none-any.whl.metadata (993 bytes)
+2025-12-23T01:29:09.9660665Z Collecting soupsieve>=1.6.1 (from beautifulsoup4->nbconvert->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:09.9695144Z   Downloading soupsieve-2.8.1-py3-none-any.whl.metadata (4.6 kB)
+2025-12-23T01:29:10.0412912Z Collecting widgetsnbextension~=4.0.14 (from ipywidgets->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:10.0470092Z   Downloading widgetsnbextension-4.0.15-py3-none-any.whl.metadata (1.6 kB)
+2025-12-23T01:29:10.0657211Z Collecting jupyterlab_widgets~=3.0.15 (from ipywidgets->jupyter>=1.0.0->-r requirements.txt (line 29))
+2025-12-23T01:29:10.0701380Z   Downloading jupyterlab_widgets-3.0.16-py3-none-any.whl.metadata (20 kB)
+2025-12-23T01:29:10.1039734Z Collecting arrow>=0.15.0 (from isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:10.1075946Z   Downloading arrow-1.4.0-py3-none-any.whl.metadata (7.7 kB)
+2025-12-23T01:29:10.1373232Z Collecting tzdata (from arrow>=0.15.0->isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab>=4.0.0->-r requirements.txt (line 30))
+2025-12-23T01:29:10.1423532Z   Downloading tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+2025-12-23T01:29:10.2438236Z Downloading numpy-2.4.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.6 MB)
+2025-12-23T01:29:10.3304375Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.6/16.6 MB 199.6 MB/s  0:00:00
+2025-12-23T01:29:10.3367888Z Downloading scipy-1.16.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (35.9 MB)
+2025-12-23T01:29:10.4666020Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.9/35.9 MB 280.2 MB/s  0:00:00
+2025-12-23T01:29:10.4711480Z Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+2025-12-23T01:29:10.5016848Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 222.2 MB/s  0:00:00
+2025-12-23T01:29:10.5052483Z Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+2025-12-23T01:29:10.5103188Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 95.0 MB/s  0:00:00
+2025-12-23T01:29:10.5138077Z Downloading pytest-9.0.2-py3-none-any.whl (374 kB)
+2025-12-23T01:29:10.5209863Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2025-12-23T01:29:10.5263560Z Downloading pytest_cov-7.0.0-py3-none-any.whl (22 kB)
+2025-12-23T01:29:10.5313021Z Downloading pytest_xdist-3.8.0-py3-none-any.whl (46 kB)
+2025-12-23T01:29:10.5368213Z Downloading black-25.12.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+2025-12-23T01:29:10.5465711Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 200.0 MB/s  0:00:00
+2025-12-23T01:29:10.5510023Z Downloading isort-7.0.0-py3-none-any.whl (94 kB)
+2025-12-23T01:29:10.5568416Z Downloading flake8-7.3.0-py2.py3-none-any.whl (57 kB)
+2025-12-23T01:29:10.5621453Z Downloading mccabe-0.7.0-py2.py3-none-any.whl (7.3 kB)
+2025-12-23T01:29:10.5687919Z Downloading pycodestyle-2.14.0-py2.py3-none-any.whl (31 kB)
+2025-12-23T01:29:10.5760387Z Downloading pyflakes-3.4.0-py2.py3-none-any.whl (63 kB)
+2025-12-23T01:29:10.5850417Z Downloading mypy-1.19.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (13.4 MB)
+2025-12-23T01:29:10.6456177Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 13.4/13.4 MB 226.4 MB/s  0:00:00
+2025-12-23T01:29:10.6511164Z Downloading sphinx_rtd_theme-3.0.2-py2.py3-none-any.whl (7.7 MB)
+2025-12-23T01:29:10.6808616Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.7/7.7 MB 268.7 MB/s  0:00:00
+2025-12-23T01:29:10.6886702Z Downloading sphinx-8.2.3-py3-none-any.whl (3.6 MB)
+2025-12-23T01:29:10.7104236Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.6/3.6 MB 172.2 MB/s  0:00:00
+2025-12-23T01:29:10.7139976Z Downloading docutils-0.21.2-py3-none-any.whl (587 kB)
+2025-12-23T01:29:10.7194149Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 587.4/587.4 kB 99.5 MB/s  0:00:00
+2025-12-23T01:29:10.7228955Z Downloading sphinxcontrib_jquery-4.1-py2.py3-none-any.whl (121 kB)
+2025-12-23T01:29:10.7286717Z Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+2025-12-23T01:29:10.7345997Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 144.5 MB/s  0:00:00
+2025-12-23T01:29:10.7383997Z Downloading h5py-3.15.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (4.7 MB)
+2025-12-23T01:29:10.7839315Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 101.9 MB/s  0:00:00
+2025-12-23T01:29:10.7898308Z Downloading jupyter-1.1.1-py2.py3-none-any.whl (2.7 kB)
+2025-12-23T01:29:10.7953092Z Downloading jupyterlab-4.5.1-py3-none-any.whl (12.4 MB)
+2025-12-23T01:29:10.8623116Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.4/12.4 MB 187.5 MB/s  0:00:00
+2025-12-23T01:29:10.8660976Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+2025-12-23T01:29:10.8717955Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2025-12-23T01:29:10.8785584Z Downloading jupyter_server-2.17.0-py3-none-any.whl (388 kB)
+2025-12-23T01:29:10.8855255Z Downloading jupyterlab_server-2.28.0-py3-none-any.whl (59 kB)
+2025-12-23T01:29:10.8909626Z Downloading matplotlib-3.10.8-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (8.7 MB)
+2025-12-23T01:29:10.9314128Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.7/8.7 MB 223.1 MB/s  0:00:00
+2025-12-23T01:29:10.9352114Z Downloading alabaster-1.0.0-py3-none-any.whl (13 kB)
+2025-12-23T01:29:10.9405692Z Downloading anyio-4.12.0-py3-none-any.whl (113 kB)
+2025-12-23T01:29:10.9462911Z Downloading argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+2025-12-23T01:29:10.9516978Z Downloading async_lru-2.0.5-py3-none-any.whl (6.1 kB)
+2025-12-23T01:29:10.9567793Z Downloading babel-2.17.0-py3-none-any.whl (10.2 MB)
+2025-12-23T01:29:10.9972385Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.2/10.2 MB 260.3 MB/s  0:00:00
+2025-12-23T01:29:11.0030435Z Downloading click-8.3.1-py3-none-any.whl (108 kB)
+2025-12-23T01:29:11.0100532Z Downloading contourpy-1.3.3-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (355 kB)
+2025-12-23T01:29:11.0194913Z Downloading coverage-7.13.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (250 kB)
+2025-12-23T01:29:11.0272486Z Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+2025-12-23T01:29:11.0323959Z Downloading execnet-2.1.2-py3-none-any.whl (40 kB)
+2025-12-23T01:29:11.0402968Z Downloading fonttools-4.61.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (5.0 MB)
+2025-12-23T01:29:11.0618018Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.0/5.0 MB 247.3 MB/s  0:00:00
+2025-12-23T01:29:11.0652427Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2025-12-23T01:29:11.0708613Z Downloading idna-3.11-py3-none-any.whl (71 kB)
+2025-12-23T01:29:11.0768022Z Downloading imagesize-1.4.1-py2.py3-none-any.whl (8.8 kB)
+2025-12-23T01:29:11.0819826Z Downloading iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+2025-12-23T01:29:11.0885220Z Downloading ipykernel-7.1.0-py3-none-any.whl (117 kB)
+2025-12-23T01:29:11.0942803Z Downloading comm-0.2.3-py3-none-any.whl (7.3 kB)
+2025-12-23T01:29:11.0996002Z Downloading debugpy-1.8.19-cp311-cp311-manylinux_2_34_x86_64.whl (3.2 MB)
+2025-12-23T01:29:11.1145291Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 232.0 MB/s  0:00:00
+2025-12-23T01:29:11.1181183Z Downloading ipython-9.8.0-py3-none-any.whl (621 kB)
+2025-12-23T01:29:11.1235680Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 621.4/621.4 kB 105.9 MB/s  0:00:00
+2025-12-23T01:29:11.1274462Z Downloading prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+2025-12-23T01:29:11.1352647Z Downloading decorator-5.2.1-py3-none-any.whl (9.2 kB)
+2025-12-23T01:29:11.1404647Z Downloading ipython_pygments_lexers-1.1.1-py3-none-any.whl (8.1 kB)
+2025-12-23T01:29:11.1460068Z Downloading jedi-0.19.2-py2.py3-none-any.whl (1.6 MB)
+2025-12-23T01:29:11.1556400Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.6/1.6 MB 191.5 MB/s  0:00:00
+2025-12-23T01:29:11.1596687Z Downloading parso-0.8.5-py2.py3-none-any.whl (106 kB)
+2025-12-23T01:29:11.1660833Z Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+2025-12-23T01:29:11.1716751Z Downloading json5-0.12.1-py3-none-any.whl (36 kB)
+2025-12-23T01:29:11.1772191Z Downloading jsonschema-4.25.1-py3-none-any.whl (90 kB)
+2025-12-23T01:29:11.1830544Z Downloading attrs-25.4.0-py3-none-any.whl (67 kB)
+2025-12-23T01:29:11.1884694Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2025-12-23T01:29:11.1934423Z Downloading jupyter_client-8.7.0-py3-none-any.whl (106 kB)
+2025-12-23T01:29:11.1989369Z Downloading jupyter_core-5.9.1-py3-none-any.whl (29 kB)
+2025-12-23T01:29:11.2087204Z Downloading jupyter_events-0.12.0-py3-none-any.whl (19 kB)
+2025-12-23T01:29:11.2138671Z Downloading jsonpointer-3.0.0-py2.py3-none-any.whl (7.6 kB)
+2025-12-23T01:29:11.2192377Z Downloading jupyter_lsp-2.3.0-py3-none-any.whl (76 kB)
+2025-12-23T01:29:11.2246352Z Downloading jupyter_server_terminals-0.5.3-py3-none-any.whl (13 kB)
+2025-12-23T01:29:11.2300545Z Downloading kiwisolver-1.4.9-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.4 MB)
+2025-12-23T01:29:11.2387050Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.4/1.4 MB 186.4 MB/s  0:00:00
+2025-12-23T01:29:11.2423688Z Downloading librt-0.7.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (184 kB)
+2025-12-23T01:29:11.2482460Z Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+2025-12-23T01:29:11.2535918Z Downloading matplotlib_inline-0.2.1-py3-none-any.whl (9.5 kB)
+2025-12-23T01:29:11.2603276Z Downloading mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+2025-12-23T01:29:11.2655755Z Downloading nbconvert-7.16.6-py3-none-any.whl (258 kB)
+2025-12-23T01:29:11.2717307Z Downloading mistune-3.1.4-py3-none-any.whl (53 kB)
+2025-12-23T01:29:11.2771163Z Downloading bleach-6.3.0-py3-none-any.whl (164 kB)
+2025-12-23T01:29:11.2841359Z Downloading tinycss2-1.4.0-py3-none-any.whl (26 kB)
+2025-12-23T01:29:11.2897691Z Downloading nbclient-0.10.3-py3-none-any.whl (25 kB)
+2025-12-23T01:29:11.2953390Z Downloading nbformat-5.10.4-py3-none-any.whl (78 kB)
+2025-12-23T01:29:11.3008911Z Downloading fastjsonschema-2.21.2-py3-none-any.whl (24 kB)
+2025-12-23T01:29:11.3060360Z Downloading nest_asyncio-1.6.0-py3-none-any.whl (5.2 kB)
+2025-12-23T01:29:11.3112528Z Downloading notebook_shim-0.2.4-py3-none-any.whl (13 kB)
+2025-12-23T01:29:11.3172418Z Downloading overrides-7.7.0-py3-none-any.whl (17 kB)
+2025-12-23T01:29:11.3228214Z Downloading packaging-25.0-py3-none-any.whl (66 kB)
+2025-12-23T01:29:11.3286213Z Downloading pandocfilters-1.5.1-py2.py3-none-any.whl (8.7 kB)
+2025-12-23T01:29:11.3344370Z Downloading pathspec-0.12.1-py3-none-any.whl (31 kB)
+2025-12-23T01:29:11.3411431Z Downloading pexpect-4.9.0-py2.py3-none-any.whl (63 kB)
+2025-12-23T01:29:11.3471160Z Downloading pillow-12.0.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (7.0 MB)
+2025-12-23T01:29:11.3755280Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 260.4 MB/s  0:00:00
+2025-12-23T01:29:11.3845365Z Downloading platformdirs-4.5.1-py3-none-any.whl (18 kB)
+2025-12-23T01:29:11.3898386Z Downloading prometheus_client-0.23.1-py3-none-any.whl (61 kB)
+2025-12-23T01:29:11.3952582Z Downloading psutil-7.1.3-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (263 kB)
+2025-12-23T01:29:11.4013942Z Downloading ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+2025-12-23T01:29:11.4064115Z Downloading pygments-2.19.2-py3-none-any.whl (1.2 MB)
+2025-12-23T01:29:11.4140573Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 178.7 MB/s  0:00:00
+2025-12-23T01:29:11.4175605Z Downloading pyparsing-3.3.0-py3-none-any.whl (121 kB)
+2025-12-23T01:29:11.4244234Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2025-12-23T01:29:11.4335609Z Downloading python_json_logger-4.0.0-py3-none-any.whl (15 kB)
+2025-12-23T01:29:11.4390010Z Downloading pytokens-0.3.0-py3-none-any.whl (12 kB)
+2025-12-23T01:29:11.4447190Z Downloading pyzmq-27.1.0-cp311-cp311-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (857 kB)
+2025-12-23T01:29:11.4510733Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 857.0/857.0 kB 141.6 MB/s  0:00:00
+2025-12-23T01:29:11.4548432Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2025-12-23T01:29:11.4599619Z Downloading requests-2.32.5-py3-none-any.whl (64 kB)
+2025-12-23T01:29:11.4656684Z Downloading charset_normalizer-3.4.4-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (151 kB)
+2025-12-23T01:29:11.4713155Z Downloading urllib3-2.6.2-py3-none-any.whl (131 kB)
+2025-12-23T01:29:11.4767607Z Downloading certifi-2025.11.12-py3-none-any.whl (159 kB)
+2025-12-23T01:29:11.4827477Z Downloading rfc3986_validator-0.1.1-py2.py3-none-any.whl (4.2 kB)
+2025-12-23T01:29:11.4877871Z Downloading rfc3987_syntax-1.1.0-py3-none-any.whl (8.0 kB)
+2025-12-23T01:29:11.4928663Z Downloading lark-1.3.1-py3-none-any.whl (113 kB)
+2025-12-23T01:29:11.5031687Z Downloading roman_numerals_py-4.1.0-py3-none-any.whl (4.5 kB)
+2025-12-23T01:29:11.5087433Z Downloading roman_numerals-4.1.0-py3-none-any.whl (7.7 kB)
+2025-12-23T01:29:11.5142855Z Downloading rpds_py-0.30.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (390 kB)
+2025-12-23T01:29:11.5210489Z Downloading Send2Trash-1.8.3-py3-none-any.whl (18 kB)
+2025-12-23T01:29:11.5302505Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2025-12-23T01:29:11.5354025Z Downloading snowballstemmer-3.0.1-py3-none-any.whl (103 kB)
+2025-12-23T01:29:11.5411241Z Downloading sphinxcontrib_applehelp-2.0.0-py3-none-any.whl (119 kB)
+2025-12-23T01:29:11.5470378Z Downloading sphinxcontrib_devhelp-2.0.0-py3-none-any.whl (82 kB)
+2025-12-23T01:29:11.5524241Z Downloading sphinxcontrib_htmlhelp-2.1.0-py3-none-any.whl (98 kB)
+2025-12-23T01:29:11.5598518Z Downloading sphinxcontrib_jsmath-1.0.1-py2.py3-none-any.whl (5.1 kB)
+2025-12-23T01:29:11.5648915Z Downloading sphinxcontrib_qthelp-2.0.0-py3-none-any.whl (88 kB)
+2025-12-23T01:29:11.5704303Z Downloading sphinxcontrib_serializinghtml-2.0.0-py3-none-any.whl (92 kB)
+2025-12-23T01:29:11.5763606Z Downloading stack_data-0.6.3-py3-none-any.whl (24 kB)
+2025-12-23T01:29:11.5818548Z Downloading asttokens-3.0.1-py3-none-any.whl (27 kB)
+2025-12-23T01:29:11.5889871Z Downloading executing-2.2.1-py2.py3-none-any.whl (28 kB)
+2025-12-23T01:29:11.5944281Z Downloading terminado-0.18.1-py3-none-any.whl (14 kB)
+2025-12-23T01:29:11.5996501Z Downloading tornado-6.5.4-cp39-abi3-manylinux_2_5_x86_64.manylinux1_x86_64.manylinux_2_17_x86_64.manylinux2014_x86_64.whl (445 kB)
+2025-12-23T01:29:11.6079836Z Downloading traitlets-5.14.3-py3-none-any.whl (85 kB)
+2025-12-23T01:29:11.6140504Z Downloading typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+2025-12-23T01:29:11.6194850Z Downloading webcolors-25.10.0-py3-none-any.whl (14 kB)
+2025-12-23T01:29:11.6246238Z Downloading webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+2025-12-23T01:29:11.6295949Z Downloading websocket_client-1.9.0-py3-none-any.whl (82 kB)
+2025-12-23T01:29:11.6349911Z Downloading argon2_cffi_bindings-25.1.0-cp39-abi3-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (87 kB)
+2025-12-23T01:29:11.6403485Z Downloading cffi-2.0.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (215 kB)
+2025-12-23T01:29:11.6460088Z Downloading beautifulsoup4-4.14.3-py3-none-any.whl (107 kB)
+2025-12-23T01:29:11.6516894Z Downloading soupsieve-2.8.1-py3-none-any.whl (36 kB)
+2025-12-23T01:29:11.6571257Z Downloading defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+2025-12-23T01:29:11.6620173Z Downloading fqdn-1.5.1-py3-none-any.whl (9.1 kB)
+2025-12-23T01:29:11.6671662Z Downloading ipywidgets-8.1.8-py3-none-any.whl (139 kB)
+2025-12-23T01:29:11.6730507Z Downloading jupyterlab_widgets-3.0.16-py3-none-any.whl (914 kB)
+2025-12-23T01:29:11.6797082Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 914.9/914.9 kB 142.9 MB/s  0:00:00
+2025-12-23T01:29:11.6870744Z Downloading widgetsnbextension-4.0.15-py3-none-any.whl (2.2 MB)
+2025-12-23T01:29:11.7026262Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 147.3 MB/s  0:00:00
+2025-12-23T01:29:11.7064039Z Downloading isoduration-20.11.0-py3-none-any.whl (11 kB)
+2025-12-23T01:29:11.7115538Z Downloading arrow-1.4.0-py3-none-any.whl (68 kB)
+2025-12-23T01:29:11.7173692Z Downloading jupyter_console-6.6.3-py3-none-any.whl (24 kB)
+2025-12-23T01:29:11.7224165Z Downloading jupyterlab_pygments-0.3.0-py3-none-any.whl (15 kB)
+2025-12-23T01:29:11.7275405Z Downloading notebook-7.5.1-py3-none-any.whl (14.5 MB)
+2025-12-23T01:29:11.8034287Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 14.5/14.5 MB 193.8 MB/s  0:00:00
+2025-12-23T01:29:11.8070464Z Downloading pure_eval-0.2.3-py3-none-any.whl (11 kB)
+2025-12-23T01:29:11.8122573Z Downloading pycparser-2.23-py3-none-any.whl (118 kB)
+2025-12-23T01:29:11.8178694Z Downloading rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+2025-12-23T01:29:11.8229920Z Downloading tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+2025-12-23T01:29:11.8298501Z Downloading uri_template-1.3.0-py3-none-any.whl (11 kB)
+2025-12-23T01:29:11.8360353Z Downloading wcwidth-0.2.14-py2.py3-none-any.whl (37 kB)
+2025-12-23T01:29:12.3342877Z Installing collected packages: webencodings, pure-eval, ptyprocess, mpmath, fastjsonschema, widgetsnbextension, websocket-client, webcolors, wcwidth, urllib3, uri-template, tzdata, typing_extensions, traitlets, tornado, tinycss2, sympy, sphinxcontrib-serializinghtml, sphinxcontrib-qthelp, sphinxcontrib-jsmath, sphinxcontrib-htmlhelp, sphinxcontrib-devhelp, sphinxcontrib-applehelp, soupsieve, snowballstemmer, six, send2trash, rpds-py, roman-numerals, rfc3986-validator, pyzmq, pyyaml, pytokens, python-json-logger, pyparsing, pygments, pyflakes, pycparser, pycodestyle, psutil, prometheus-client, pluggy, platformdirs, pillow, pexpect, pathspec, parso, pandocfilters, packaging, overrides, numpy, nest-asyncio, mypy-extensions, mistune, mccabe, MarkupSafe, librt, lark, kiwisolver, jupyterlab_widgets, jupyterlab-pygments, jsonpointer, json5, isort, iniconfig, imagesize, idna, h11, fqdn, fonttools, executing, execnet, docutils, defusedxml, decorator, debugpy, cycler, coverage, comm, click, charset_normalizer, certifi, bleach, babel, attrs, async-lru, asttokens, alabaster, terminado, stack_data, scipy, roman-numerals-py, rfc3987-syntax, rfc3339-validator, requests, referencing, python-dateutil, pytest, prompt_toolkit, mypy, matplotlib-inline, jupyter-core, Jinja2, jedi, ipython-pygments-lexers, httpcore, h5py, flake8, contourpy, cffi, black, beautifulsoup4, anyio, sphinx, pytest-xdist, pytest-cov, matplotlib, jupyter-server-terminals, jupyter-client, jsonschema-specifications, ipython, httpx, arrow, argon2-cffi-bindings, sphinxcontrib-jquery, jsonschema, isoduration, ipywidgets, ipykernel, argon2-cffi, sphinx-rtd-theme, nbformat, jupyter-console, nbclient, jupyter-events, nbconvert, jupyter-server, notebook-shim, jupyterlab-server, jupyter-lsp, jupyterlab, notebook, jupyter
+2025-12-23T01:29:35.4159527Z 
+2025-12-23T01:29:35.4230243Z Successfully installed Jinja2-3.1.6 MarkupSafe-3.0.3 alabaster-1.0.0 anyio-4.12.0 argon2-cffi-25.1.0 argon2-cffi-bindings-25.1.0 arrow-1.4.0 asttokens-3.0.1 async-lru-2.0.5 attrs-25.4.0 babel-2.17.0 beautifulsoup4-4.14.3 black-25.12.0 bleach-6.3.0 certifi-2025.11.12 cffi-2.0.0 charset_normalizer-3.4.4 click-8.3.1 comm-0.2.3 contourpy-1.3.3 coverage-7.13.0 cycler-0.12.1 debugpy-1.8.19 decorator-5.2.1 defusedxml-0.7.1 docutils-0.21.2 execnet-2.1.2 executing-2.2.1 fastjsonschema-2.21.2 flake8-7.3.0 fonttools-4.61.1 fqdn-1.5.1 h11-0.16.0 h5py-3.15.1 httpcore-1.0.9 httpx-0.28.1 idna-3.11 imagesize-1.4.1 iniconfig-2.3.0 ipykernel-7.1.0 ipython-9.8.0 ipython-pygments-lexers-1.1.1 ipywidgets-8.1.8 isoduration-20.11.0 isort-7.0.0 jedi-0.19.2 json5-0.12.1 jsonpointer-3.0.0 jsonschema-4.25.1 jsonschema-specifications-2025.9.1 jupyter-1.1.1 jupyter-client-8.7.0 jupyter-console-6.6.3 jupyter-core-5.9.1 jupyter-events-0.12.0 jupyter-lsp-2.3.0 jupyter-server-2.17.0 jupyter-server-terminals-0.5.3 jupyterlab-4.5.1 jupyterlab-pygments-0.3.0 jupyterlab-server-2.28.0 jupyterlab_widgets-3.0.16 kiwisolver-1.4.9 lark-1.3.1 librt-0.7.4 matplotlib-3.10.8 matplotlib-inline-0.2.1 mccabe-0.7.0 mistune-3.1.4 mpmath-1.3.0 mypy-1.19.1 mypy-extensions-1.1.0 nbclient-0.10.3 nbconvert-7.16.6 nbformat-5.10.4 nest-asyncio-1.6.0 notebook-7.5.1 notebook-shim-0.2.4 numpy-2.4.0 overrides-7.7.0 packaging-25.0 pandocfilters-1.5.1 parso-0.8.5 pathspec-0.12.1 pexpect-4.9.0 pillow-12.0.0 platformdirs-4.5.1 pluggy-1.6.0 prometheus-client-0.23.1 prompt_toolkit-3.0.52 psutil-7.1.3 ptyprocess-0.7.0 pure-eval-0.2.3 pycodestyle-2.14.0 pycparser-2.23 pyflakes-3.4.0 pygments-2.19.2 pyparsing-3.3.0 pytest-9.0.2 pytest-cov-7.0.0 pytest-xdist-3.8.0 python-dateutil-2.9.0.post0 python-json-logger-4.0.0 pytokens-0.3.0 pyyaml-6.0.3 pyzmq-27.1.0 referencing-0.37.0 requests-2.32.5 rfc3339-validator-0.1.4 rfc3986-validator-0.1.1 rfc3987-syntax-1.1.0 roman-numerals-4.1.0 roman-numerals-py-4.1.0 rpds-py-0.30.0 scipy-1.16.3 send2trash-1.8.3 six-1.17.0 snowballstemmer-3.0.1 soupsieve-2.8.1 sphinx-8.2.3 sphinx-rtd-theme-3.0.2 sphinxcontrib-applehelp-2.0.0 sphinxcontrib-devhelp-2.0.0 sphinxcontrib-htmlhelp-2.1.0 sphinxcontrib-jquery-4.1 sphinxcontrib-jsmath-1.0.1 sphinxcontrib-qthelp-2.0.0 sphinxcontrib-serializinghtml-2.0.0 stack_data-0.6.3 sympy-1.14.0 terminado-0.18.1 tinycss2-1.4.0 tornado-6.5.4 traitlets-5.14.3 typing_extensions-4.15.0 tzdata-2025.3 uri-template-1.3.0 urllib3-2.6.2 wcwidth-0.2.14 webcolors-25.10.0 webencodings-0.5.1 websocket-client-1.9.0 widgetsnbextension-4.0.15
+2025-12-23T01:29:36.3054231Z Requirement already satisfied: pytest in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (9.0.2)
+2025-12-23T01:29:36.3057373Z Requirement already satisfied: pytest-cov in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (7.0.0)
+2025-12-23T01:29:36.3071403Z Requirement already satisfied: iniconfig>=1.0.1 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from pytest) (2.3.0)
+2025-12-23T01:29:36.3077664Z Requirement already satisfied: packaging>=22 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from pytest) (25.0)
+2025-12-23T01:29:36.3083337Z Requirement already satisfied: pluggy<2,>=1.5 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from pytest) (1.6.0)
+2025-12-23T01:29:36.3088333Z Requirement already satisfied: pygments>=2.7.2 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from pytest) (2.19.2)
+2025-12-23T01:29:36.3120288Z Requirement already satisfied: coverage>=7.10.6 in /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/site-packages (from coverage[toml]>=7.10.6->pytest-cov) (7.13.0)
+2025-12-23T01:29:36.4996588Z ##[group]Run python scripts/verify_theoretical_annotations.py || true
+2025-12-23T01:29:36.4997116Z [36;1mpython scripts/verify_theoretical_annotations.py || true[0m
+2025-12-23T01:29:36.5030566Z shell: /usr/bin/bash -e {0}
+2025-12-23T01:29:36.5030797Z env:
+2025-12-23T01:29:36.5031060Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:36.5031505Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2025-12-23T01:29:36.5032194Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:36.5032587Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:36.5032974Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:36.5033354Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2025-12-23T01:29:36.5033665Z ##[endgroup]
+2025-12-23T01:29:36.5592236Z ============================================================
+2025-12-23T01:29:36.5592935Z IRH v21.0 Theoretical Annotation Verification
+2025-12-23T01:29:36.5593491Z ============================================================
+2025-12-23T01:29:36.5593850Z 
+2025-12-23T01:29:36.5594033Z Scanning 104 Python files...
+2025-12-23T01:29:36.5594326Z 
+2025-12-23T01:29:36.5594559Z Issues in src/performance/gpu_acceleration.py:
+2025-12-23T01:29:36.5595482Z   - Potentially invalid section reference: §3.5
+2025-12-23T01:29:36.5596153Z   - Potentially invalid section reference: §3.5
+2025-12-23T01:29:36.5596596Z   - Potentially invalid section reference: §3.5
+2025-12-23T01:29:36.5596823Z 
+2025-12-23T01:29:36.5596952Z Issues in src/performance/distributed.py:
+2025-12-23T01:29:36.5597342Z   - Potentially invalid section reference: §3.6
+2025-12-23T01:29:36.5597725Z   - Potentially invalid section reference: §3.6
+2025-12-23T01:29:36.5598099Z   - Potentially invalid section reference: §3.6
+2025-12-23T01:29:36.5598317Z 
+2025-12-23T01:29:36.5598434Z Issues in src/performance/profiling.py:
+2025-12-23T01:29:36.5598822Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5599208Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5599585Z   - Potentially invalid section reference: §3.8
+2025-12-23T01:29:36.5599954Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5600330Z   - Potentially invalid section reference: §3.8
+2025-12-23T01:29:36.5600698Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5601092Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5601760Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5602205Z 
+2025-12-23T01:29:36.5602354Z Issues in src/performance/benchmarks/rg_flow_bench.py:
+2025-12-23T01:29:36.5602752Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5603099Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5603444Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5603786Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5603992Z 
+2025-12-23T01:29:36.5604248Z Issues in src/performance/benchmarks/qncd_bench.py:
+2025-12-23T01:29:36.5604625Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5604968Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5605316Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5605659Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5605862Z 
+2025-12-23T01:29:36.5605983Z Issues in src/performance/benchmarks/__init__.py:
+2025-12-23T01:29:36.5606354Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5606702Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5606898Z 
+2025-12-23T01:29:36.5607038Z Issues in src/performance/benchmarks/action_bench.py:
+2025-12-23T01:29:36.5607406Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5607749Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5608088Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5608674Z   - Potentially invalid section reference: §3.7
+2025-12-23T01:29:36.5608879Z 
+2025-12-23T01:29:36.5608996Z Issues in src/utilities/parallel_computing.py:
+2025-12-23T01:29:36.5609369Z   - Missing THEORETICAL FOUNDATION citation in module docstring
+2025-12-23T01:29:36.5609729Z   - Missing IRH v21.1 Manuscript reference
+2025-12-23T01:29:36.5609916Z 
+2025-12-23T01:29:36.5610018Z Issues in src/utilities/optimization.py:
+2025-12-23T01:29:36.5610363Z   - Missing THEORETICAL FOUNDATION citation in module docstring
+2025-12-23T01:29:36.5610717Z   - Missing IRH v21.1 Manuscript reference
+2025-12-23T01:29:36.5610905Z 
+2025-12-23T01:29:36.5611032Z Issues in src/utilities/lattice_discretization.py:
+2025-12-23T01:29:36.5611402Z   - Missing THEORETICAL FOUNDATION citation in module docstring
+2025-12-23T01:29:36.5611751Z   - Missing IRH v21.1 Manuscript reference
+2025-12-23T01:29:36.5612068Z 
+2025-12-23T01:29:36.5612164Z Issues in src/utilities/integration.py:
+2025-12-23T01:29:36.5612466Z   - Missing THEORETICAL FOUNDATION citation in module docstring
+2025-12-23T01:29:36.5612766Z   - Missing IRH v21.1 Manuscript reference
+2025-12-23T01:29:36.5612923Z 
+2025-12-23T01:29:36.5613022Z Issues in src/utilities/special_functions.py:
+2025-12-23T01:29:36.5613347Z   - Missing THEORETICAL FOUNDATION citation in module docstring
+2025-12-23T01:29:36.5613662Z   - Missing IRH v21.1 Manuscript reference
+2025-12-23T01:29:36.5613840Z 
+2025-12-23T01:29:36.5613953Z Issues in src/observables/qncd_geometric_factor.py:
+2025-12-23T01:29:36.5614367Z   - Potentially invalid section reference: §1.1.3
+2025-12-23T01:29:36.5614559Z 
+2025-12-23T01:29:36.5614647Z ============================================================
+2025-12-23T01:29:36.5614893Z Found 39 annotation issues.
+2025-12-23T01:29:36.5615160Z Please ensure all code has proper theoretical citations.
+2025-12-23T01:29:36.5664314Z ##[group]Run pytest tests/unit/ -v --cov=src --cov-report=xml
+2025-12-23T01:29:36.5664746Z [36;1mpytest tests/unit/ -v --cov=src --cov-report=xml[0m
+2025-12-23T01:29:36.5697271Z shell: /usr/bin/bash -e {0}
+2025-12-23T01:29:36.5697492Z env:
+2025-12-23T01:29:36.5697723Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:36.5698123Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib/pkgconfig
+2025-12-23T01:29:36.5698515Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:36.5718121Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:36.5719029Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.14/x64
+2025-12-23T01:29:36.5719619Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.14/x64/lib
+2025-12-23T01:29:36.5720123Z ##[endgroup]
+2025-12-23T01:29:43.3496229Z ============================= test session starts ==============================
+2025-12-23T01:29:43.3497068Z platform linux -- Python 3.11.14, pytest-9.0.2, pluggy-1.6.0
+2025-12-23T01:29:43.3497995Z rootdir: /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography
+2025-12-23T01:29:43.3498887Z configfile: pyproject.toml
+2025-12-23T01:29:43.3499395Z plugins: anyio-4.12.0, cov-7.0.0, xdist-3.8.0
+2025-12-23T01:29:43.3499916Z collected 1005 items / 1 error
+2025-12-23T01:29:43.3500163Z 
+2025-12-23T01:29:43.3500368Z ==================================== ERRORS ====================================
+2025-12-23T01:29:43.3501038Z _______ ERROR collecting tests/unit/test_standard_model/test_phase_iv.py _______
+2025-12-23T01:29:43.3503442Z ImportError while importing test module '/home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography/tests/unit/test_standard_model/test_phase_iv.py'.
+2025-12-23T01:29:43.3504708Z Hint: make sure your test modules/packages have valid Python names.
+2025-12-23T01:29:43.3505197Z Traceback:
+2025-12-23T01:29:43.3505792Z /opt/hostedtoolcache/Python/3.11.14/x64/lib/python3.11/importlib/__init__.py:126: in import_module
+2025-12-23T01:29:43.3506596Z     return _bootstrap._gcd_import(name[level:], package, level)
+2025-12-23T01:29:43.3507104Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-12-23T01:29:43.3507575Z tests/unit/test_standard_model/test_phase_iv.py:22: in <module>
+2025-12-23T01:29:43.3508061Z     from src.standard_model import (
+2025-12-23T01:29:43.3508446Z src/standard_model/__init__.py:39: in <module>
+2025-12-23T01:29:43.3508857Z     from .fermion_masses import (
+2025-12-23T01:29:43.3509266Z src/standard_model/fermion_masses.py:38: in <module>
+2025-12-23T01:29:43.3509881Z     from src.topology.complexity_operator import compute_topological_complexity
+2025-12-23T01:29:43.3511486Z E   ImportError: cannot import name 'compute_topological_complexity' from 'src.topology.complexity_operator' (/home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography/src/topology/complexity_operator.py)
+2025-12-23T01:29:43.3513119Z =============================== warnings summary ===============================
+2025-12-23T01:29:43.3513567Z src/ci_cd/ci_infrastructure.py:133
+2025-12-23T01:29:43.3515192Z   /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography/src/ci_cd/ci_infrastructure.py:133: PytestCollectionWarning: cannot collect test class 'TestResult' because it has a __init__ constructor (from: tests/unit/test_ci_cd/test_ci_infrastructure.py)
+2025-12-23T01:29:43.3516795Z     @dataclass
+2025-12-23T01:29:43.3516965Z 
+2025-12-23T01:29:43.3517102Z src/ci_cd/ci_infrastructure.py:36
+2025-12-23T01:29:43.3518643Z   /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography/src/ci_cd/ci_infrastructure.py:36: PytestCollectionWarning: cannot collect test class 'TestTier' because it has a __init__ constructor (from: tests/unit/test_ci_cd/test_ci_infrastructure.py)
+2025-12-23T01:29:43.3520259Z     class TestTier(Enum):
+2025-12-23T01:29:43.3520472Z 
+2025-12-23T01:29:43.3520619Z src/ci_cd/ci_infrastructure.py:682
+2025-12-23T01:29:43.3522808Z   /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography/src/ci_cd/ci_infrastructure.py:682: PytestCollectionWarning: cannot collect test class 'TestTierRunner' because it has a __init__ constructor (from: tests/unit/test_ci_cd/test_ci_infrastructure.py)
+2025-12-23T01:29:43.3524504Z     class TestTierRunner:
+2025-12-23T01:29:43.3524707Z 
+2025-12-23T01:29:43.3524924Z tests/unit/test_topology/test_complexity_operator.py:364
+2025-12-23T01:29:43.3526986Z   /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography/tests/unit/test_topology/test_complexity_operator.py:364: PytestUnknownMarkWarning: Unknown pytest.mark.slow - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+2025-12-23T01:29:43.3529080Z     @pytest.mark.slow
+2025-12-23T01:29:43.3529268Z 
+2025-12-23T01:29:43.3529558Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2025-12-23T01:29:43.3530159Z =========================== short test summary info ============================
+2025-12-23T01:29:43.3530696Z ERROR tests/unit/test_standard_model/test_phase_iv.py
+2025-12-23T01:29:43.3531240Z !!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+2025-12-23T01:29:43.3531776Z ========================= 4 warnings, 1 error in 5.60s =========================
+2025-12-23T01:29:43.4811052Z ##[error]Process completed with exit code 2.
+2025-12-23T01:29:43.4918239Z Post job cleanup.
+2025-12-23T01:29:43.5854720Z [command]/usr/bin/git version
+2025-12-23T01:29:43.5889771Z git version 2.52.0
+2025-12-23T01:29:43.5931293Z Temporarily overriding HOME='/home/runner/work/_temp/8a363c52-ca9e-4b74-95c8-860e48f5522c' before making global git config changes
+2025-12-23T01:29:43.5932653Z Adding repository directory to the temporary git global config as a safe directory
+2025-12-23T01:29:43.5936820Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography
+2025-12-23T01:29:43.5970114Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2025-12-23T01:29:43.6001186Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2025-12-23T01:29:43.6230915Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2025-12-23T01:29:43.6250739Z http.https://github.com/.extraheader
+2025-12-23T01:29:43.6262858Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2025-12-23T01:29:43.6292205Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2025-12-23T01:29:43.6508523Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2025-12-23T01:29:43.6538219Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2025-12-23T01:29:43.6873917Z Cleaning up orphan processes
