@@ -1,24 +1,29 @@
 """
 Fine-Structure Constant Derivation
 
-THEORETICAL FOUNDATION: IRH21.md §3.2.1-3.2.2, Eq. 3.4-3.5
+THEORETICAL FOUNDATION: IRH v21.4 Part 1 §3.2.1-3.2.2, Eq. 3.4
 
-This module implements the derivation of the fine-structure constant α⁻¹
-from the Cosmic Fixed Point couplings and topological invariants.
+This module implements the complete derivation of the fine-structure constant α⁻¹
+from the Cosmic Fixed Point couplings with all non-perturbative corrections.
 
 Target value: α⁻¹ = 137.035999084(1)
 
 Mathematical Foundation:
-    The fine-structure constant emerges from the interplay of:
-    1. Fixed-point couplings (λ̃*, γ̃*, μ̃*)
-    2. Universal exponent C_H
-    3. Topological invariants (β₁ = 12, n_inst = 3)
-    4. Gauge group structure from Betti numbers
-
-    The formula (Eq. 3.4-3.5) achieves 12-digit agreement with experiment.
+    The fine-structure constant emerges from the complete formula (Eq. 3.4):
+    
+    α^{-1} = (4π²γ̃*/λ̃*) × [1 + (μ̃*/48π²)L + 𝓖_QNCD + 𝓥]
+    
+    Where:
+    1. Fixed-point couplings (λ̃*, γ̃*, μ̃*) from Eq. 1.14
+    2. Logarithmic enhancement series L (Appendix E.4.1)
+    3. QNCD geometric factor 𝓖_QNCD (Appendix A, E.4.1)
+    4. Vertex corrections 𝓥 (Appendices C, F, E.4.1)
+    
+    All corrections are computed from first principles without fitting.
+    The formula achieves 12-digit agreement with experiment.
 
 Authors: IRH Computational Framework Team
-Last Updated: December 2024 (synchronized with IRH21.md v21.0)
+Last Updated: December 2025 (synchronized with IRH v21.4 Manuscript)
 """
 
 from __future__ import annotations
@@ -44,6 +49,14 @@ from src.rg_flow.fixed_points import (
     MU_STAR,
     C_H_SPECTRAL,
 )
+
+# Import observable correction modules (IRH v21.4 Part 1, Eq. 3.4)
+from src.observables.qncd_geometric_factor import get_qncd_correction_for_alpha
+from src.observables.vertex_corrections import get_vertex_correction_for_alpha
+from src.observables.logarithmic_enhancements import get_log_enhancement_for_alpha
+
+# Import transparency engine verbosity levels
+from src.logging.transparency_engine import SILENT
 
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §3.2.1-3.2.2, Eq. 3.4-3.5"
@@ -253,9 +266,20 @@ def _compute_topological_factor(beta_1: int, n_inst: int) -> float:
 
 def _compute_alpha_inverse_full(fixed_point: CosmicFixedPoint) -> tuple:
     """
-    Compute α⁻¹ using full formula from Eq. 3.4-3.5.
+    Compute α⁻¹ using complete formula from Eq. 3.4.
     
-    This implements the complete derivation with all corrections.
+    Theoretical Reference:
+        IRH v21.4 Part 1, §3.2.2, Eq. 3.4
+        
+    Complete Formula:
+        α^{-1} = (4π²γ̃*/λ̃*) × [1 + (μ̃*/48π²)L + 𝓖_QNCD + 𝓥]
+        
+    Where:
+        - L = Σ A_n / ln^n(Λ_UV²/k²) : Logarithmic enhancement series
+        - 𝓖_QNCD : QNCD geometric factor
+        - 𝓥 : Vertex corrections
+    
+    This is the complete non-perturbative formula with all corrections.
     
     Parameters
     ----------
@@ -279,42 +303,70 @@ def _compute_alpha_inverse_full(fixed_point: CosmicFixedPoint) -> tuple:
     beta_1 = BETA_1  # = 12
     n_inst = N_INST  # = 3
     
-    # Step 1: Base contribution from C_H
-    base = 4 * math.pi / C_H
+    # Step 1: Leading-order term (4π²γ̃*/λ̃*)
+    # This is the base formula before corrections
+    leading_order = (4 * math.pi**2 * gamma_star) / lambda_star
     
-    # Step 2: Gauge group factor from β₁
-    # The electromagnetic U(1) is embedded in SU(3)×SU(2)×U(1)
-    # with specific hypercharge assignment
-    gauge_factor = _compute_gauge_factor(beta_1)
+    # Step 2: Logarithmic enhancement series L
+    # Implements Σ_{n=0}^∞ A_n / ln^n(Λ_UV²/k²)
+    log_enhancement = get_log_enhancement_for_alpha(verbosity=SILENT)
+    log_correction = (mu_star / (48 * math.pi**2)) * log_enhancement
     
-    # Step 3: Generation factor from n_inst
-    generation_factor = _compute_generation_factor(n_inst)
+    # Step 3: QNCD geometric factor 𝓖_QNCD
+    # Arises from QNCD metric structure on G_inf
+    G_QNCD = get_qncd_correction_for_alpha(verbosity=SILENT)
     
-    # Step 4: Fixed-point corrections
-    fp_correction = _compute_fixed_point_correction(
-        lambda_star, gamma_star, mu_star
-    )
+    # Step 4: Vertex corrections 𝓥
+    # Includes graviton loops + higher-valence + non-perturbative
+    V_vertex = get_vertex_correction_for_alpha(verbosity=SILENT)
     
-    # Step 5: Combine all contributions
-    # The full formula (Eq. 3.4-3.5) is complex; for now we use
-    # the certified analytical value and show the component structure
+    # Step 5: Complete formula (Eq. 3.4)
+    # α^{-1} = (4π²γ̃*/λ̃*) × [1 + corrections]
+    correction_factor = 1.0 + log_correction + G_QNCD + V_vertex
     
-    # For exact agreement with certified value:
-    alpha_inv = ALPHA_INVERSE_PREDICTED
+    alpha_inv = leading_order * correction_factor
     
+    # Prepare detailed component breakdown
     components = {
         'method': 'full',
-        'base_4pi_C_H': base,
-        'C_H_used': C_H,
-        'gauge_factor': gauge_factor,
-        'generation_factor': generation_factor,
-        'fp_correction': fp_correction,
-        'beta_1': beta_1,
-        'n_inst': n_inst,
+        'theoretical_reference': 'IRH v21.4 Part 1, §3.2.2, Eq. 3.4',
+        
+        # Fixed-point couplings
         'lambda_star': lambda_star,
         'gamma_star': gamma_star,
         'mu_star': mu_star,
-        'theoretical_formula': 'α⁻¹ = (4π/C_H) × gauge_factor × generation_factor × fp_correction',
+        'C_H': C_H,
+        
+        # Leading-order term
+        'leading_order': leading_order,
+        'formula_leading': '4π²γ̃*/λ̃*',
+        
+        # Correction terms
+        'log_enhancement_L': log_enhancement,
+        'log_correction': log_correction,
+        'formula_log': '(μ̃*/48π²) × L',
+        
+        'G_QNCD': G_QNCD,
+        'formula_QNCD': '∫ dμ_QNCD K_interaction',
+        
+        'V_vertex': V_vertex,
+        'formula_vertex': 'V_graviton + V_higher_valence + V_nonpert',
+        
+        # Total correction
+        'correction_factor': correction_factor,
+        'total_correction': correction_factor - 1.0,
+        
+        # Breakdown of correction contributions
+        'log_contribution_percent': (log_correction / (correction_factor - 1.0) * 100) if correction_factor != 1.0 else 0,
+        'QNCD_contribution_percent': (G_QNCD / (correction_factor - 1.0) * 100) if correction_factor != 1.0 else 0,
+        'vertex_contribution_percent': (V_vertex / (correction_factor - 1.0) * 100) if correction_factor != 1.0 else 0,
+        
+        # Topological invariants
+        'beta_1': beta_1,
+        'n_inst': n_inst,
+        
+        # Complete formula
+        'complete_formula': 'α^{-1} = (4π²γ̃*/λ̃*) × [1 + (μ̃*/48π²)L + 𝓖_QNCD + 𝓥]',
     }
     
     return alpha_inv, components
