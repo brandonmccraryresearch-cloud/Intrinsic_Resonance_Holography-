@@ -238,19 +238,73 @@ class StructuredLogger:
         self.log(LogLevel.STEP, message, **kwargs)
     
     def result(self, message: str, value: Any = None, **kwargs) -> None:
-        """Log computation result."""
+        """
+        Log computation result.
+        
+        Theoretical Reference:
+            IRH21.md Appendix K, §1.0 (Structured Logging Protocol)
+            Result logging with theoretical traceability
+        
+        Parameters
+        ----------
+        message : str
+            Result description
+        value : Any, optional
+            Computed value
+        **kwargs : Any
+            Additional log metadata
+        """
         self.log(LogLevel.RESULT, message, result=value, **kwargs)
     
     def warning(self, message: str, **kwargs) -> None:
-        """Log warning message."""
+        """
+        Log warning message.
+        
+        Theoretical Reference:
+            IRH21.md Appendix K, §1.0 (Structured Logging Protocol)
+            Module header, lines 4-10
+        
+        Parameters
+        ----------
+        message : str
+            Warning message content
+        **kwargs : Any
+            Additional log metadata
+        """
         self.log(LogLevel.WARNING, message, **kwargs)
     
     def error(self, message: str, **kwargs) -> None:
-        """Log error message."""
+        """
+        Log error message.
+        
+        Theoretical Reference:
+            IRH21.md Appendix K, §1.0 (Structured Logging Protocol)
+            Module header, lines 4-10
+        
+        Parameters
+        ----------
+        message : str
+            Error message content
+        **kwargs : Any
+            Additional log metadata
+        """
         self.log(LogLevel.ERROR, message, **kwargs)
     
     def critical(self, message: str, **kwargs) -> None:
-        """Log critical message."""
+        """
+        Log critical message.
+        
+        Theoretical Reference:
+            IRH21.md Appendix K, §1.0 (Structured Logging Protocol)
+            Module header, lines 4-10
+        
+        Parameters
+        ----------
+        message : str
+            Critical message content
+        **kwargs : Any
+            Additional log metadata
+        """
         self.log(LogLevel.CRITICAL, message, **kwargs)
     
     @contextmanager
