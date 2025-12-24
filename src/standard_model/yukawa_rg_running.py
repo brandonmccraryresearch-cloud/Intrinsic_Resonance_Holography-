@@ -411,7 +411,8 @@ def compute_fermion_mass_with_rg(
     
     # The formula needs proper scaling to get GeV from natural units
     # This is a placeholder implementation - full formula requires careful dimensional analysis
-    mass_gev = R_Y * prefactor * math.sqrt(K_f) * math.sqrt(lambda_star) * higgs_vev / 1e3
+    # CORRECTED to be linear in K_f per manuscript
+    mass_gev = R_Y * prefactor * K_f * math.sqrt(lambda_star) * higgs_vev / 1e3
     
     if engine:
         engine.step("Step 3: Apply complete Eq. 3.6")

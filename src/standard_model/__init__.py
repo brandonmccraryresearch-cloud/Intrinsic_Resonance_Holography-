@@ -41,7 +41,6 @@ from .fermion_masses import (
     yukawa_coupling,
     mass_hierarchy,
     verify_mass_ratios,
-    TOPOLOGICAL_COMPLEXITY,
     HIGGS_VEV,
 )
 
@@ -118,7 +117,6 @@ __all__ = [
     'yukawa_coupling',
     'mass_hierarchy',
     'verify_mass_ratios',
-    'TOPOLOGICAL_COMPLEXITY',
     
     # gauge_groups exports (§3.1.1)
     'GaugeGroup',

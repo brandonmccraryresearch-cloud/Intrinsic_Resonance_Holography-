@@ -297,19 +297,28 @@ class TransparencyEngine:
             MessageType.FAILED: MINIMAL
         }
         
-        if self.verbosity.value >= display_threshold.get(msg.message_type, STANDARD).value:
+        # Handle verbosity being either Enum or int
+        current_verbosity_value = self.verbosity.value if isinstance(self.verbosity, VerbosityLevel) else self.verbosity
+
+        threshold = display_threshold.get(msg.message_type, STANDARD)
+        threshold_value = threshold.value if isinstance(threshold, VerbosityLevel) else threshold
+
+        if current_verbosity_value >= threshold_value:
             print(f"{symbol} {msg.content}")
             
-            if msg.reference and self.verbosity.value >= DETAILED.value:
+            detailed_value = DETAILED.value if isinstance(DETAILED, VerbosityLevel) else DETAILED
+            full_value = FULL.value if isinstance(FULL, VerbosityLevel) else FULL
+
+            if msg.reference and current_verbosity_value >= detailed_value:
                 print(f"   └─ Reference: {msg.reference}")
                 
-            if msg.formula and self.verbosity.value >= FULL.value:
+            if msg.formula and current_verbosity_value >= full_value:
                 print(f"   └─ Formula: {msg.formula}")
                 if msg.variables:
                     for var, val in msg.variables.items():
                         print(f"      • {var} = {val}")
                         
-            if msg.value is not None and self.verbosity.value >= FULL.value:
+            if msg.value is not None and current_verbosity_value >= full_value:
                 if msg.uncertainty is not None:
                     print(f"   └─ Value: {msg.value} ± {msg.uncertainty}")
                 else:
