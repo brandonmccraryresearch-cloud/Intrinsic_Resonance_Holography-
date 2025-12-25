@@ -44,6 +44,8 @@ class LogLevel(Enum):
     CRITICAL = 60
     
     @classmethod
+    # Theoretical Reference: IRH v21.4
+
     def from_string(cls, s: str) -> 'LogLevel':
         """Convert string to LogLevel."""
         return cls[s.upper()]
@@ -80,10 +82,14 @@ class LogEntry:
         # Remove empty fields
         return {k: v for k, v in d.items() if v not in (None, "", {}, [])}
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def to_json(self, indent: Optional[int] = None) -> str:
         """Convert to JSON string."""
         return json.dumps(self.to_dict(), indent=indent, default=str)
     
+    # Theoretical Reference: IRH v21.4
     def to_text(self) -> str:
         """Convert to human-readable text format."""
         parts = [f"[{self.timestamp}] [{self.level}]"]
@@ -110,6 +116,8 @@ class LogEntry:
 # =============================================================================
 
 class StructuredLogger:
+    
+    # Theoretical Reference: IRH v21.4
     """
     Structured logger with JSON output and theoretical context.
     
@@ -119,6 +127,9 @@ class StructuredLogger:
     """
     
     _instances: Dict[str, 'StructuredLogger'] = {}
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def __init__(
         self,
@@ -161,6 +172,8 @@ class StructuredLogger:
             Path(log_file).parent.mkdir(parents=True, exist_ok=True)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4
+
     def get_instance(cls, name: str = "irh") -> 'StructuredLogger':
         """Get or create a logger instance."""
         if name not in cls._instances:
@@ -212,6 +225,9 @@ class StructuredLogger:
             with open(self.log_file, 'a') as f:
                 f.write(entry.to_json() + "\n")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def log(
         self,
         level: LogLevel,
@@ -225,15 +241,24 @@ class StructuredLogger:
         entry = self._create_entry(level, message, **kwargs)
         self._output_entry(entry)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def debug(self, message: str, **kwargs) -> None:
         """Log debug message."""
         self.log(LogLevel.DEBUG, message, **kwargs)
     
+    # Theoretical Reference: IRH v21.4
     def info(self, message: str, **kwargs) -> None:
         """Log info message."""
         self.log(LogLevel.INFO, message, **kwargs)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def step(self, message: str, **kwargs) -> None:
+        
+        # Theoretical Reference: IRH v21.4
         """Log computation step."""
         self.log(LogLevel.STEP, message, **kwargs)
     
@@ -260,7 +285,7 @@ class StructuredLogger:
         """
         Log warning message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH21.md Appendix K, §1.0 (Structured Logging Protocol)
             Module header, lines 4-10
         
@@ -337,6 +362,8 @@ class StructuredLogger:
             self._context_stack.pop()
     
     @contextmanager
+    # Theoretical Reference: IRH v21.4
+
     def timed(self, message: str, level: LogLevel = LogLevel.STEP, **kwargs):
         """
         Context manager for timing operations.
@@ -355,6 +382,9 @@ class StructuredLogger:
         finally:
             duration_ms = (time.perf_counter() - start) * 1000
             self.log(level, f"Completed: {message}", duration_ms=duration_ms, **kwargs)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def get_entries(
         self,
@@ -392,16 +422,25 @@ class StructuredLogger:
         
         return entries
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def clear(self) -> None:
         """Clear all log entries."""
         self._entries.clear()
     
+    # Theoretical Reference: IRH v21.4
     def export_json(self, path: str) -> None:
         """Export all entries to JSON file."""
         with open(path, 'w') as f:
             json.dump([e.to_dict() for e in self._entries], f, indent=2, default=str)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_summary(self) -> Dict[str, Any]:
+        
+        # Theoretical Reference: IRH v21.4
         """Get summary statistics of log entries."""
         if not self._entries:
             return {'total': 0}
@@ -429,6 +468,10 @@ class StructuredLogger:
 # =============================================================================
 
 _default_logger: Optional[StructuredLogger] = None
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def configure_logging(
@@ -475,6 +518,10 @@ def configure_logging(
     return _default_logger
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def get_logger(name: Optional[str] = None) -> StructuredLogger:
     """
     Get a logger instance.
@@ -498,6 +545,10 @@ def get_logger(name: Optional[str] = None) -> StructuredLogger:
         _default_logger = configure_logging()
     
     return _default_logger
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def create_logger(

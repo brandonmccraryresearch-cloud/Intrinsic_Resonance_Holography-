@@ -118,7 +118,7 @@ class HiggsSector:
         """
         Verify Higgs mass derivation.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Part 1 §3.3.2
         """
         # m_H² = 2λ_H v²
@@ -137,7 +137,7 @@ class HiggsSector:
         """
         Predict Higgs trilinear coupling (testable at HL-LHC/FCC).
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Part 1 §3.3.3
             
         λ_HHH = 3 × m_H² / v (SM prediction)
@@ -231,6 +231,9 @@ class GaugeBosonMasses:
         # ρ parameter
         self.rho = self.m_W**2 / (self.m_Z**2 * (1 - self.sin2_theta_W))
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.3
+
+    
     def verify_masses(self) -> Dict:
         """Compare with experimental values."""
         m_W_exp = 80.377  # GeV
@@ -277,6 +280,7 @@ class GaugeBosonMasses:
         }
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.3
 def compute_higgs_sector() -> HiggsSector:
     """
     Compute complete Higgs sector from IRH theory.
@@ -289,6 +293,10 @@ def compute_higgs_sector() -> HiggsSector:
     return HiggsSector()
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.3
+
+
+
 def compute_gauge_boson_masses() -> GaugeBosonMasses:
     """
     Compute W and Z boson masses.
@@ -299,6 +307,10 @@ def compute_gauge_boson_masses() -> GaugeBosonMasses:
         Gauge boson masses from EWSB
     """
     return GaugeBosonMasses()
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §3.3
+
 
 
 def verify_electroweak_sector() -> Dict:

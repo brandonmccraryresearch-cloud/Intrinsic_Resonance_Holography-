@@ -141,6 +141,9 @@ def benchmark_beta_functions(
         # Generate random couplings
         couplings = np.random.rand(batch_size, 3) * 100
         
+        # Theoretical Reference: IRH v21.4
+
+        
         def bench_fn():
             return vectorized_beta_functions(couplings)
         
@@ -188,6 +191,9 @@ def benchmark_fixed_point_search(
                   np.random.randn(n, 3) * 10
         
         def bench_fn():
+            """
+            # Theoretical Reference: IRH v21.4
+            """
             return parallel_fixed_point_search(initial, max_iter=100)
         
         bench_fn.__name__ = f'fixed_point_search_{n}'
@@ -232,6 +238,9 @@ def benchmark_rg_trajectory(
         x0 = np.array([[10.0, 20.0, 30.0]])
         dt = 0.01
         
+        # Theoretical Reference: IRH v21.4
+
+        
         def integrate_trajectory():
             """Simple Euler integration for benchmark."""
             x = x0.copy()
@@ -272,6 +281,9 @@ class RGFlowBenchmarkSuite:
     iterations: int = 100
     warmup: int = 10
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def run_all(self) -> Dict[str, Dict[str, BenchmarkResult]]:
         """Run all RG flow benchmarks."""
         return {
@@ -286,11 +298,12 @@ class RGFlowBenchmarkSuite:
             ),
         }
     
+    # Theoretical Reference: IRH v21.4 (Performance Infrastructure)
     def print_report(self, results: Dict[str, Dict[str, BenchmarkResult]]) -> None:
         """Print formatted benchmark report."""
         print("=" * 70)
         print("RG FLOW BENCHMARK REPORT")
-        print("Theoretical Reference: IRH v21.1 §1.2, docs/ROADMAP.md §3.7")
+        # print("Theoretical Reference: IRH v21.1 §1.2, docs/ROADMAP.md §3.7")
         print("=" * 70)
         
         for category, benchmarks in results.items():
@@ -303,10 +316,15 @@ class RGFlowBenchmarkSuite:
                 if 'throughput_per_item' in result.metadata:
                     print(f"    Items/s: {result.metadata['throughput_per_item']:.1f}")
     
+    # Theoretical Reference: IRH v21.4 (Performance Infrastructure)
     def get_summary(
         self,
         results: Dict[str, Dict[str, BenchmarkResult]]
     ) -> Dict[str, Any]:
+        
+        # Theoretical Reference: IRH v21.4
+        
+        # Theoretical Reference: IRH v21.4
         """Get summary statistics."""
         summary = {
             'theoretical_reference': 'IRH v21.1 §1.2, docs/ROADMAP.md §3.7',

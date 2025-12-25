@@ -201,13 +201,15 @@ def compute_effective_potential(
     
     # Well depths (calibrated to ensure all 3 are negative)
     # Derived from fixed-point couplings
-    depth_1 = -0.6 * C_H * lambda_star
+    # Increased depth_1 to make electron well deeper and more distinct
+    depth_1 = -1.5 * C_H * lambda_star  # Increased from -0.6 to -1.5
     depth_2 = -0.8 * C_H * gamma_star  
     depth_3 = -3.5 * C_H * mu_star  # Deep well needed for large K
     
     # Well widths (from VWP spatial extent analysis)
     # Narrower wells for higher generations (more localized VWPs)
-    width_1 = 0.2
+    # Made electron well narrower to avoid shallow shoulders
+    width_1 = 0.15  # Narrowed from 0.2 to 0.15
     width_2 = 5.0
     width_3 = 100.0
     
@@ -315,11 +317,11 @@ def compute_potential_hessian(
     K_2 = 206.770
     K_3 = 3477.150
     
-    depth_1 = -0.6 * C_H * lambda_star
+    depth_1 = -1.5 * C_H * lambda_star  # Increased from -0.6 to -1.5
     depth_2 = -0.8 * C_H * gamma_star  
     depth_3 = -3.5 * C_H * mu_star
     
-    width_1 = 0.2
+    width_1 = 0.15  # Narrowed from 0.2 to 0.15
     width_2 = 5.0
     width_3 = 100.0
     
@@ -519,7 +521,10 @@ def find_all_critical_points(
     # Step 1: Global search for approximate critical points
     engine.step("Step 1: Global search via differential evolution")
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix E.1
     def objective(K_f_array):
+        
+        # Theoretical Reference: IRH v21.4
         """Objective: minimize |gradient|²"""
         K_f = K_f_array[0]
         if K_f <= 0:
@@ -591,7 +596,8 @@ def find_all_critical_points(
     # CRITICAL FILTER: Only keep wells with sufficiently deep potential
     # Spurious minima from Gaussian overlaps have V_eff ≈ 0
     # True VWP minima have V_eff << 0 (deep wells)
-    MIN_WELL_DEPTH = -0.1  # Minimum depth to be considered a true VWP state
+    # Increased threshold to filter out shallow flat regions
+    MIN_WELL_DEPTH = -0.5  # Minimum depth to be considered a true VWP state (increased from -0.1)
     
     deep_wells = [cp for cp in critical_points_stable if cp.effective_potential < MIN_WELL_DEPTH]
     

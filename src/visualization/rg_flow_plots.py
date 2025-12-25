@@ -102,6 +102,9 @@ class PlotConfig:
     grid: bool = True
     dark_mode: bool = False
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_style(self) -> Dict[str, Any]:
         """Return matplotlib style parameters."""
         if self.dark_mode:
@@ -123,6 +126,9 @@ class RGFlowPlotter:
     def __post_init__(self):
         if not MATPLOTLIB_AVAILABLE:
             raise ImportError("matplotlib is required for RGFlowPlotter")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def phase_diagram_2d(
         self,
@@ -235,6 +241,9 @@ class RGFlowPlotter:
         
         return fig, ax
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def phase_diagram_3d(
         self,
         lambda_range: Tuple[float, float] = (0, 100),
@@ -277,6 +286,9 @@ class RGFlowPlotter:
         
         # Integrate and plot trajectories
         from scipy.integrate import solve_ivp
+        
+        # Theoretical Reference: IRH v21.4
+
         
         def rg_flow(t, y):
             lambda_t, gamma_t, mu_t = y
@@ -337,6 +349,9 @@ class RGFlowPlotter:
         
         return fig, ax
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def beta_function_plot(
         self,
         coupling_range: Tuple[float, float] = (0, 100),
@@ -392,6 +407,9 @@ class RGFlowPlotter:
             ax.grid(True, alpha=0.3)
         
         return fig, ax
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def fixed_point_stability_plot(
         self,
@@ -554,7 +572,7 @@ def plot_phase_diagram_3d(
     """
     Create 3D phase diagram of RG flow.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2, Eq. 1.12
     
     Returns
@@ -574,7 +592,7 @@ def plot_rg_trajectory(
     """
     Plot a single RG trajectory from given initial conditions.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2, Eq. 1.12
     
     Parameters
@@ -602,6 +620,9 @@ def plot_rg_trajectory(
         fig = ax.get_figure()
     
     def rg_flow(t, y):
+        """
+        # Theoretical Reference: IRH v21.4
+        """
         lambda_t, gamma_t, mu_t = y
         return [
             _beta_lambda(lambda_t),
@@ -665,7 +686,7 @@ def create_interactive_phase_diagram(
     """
     Create interactive 2D phase diagram using Plotly.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2-1.3
     
     Returns

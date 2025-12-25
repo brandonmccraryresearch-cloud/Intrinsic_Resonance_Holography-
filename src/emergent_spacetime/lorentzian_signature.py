@@ -131,6 +131,9 @@ class Z2SymmetryBreaking:
         # ℤ₂ is broken when order parameter is non-zero
         self.is_broken = abs(self.order_parameter) > 1e-10
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix H, Theorem H.1
+
+    
     def compute_effective_mass_squared(self, mu_squared: float) -> Tuple[float, float]:
         """
         Compute effective mass² for timelike and spacelike modes.
@@ -161,6 +164,9 @@ class Z2SymmetryBreaking:
         
         return (m_sq_time, m_sq_space)
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix H, Theorem H.1
+
+    
     def induced_metric_sign(self) -> Tuple[int, int]:
         """
         Determine induced metric sign from symmetry breaking.
@@ -179,6 +185,9 @@ class Z2SymmetryBreaking:
 # ============================================================================
 # Core Functions
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4 Part 2, Appendix H, Theorem H.1
+
 
 def compute_signature(metric_eigenvalues: np.ndarray) -> Tuple[int, ...]:
     """
@@ -362,6 +371,10 @@ def verify_theorem_h1(tolerance: float = 1e-10) -> Dict[str, Any]:
     }
 
 
+# Theoretical Reference: IRH v21.4 Part 2, Appendix H, Theorem H.1
+
+
+
 def timelike_direction(
     signature: Tuple[int, ...],
 ) -> Optional[int]:
@@ -382,6 +395,10 @@ def timelike_direction(
         return signature.index(-1)
     except ValueError:
         return None
+
+
+# Theoretical Reference: IRH v21.4 Part 2, Appendix H, Theorem H.1
+
 
 
 def light_cone_structure(
@@ -421,6 +438,9 @@ def light_cone_structure(
 # ============================================================================
 # Summary Function
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4 Part 2, Appendix H, Theorem H.1
+
 
 def generate_lorentzian_signature_summary() -> Dict[str, Any]:
     """Generate summary of Lorentzian signature module."""

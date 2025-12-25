@@ -124,6 +124,10 @@ elif _DASK_AVAILABLE:
     _DEFAULT_BACKEND = DistributedBackend.DASK  # Dask without distributed still provides parallel
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def is_dask_available() -> bool:
     """
     Check if Dask is available.
@@ -141,6 +145,10 @@ def is_dask_available() -> bool:
     ...     print("Dask not available, using serial execution")
     """
     return _DASK_AVAILABLE
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def is_ray_available() -> bool:
@@ -162,6 +170,10 @@ def is_ray_available() -> bool:
     return _RAY_AVAILABLE
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def get_available_distributed_backends() -> List[DistributedBackend]:
     """
     Get list of available distributed computing backends.
@@ -177,6 +189,10 @@ def get_available_distributed_backends() -> List[DistributedBackend]:
     if _RAY_AVAILABLE:
         backends.append(DistributedBackend.RAY)
     return backends
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def get_distributed_info() -> Dict[str, Any]:
@@ -396,6 +412,9 @@ class DistributedContext:
                 warnings.warn(f"Failed to initialize Ray: {e}")
             self._ray_initialized = False
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def submit(self, func: Callable, *args, **kwargs) -> Any:
         """
         Submit a task for distributed execution.
@@ -422,6 +441,9 @@ class DistributedContext:
         else:
             # Serial execution
             return func(*args, **kwargs)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def gather(self, futures: List[Any]) -> List[Any]:
         """
@@ -450,6 +472,9 @@ class DistributedContext:
 # Helper Functions
 # =============================================================================
 
+# Theoretical Reference: IRH v21.4
+
+
 def create_local_cluster(
     n_workers: int = 4,
     memory_limit: str = '4GB',
@@ -474,6 +499,10 @@ def create_local_cluster(
         return None
     
     return LocalCluster(n_workers=n_workers, memory_limit=memory_limit)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def shutdown_cluster(cluster: Any) -> None:
@@ -740,6 +769,8 @@ def ray_parameter_scan(
     # Default evaluation: distance to fixed point
     if evaluation_function is None:
         fixed_point = np.array([LAMBDA_STAR, GAMMA_STAR, MU_STAR])
+        # Theoretical Reference: IRH v21.4
+
         def evaluation_function(params):
             return np.linalg.norm(params - fixed_point)
     
@@ -748,6 +779,8 @@ def ray_parameter_scan(
     if ctx.backend == DistributedBackend.RAY and _RAY_AVAILABLE:
         # Create Ray remote function
         @ray.remote
+        # Theoretical Reference: IRH v21.4
+
         def ray_evaluate(params, eval_func):
             return _evaluate_at_point(params, eval_func)
         
@@ -843,7 +876,7 @@ def distributed_monte_carlo(
     """
     Distributed Monte Carlo sampling on G_inf.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript §1.1
         
         Monte Carlo sampling on the informational group manifold
@@ -889,11 +922,15 @@ def distributed_monte_carlo(
     
     # Default sample function: random couplings around fixed point
     if sample_function is None:
+        # Theoretical Reference: IRH v21.4
+
         def sample_function(n):
             return np.random.randn(n, 3) * 20 + np.array([LAMBDA_STAR, GAMMA_STAR, MU_STAR])
     
     # Default observable: norm of beta functions
     if observable_function is None:
+        # Theoretical Reference: IRH v21.4
+
         def observable_function(params):
             betas = _beta_functions(params.reshape(1, -1))
             return np.linalg.norm(betas)
@@ -921,6 +958,8 @@ def distributed_monte_carlo(
         
     elif ctx.backend == DistributedBackend.RAY and _RAY_AVAILABLE:
         @ray.remote
+        # Theoretical Reference: IRH v21.4
+
         def ray_mc_sample(n, sample_func, obs_func, seed):
             return _monte_carlo_sample(n, sample_func, obs_func, seed)
         
@@ -1098,6 +1137,8 @@ def distributed_qncd_matrix(
         
     elif ctx.backend == DistributedBackend.RAY and _RAY_AVAILABLE:
         @ray.remote
+        # Theoretical Reference: IRH v21.4
+
         def ray_compute_pairs(vecs, pairs):
             return _compute_qncd_pairs(vecs, pairs)
         
@@ -1165,6 +1206,9 @@ def distributed_qncd_matrix(
 # =============================================================================
 # Generic Distributed Map
 # =============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def distributed_map(
     func: Callable[[Any], Any],

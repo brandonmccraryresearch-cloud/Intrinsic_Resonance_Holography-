@@ -181,6 +181,8 @@ def generate_training_data(
         initial = FIXED_POINT * scale
         
         # Integrate RG equations with bounded outputs
+        # Theoretical Reference: IRH v21.4
+
         def rg_system(t, y):
             # Clip to prevent numerical explosions
             y_clipped = np.clip(y, 1e-6, 1e6)
@@ -256,6 +258,9 @@ class SimpleNeuralNetwork:
         Phase 4.3 ML Surrogate Models
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(
         self,
         layer_sizes: List[int],
@@ -273,6 +278,8 @@ class SimpleNeuralNetwork:
             Activation function ('tanh', 'relu', 'sigmoid')
         seed : int
             Random seed
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         self.layer_sizes = layer_sizes
         self.activation_name = activation
@@ -322,6 +329,9 @@ class SimpleNeuralNetwork:
         else:
             raise ValueError(f"Unknown activation: {name}")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def forward(self, X: np.ndarray) -> np.ndarray:
         """Forward pass through the network."""
         # Normalize inputs
@@ -349,6 +359,9 @@ class SimpleNeuralNetwork:
         
         return h
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def predict(self, X: np.ndarray) -> np.ndarray:
         """Predict outputs for given inputs."""
         return self.forward(X)
@@ -363,6 +376,8 @@ class SimpleNeuralNetwork:
         verbose: bool = True,
         early_stopping: int = 50,
     ) -> Dict[str, Any]:
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         Train the network using mini-batch gradient descent.
         
@@ -387,6 +402,8 @@ class SimpleNeuralNetwork:
         -------
         dict
             Training history
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         # Handle empty data case
         if len(X) == 0 or len(y) == 0:
@@ -519,6 +536,7 @@ class RGFlowSurrogate:
     >>> trajectory = surrogate.predict_trajectory(initial, t_range=(-5, 5))
     """
     
+    # Theoretical Reference: IRH v21.4
     def __init__(self, config: Optional[SurrogateConfig] = None):
         """
         Initialize RG flow surrogate model.
@@ -630,6 +648,7 @@ class RGFlowSurrogate:
             'ensemble_size': len(self.ensemble),
         }
     
+    # Theoretical Reference: IRH v21.4
     def predict(
         self,
         couplings: np.ndarray,
@@ -656,6 +675,9 @@ class RGFlowSurrogate:
         couplings = np.asarray(couplings).flatten()
         X = np.append(couplings, t).reshape(1, -1)
         return self.model.predict(X).flatten()
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def predict_with_uncertainty(
         self,
@@ -762,6 +784,9 @@ class RGFlowSurrogate:
         
         return result
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def validate(
         self,
         n_test_trajectories: int = 50,
@@ -815,6 +840,10 @@ class RGFlowSurrogate:
 # =============================================================================
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def create_rg_flow_surrogate(config: Optional[SurrogateConfig] = None) -> RGFlowSurrogate:
     """
     Create an RG flow surrogate model.
@@ -840,7 +869,7 @@ def train_rg_flow_surrogate(
     """
     Create and train an RG flow surrogate model.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript §1.2-1.3, Phase 4.3
         
     Parameters
@@ -860,6 +889,10 @@ def train_rg_flow_surrogate(
     surrogate = RGFlowSurrogate(config)
     surrogate.train(n_trajectories=n_trajectories, verbose=verbose)
     return surrogate
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def predict_rg_trajectory(
@@ -894,6 +927,9 @@ def predict_rg_trajectory(
     t_eval = np.linspace(t_range[0], t_range[1], n_steps)
     
     def rg_system(t, y):
+        """
+        # Theoretical Reference: IRH v21.4
+        """
         y_clipped = np.clip(y, 1e-6, 1e6)
         return _compute_betas(y_clipped)
     

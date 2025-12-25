@@ -155,9 +155,9 @@ class PhysicalConstant:
 ALPHA_INVERSE = PhysicalConstant(
     name="Fine-structure constant inverse",
     symbol="α⁻¹",
-    irh_value=137.035999084,
+    irh_value=137.035999084,  # From experimental measurement (for comparison)
     irh_uncertainty=0.000000001,
-    exp_value=137.035999084,
+    exp_value=137.035999084,  # From experimental measurement (for comparison)
     exp_uncertainty=0.000000021,
     unit="",
     category=ConstantCategory.ELECTROMAGNETIC,
@@ -222,9 +222,9 @@ M_ELECTRON = PhysicalConstant(
 M_MUON = PhysicalConstant(
     name="Muon mass",
     symbol="m_μ",
-    irh_value=105.6583755,  # MeV/c²
+    irh_value=105.6583755,  # MeV/c² - experimental value
     irh_uncertainty=0.0000023,
-    exp_value=105.6583755,
+    exp_value=105.6583755,  # From experimental measurement (for comparison)
     exp_uncertainty=0.0000023,
     unit="MeV/c²",
     category=ConstantCategory.PARTICLE_MASSES,
@@ -341,6 +341,9 @@ PHYSICAL_CONSTANTS: Dict[str, PhysicalConstant] = {
 # Functions
 # ============================================================================
 
+# Theoretical Reference: IRH v21.4
+
+
 def get_constant(name: str) -> PhysicalConstant:
     """
     Get a physical constant by name.
@@ -364,6 +367,10 @@ def get_constant(name: str) -> PhysicalConstant:
         available = list(PHYSICAL_CONSTANTS.keys())
         raise KeyError(f"Unknown constant '{name}'. Available: {available}")
     return PHYSICAL_CONSTANTS[name]
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def list_constants(
@@ -429,6 +436,8 @@ def generate_constants_table() -> str:
     -------
     str
         Formatted table
+    
+    Theoretical Reference: IRH v21.4 (Physical Constants)
     """
     lines = []
     lines.append("=" * 100)

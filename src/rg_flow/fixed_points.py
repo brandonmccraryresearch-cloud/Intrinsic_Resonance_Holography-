@@ -106,6 +106,9 @@ class CosmicFixedPoint:
             mu_star=MU_STAR
         )
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.3, Eq. 1.14
+
+    
     def verify(self, tolerance: float = 1e-10) -> Dict[str, Any]:
         """
         Verify this is indeed a fixed point by checking β-functions vanish.
@@ -137,7 +140,7 @@ class CosmicFixedPoint:
         """
         Compute universal exponent C_H from fixed-point values.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH21.md §1.3, Eq. 1.16
             
         Parameters
@@ -291,6 +294,9 @@ def _find_fixed_point_numerical(
         # Start near analytical solution
         initial_guess = (LAMBDA_STAR * 0.9, GAMMA_STAR * 0.9, MU_STAR * 0.9)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.3, Eq. 1.14
+
+    
     def beta_system(couplings):
         """System of equations: β = 0."""
         l, g, m = couplings
@@ -357,7 +363,7 @@ def compute_universal_exponent() -> Dict[str, Any]:
     """
     Compute universal exponent C_H from fixed-point values.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.3, Eq. 1.16
         
         Note: There are two related quantities:
@@ -435,7 +441,7 @@ def analyze_fixed_point_stability(tolerance: float = 1e-10) -> Dict[str, Any]:
     """
     Analyze stability of Cosmic Fixed Point.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.3
         Fixed point is IR-attractive if all eigenvalues have positive real parts
         

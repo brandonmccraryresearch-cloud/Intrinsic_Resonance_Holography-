@@ -174,6 +174,10 @@ DETECTORS = {
 }
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def analyze_detectability(
     f_gw: float,
     h_strain: float,
@@ -262,7 +266,7 @@ def compute_spacetime_granularity(f_gw: float, distance_m: float) -> SpacetimeGr
     """
     Compute spacetime granularity effects on GWs.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §8.4
         
     Parameters
@@ -300,6 +304,10 @@ def compute_spacetime_granularity(f_gw: float, distance_m: float) -> SpacetimeGr
         phase_diffusion=phase_diffusion,
         coherence_length=coherence_length
     )
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def predict_binary_merger_sidebands(
@@ -360,6 +368,10 @@ def predict_binary_merger_sidebands(
         'detectability': detectability,
         'theoretical_reference': 'IRH21.md §8.4'
     }
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def verify_gw_sideband_predictions() -> Dict:

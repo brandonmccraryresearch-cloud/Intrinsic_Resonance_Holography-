@@ -74,6 +74,9 @@ class HomologyGroup:
         """The Betti number β_k = rank(H_k)."""
         return self.rank
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def is_free(self) -> bool:
         """Check if the homology group is torsion-free."""
         return len(self.torsion) == 0
@@ -121,6 +124,9 @@ class HomologyComputation:
         """Get all Betti numbers as a tuple."""
         return tuple(self.groups[k].rank for k in sorted(self.groups.keys()))
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def poincare_polynomial(self) -> str:
         """
         Compute the Poincaré polynomial P(t) = Σ β_k t^k.
@@ -167,6 +173,9 @@ class PersistentHomologyResult:
         """Number of topological features."""
         return len(self.barcodes)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def persistent_features(self, threshold: float = 0.1) -> List[Tuple[float, float]]:
         """Get features with persistence above threshold."""
         return [(b, d) for (b, d), p in zip(self.barcodes, self.persistence) 
@@ -176,6 +185,9 @@ class PersistentHomologyResult:
 # ============================================================================
 # Core Functions
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def compute_homology(
     space: str = 'M3',
@@ -244,6 +256,10 @@ def compute_homology(
         print(f"  └─ Poincaré polynomial: P(t) = {result.poincare_polynomial()}")
     
     return result
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def persistent_homology(
@@ -321,6 +337,10 @@ def persistent_homology(
     return results
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def compute_euler_characteristic(betti_numbers: Tuple[int, ...]) -> int:
     """
     Compute the Euler characteristic from Betti numbers.
@@ -343,6 +363,10 @@ def compute_euler_characteristic(betti_numbers: Tuple[int, ...]) -> int:
     0
     """
     return sum((-1)**k * b for k, b in enumerate(betti_numbers))
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def verify_poincare_duality(
@@ -449,6 +473,9 @@ def _compute_SU2_homology(coefficients: str) -> Dict[int, HomologyGroup]:
 # ============================================================================
 # Summary Generation
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def generate_homology_summary() -> str:
     """

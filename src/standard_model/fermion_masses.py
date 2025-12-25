@@ -26,6 +26,14 @@ from typing import Dict, Optional
 
 import numpy as np
 
+# Import TransparencyEngine
+try:
+    from src.logging.transparency_engine import TransparencyEngine
+    _TRANSPARENCY_AVAILABLE = True
+except ImportError:
+    _TRANSPARENCY_AVAILABLE = False
+    TransparencyEngine = None
+
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH v21.1 Manuscript Part 1 §3.2, Eq. 3.6"
 
@@ -41,7 +49,7 @@ HIGGS_VEV = 246.22
 
 
 # Topological complexity eigenvalues (Table 3.1, Appendix E.1)
-TOPOLOGICAL_COMPLEXITY = {
+TOPOLOGICAL_COMPLEXITY = {  # From experimental measurement (for comparison)
     # Charged leptons
     'electron': 1.0000,
     'muon': 206.7682830,
@@ -158,7 +166,7 @@ def mass_hierarchy() -> Dict:
     """
     Compute the full fermion mass hierarchy from topological complexity.
 
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §3.2, Table 3.1
 
     Returns

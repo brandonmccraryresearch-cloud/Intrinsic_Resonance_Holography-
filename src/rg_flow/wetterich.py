@@ -79,6 +79,9 @@ class Regulator:
     name: str = LITIM_REGULATOR
     k: float = 1.0
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def R(self, p_squared: float) -> float:
         """
         Compute regulator R_k(p²).
@@ -110,6 +113,9 @@ class Regulator:
             
         else:
             raise ValueError(f"Unknown regulator: {self.name}")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def dR_dt(self, p_squared: float) -> float:
         """
@@ -173,6 +179,9 @@ class EffectiveAction:
     lambda_coupling: float
     gamma_coupling: float
     mu_coupling: float
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def couplings(self) -> Tuple[float, float, float]:
         """Return all couplings as tuple."""
@@ -314,6 +323,9 @@ class WetterichSolver:
             0.5 * trace_gamma * dp,
             0.5 * trace_mu * dp
         )
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def flow_equations(
         self,

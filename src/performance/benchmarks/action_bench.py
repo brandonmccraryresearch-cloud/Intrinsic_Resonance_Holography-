@@ -195,6 +195,9 @@ def benchmark_kinetic_action(
         phi = np.random.randn(N, N, N, N) + 1j * np.random.randn(N, N, N, N)
         laplacian_coeffs = np.ones((3, 4))  # 3 SU(2) generators × 4 arguments
         
+        # Theoretical Reference: IRH v21.4
+
+        
         def bench_fn():
             return _compute_kinetic_action(phi, laplacian_coeffs)
         
@@ -238,6 +241,9 @@ def benchmark_interaction_action(
         phi = np.random.randn(N, N, N, N) + 1j * np.random.randn(N, N, N, N)
         
         def bench_fn():
+            """
+            # Theoretical Reference: IRH v21.4
+            """
             return _compute_interaction_action(phi)
         
         bench_fn.__name__ = f'interaction_N{N}'
@@ -281,6 +287,9 @@ def benchmark_total_action(
         laplacian_coeffs = np.ones((3, 4))
         
         def bench_fn():
+            """
+            # Theoretical Reference: IRH v21.4
+            """
             return _compute_total_action(phi, laplacian_coeffs)
         
         bench_fn.__name__ = f'total_N{N}'
@@ -314,6 +323,9 @@ class ActionBenchmarkSuite:
     warmup: int = 10
     field_sizes: List[int] = field(default_factory=lambda: [4, 8, 16])
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def run_all(self) -> Dict[str, Dict[str, BenchmarkResult]]:
         """Run all action benchmarks."""
         return {
@@ -331,11 +343,12 @@ class ActionBenchmarkSuite:
             ),
         }
     
+    # Theoretical Reference: IRH v21.4 (Performance Infrastructure)
     def print_report(self, results: Dict[str, Dict[str, BenchmarkResult]]) -> None:
         """Print formatted benchmark report."""
         print("=" * 70)
         print("cGFT ACTION BENCHMARK REPORT")
-        print("Theoretical Reference: IRH v21.1 §1.1, docs/ROADMAP.md §3.7")
+        # print("Theoretical Reference: IRH v21.1 §1.1, docs/ROADMAP.md §3.7")
         print("=" * 70)
         
         for category, benchmarks in results.items():
@@ -348,10 +361,15 @@ class ActionBenchmarkSuite:
                 if 'points_per_ms' in result.metadata:
                     print(f"    Points/ms: {result.metadata['points_per_ms']:.1f}")
     
+    # Theoretical Reference: IRH v21.4 (Performance Infrastructure)
     def get_summary(
         self,
         results: Dict[str, Dict[str, BenchmarkResult]]
     ) -> Dict[str, Any]:
+        
+        # Theoretical Reference: IRH v21.4
+        
+        # Theoretical Reference: IRH v21.4
         """Get summary statistics."""
         summary = {
             'theoretical_reference': 'IRH v21.1 §1.1, docs/ROADMAP.md §3.7',

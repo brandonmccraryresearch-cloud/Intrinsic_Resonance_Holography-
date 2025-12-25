@@ -44,6 +44,10 @@ __theoretical_foundation__ = "IRH21.md §1.1, Appendix A"
 # =============================================================================
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def encode_quaternion(q: Quaternion, n_bits: int = 64) -> bytes:
     """
     Encode quaternion as binary string for compression.
@@ -78,6 +82,10 @@ def encode_quaternion(q: Quaternion, n_bits: int = 64) -> bytes:
         result += c.to_bytes(bytes_per_component, 'big')
     
     return result
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def encode_GInf_element(g: GInfElement, n_bits: int = 64) -> bytes:
@@ -118,11 +126,16 @@ def encode_GInf_element(g: GInfElement, n_bits: int = 64) -> bytes:
 # =============================================================================
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def compress_zlib(data: bytes) -> bytes:
     """Compress data using zlib (classical approximation to Kolmogorov complexity)."""
     return zlib.compress(data, level=9)
 
 
+# Theoretical Reference: IRH v21.4 Part 1, Appendix A
 def compressed_length(data: bytes) -> int:
     """Return length of compressed data."""
     return len(compress_zlib(data))
@@ -133,12 +146,18 @@ def compressed_length(data: bytes) -> int:
 # =============================================================================
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def compute_QNCD(
     g1: GInfElement,
     g2: GInfElement,
     n_bits: int = 64,
     compressor: Callable[[bytes], bytes] = compress_zlib
 ) -> float:
+    
+    # Theoretical Reference: IRH v21.4
     """
     Compute Quantum Normalized Compression Distance between group elements.
     
@@ -217,7 +236,7 @@ def compute_pairwise_QNCD_sum(
     """
     Compute sum of pairwise QNCD distances.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.3
         Σ_{i<j} d_QNCD(gᵢgⱼ⁻¹) appears in the interaction kernel.
         
@@ -244,6 +263,10 @@ def compute_pairwise_QNCD_sum(
 # =============================================================================
 # QNCD Metric Properties Verification
 # =============================================================================
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def verify_QNCD_metric_axioms(n_samples: int = 100, seed: int = 42) -> dict:
@@ -345,6 +368,10 @@ def verify_QNCD_metric_axioms(n_samples: int = 100, seed: int = 42) -> dict:
     results['theoretical_reference'] = 'IRH21.md Appendix A.2'
     
     return results
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def verify_QUCC_theorem(n_samples: int = 50, seed: int = 42) -> dict:

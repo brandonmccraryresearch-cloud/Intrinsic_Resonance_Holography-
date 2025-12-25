@@ -147,6 +147,9 @@ class PDGAPIClient:
         'higgs': 25,
     }
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(
         self,
         cache_dir: Optional[Path] = None,
@@ -209,6 +212,9 @@ class PDGAPIClient:
         if elapsed < self._min_request_interval:
             time.sleep(self._min_request_interval - elapsed)
         self._last_request_time = time.time()
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def fetch_particle(
         self,
@@ -320,6 +326,9 @@ class PDGAPIClient:
                 error=f"Unexpected error: {str(e)}",
             )
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def check_for_updates(
         self,
         particles: List[str],
@@ -405,6 +414,9 @@ class PDGAPIClient:
         
         return updates
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def generate_update_report(
         self,
         updates: List[ParticleUpdate],
@@ -477,6 +489,8 @@ class PDGAPIClient:
 
 
 # Convenience function
+# Theoretical Reference: IRH v21.4
+
 def check_pdg_updates(cache_ttl: int = 86400) -> List[ParticleUpdate]:
     """
     Check for updates to all PDG particles.

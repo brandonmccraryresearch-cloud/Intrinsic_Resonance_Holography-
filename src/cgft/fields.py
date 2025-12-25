@@ -70,12 +70,16 @@ class QuaternionicField:
             )
     
     @classmethod
+    # Theoretical Reference: IRH v21.4
+
     def zeros(cls, lattice_size: int) -> QuaternionicField:
         """Create field initialized to zero everywhere."""
         data = np.zeros((lattice_size,) * 4 + (4,), dtype=np.float64)
         return cls(data=data, lattice_size=lattice_size)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4
+
     def ones(cls, lattice_size: int) -> QuaternionicField:
         """Create field initialized to identity quaternion everywhere."""
         data = np.zeros((lattice_size,) * 4 + (4,), dtype=np.float64)
@@ -83,6 +87,8 @@ class QuaternionicField:
         return cls(data=data, lattice_size=lattice_size)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4
+
     def random(
         cls,
         lattice_size: int,
@@ -133,10 +139,16 @@ class QuaternionicField:
         data[..., 3] = condensate_value.z
         return cls(data=data, lattice_size=lattice_size)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_quaternion(self, i1: int, i2: int, i3: int, i4: int) -> Quaternion:
         """Get quaternion value at lattice point (i1, i2, i3, i4)."""
         q_data = self.data[i1, i2, i3, i4]
         return Quaternion(w=q_data[0], x=q_data[1], y=q_data[2], z=q_data[3])
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def set_quaternion(self, i1: int, i2: int, i3: int, i4: int, q: Quaternion):
         """Set quaternion value at lattice point (i1, i2, i3, i4)."""
@@ -154,6 +166,9 @@ class QuaternionicField:
         conj_data[..., 1:] *= -1  # Negate imaginary parts
         return QuaternionicField(data=conj_data, lattice_size=self.lattice_size)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def norm_squared(self) -> NDArray[np.float64]:
         """
         Compute |φ|² at each lattice point.
@@ -162,19 +177,25 @@ class QuaternionicField:
         """
         return np.sum(self.data ** 2, axis=-1)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def norm(self) -> NDArray[np.float64]:
         """Compute |φ| at each lattice point."""
         return np.sqrt(self.norm_squared())
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def total_norm_squared(self) -> float:
         """Compute ∫|φ|² (sum over all lattice points)."""
         return float(np.sum(self.norm_squared()))
     
     def inner_product(self, other: QuaternionicField) -> complex:
+        
+        # Theoretical Reference: IRH v21.4
         """
         Compute inner product 〈φ₁|φ₂〉 = ∫φ̄₁·φ₂.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH21.md §1.1
             Inner product structure on field space.
         """
@@ -191,6 +212,9 @@ class QuaternionicField:
         
         return complex(real_part)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __add__(self, other: QuaternionicField) -> QuaternionicField:
         """Field addition."""
         if self.lattice_size != other.lattice_size:
@@ -199,6 +223,9 @@ class QuaternionicField:
             data=self.data + other.data,
             lattice_size=self.lattice_size
         )
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def __sub__(self, other: QuaternionicField) -> QuaternionicField:
         """Field subtraction."""
@@ -209,6 +236,9 @@ class QuaternionicField:
             lattice_size=self.lattice_size
         )
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __mul__(self, scalar: float) -> QuaternionicField:
         """Scalar multiplication."""
         return QuaternionicField(
@@ -216,13 +246,21 @@ class QuaternionicField:
             lattice_size=self.lattice_size
         )
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __rmul__(self, scalar: float) -> QuaternionicField:
         """Right scalar multiplication."""
         return self.__mul__(scalar)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def __neg__(self) -> QuaternionicField:
         """Field negation."""
         return QuaternionicField(data=-self.data, lattice_size=self.lattice_size)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def create_field(
@@ -230,6 +268,8 @@ def create_field(
     initialization: str = 'random',
     **kwargs
 ) -> QuaternionicField:
+    
+    # Theoretical Reference: IRH v21.4
     """
     Factory function to create cGFT field.
     
@@ -264,7 +304,7 @@ def field_conjugate(phi: QuaternionicField) -> QuaternionicField:
     """
     Compute conjugate field φ̄.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.1
         S_kin = ∫ φ̄ · [Δ] · φ
     """
@@ -299,7 +339,7 @@ def verify_gauge_invariance(
     """
     Verify that action is gauge-invariant.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1
         S[φ] = S[k·φ] for all k ∈ G_inf
         

@@ -118,27 +118,45 @@ class MetricTensor:
         """Compute √(-g) for integration measure."""
         return np.sqrt(abs(self.determinant))
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
+    
     def raise_index(self, v: np.ndarray) -> np.ndarray:
         """Raise index: v^μ = g^μν v_ν."""
         return self.inverse @ v
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2
     def lower_index(self, v: np.ndarray) -> np.ndarray:
         """Lower index: v_μ = g_μν v^ν."""
         return self.components @ v
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
+    
     def inner_product(self, u: np.ndarray, v: np.ndarray) -> float:
+        
+        # Theoretical Reference: IRH v21.4
         """Compute inner product g_μν u^μ v^ν."""
         return float(u @ self.components @ v)
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
     
     def norm_squared(self, v: np.ndarray) -> float:
         """Compute norm squared g_μν v^μ v^ν."""
         return self.inner_product(v, v)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2
     def is_timelike(self, v: np.ndarray) -> bool:
         """Check if vector is timelike (g_μν v^μ v^ν < 0)."""
         return self.norm_squared(v) < 0
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
+    
     def is_spacelike(self, v: np.ndarray) -> bool:
+        
+        # Theoretical Reference: IRH v21.4
         """Check if vector is spacelike (g_μν v^μ v^ν > 0)."""
         return self.norm_squared(v) > 0
     
@@ -147,6 +165,8 @@ class MetricTensor:
         return abs(self.norm_squared(v)) < tol
     
     def to_dict(self) -> Dict[str, Any]:
+        
+        # Theoretical Reference: IRH v21.4
         """Convert to dictionary for serialization."""
         return {
             'components': self.components.tolist(),
@@ -184,6 +204,9 @@ class EmergentGeometry:
     condensate_vev: float = 1.0  # ⟨φ⟩ vacuum expectation value
     planck_scale: float = PLANCK_LENGTH
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
+    
     def metric_at(self, x: np.ndarray) -> MetricTensor:
         """
         Compute metric tensor at position x.
@@ -192,6 +215,9 @@ class EmergentGeometry:
         compute from condensate dynamics.
         """
         return minkowski_metric(x)
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
     
     def christoffel(
         self, 
@@ -211,6 +237,8 @@ class EmergentGeometry:
         g_inv = g.inverse
         
         # Numerical derivatives of metric
+        # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
         def dg(sigma, alpha, direction):
             """Partial derivative ∂_direction g_σα."""
             x_plus = x.copy()
@@ -235,6 +263,9 @@ class EmergentGeometry:
         
         return 0.5 * result
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
+    
     def riemann(
         self,
         x: np.ndarray,
@@ -250,6 +281,8 @@ class EmergentGeometry:
         R^μ_νρσ = ∂_ρ Γ^μ_νσ - ∂_σ Γ^μ_νρ + Γ^μ_λρ Γ^λ_νσ - Γ^μ_λσ Γ^λ_νρ
         """
         # Numerical derivatives of Christoffel
+        # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
         def d_gamma(m, n, r, direction):
             x_plus = x.copy()
             x_minus = x.copy()
@@ -279,12 +312,18 @@ class EmergentGeometry:
         
         return term1 + term2 + term3 + term4
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
+    
     def ricci_tensor(self, x: np.ndarray, mu: int, nu: int) -> float:
         """Compute Ricci tensor R_μν = R^ρ_μρν."""
         result = 0.0
         for rho in range(4):
             result += self.riemann(x, rho, mu, rho, nu)
         return result
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
     
     def ricci_scalar(self, x: np.ndarray) -> float:
         """Compute Ricci scalar R = g^μν R_μν."""
@@ -677,6 +716,8 @@ def verify_metric_properties(metric: MetricTensor) -> Dict[str, Any]:
     -------
     dict
         Verification results for symmetry, signature, invertibility
+    
+    # Theoretical Reference: IRH v21.4
     """
     components = metric.components
     
@@ -705,6 +746,9 @@ def verify_metric_properties(metric: MetricTensor) -> Dict[str, Any]:
 # ============================================================================
 # Summary Function
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4 Part 1, §2.2, Eq. 2.10
+
 
 def generate_metric_tensor_summary() -> Dict[str, Any]:
     """Generate summary of metric tensor module."""

@@ -69,6 +69,10 @@ except ImportError as e:
     MPI = None  # type: ignore
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def is_mpi_available() -> bool:
     """
     Check if MPI (mpi4py) is available.
@@ -86,6 +90,10 @@ def is_mpi_available() -> bool:
     ...     print("MPI not available, using serial execution")
     """
     return _MPI_AVAILABLE
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def get_mpi_info() -> Dict[str, Any]:
@@ -215,6 +223,9 @@ class MPIContext:
         if self._active and self.comm is not None:
             self.barrier()
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def barrier(self) -> None:
         """Synchronize all processes."""
         if self._active and self.comm is not None:
@@ -235,10 +246,15 @@ class MPIContext:
         -------
         Any
             Broadcasted data (same on all processes)
+        
+        # Theoretical Reference: IRH v21.4
         """
         if self._active and self.comm is not None:
             return self.comm.bcast(data, root=root)
         return data
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def scatter(
         self,
@@ -264,6 +280,9 @@ class MPIContext:
             return self.comm.scatter(data, root=root)
         return data[0] if data else None
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def gather(
         self,
         data: Any,
@@ -288,6 +307,9 @@ class MPIContext:
             return self.comm.gather(data, root=root)
         return [data]
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def allgather(self, data: Any) -> List[Any]:
         """
         Gather data from all processes to all processes.
@@ -305,6 +327,9 @@ class MPIContext:
         if self._active and self.comm is not None:
             return self.comm.allgather(data)
         return [data]
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def reduce(
         self,
@@ -335,6 +360,9 @@ class MPIContext:
             return self.comm.reduce(data, op=op, root=root)
         return data
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def allreduce(
         self,
         data: Any,
@@ -361,6 +389,7 @@ class MPIContext:
             return self.comm.allreduce(data, op=op)
         return data
     
+    # Theoretical Reference: IRH v21.4 (Parallel Computing Infrastructure)
     def get_theoretical_reference(self) -> str:
         """Return theoretical foundation reference."""
         return "IRH v21.1 Manuscript §1.6, docs/ROADMAP.md §3.4"
@@ -372,6 +401,8 @@ class MPIContext:
 
 @dataclass
 class MPIBackend:
+    
+    # Theoretical Reference: IRH v21.4
     """
     Backend wrapper for MPI operations with automatic fallback.
     
@@ -404,6 +435,9 @@ class MPIBackend:
         """Initialize backend."""
         if self.ctx is None:
             self.ctx = MPIContext()
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def parallel_map(
         self,

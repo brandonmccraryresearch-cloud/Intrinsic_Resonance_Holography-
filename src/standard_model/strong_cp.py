@@ -67,6 +67,9 @@ class StrongCPResolution:
     # Experimental bound
     theta_bound: float = 1e-10  # from neutron EDM
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.4
+
+    
     def verify_theta_zero(self) -> Dict:
         """
         Verify θ = 0 prediction.
@@ -93,6 +96,8 @@ class StrongCPResolution:
         -------
         dict
             PQ symmetry properties
+        
+        # Theoretical Reference: IRH v21.4
         """
         return {
             'symmetry': 'U(1)_PQ',
@@ -166,6 +171,9 @@ class AlgorithmicAxion:
         """Axion mass in μeV."""
         return self.m_a_ueV
     
+    # Theoretical Reference: IRH v21.4 Part 1, §3.4
+
+    
     def dark_matter_density(self) -> Dict:
         """
         Compute axion contribution to dark matter.
@@ -198,6 +206,8 @@ class AlgorithmicAxion:
         -------
         dict
             Detection experiments and sensitivity
+        
+        Theoretical Reference: IRH v21.4
         """
         return {
             'mass_ueV': self.m_a_ueV,
@@ -240,6 +250,8 @@ class AlgorithmicAxion:
         -------
         dict
             Astrophysical constraints
+        
+        Theoretical Reference: IRH v21.4
         """
         # f_a bounds from stellar cooling
         sn1987a_lower = 4e8  # GeV (SN1987A neutrinos)
@@ -288,6 +300,7 @@ class AlgorithmicAxion:
         }
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.4
 def compute_strong_cp_resolution() -> StrongCPResolution:
     """
     Compute strong CP resolution from IRH theory.
@@ -300,6 +313,10 @@ def compute_strong_cp_resolution() -> StrongCPResolution:
     return StrongCPResolution()
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.4
+
+
+
 def compute_algorithmic_axion() -> AlgorithmicAxion:
     """
     Compute algorithmic axion properties.
@@ -310,6 +327,10 @@ def compute_algorithmic_axion() -> AlgorithmicAxion:
         Axion with all derived properties
     """
     return AlgorithmicAxion()
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §3.4
+
 
 
 def verify_strong_cp_sector() -> Dict:

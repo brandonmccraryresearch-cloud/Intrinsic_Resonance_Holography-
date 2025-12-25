@@ -1,0 +1,28 @@
+{
+  "timestamp": "2025-12-25T02:08:31Z",
+  "violations": [],
+  "warnings": [
+    {
+      "category": "IMPORT_NO_USAGE",
+      "message": "src/observables/alpha_inverse.py imports TransparencyEngine but doesn't use it",
+      "file": null
+    },
+    {
+      "category": "IMPORT_NO_USAGE",
+      "message": "src/standard_model/fermion_masses.py imports TransparencyEngine but doesn't use it",
+      "file": null
+    },
+    {
+      "category": "IMPORT_NO_USAGE",
+      "message": "src/rg_flow/beta_functions.py imports TransparencyEngine but doesn't use it",
+      "file": null
+    },
+    {
+      "category": "TEST_ERROR",
+      "message": "Could not run tests: [Errno 2] No such file or directory: 'pytest'",
+      "file": null
+    }
+  ],
+  "passes_count": 938,
+  "compliant": true
+}

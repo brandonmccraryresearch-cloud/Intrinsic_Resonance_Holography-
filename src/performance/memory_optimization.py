@@ -137,6 +137,9 @@ class ArrayPool:
     >>> pool.release(arr)
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(
         self,
         max_pool_size: int = 100,
@@ -155,6 +158,9 @@ class ArrayPool:
     ) -> Tuple[Tuple[int, ...], str]:
         """Create pool key from shape and dtype."""
         return (shape, str(dtype))
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def acquire(
         self,
@@ -203,6 +209,9 @@ class ArrayPool:
         
         return arr
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def release(self, arr: NDArray) -> bool:
         """
         Release an array back to the pool.
@@ -233,6 +242,9 @@ class ArrayPool:
         
         return False
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def clear(self) -> None:
         """Clear all pooled arrays."""
         with self._lock:
@@ -248,6 +260,9 @@ class ArrayPool:
     def stats(self) -> MemoryStats:
         """Get pool statistics."""
         return self._stats
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def get_pool_info(self) -> Dict[str, Any]:
         """Get detailed pool information."""
@@ -289,6 +304,7 @@ class SparseFieldArray:
     >>> dense = sparse.to_dense()
     """
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def __init__(
         self,
         shape: Tuple[int, ...],
@@ -343,6 +359,9 @@ class SparseFieldArray:
         dense = self.dense_memory_bytes
         return dense / self.memory_bytes if self.memory_bytes > 0 else float('inf')
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def to_dense(self) -> NDArray:
         """Convert to dense numpy array."""
         arr = np.zeros(self.shape, dtype=self.dtype)
@@ -351,6 +370,8 @@ class SparseFieldArray:
         return arr
     
     @classmethod
+    # Theoretical Reference: IRH v21.4
+
     def from_dense(
         cls,
         arr: NDArray,
@@ -371,9 +392,13 @@ class SparseFieldArray:
         
         return sparse
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def clear(self) -> None:
         """Clear all data."""
         self._data.clear()
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def get_info(self) -> Dict[str, Any]:
         """Get array information."""
@@ -410,12 +435,16 @@ class MemoryMonitor:
     >>> monitor.stop()
     """
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def __init__(self, track_gc: bool = True):
         self.track_gc = track_gc
         self._stats = MemoryStats()
         self._snapshots: List[Dict[str, Any]] = []
         self._running = False
         self._gc_callback_id: Optional[int] = None
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def start(self) -> None:
         """Start monitoring."""
@@ -424,6 +453,9 @@ class MemoryMonitor:
         
         if self.track_gc:
             gc.callbacks.append(self._gc_callback)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def stop(self) -> None:
         """Stop monitoring."""
@@ -436,6 +468,9 @@ class MemoryMonitor:
         """Callback for garbage collection events."""
         if phase == 'stop':
             self._stats.gc_collections += 1
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def snapshot(self, label: str = '') -> Dict[str, Any]:
         """Take memory snapshot."""
@@ -456,18 +491,26 @@ class MemoryMonitor:
         self._snapshots.append(snapshot_data)
         return snapshot_data
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_stats(self) -> MemoryStats:
         """Get current memory statistics."""
         return self._stats
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def get_snapshots(self) -> List[Dict[str, Any]]:
         """Get all snapshots."""
         return list(self._snapshots)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def clear_snapshots(self) -> None:
         """Clear snapshot history."""
         self._snapshots.clear()
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def get_report(self) -> Dict[str, Any]:
         """Generate memory report."""
         return {
@@ -502,6 +545,7 @@ class MemoryOptimizer:
     ...     result = compute_rg_flow(...)
     """
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def __init__(
         self,
         enable_pooling: bool = True,
@@ -513,6 +557,9 @@ class MemoryOptimizer:
         self._pool = ArrayPool(max_pool_size=pool_size) if enable_pooling else None
         self._monitor = MemoryMonitor()
         self._original_gc_settings: Optional[Tuple] = None
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def acquire_array(
         self,
@@ -529,19 +576,27 @@ class MemoryOptimizer:
             arr.fill(fill_value)
         return arr
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def release_array(self, arr: NDArray) -> None:
         """Release array back to pool."""
         if self._pool is not None:
             self._pool.release(arr)
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def start_monitoring(self) -> None:
         """Start memory monitoring."""
         self._monitor.start()
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def stop_monitoring(self) -> None:
         """Stop memory monitoring."""
         self._monitor.stop()
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def optimize_gc(self) -> None:
         """Apply GC optimizations."""
         if self.enable_gc_optimization:
@@ -551,6 +606,9 @@ class MemoryOptimizer:
             )
             # Increase thresholds for less frequent collection
             gc.set_threshold(50000, 500, 100)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def restore_gc(self) -> None:
         """Restore original GC settings."""
@@ -574,6 +632,7 @@ class MemoryOptimizer:
         self.stop_monitoring()
         self.restore_gc()
     
+    # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
     def get_stats(self) -> Dict[str, Any]:
         """Get combined statistics."""
         stats = {
@@ -608,10 +667,13 @@ def memory_efficient(
     ... def compute_rg_trajectory(initial, n_steps):
     ...     return integrate_trajectory(initial, n_steps)
     """
+    # Theoretical Reference: IRH v21.4
+
     def decorator(func: Callable) -> Callable:
         import functools
         
         @functools.wraps(func)
+        # Theoretical Reference: IRH v21.4 (Memory/Cache Management Infrastructure)
         def wrapper(*args, **kwargs):
             optimizer = MemoryOptimizer(
                 enable_gc_optimization=gc_optimize
@@ -624,6 +686,10 @@ def memory_efficient(
         
         return wrapper
     return decorator
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def get_memory_stats() -> Dict[str, Any]:

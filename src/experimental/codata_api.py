@@ -134,6 +134,9 @@ class CODATAAPIClient:
         'sin2_theta_W': 'weak mixing angle',
     }
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(
         self,
         cache_dir: Optional[Path] = None,
@@ -197,6 +200,9 @@ class CODATAAPIClient:
         if elapsed < self._min_request_interval:
             time.sleep(self._min_request_interval - elapsed)
         self._last_request_time = time.time()
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def fetch_constant(
         self,
@@ -306,6 +312,9 @@ class CODATAAPIClient:
                 timestamp=datetime.now()
             )
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def check_for_updates(
         self,
         constants: List[str],
@@ -385,6 +394,9 @@ class CODATAAPIClient:
         
         return updates
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def generate_update_report(
         self,
         updates: List[ConstantUpdate],
@@ -455,6 +467,8 @@ class CODATAAPIClient:
 
 
 # Convenience function
+# Theoretical Reference: IRH v21.4
+
 def check_codata_updates(cache_ttl: int = 86400) -> List[ConstantUpdate]:
     """
     Check for updates to all CODATA constants.

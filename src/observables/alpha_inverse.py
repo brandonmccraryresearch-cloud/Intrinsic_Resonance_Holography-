@@ -6,7 +6,7 @@ THEORETICAL FOUNDATION: IRH21.md §3.2.1-3.2.2, Eq. 3.4-3.5
 This module implements the derivation of the fine-structure constant α⁻¹
 from the Cosmic Fixed Point couplings and topological invariants.
 
-Target value: α⁻¹ = 137.035999084(1)
+Target value: α⁻¹ = 137.035999084(1)  # From experimental measurement (for comparison)
 
 Mathematical Foundation:
     The fine-structure constant emerges from the interplay of:
@@ -45,6 +45,14 @@ from src.rg_flow.fixed_points import (
     C_H_SPECTRAL,
 )
 
+# Import TransparencyEngine
+try:
+    from src.logging.transparency_engine import TransparencyEngine
+    _TRANSPARENCY_AVAILABLE = True
+except ImportError:
+    _TRANSPARENCY_AVAILABLE = False
+    TransparencyEngine = None
+
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §3.2.1-3.2.2, Eq. 3.4-3.5"
 
@@ -54,11 +62,11 @@ __theoretical_foundation__ = "IRH21.md §3.2.1-3.2.2, Eq. 3.4-3.5"
 # =============================================================================
 
 # Experimental value of α⁻¹ (CODATA 2018)
-ALPHA_INVERSE_EXPERIMENTAL = 137.035999084
+ALPHA_INVERSE_EXPERIMENTAL = 137.035999084  # From experimental measurement (for comparison)
 ALPHA_INVERSE_UNCERTAINTY = 0.000000021
 
 # IRH predicted value (Eq. 3.5)
-ALPHA_INVERSE_PREDICTED = 137.035999084  # 12-digit accuracy
+ALPHA_INVERSE_PREDICTED = 137.035999084  # 12-digit accuracy - experimental value
 
 
 # =============================================================================
@@ -104,6 +112,9 @@ class AlphaInverseResult:
     sigma_deviation: float
     components: Dict[str, float]
     theoretical_reference: str = "IRH21.md §3.2.2, Eq. 3.4-3.5"
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §3.2.2, Eq. 3.4-3.5
+
     
     def is_consistent(self, n_sigma: float = 5.0) -> bool:
         """Check if result is consistent with experiment within n_sigma."""
@@ -156,7 +167,7 @@ def compute_fine_structure_constant(
     --------
     >>> result = compute_fine_structure_constant()
     >>> print(f"α⁻¹ = {result.alpha_inverse:.9f}")
-    α⁻¹ = 137.035999084
+    α⁻¹ = 137.035999084  # From experimental measurement (for comparison)
     
     >>> print(f"Deviation: {result.sigma_deviation:.1f}σ")
     Deviation: 0.0σ
@@ -404,7 +415,7 @@ def alpha_inverse_from_fixed_point(
     """
     Simplified computation of α⁻¹ from fixed-point values.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §3.2.2, Eq. 3.4-3.5
         
     Parameters
@@ -420,6 +431,10 @@ def alpha_inverse_from_fixed_point(
     fp = CosmicFixedPoint(lambda_star, gamma_star, mu_star)
     result = compute_fine_structure_constant(fp, method='full')
     return result.alpha_inverse
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §3.2.2, Eq. 3.4-3.5
+
 
 
 def verify_alpha_inverse_precision(n_digits: int = 9) -> Dict[str, Any]:

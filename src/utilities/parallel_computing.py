@@ -22,6 +22,10 @@ import multiprocessing
 __version__ = "21.0.0"
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def parallel_map(
     func: Callable,
     items: List[Any],
@@ -62,6 +66,10 @@ def parallel_map(
     return results
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def distributed_sum(
     func: Callable[[Any], float],
     items: Iterator[Any],
@@ -100,11 +108,18 @@ def distributed_sum(
     ]
     
     def sum_chunk(chunk):
+        """
+        # Theoretical Reference: IRH v21.4
+        """
         return sum(func(item) for item in chunk)
     
     partial_sums = parallel_map(sum_chunk, chunks, n_workers)
     
     return sum(partial_sums)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def batch_compute(
@@ -143,6 +158,10 @@ def batch_compute(
     results = parallel_map(func, batches, n_workers)
     
     return np.concatenate(results)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def get_optimal_workers(data_size: int) -> int:

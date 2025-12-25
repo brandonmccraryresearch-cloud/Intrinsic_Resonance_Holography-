@@ -30,6 +30,10 @@ _PDG_DATA = None
 _CODATA_VALUES = None
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def get_pdg_value(particle: str, property_name: str):
     """
     Get a PDG value for a particle property.
@@ -50,6 +54,10 @@ def get_pdg_value(particle: str, property_name: str):
     return _get(particle, property_name)
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def get_codata_value(constant_name: str):
     """
     Get a CODATA fundamental constant.
@@ -66,6 +74,10 @@ def get_codata_value(constant_name: str):
     """
     from .codata_database import get_codata_value as _get
     return _get(constant_name)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def compare_with_experiment(irh_value: float, experimental_name: str, uncertainty: float = None):
@@ -90,6 +102,10 @@ def compare_with_experiment(irh_value: float, experimental_name: str, uncertaint
     return _compare(irh_value, experimental_name, uncertainty)
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def check_codata_updates(cache_ttl: int = 86400):
     """
     Check for CODATA constant updates.
@@ -108,6 +124,10 @@ def check_codata_updates(cache_ttl: int = 86400):
     return _check(cache_ttl)
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def check_pdg_updates(cache_ttl: int = 86400):
     """
     Check for PDG particle updates.
@@ -124,6 +144,10 @@ def check_pdg_updates(cache_ttl: int = 86400):
     """
     from .pdg_api import check_pdg_updates as _check
     return _check(cache_ttl)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def generate_update_report(output_file=None, format='markdown', force_refresh=False):

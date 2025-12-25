@@ -69,6 +69,9 @@ class GaugeGroup:
         """Number of generators = dimension of Lie algebra."""
         return self.dimension
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def coupling_beta_coefficient(self, n_f: int = 3, n_s: int = 1) -> float:
         """
         Compute one-loop β-function coefficient b₀ for gauge coupling.
@@ -279,7 +282,7 @@ def verify_su3_su2_u1() -> Dict:
     """
     Verify the SU(3)×SU(2)×U(1) gauge structure.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §3.1.1
         
     Returns
@@ -331,6 +334,9 @@ class GaugeCouplingUnification:
         """Unified fine structure constant at UV."""
         return self.g_star**2 / (4 * math.pi)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def coupling_at_scale(self, scale_gev: float, group: str = 'SU3') -> float:
         """
         Compute running coupling at given energy scale.
@@ -358,7 +364,7 @@ class GaugeCouplingUnification:
         """
         Compute Weinberg angle at given scale.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Part 1 §3.3.1
             
         sin²θ_W = g'² / (g² + g'²)
@@ -392,6 +398,8 @@ class GaugeCouplingUnification:
         -------
         dict
             Unification test results
+        
+        Theoretical Reference: IRH v21.4
         """
         scales = [91.2, 1000, 1e6, 1e12, 1e16, self.M_star]
         
@@ -418,6 +426,7 @@ class GaugeCouplingUnification:
         }
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §3.1
 def compute_gauge_coupling_running() -> GaugeCouplingUnification:
     """
     Compute gauge coupling running from IRH theory.

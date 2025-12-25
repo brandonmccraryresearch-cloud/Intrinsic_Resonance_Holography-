@@ -121,10 +121,16 @@ class ObservableResult:
     experimental_value: Optional[float] = None
     experimental_uncertainty: Optional[float] = None
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def to_latex_row(self) -> str:
         """Generate LaTeX table row."""
         name_tex = self.name.replace('_', r'\_')
         return f"{name_tex} & {self.value:.10e} & {self.uncertainty:.2e} & \\irhref{{{self.theoretical_ref}}} \\\\"
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def to_latex_display(self) -> str:
         """Generate displayable LaTeX result."""
@@ -148,6 +154,9 @@ class ReportSection:
     content: str
     label: str = ""
     subsections: List['ReportSection'] = field(default_factory=list)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def to_latex(self) -> str:
         """Generate LaTeX section."""
@@ -201,9 +210,15 @@ class LaTeXGenerator:
                 "certified numerical precision."
             )
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def add_section(self, title: str, content: str, label: str = "") -> None:
         """Add a section to the report."""
         self.sections.append(ReportSection(title=title, content=content, label=label))
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def add_equation(
         self,
@@ -221,6 +236,9 @@ class LaTeXGenerator:
             reference=reference,
             section_title=section_title or f"Equation {label}"
         ))
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def add_result(
         self,
@@ -242,6 +260,9 @@ class LaTeXGenerator:
             experimental_value=experimental_value,
             experimental_uncertainty=experimental_uncertainty
         ))
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate_theoretical_section(self) -> str:
         """Generate section for theoretical equations."""
@@ -274,6 +295,9 @@ class LaTeXGenerator:
         
         return "\n".join(lines)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def generate_results_table(self, caption: str = "Computed Observables") -> str:
         """Generate LaTeX table of results."""
         if not self.results:
@@ -286,6 +310,9 @@ class LaTeXGenerator:
             label="results",
             rows=rows
         )
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate_comparison_section(self) -> str:
         """Generate theory vs experiment comparison section."""
@@ -323,6 +350,9 @@ class LaTeXGenerator:
         ])
         
         return "\n".join(lines)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate(self) -> str:
         """Generate complete LaTeX document."""
@@ -363,6 +393,9 @@ class LaTeXGenerator:
             content=content
         )
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def save(self, path: Union[str, Path]) -> None:
         """Save LaTeX document to file."""
         path = Path(path)
@@ -373,6 +406,9 @@ class LaTeXGenerator:
 # =============================================================================
 # Module-Level Convenience Functions
 # =============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def generate_latex_report(
     title: str,
@@ -431,6 +467,10 @@ def generate_latex_report(
     return latex_content
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def create_equation_section(
     equations: List[Dict[str, Any]],
     section_title: str = "Theoretical Equations"
@@ -454,6 +494,10 @@ def create_equation_section(
     for eq in equations:
         gen.add_equation(**eq)
     return gen.generate_theoretical_section()
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def create_results_table(

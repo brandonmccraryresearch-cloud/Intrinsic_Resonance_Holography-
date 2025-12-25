@@ -119,6 +119,10 @@ elif _JAX_AVAILABLE:
     _DEFAULT_BACKEND = GPUBackend.JAX  # JAX CPU is still faster than NumPy
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def is_gpu_available() -> bool:
     """
     Check if GPU acceleration is available.
@@ -138,6 +142,10 @@ def is_gpu_available() -> bool:
     return _JAX_GPU_AVAILABLE or _CUPY_AVAILABLE
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def get_available_backends() -> List[GPUBackend]:
     """
     Get list of available GPU backends.
@@ -153,6 +161,10 @@ def get_available_backends() -> List[GPUBackend]:
     if _CUPY_AVAILABLE:
         backends.append(GPUBackend.CUPY)
     return backends
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def set_default_backend(backend: GPUBackend) -> None:
@@ -177,6 +189,10 @@ def set_default_backend(backend: GPUBackend) -> None:
         raise ValueError(f"CuPy is not available: {_CUPY_IMPORT_ERROR}")
     
     _DEFAULT_BACKEND = backend
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def get_gpu_info() -> Dict[str, Any]:
@@ -341,6 +357,9 @@ class GPUContext:
         
         return False
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def to_device(self, array: NDArray) -> Any:
         """
         Transfer array to GPU device.
@@ -360,6 +379,9 @@ class GPUContext:
         elif self.backend == GPUBackend.CUPY and _CUPY_AVAILABLE:
             return cp.asarray(array)
         return array
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def to_host(self, array: Any) -> NDArray:
         """
@@ -952,6 +974,9 @@ def gpu_quaternion_multiply(
 # =============================================================================
 # Convenience Functions
 # =============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def benchmark_gpu_performance(
     n_evaluations: int = 10000,

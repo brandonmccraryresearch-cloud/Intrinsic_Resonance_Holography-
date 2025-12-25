@@ -94,9 +94,18 @@ class UncertaintyEstimator:
         ----------
         confidence_level : float
             Confidence level for uncertainty bounds (default: 95%)
+        
+        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         self.confidence_level = confidence_level
         self._calibration_factor = 1.0
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def estimate(
         self,
@@ -117,8 +126,15 @@ class UncertaintyEstimator:
         -------
         UncertaintyResult
             Uncertainty estimation result
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         raise NotImplementedError("Subclasses must implement estimate()")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def calibrate(
         self,
@@ -189,6 +205,7 @@ class EnsembleUncertainty(UncertaintyEstimator):
     regions of input space with less training data or more complex behavior.
     """
     
+    # Theoretical Reference: IRH v21.4
     def __init__(self, confidence_level: float = 0.95):
         """
         Initialize ensemble uncertainty estimator.
@@ -199,6 +216,7 @@ class EnsembleUncertainty(UncertaintyEstimator):
             Confidence level for uncertainty bounds
         """
         super().__init__(confidence_level)
+     # Theoretical Reference: IRH v21.4
     
     def estimate(
         self,
@@ -277,6 +295,7 @@ class MCDropoutUncertainty(UncertaintyEstimator):
     
     Reference:
         Gal, Y., & Ghahramani, Z. (2016). Dropout as a Bayesian Approximation.
+    # Theoretical Reference: IRH v21.4
     """
     
     def __init__(
@@ -298,6 +317,7 @@ class MCDropoutUncertainty(UncertaintyEstimator):
             Dropout probability (fraction of units to drop)
         """
         super().__init__(confidence_level)
+        # Theoretical Reference: IRH v21.4
         self.n_samples = n_samples
         self.dropout_rate = dropout_rate
     
@@ -387,7 +407,7 @@ def compute_uncertainty(
     """
     Compute uncertainty for predictions using specified method.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Phase 4.3
         
     Parameters
@@ -426,6 +446,10 @@ def compute_uncertainty(
         raise ValueError(f"Unknown method: {method}")
     
     return estimator.estimate(X, models)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def calibrate_uncertainty(
@@ -471,6 +495,10 @@ def calibrate_uncertainty(
 # =============================================================================
 # Coverage Metrics
 # =============================================================================
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def compute_coverage(

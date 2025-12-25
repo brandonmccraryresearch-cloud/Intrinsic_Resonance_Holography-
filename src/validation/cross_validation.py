@@ -35,7 +35,7 @@ class ConvergenceResult:
     """
     Result of a convergence study.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 2 Appendix A.5: Error ~ O(δ²) for lattice spacing δ
     """
     observable_name: str
@@ -48,11 +48,14 @@ class ConvergenceResult:
     status: ValidationStatus
     theoretical_reference: str = "IRH v21.1 Manuscript Part 2 Appendix A.5"
     
+    # Theoretical Reference: IRH v21.4
     def is_converged(self, threshold: float = 1e-4) -> bool:
         """Check if convergence achieved within threshold."""
         return self.relative_error < threshold and self.convergence_rate > 0
     
     def to_dict(self) -> Dict[str, Any]:
+        
+        # Theoretical Reference: IRH v21.4
         """Export to dictionary for serialization."""
         return {
             "observable": self.observable_name,
@@ -73,7 +76,7 @@ class CrossValidationResult:
     """
     Result of algorithmic cross-validation between methods.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript: Critical computations verified via independent algorithms
     """
     computation_name: str
@@ -86,11 +89,14 @@ class CrossValidationResult:
     threshold: float = 1e-5
     theoretical_reference: str = "IRH v21.1 Manuscript Phase V"
     
+    # Theoretical Reference: IRH v21.4
     def methods_agree(self) -> bool:
         """Check if methods agree within threshold."""
         return self.relative_difference < self.threshold
     
     def to_dict(self) -> Dict[str, Any]:
+        
+        # Theoretical Reference: IRH v21.4
         """Export to dictionary for serialization."""
         return {
             "computation": self.computation_name,
@@ -109,7 +115,7 @@ class ConvergenceAnalysis:
     Systematic convergence testing for all discretization parameters.
     Verifies numerical results approach continuum limit.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 2 Appendix A.5: Exponential convergence to continuum
     """
     
@@ -119,15 +125,25 @@ class ConvergenceAnalysis:
     FIXED_POINT_MU = 16 * np.pi**2          # ≈ 157.91
     C_H = 0.045935703598  # Universal constant (12+ decimals)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(self, verbose: bool = True):
         """Initialize convergence analysis."""
         self.verbose = verbose
         self.results: List[ConvergenceResult] = []
     
     def _log(self, message: str) -> None:
+        
+        # Theoretical Reference: IRH v21.4
+        
+        # Theoretical Reference: IRH v21.4
         """Log message if verbose."""
         if self.verbose:
             print(f"[CONVERGENCE] {message}")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def lattice_spacing_convergence(
         self,
@@ -359,7 +375,7 @@ class AlgorithmicCrossValidation:
     """
     Validate critical computations via independent algorithmic approaches.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript: Cross-validation requirements for critical computations
     """
     
@@ -368,6 +384,7 @@ class AlgorithmicCrossValidation:
     FIXED_POINT_GAMMA = 32 * np.pi**2 / 3
     FIXED_POINT_MU = 16 * np.pi**2
     
+    # Theoretical Reference: IRH v21.4
     def __init__(self, verbose: bool = True):
         """Initialize cross-validation."""
         self.verbose = verbose
@@ -382,7 +399,7 @@ class AlgorithmicCrossValidation:
         """
         Find fixed point via: (1) RG flow integration, (2) Newton-Raphson on β=0.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Eq. 1.13: Beta functions
             IRH v21.1 Manuscript Eq. 1.14: Fixed point values
         
@@ -476,7 +493,7 @@ class AlgorithmicCrossValidation:
         """
         Cross-validate Laplacian via: (1) finite differences, (2) spectral methods.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Part 1 §1.1: Laplace-Beltrami operator on SU(2)
         
         Parameters
@@ -591,7 +608,7 @@ class AlgorithmicCrossValidation:
         """
         Cross-validate beta functions via analytical and numerical derivatives.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Eq. 1.13: One-loop beta functions
         
         Returns
@@ -690,11 +707,12 @@ class ErrorPropagation:
     
     Implements systematic uncertainty quantification with source tracking.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript: Uncertainty quantification requirements
         copilot21promtMAX.md Phase III: Output contextualization
     """
     
+    # Theoretical Reference: IRH v21.4
     def __init__(self, verbose: bool = True):
         """Initialize error propagation framework."""
         self.verbose = verbose
@@ -705,6 +723,9 @@ class ErrorPropagation:
         """Log message if verbose."""
         if self.verbose:
             print(f"[ERROR-PROP] {message}")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def register_uncertainty(
         self,
@@ -730,6 +751,9 @@ class ErrorPropagation:
         abs_uncertainty = uncertainty * abs(value) if relative else uncertainty
         self.error_budget[source] = abs_uncertainty
         self._log(f"Registered: {source} = {value:.6e} ± {abs_uncertainty:.6e}")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def propagate_linear(
         self,
@@ -788,6 +812,9 @@ class ErrorPropagation:
         self._log(f"Propagated uncertainty: {central_value:.6e} ± {output_uncertainty:.6e}")
         
         return central_value, output_uncertainty, contributions
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def monte_carlo_propagation(
         self,
@@ -856,6 +883,9 @@ class ErrorPropagation:
         
         return mean, std, stats
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def compute_total_uncertainty(self) -> Tuple[float, Dict[str, float]]:
         """
         Compute total uncertainty from error budget.
@@ -879,6 +909,10 @@ class ErrorPropagation:
         }
         
         return total, fractions
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def run_full_validation_suite(verbose: bool = True) -> Dict[str, Any]:

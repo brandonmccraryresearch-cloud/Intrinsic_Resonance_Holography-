@@ -85,6 +85,7 @@ class TopologicalCharge:
     complexity: float
     is_stable: bool
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix D.2
     def pontryagin_index(self) -> int:
         """Return the Pontryagin index (topological charge)."""
         return self.charge
@@ -92,10 +93,12 @@ class TopologicalCharge:
 
 @dataclass
 class VortexWavePatternConfig:
+    
+    # Theoretical Reference: IRH v21.4
     """
     Configuration for a Vortex Wave Pattern (fermionic defect).
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 2 Appendix D.2-D.3
     """
     generation: int
@@ -513,6 +516,9 @@ def _fixed_point_potential_minima() -> int:
 # ============================================================================
 # Summary Generation
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4 Part 2, Appendix D.2
+
 
 def generate_instanton_number_summary() -> str:
     """

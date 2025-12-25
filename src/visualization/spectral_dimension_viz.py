@@ -133,6 +133,10 @@ def graviton_correction(k: Union[float, np.ndarray], k_c: float = 1.0) -> Union[
     return delta
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §2.1, Theorem 2.1
+
+
+
 def find_critical_scale(d_target: float = 3.0) -> float:
     """
     Find scale k where d_spec(k) = d_target.
@@ -148,6 +152,9 @@ def find_critical_scale(d_target: float = 3.0) -> float:
         Critical scale k_c where d_spec = d_target
     """
     from scipy.optimize import brentq
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §2.1, Theorem 2.1
+
     
     def f(k):
         return spectral_dimension(k) - d_target
@@ -177,6 +184,9 @@ class SpectralDimensionAnimator:
     def __post_init__(self):
         if not MATPLOTLIB_AVAILABLE:
             raise ImportError("matplotlib is required for SpectralDimensionAnimator")
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §2.1, Theorem 2.1
+
     
     def plot_flow(
         self,
@@ -255,6 +265,9 @@ class SpectralDimensionAnimator:
         
         return fig, ax
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.1, Theorem 2.1
+
+    
     def plot_vs_t(
         self,
         t_range: Tuple[float, float] = (-10, 10),
@@ -317,6 +330,9 @@ class SpectralDimensionAnimator:
         
         return fig, ax
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.1, Theorem 2.1
+
+    
     def plot_graviton_contribution(
         self,
         k_range: Tuple[float, float] = (0.01, 100),
@@ -366,6 +382,9 @@ class SpectralDimensionAnimator:
         )
         
         return fig, ax
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §2.1, Theorem 2.1
+
     
     def create_animation(
         self,
@@ -418,11 +437,17 @@ class SpectralDimensionAnimator:
         ax2.add_patch(circle)
         dim_text = ax2.text(0, -1.5, '', ha='center', fontsize=14)
         
+        # Theoretical Reference: IRH v21.4 Part 1, §2.1, Theorem 2.1
+
+        
         def init():
             line1.set_data([], [])
             point1.set_data([], [])
             dim_text.set_text('')
             return line1, point1, dim_text
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §2.1, Theorem 2.1
+
         
         def animate(frame):
             # Update left plot
@@ -479,7 +504,7 @@ def create_spectral_animation(**kwargs) -> FuncAnimation:
     """
     Create animated spectral dimension visualization.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §2.1
     """
     animator = SpectralDimensionAnimator()
@@ -497,7 +522,7 @@ def create_interactive_spectral_plot(
     """
     Create interactive spectral dimension plot using Plotly.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §2.1
         
     Returns

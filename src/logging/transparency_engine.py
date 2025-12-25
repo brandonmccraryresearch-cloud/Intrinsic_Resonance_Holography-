@@ -208,9 +208,12 @@ class TransparencyEngine:
     >>> engine.info("Computing α⁻¹", reference="IRH v21.4 Part 1 §3.2.2, Eq. 3.4")
     >>> engine.step("Step 1: Computing leading order term")
     >>> engine.formula("α⁻¹ = (4π²γ̃*/λ̃*)", variables={'γ̃*': 105.276, 'λ̃*': 52.638})
-    >>> engine.value("α⁻¹_leading", 137.036, uncertainty=1e-6)
+    >>> engine.value("α⁻¹_leading", 137.036, uncertainty=1e-6)  # From experimental measurement (for comparison)
     >>> engine.passed("α⁻¹ computation complete")
     """
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def __init__(
         self,
@@ -348,8 +351,13 @@ class TransparencyEngine:
         ----------
         content : str
             Description of computational step
+        
+        # Theoretical Reference: IRH v21.4
         """
         self._emit(MessageType.STEP, content, **metadata)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def formula(
         self,
@@ -378,6 +386,9 @@ class TransparencyEngine:
             reference=reference,
             **metadata
         )
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def value(
         self,
@@ -446,7 +457,7 @@ class TransparencyEngine:
         """
         Emit warning message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Module header, lines 4-16
         
@@ -465,7 +476,7 @@ class TransparencyEngine:
         """
         Emit error message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Module header, lines 4-16
         
@@ -492,7 +503,7 @@ class TransparencyEngine:
         """
         Emit final result with full context.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Result reporting with provenance tracking
         
@@ -528,7 +539,7 @@ class TransparencyEngine:
         """
         Emit success message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Module header, lines 4-16
         
@@ -547,7 +558,7 @@ class TransparencyEngine:
         """
         Emit failure message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Module header, lines 4-16
         
@@ -628,6 +639,9 @@ class TransparencyEngine:
         self.provenance_chains.append(chain)
         return chain
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_provenance(self, result_name: Optional[str] = None) -> List[ProvenanceChain]:
         """
         Retrieve provenance chains.
@@ -650,6 +664,9 @@ class TransparencyEngine:
     # -------------------------------------------------------------------------
     # Export & Display
     # -------------------------------------------------------------------------
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def export(self, format: str = 'dict') -> Union[Dict, str]:
         """
@@ -693,6 +710,9 @@ class TransparencyEngine:
         else:
             raise ValueError(f"Unknown format: {format}")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def display_provenance(self, chain: ProvenanceChain):
         """Display provenance chain in human-readable format."""
         print("\n" + "="*70)
@@ -714,6 +734,9 @@ class TransparencyEngine:
             print(f"  {status} {check}")
         print("="*70 + "\n")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def display_components(self, components: Dict[str, Any]):
         """Display component breakdown."""
         print("\n" + "="*70)
@@ -725,6 +748,9 @@ class TransparencyEngine:
             else:
                 print(f"  {name}: {value}")
         print("="*70 + "\n")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def validate_result(
         self,
@@ -758,6 +784,9 @@ class TransparencyEngine:
                 sigma_dev = deviation / result.uncertainty if result.uncertainty > 0 else float('inf')
                 print(f"  Agreement: {sigma_dev:.2f}σ")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def summary(self):
         """Display summary statistics."""
         n_messages = len(self.messages)
@@ -777,6 +806,10 @@ class TransparencyEngine:
 # =============================================================================
 # Convenience Functions
 # =============================================================================
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def create_engine(

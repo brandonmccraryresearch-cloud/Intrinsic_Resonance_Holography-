@@ -47,7 +47,7 @@ class SU2Element:
     """
     Element of SU(2) realized as unit quaternion on S³.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1
         SU(2) ≅ S³ is the 3-sphere of unit quaternions.
         
@@ -77,23 +77,37 @@ class SU2Element:
             self.quaternion = self.quaternion.normalize()
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def identity(cls) -> SU2Element:
         """Return identity element e = 1 + 0i + 0j + 0k."""
         return cls(quaternion=Quaternion.identity())
     
     @classmethod
     def from_quaternion(cls, q: Quaternion) -> SU2Element:
-        """Create SU(2) element from quaternion (will be normalized)."""
+        """
+        Create SU(2) element from quaternion (will be normalized).
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
+        """
         return cls(quaternion=q)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def from_components(cls, w: float, x: float, y: float, z: float) -> SU2Element:
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Create SU(2) element from components (will be normalized)."""
         q = Quaternion(w=w, x=x, y=y, z=z)
         return cls(quaternion=q)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def from_axis_angle(cls, axis: NDArray[np.float64], angle: float) -> SU2Element:
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         Create SU(2) element from axis-angle representation.
         
@@ -119,6 +133,8 @@ class SU2Element:
         return cls(quaternion=q)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def from_euler_angles(cls, alpha: float, beta: float, gamma: float) -> SU2Element:
         """
         Create SU(2) element from Euler angles (ZYZ convention).
@@ -135,11 +151,20 @@ class SU2Element:
         return u1 * u2 * u3
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def random(cls, rng: np.random.Generator = None) -> SU2Element:
         """Generate uniformly random SU(2) element (Haar measure)."""
         return cls(quaternion=Quaternion.random(rng))
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
+    
     def to_quaternion(self) -> Quaternion:
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Extract underlying quaternion."""
         return self.quaternion
     
@@ -151,6 +176,8 @@ class SU2Element:
             U = [[ α, -β̄],
                  [ β,  ᾱ]]
         where α = w + iz, β = y + ix
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         q = self.quaternion
         alpha = complex(q.w, q.z)
@@ -161,19 +188,33 @@ class SU2Element:
             [beta, np.conj(alpha)]
         ], dtype=np.complex128)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
+    
     def inverse(self) -> SU2Element:
         """
         Compute group inverse u⁻¹ = ū (conjugate for unit quaternions).
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         return SU2Element(quaternion=self.quaternion.conjugate())
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
+    
     def __mul__(self, other: SU2Element) -> SU2Element:
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Group multiplication: u₁ · u₂ via quaternion product."""
         if not isinstance(other, SU2Element):
             return NotImplemented
         return SU2Element(quaternion=self.quaternion * other.quaternion)
     
     def __eq__(self, other: object) -> bool:
+        
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """SU(2) equality (note: u and -u represent same rotation in SO(3))."""
         if not isinstance(other, SU2Element):
             return False
@@ -188,7 +229,7 @@ def haar_measure_SU2_sample(n_samples: int, rng: np.random.Generator = None) -> 
     """
     Generate samples from Haar measure on SU(2).
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.1
         Integration ∫dg uses the bi-invariant Haar measure.
     
@@ -207,6 +248,10 @@ def haar_measure_SU2_sample(n_samples: int, rng: np.random.Generator = None) -> 
     if rng is None:
         rng = np.random.default_rng()
     return [SU2Element.random(rng) for _ in range(n_samples)]
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
 
 
 def haar_integrate_SU2(
@@ -252,7 +297,7 @@ class U1Phase:
     """
     Element of U(1)_φ - the holonomic phase group.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1
         U(1)_φ encodes the holonomic phase φ ∈ [0, 2π).
         
@@ -280,30 +325,39 @@ class U1Phase:
         self.phase = float(self.phase) % (2 * math.pi)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def identity(cls) -> U1Phase:
         """Return identity element φ = 0."""
         return cls(phase=0.0)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
     def from_complex(cls, z: complex) -> U1Phase:
         """Create U(1) element from unit complex number."""
         return cls(phase=np.angle(z))
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def random(cls, rng: np.random.Generator = None) -> U1Phase:
         """Generate uniformly random U(1) element."""
         if rng is None:
             rng = np.random.default_rng()
         return cls(phase=rng.uniform(0, 2 * math.pi))
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
+
+    
     def to_complex(self) -> complex:
         """Convert to unit complex number e^{iφ}."""
         return complex(np.exp(1j * self.phase))
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def inverse(self) -> U1Phase:
         """Compute group inverse: (e^{iφ})⁻¹ = e^{-iφ}."""
         return U1Phase(phase=-self.phase)
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def __mul__(self, other: U1Phase) -> U1Phase:
         """Group multiplication: e^{iφ₁} · e^{iφ₂} = e^{i(φ₁+φ₂)}."""
         if not isinstance(other, U1Phase):
@@ -322,11 +376,19 @@ class U1Phase:
         return f"U1Phase(φ={self.phase:.6f})"
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
+
+
 def haar_measure_U1_sample(n_samples: int, rng: np.random.Generator = None) -> list[U1Phase]:
     """Generate samples from Haar measure on U(1)."""
     if rng is None:
         rng = np.random.default_rng()
     return [U1Phase.random(rng) for _ in range(n_samples)]
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
 
 
 def haar_integrate_U1(
@@ -354,7 +416,7 @@ class GInfElement:
     """
     Element of G_inf = SU(2) × U(1)_φ - the fundamental group manifold.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1
         The cGFT field φ(g₁,g₂,g₃,g₄) takes arguments gᵢ ∈ G_inf.
         
@@ -375,11 +437,13 @@ class GInfElement:
     u1: U1Phase
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def identity(cls) -> GInfElement:
         """Return identity element (e, 0)."""
         return cls(su2=SU2Element.identity(), u1=U1Phase.identity())
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def from_components(
         cls,
         w: float, x: float, y: float, z: float,
@@ -391,16 +455,19 @@ class GInfElement:
         return cls(su2=su2, u1=u1)
     
     @classmethod
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def random(cls, rng: np.random.Generator = None) -> GInfElement:
         """Generate uniformly random G_inf element (product Haar measure)."""
         if rng is None:
             rng = np.random.default_rng()
         return cls(su2=SU2Element.random(rng), u1=U1Phase.random(rng))
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def inverse(self) -> GInfElement:
         """Compute group inverse: (u, φ)⁻¹ = (u⁻¹, -φ)."""
         return GInfElement(su2=self.su2.inverse(), u1=self.u1.inverse())
     
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1
     def __mul__(self, other: GInfElement) -> GInfElement:
         """Group multiplication: (u₁,φ₁)·(u₂,φ₂) = (u₁u₂, φ₁+φ₂)."""
         if not isinstance(other, GInfElement):
@@ -424,13 +491,17 @@ def haar_measure_GInf_sample(n_samples: int, rng: np.random.Generator = None) ->
     """
     Generate samples from Haar measure on G_inf = SU(2) × U(1).
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.1
         The integration measure ∫[∏dg_i] is the product Haar measure.
     """
     if rng is None:
         rng = np.random.default_rng()
     return [GInfElement.random(rng) for _ in range(n_samples)]
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
 
 
 def haar_integrate_GInf(
@@ -452,7 +523,7 @@ def compute_GInf_distance(g1: GInfElement, g2: GInfElement) -> float:
     """
     Compute bi-invariant distance on G_inf.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Appendix A
         The QNCD metric is constructed from this group distance.
         
@@ -475,6 +546,10 @@ def compute_GInf_distance(g1: GInfElement, g2: GInfElement) -> float:
     d_u1 = min(phi_diff, 2 * math.pi - phi_diff)
     
     return math.sqrt(d_su2**2 + d_u1**2)
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §1.1
+
 
 
 def verify_group_axioms() -> dict:

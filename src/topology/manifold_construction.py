@@ -67,6 +67,9 @@ class GroupManifold:
     is_compact: bool = True
     is_connected: bool = True
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def homotopy_groups(self) -> Dict[int, str]:
         """
         Get low-dimensional homotopy groups.
@@ -99,6 +102,7 @@ class SU2Manifold(GroupManifold):
     name: str = "SU(2)"
     dimension: int = 3
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
     def homotopy_groups(self) -> Dict[int, str]:
         """π_k(SU(2)) = π_k(S³)."""
         return {
@@ -117,6 +121,7 @@ class U1Manifold(GroupManifold):
     """
     name: str = "U(1)"
     dimension: int = 1
+     # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
     
     def homotopy_groups(self) -> Dict[int, str]:
         """π_k(U(1)) = π_k(S¹)."""
@@ -135,6 +140,7 @@ class GInfManifold(GroupManifold):
     THEORETICAL FOUNDATION: IRH21.md §1.1
     """
     name: str = "G_inf = SU(2) × U(1)"
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
     dimension: int = G_INF_DIM  # 4
     
     def homotopy_groups(self) -> Dict[int, str]:
@@ -177,11 +183,17 @@ class ResonanceQuotientM3:
         """First Betti number (gauge generators)."""
         return self.betti_numbers[1]
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def gauge_group(self) -> str:
         """Derive gauge group from β₁."""
         if self.beta_1 == 12:
             return "SU(3)×SU(2)×U(1)"
         return f"Unknown (β₁ = {self.beta_1})"
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def verify_topology(self) -> Dict:
         """Verify topological properties."""
@@ -200,6 +212,9 @@ class ResonanceQuotientM3:
 # ============================================================================
 # Core Functions
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def construct_M3(
     method: str = 'quotient',
@@ -267,6 +282,10 @@ def construct_M3(
     return M3
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def resonance_quotient(
     G_inf: GInfManifold = None,
     Gamma_R_dim: int = GAMMA_R_DIM,
@@ -306,6 +325,10 @@ def resonance_quotient(
     assert quotient_dim == 3, f"Expected dim(M³) = 3, got {quotient_dim}"
     
     return ResonanceQuotientM3()
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def verify_manifold_properties(M3: ResonanceQuotientM3 = None) -> Dict:
@@ -363,6 +386,10 @@ def verify_manifold_properties(M3: ResonanceQuotientM3 = None) -> Dict:
     }
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def compute_fundamental_group() -> Dict:
     """
     Compute the fundamental group π₁(M³).
@@ -390,6 +417,9 @@ def compute_fundamental_group() -> Dict:
 # ============================================================================
 # Summary Generation
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def generate_manifold_summary() -> str:
     """

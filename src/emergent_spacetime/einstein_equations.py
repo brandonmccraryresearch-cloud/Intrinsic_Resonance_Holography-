@@ -139,6 +139,9 @@ class EinsteinFieldEquations:
     stress_energy_tensor: np.ndarray
     metric_tensor: np.ndarray
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix C, Theorem C.3
+
+    
     def lhs(self) -> np.ndarray:
         """Compute left-hand side: G_μν + Λ g_μν."""
         return (
@@ -146,13 +149,22 @@ class EinsteinFieldEquations:
             self.cosmological_constant * self.metric_tensor
         )
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix C, Theorem C.3
+
+    
     def rhs(self, G: float = G_NEWTON) -> np.ndarray:
         """Compute right-hand side: 8πG T_μν."""
         return 8 * np.pi * G * self.stress_energy_tensor
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix C, Theorem C.3
+
+    
     def residual(self, G: float = G_NEWTON) -> np.ndarray:
         """Compute residual: LHS - RHS (should be zero for solution)."""
         return self.lhs() - self.rhs(G)
+    
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix C, Theorem C.3
+
     
     def is_satisfied(self, tolerance: float = 1e-10) -> bool:
         """Check if field equations are satisfied."""
@@ -190,6 +202,9 @@ class HarmonyFunctional:
     """
     C_H: float = C_H_SPECTRAL
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix C, Theorem C.3
+
+    
     def evaluate(
         self,
         laplacian_spectrum: np.ndarray,
@@ -217,6 +232,9 @@ class HarmonyFunctional:
         log_det_prime = np.sum(np.log(np.abs(nonzero)))
         
         return trace_L_sq - self.C_H * log_det_prime
+    
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix C, Theorem C.3
+
     
     def einstein_hilbert_coefficient(self, G: float = 1.0) -> float:
         """
@@ -513,6 +531,9 @@ def verify_theorem_c3() -> Dict[str, Any]:
 # Vacuum Solutions
 # ============================================================================
 
+# Theoretical Reference: IRH v21.4 Part 2, Appendix C, Theorem C.3
+
+
 def vacuum_einstein_equations(
     cosmological_constant: float = 0.0,
 ) -> Dict[str, Any]:
@@ -542,6 +563,9 @@ def vacuum_einstein_equations(
 # ============================================================================
 # Summary Function
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4 Part 2, Appendix C, Theorem C.3
+
 
 def generate_einstein_equations_summary() -> Dict[str, Any]:
     """Generate summary of Einstein equations module."""

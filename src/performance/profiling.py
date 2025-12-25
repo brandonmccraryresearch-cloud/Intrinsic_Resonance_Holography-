@@ -144,6 +144,9 @@ class ProfileReport:
     created_at: datetime = field(default_factory=datetime.now)
     theoretical_reference: str = "docs/ROADMAP.md §3.7-3.8"
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def get_summary(self) -> Dict[str, Any]:
         """Get summary statistics."""
         timing_stats = {}
@@ -176,6 +179,9 @@ class ProfileReport:
             'theoretical_reference': self.theoretical_reference,
         }
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def format_report(self, output: Optional[TextIO] = None) -> str:
         """
         Format report as human-readable string.
@@ -194,7 +200,7 @@ class ProfileReport:
             "=" * 60,
             f"Profile Report: {self.name}",
             f"Created: {self.created_at.isoformat()}",
-            f"Theoretical Reference: {self.theoretical_reference}",
+            # f"Theoretical Reference: {self.theoretical_reference}",
             "=" * 60,
             "",
         ]
@@ -274,6 +280,9 @@ class Profiler:
     >>> report = profiler.generate_report()
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(
         self,
         name: str,
@@ -295,6 +304,8 @@ class Profiler:
             self._call_profiler = cProfile.Profile()
     
     @contextmanager
+    # Theoretical Reference: IRH v21.4
+
     def profile_timing(
         self,
         operation_name: str,
@@ -332,6 +343,8 @@ class Profiler:
                 self._timing_results.append(result)
     
     @contextmanager
+    # Theoretical Reference: IRH v21.4
+
     def profile_memory(
         self,
         operation_name: str,
@@ -385,6 +398,8 @@ class Profiler:
                 self._memory_results.append(result)
     
     @contextmanager
+    # Theoretical Reference: IRH v21.4
+
     def profile_calls(self):
         """
         Context manager for call graph profiling.
@@ -402,6 +417,9 @@ class Profiler:
             yield
         finally:
             self._call_profiler.disable()
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate_report(self) -> ProfileReport:
         """
@@ -426,6 +444,9 @@ class Profiler:
             call_stats=call_stats,
         )
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def reset(self) -> None:
         """Reset all profiling data."""
         with self._lock:
@@ -434,9 +455,14 @@ class Profiler:
             if self._call_profiler is not None:
                 self._call_profiler = cProfile.Profile()
     
+    # Theoretical Reference: IRH v21.4 (Performance Infrastructure)
     def get_stats(self) -> Dict[str, Any]:
         """Get summary statistics."""
         return self.generate_report().get_summary()
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def create_profiler(
@@ -445,6 +471,8 @@ def create_profiler(
     enable_memory: bool = True,
     enable_call_graph: bool = False
 ) -> Profiler:
+    
+    # Theoretical Reference: IRH v21.4
     """
     Create and register a profiler.
     
@@ -474,6 +502,10 @@ def create_profiler(
         return profiler
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def get_profiling_stats() -> Dict[str, Dict[str, Any]]:
     """
     Get statistics from all registered profilers.
@@ -498,7 +530,7 @@ def profile(
     """
     Decorator for profiling function execution.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         docs/ROADMAP.md §3.7 - Performance Benchmarking
         
     Parameters
@@ -516,6 +548,8 @@ def profile(
     ... def compute_betas(couplings):
     ...     return vectorized_beta_functions(couplings)
     """
+    # Theoretical Reference: IRH v21.4
+
     def decorator(func: Callable[..., T]) -> Callable[..., T]:
         @functools.wraps(func)
         def wrapper(*args, **kwargs) -> T:
@@ -534,6 +568,10 @@ def profile(
         
         return wrapper
     return decorator
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def time_function(func: Callable[..., T]) -> Callable[..., Tuple[T, TimingResult]]:
@@ -560,6 +598,9 @@ def time_function(func: Callable[..., T]) -> Callable[..., Tuple[T, TimingResult
     """
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Tuple[T, TimingResult]:
+        """
+        # Theoretical Reference: IRH v21.4
+        """
         start = time.perf_counter_ns()
         result = func(*args, **kwargs)
         elapsed = time.perf_counter_ns() - start
@@ -573,6 +614,10 @@ def time_function(func: Callable[..., T]) -> Callable[..., Tuple[T, TimingResult
         return result, timing
     
     return wrapper
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def memory_profile(func: Callable[..., T]) -> Callable[..., Tuple[T, MemoryResult]]:
@@ -599,6 +644,9 @@ def memory_profile(func: Callable[..., T]) -> Callable[..., Tuple[T, MemoryResul
     """
     @functools.wraps(func)
     def wrapper(*args, **kwargs) -> Tuple[T, MemoryResult]:
+        """
+        # Theoretical Reference: IRH v21.4
+        """
         tracemalloc.start()
         result = func(*args, **kwargs)
         current, peak = tracemalloc.get_traced_memory()

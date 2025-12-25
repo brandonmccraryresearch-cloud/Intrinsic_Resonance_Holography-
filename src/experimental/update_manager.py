@@ -65,6 +65,8 @@ class UpdateSummary:
     requires_action: bool
     
     @classmethod
+    # Theoretical Reference: IRH v21.4
+
     def from_updates(
         cls,
         codata_updates: List[ConstantUpdate],
@@ -110,6 +112,9 @@ class UpdateManager:
     configured in the constructor.
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(
         self,
         cache_dir: Optional[Path] = None,
@@ -141,6 +146,9 @@ class UpdateManager:
             cache_dir=self.cache_dir / 'pdg',
             cache_ttl=cache_ttl,
         )
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def check_all_updates(
         self,
@@ -178,6 +186,9 @@ class UpdateManager:
         
         # Create summary
         return UpdateSummary.from_updates(codata_updates, pdg_updates)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate_comprehensive_report(
         self,
@@ -451,6 +462,9 @@ class UpdateManager:
             shutil.rmtree(self.cache_dir)
             self.cache_dir.mkdir(parents=True, exist_ok=True)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def save_report(
         self,
         report: str,
@@ -483,6 +497,9 @@ class UpdateManager:
         filename.write_text(report)
         
         return filename.absolute()
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def notify(
         self,
@@ -543,6 +560,8 @@ class UpdateManager:
 
 
 # Convenience function for CLI use
+# Theoretical Reference: IRH v21.4
+
 def generate_update_report(
     output_file: Optional[Path] = None,
     format: str = 'markdown',

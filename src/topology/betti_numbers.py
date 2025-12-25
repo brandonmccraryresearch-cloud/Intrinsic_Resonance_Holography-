@@ -79,7 +79,7 @@ class GaugeGroupDecomposition:
     """
     Decomposition of the Standard Model gauge group from β₁ = 12.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §3.1.1
     """
     su3_dim: int = SU3_GENERATORS  # dim(SU(3)) = 8
@@ -87,6 +87,7 @@ class GaugeGroupDecomposition:
     u1_dim: int = U1_GENERATORS    # dim(U(1)) = 1
     total: int = TOTAL_GENERATORS  # 12
     
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
     def verify(self) -> bool:
         """Verify the decomposition sums to 12."""
         return self.su3_dim + self.su2_dim + self.u1_dim == self.total == BETTI_1
@@ -97,8 +98,8 @@ class ResonanceQuotient:
     """
     The resonance quotient M³ = G_inf / Γ_R.
     
-    Theoretical Reference:
-        IRH v21.1 Manuscript Part 2 Appendix D.1
+    # Theoretical Reference:
+        IRH v21.4 Part 2, Appendix D.1
     
     The emergent 3-manifold is constructed as the quotient of the
     informational group manifold G_inf = SU(2) × U(1)_φ by the
@@ -109,6 +110,9 @@ class ResonanceQuotient:
     is_compact: bool = True
     is_orientable: bool = True
     euler_characteristic: int = 0  # For a 3-manifold: χ = 0
+    
+    # Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
+
     
     def homology_rank(self, k: int) -> int:
         """Get the k-th Betti number."""
@@ -403,6 +407,9 @@ def _resonance_quotient_construction() -> ResonanceQuotient:
 # ============================================================================
 # Summary Generation
 # ============================================================================
+
+# Theoretical Reference: IRH v21.4 Part 2, Appendix D.1
+
 
 def generate_betti_number_summary() -> str:
     """

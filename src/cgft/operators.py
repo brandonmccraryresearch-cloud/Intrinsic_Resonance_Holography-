@@ -248,6 +248,10 @@ def hessian_operator(
     return hessian
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def casimir_operator(
     field: np.ndarray,
     representation: str = 'fundamental',

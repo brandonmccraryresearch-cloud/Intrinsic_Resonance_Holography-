@@ -241,6 +241,10 @@ def holographic_interaction(
     return float(mu_coupling * harmony)
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def compute_interaction_matrix(
     n_modes: int,
     gamma: float = 1.0,

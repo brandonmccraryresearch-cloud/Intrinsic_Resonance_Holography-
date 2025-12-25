@@ -42,11 +42,17 @@ class MarkdownGenerator:
     title: str = "IRH v21.0 Computation Summary"
     sections: List[str] = field(default_factory=list)
     
+    # Theoretical Reference: IRH v21.4
     def add_header(self, text: str, level: int = 2) -> None:
         """Add a header."""
         self.sections.append(f"{'#' * level} {text}\n")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def add_paragraph(self, text: str) -> None:
+        
+        # Theoretical Reference: IRH v21.4
         """Add a paragraph."""
         self.sections.append(f"{text}\n")
     
@@ -69,11 +75,16 @@ class MarkdownGenerator:
         
         self.sections.append("\n".join(parts) + "\n")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def add_results_table(
         self,
         results: List[Dict[str, Any]],
         title: str = "Results"
     ) -> None:
+        
+        # Theoretical Reference: IRH v21.4
         """Add a results table."""
         lines = [
             f"### {title}\n",
@@ -95,6 +106,9 @@ class MarkdownGenerator:
             lines.append(f"| {name} | {val_str} | ±{uncertainty:.2e} | {ref} |")
         
         self.sections.append("\n".join(lines) + "\n")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def add_comparison_table(
         self,
@@ -135,6 +149,9 @@ class MarkdownGenerator:
         
         self.sections.append("\n".join(lines) + "\n")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def add_checklist(
         self,
         items: List[Dict[str, Any]],
@@ -156,6 +173,9 @@ class MarkdownGenerator:
         
         self.sections.append("\n".join(lines) + "\n")
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def add_code_block(
         self,
         code: str,
@@ -163,6 +183,9 @@ class MarkdownGenerator:
     ) -> None:
         """Add a code block."""
         self.sections.append(f"```{language}\n{code}\n```\n")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def add_metadata(
         self,
@@ -175,6 +198,9 @@ class MarkdownGenerator:
             lines.append(f"- **{key}**: {value}")
         
         self.sections.append("\n".join(lines) + "\n")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def generate(self) -> str:
         """Generate complete markdown document."""
@@ -191,6 +217,9 @@ class MarkdownGenerator:
         
         return "\n".join(header) + "\n".join(self.sections)
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def save(self, path: Union[str, Path]) -> None:
         """Save markdown document to file."""
         path = Path(path)
@@ -201,6 +230,9 @@ class MarkdownGenerator:
 # =============================================================================
 # Module-Level Convenience Functions
 # =============================================================================
+
+# Theoretical Reference: IRH v21.4
+
 
 def generate_markdown_summary(
     title: str,
@@ -268,6 +300,10 @@ def generate_markdown_summary(
     return md_content
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def create_results_markdown(
     results: List[Dict[str, Any]],
     title: str = "Results"
@@ -292,6 +328,10 @@ def create_results_markdown(
     return "\n".join(gen.sections)
 
 
+# Theoretical Reference: IRH v21.4
+
+
+
 def create_comparison_markdown(
     results: List[Dict[str, Any]],
     title: str = "Theory vs Experiment"
@@ -314,6 +354,10 @@ def create_comparison_markdown(
     gen = MarkdownGenerator()
     gen.add_comparison_table(results, title=title)
     return "\n".join(gen.sections)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def create_quick_summary(

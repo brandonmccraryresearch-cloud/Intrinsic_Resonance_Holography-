@@ -139,6 +139,9 @@ class DarkEnergyEoS:
     wa: float
     is_phantom: bool
     
+    # Theoretical Reference: IRH v21.4 Part 1, §2.3
+
+    
     def w_z(self, z: float) -> float:
         """
         Compute w(z) using CPL parameterization.
@@ -244,7 +247,7 @@ class VacuumEnergyCancellation:
     """
     Details of the vacuum energy cancellation mechanism.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §2.3.1
         
     The cosmological constant problem is solved through exact
@@ -254,6 +257,9 @@ class VacuumEnergyCancellation:
     holographic_contribution: float
     residual_hum: float
     cancellation_precision: float
+    
+    # Theoretical Reference: IRH v21.4 Part 1, §2.3
+
     
     def verify_cancellation(self) -> bool:
         """Verify that cancellation gives correct residual."""
@@ -265,7 +271,7 @@ def compute_vacuum_energy_cancellation() -> VacuumEnergyCancellation:
     """
     Compute the vacuum energy cancellation mechanism.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §2.3.1
         
     The cosmological constant problem is solved by exact cancellation:
@@ -368,6 +374,10 @@ def compute_cosmological_constant() -> CosmologicalConstant:
     )
 
 
+# Theoretical Reference: IRH v21.4 Part 1, §2.3
+
+
+
 def verify_dark_energy_predictions() -> Dict:
     """
     Verify all dark energy predictions from IRH.
@@ -407,6 +417,10 @@ def verify_dark_energy_predictions() -> Dict:
         'all_verified': all([w0_verified, non_phantom, cancellation_verified, prefactor_correct]),
         'theoretical_reference': 'IRH21.md §2.3'
     }
+
+
+# Theoretical Reference: IRH v21.4 Part 1, §2.3
+
 
 
 def compute_hubble_tension_resolution() -> Dict:

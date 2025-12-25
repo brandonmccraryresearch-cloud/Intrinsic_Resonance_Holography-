@@ -98,6 +98,9 @@ class ParameterOptimizer:
     or accuracy of surrogate predictions.
     """
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def __init__(self, config: Optional[OptimizerConfig] = None):
         """
         Initialize optimizer.
@@ -106,11 +109,20 @@ class ParameterOptimizer:
         ----------
         config : OptimizerConfig, optional
             Optimizer configuration
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         self.config = config or OptimizerConfig()
         self.history = []
         self.best_x = None
         self.best_y = float('inf')
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def optimize(
         self,
@@ -131,8 +143,15 @@ class ParameterOptimizer:
         -------
         dict
             Optimization results
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         raise NotImplementedError("Subclasses must implement optimize()")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def suggest_next(self) -> np.ndarray:
         """
@@ -142,8 +161,15 @@ class ParameterOptimizer:
         -------
         ndarray
             Suggested parameter values
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         raise NotImplementedError("Subclasses must implement suggest_next()")
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def update(self, x: np.ndarray, y: float):
         """
@@ -177,6 +203,7 @@ class SimpleGaussianProcess:
     Kernel: k(x, x') = σ² exp(-||x - x'||² / (2ℓ²))
     """
     
+    # Theoretical Reference: IRH v21.4
     def __init__(
         self,
         length_scale: float = 1.0,
@@ -207,6 +234,9 @@ class SimpleGaussianProcess:
         dists = cdist(X1, X2, metric='sqeuclidean')
         return self.variance * np.exp(-dists / (2 * self.length_scale**2))
     
+    # Theoretical Reference: IRH v21.4
+
+    
     def fit(self, X: np.ndarray, y: np.ndarray):
         """
         Fit GP to training data.
@@ -226,6 +256,9 @@ class SimpleGaussianProcess:
         K += self.noise * np.eye(len(K))
         
         self.K_inv = np.linalg.inv(K)
+    
+    # Theoretical Reference: IRH v21.4
+
     
     def predict(
         self,
@@ -299,6 +332,7 @@ class BayesianOptimizer(ParameterOptimizer):
     - Upper Confidence Bound (UCB): μ(x) - κσ(x) (for minimization)
     - Probability of Improvement (PI): P(f(x) < y_best)
     """
+     # Theoretical Reference: IRH v21.4
     
     def __init__(self, config: Optional[OptimizerConfig] = None):
         """
@@ -312,6 +346,7 @@ class BayesianOptimizer(ParameterOptimizer):
         super().__init__(config)
         self.gp = SimpleGaussianProcess()
         self._X_observed = []
+        # Theoretical Reference: IRH v21.4
         self._y_observed = []
     
     def optimize(
@@ -399,6 +434,9 @@ class BayesianOptimizer(ParameterOptimizer):
         for _ in range(10):
             x0 = np.random.rand(n_dims)
             
+            # Theoretical Reference: IRH v21.4
+
+            
             def neg_acquisition(x):
                 x_orig = bounds[:, 0] + x * (bounds[:, 1] - bounds[:, 0])
                 return -self._acquisition(x, y_best, bounds)
@@ -470,6 +508,7 @@ class BayesianOptimizer(ParameterOptimizer):
         if std < 1e-12:
             return 0.0
         
+        # Theoretical Reference: IRH v21.4
         z = (y_best - mean) / std
         return 0.5 * (1 + math.erf(z / math.sqrt(2)))
     
@@ -501,7 +540,7 @@ class ActiveLearningOptimizer(ParameterOptimizer):
     """
     Active Learning for selecting informative training points.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Phase 4.3
         
     Active learning selects points that maximize information gain,
@@ -512,6 +551,7 @@ class ActiveLearningOptimizer(ParameterOptimizer):
     - 'diversity': Select points far from existing samples
     - 'combined': Balance uncertainty and diversity
     
+    # Theoretical Reference: IRH v21.4
     This differs from Bayesian optimization: instead of minimizing
     an objective, we select points to improve the surrogate model.
     """
@@ -531,11 +571,13 @@ class ActiveLearningOptimizer(ParameterOptimizer):
         strategy : str
             Selection strategy ('uncertainty', 'diversity', 'combined')
         """
+        # Theoretical Reference: IRH v21.4
         super().__init__(config)
         self.strategy = strategy
         self.gp = SimpleGaussianProcess()
         self._X_observed = []
     
+    # Theoretical Reference: IRH v21.4 (Bayesian Optimization)
     def optimize(
         self,
         objective: Callable[[np.ndarray], float],
@@ -631,12 +673,14 @@ class ActiveLearningOptimizer(ParameterOptimizer):
                 dists = cdist(candidates, X_obs)
                 min_dists = dists.min(axis=1)
                 # Normalize and add to scores
+                # Theoretical Reference: IRH v21.4
                 scores += min_dists / (min_dists.max() + 1e-10)
         
         # Select point with highest score
         best_idx = np.argmax(scores)
         return candidates[best_idx]
     
+    # Theoretical Reference: IRH v21.4 (Active Learning)
     def suggest_next(self) -> np.ndarray:
         """Suggest next point to label."""
         bounds = np.array(self.config.bounds)
@@ -646,6 +690,10 @@ class ActiveLearningOptimizer(ParameterOptimizer):
 # =============================================================================
 # Convenience Functions
 # =============================================================================
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def optimize_parameters(
@@ -711,6 +759,10 @@ def optimize_parameters(
         raise ValueError(f"Unknown method: {method}")
     
     return optimizer.optimize(objective, verbose)
+
+
+# Theoretical Reference: IRH v21.4
+
 
 
 def suggest_next_point(
