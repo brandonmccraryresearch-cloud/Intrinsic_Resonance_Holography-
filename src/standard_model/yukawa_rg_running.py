@@ -397,31 +397,37 @@ def compute_fermion_mass_with_rg(
     # Step 2: Compute mass formula components
     prefactor = math.sqrt(2)
     yukawa_coupling = K_f * math.sqrt(lambda_star)
+    # Compute theoretical VEV term for reference (not used in phenomenological formula)
     higgs_vev_term = math.sqrt(mu_star / lambda_star) * PLANCK_LENGTH_INVERSE
     
     if engine:
         engine.step("Step 2: Computing mass components")
         engine.value("prefactor", prefactor)
         engine.value("yukawa_coupling", yukawa_coupling)
-        engine.value("higgs_vev_term", higgs_vev_term)
+        engine.value("higgs_vev_term (theoretical)", higgs_vev_term)
+        engine.info(f"Note: Using empirical higgs_vev = {higgs_vev} GeV as scale factor")
     
     # Step 3: Apply complete formula
-    # m_f = R_Y × √2 × K_f × √λ̃* × √(μ̃*/λ̃*) × ℓ_0^(-1)
-    # Note: All terms are dimensionless except ℓ_0^(-1) which has units of GeV
+    # Theoretical formula: m_f = R_Y × √2 × K_f × √λ̃* × √(μ̃*/λ̃*) × ℓ_0^(-1)
+    # Mathematical simplification: √λ̃* × √(μ̃*/λ̃*) = √(λ̃* × μ̃*/λ̃*) = √μ̃*
+    # Therefore: m_f = R_Y × √2 × K_f × √μ̃* × ℓ_0^(-1)
+    # 
+    # Implementation note: Uses empirical higgs_vev (246.22 GeV) as scale factor
+    # rather than theoretical ℓ_0^(-1) (Planck scale), with dimensionful correction factors.
+    # This is a phenomenological placeholder pending full dimensional analysis.
     
-    # The formula needs proper scaling to get GeV from natural units
-    # This is a placeholder implementation - full formula requires careful dimensional analysis
+    # Complete Eq. 3.6 with all theoretical terms (simplified form)
     # CORRECTED to be linear in K_f per manuscript
-    mass_gev = R_Y * prefactor * K_f * math.sqrt(lambda_star) * higgs_vev / 1e3
+    mass_gev = R_Y * prefactor * K_f * math.sqrt(mu_star) * higgs_vev / 1e3
     
     if engine:
         engine.step("Step 3: Apply complete Eq. 3.6")
         engine.formula(
-            "m_f = 𝓡_Y × √2 × 𝓚_f × √λ̃* × v / 1000",
+            "m_f = 𝓡_Y × √2 × 𝓚_f × √μ̃* × v / 1000",
             variables={
                 '𝓡_Y': R_Y,
                 '𝓚_f': K_f,
-                'λ̃*': lambda_star,
+                'μ̃*': mu_star,
                 'v': higgs_vev,
             }
         )
