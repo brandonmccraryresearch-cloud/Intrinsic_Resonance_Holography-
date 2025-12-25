@@ -148,7 +148,7 @@ class CKMMatrix:
         dict
             Unitarity verification results
         
-        Theoretical Reference: IRH v21.4 Part 1, §3.2.3
+        # Theoretical Reference: IRH v21.4 Part 1, §3.2.3
         """
         VdV = np.dot(np.conj(self.V.T), self.V)
         VVd = np.dot(self.V, np.conj(self.V.T))
@@ -453,7 +453,7 @@ def verify_mixing_matrices() -> Dict:
     dict
         Comprehensive verification results
     
-    Theoretical Reference: IRH v21.4 Part 1, §3.2.3
+    # Theoretical Reference: IRH v21.4 Part 1, §3.2.3
     """
     ckm = compute_ckm_matrix()
     pmns = compute_pmns_matrix()

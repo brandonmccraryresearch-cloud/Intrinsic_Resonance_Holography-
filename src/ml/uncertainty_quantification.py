@@ -97,9 +97,9 @@ class UncertaintyEstimator:
         
         Theoretical Reference: IRH v21.4 (ML Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         self.confidence_level = confidence_level
         self._calibration_factor = 1.0
@@ -127,9 +127,9 @@ class UncertaintyEstimator:
         UncertaintyResult
             Uncertainty estimation result
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         raise NotImplementedError("Subclasses must implement estimate()")
     
@@ -407,7 +407,7 @@ def compute_uncertainty(
     """
     Compute uncertainty for predictions using specified method.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Phase 4.3
         
     Parameters

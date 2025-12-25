@@ -38,7 +38,7 @@ class Quaternion:
     """
     Quaternion number q = q₀ + iq₁ + jq₂ + kq₃ ∈ ℍ.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1.1 (Quaternionic cGFT Action)
         The field φ(g₁,g₂,g₃,g₄) takes values in ℍ, the quaternion algebra.
         
@@ -116,7 +116,7 @@ class Quaternion:
 
     def random(cls, rng: np.random.Generator = None) -> Quaternion:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
         """Generate random unit quaternion (uniform on S³)."""
         if rng is None:
             rng = np.random.default_rng()
@@ -192,7 +192,7 @@ class Quaternion:
     
     def inverse(self) -> Quaternion:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
         """
         Compute multiplicative inverse q⁻¹ = q̄/|q|².
         
@@ -245,7 +245,7 @@ class Quaternion:
     
     def __neg__(self) -> Quaternion:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
         """Quaternion negation."""
         return Quaternion(w=-self.w, x=-self.x, y=-self.y, z=-self.z)
     
@@ -292,7 +292,7 @@ class Quaternion:
     
     def __truediv__(self, other: Union[Quaternion, float]) -> Quaternion:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
         """Quaternion division: q₁ / q₂ = q₁ * q₂⁻¹."""
         if isinstance(other, (int, float)):
             if abs(other) < 1e-24:
@@ -383,7 +383,7 @@ def quaternion_dot(q1: Quaternion, q2: Quaternion) -> float:
     
     This defines the metric on S³ when q1, q2 are unit quaternions.
     
-    Theoretical Reference: IRH v21.4 Part 1, §1.1.1
+    # Theoretical Reference: IRH v21.4 Part 1, §1.1.1
     """
     conj_q1 = q1.conjugate()
     product = conj_q1 * q2

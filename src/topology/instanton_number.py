@@ -93,11 +93,11 @@ class TopologicalCharge:
 @dataclass
 class VortexWavePatternConfig:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """
     Configuration for a Vortex Wave Pattern (fermionic defect).
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 2 Appendix D.2-D.3
     """
     generation: int

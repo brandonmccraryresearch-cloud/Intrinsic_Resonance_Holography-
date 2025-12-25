@@ -98,7 +98,7 @@ class RunningCouplings:
     
     def distance_to_fixed_point(self) -> float:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Compute distance to Cosmic Fixed Point."""
         delta = np.array([
             self.lambda_k - LAMBDA_STAR,
@@ -115,7 +115,7 @@ class RunningCouplings:
 @dataclass
 class CouplingTrajectory:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """
     Complete RG trajectory of couplings.
     

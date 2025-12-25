@@ -91,7 +91,7 @@ def beta_gamma(lambda_tilde: float, gamma_tilde: float, mu_tilde: float) -> floa
     """
     Compute beta function for γ̃ coupling.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2, Eq. 1.13
         β_γ = (3/4π²)λ̃γ̃
         
@@ -116,7 +116,7 @@ def beta_mu(lambda_tilde: float, gamma_tilde: float, mu_tilde: float) -> float:
     """
     Compute beta function for μ̃ coupling.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2, Eq. 1.13
         β_μ = 2μ̃ + (1/2π²)λ̃μ̃
         
@@ -145,7 +145,7 @@ def compute_all_betas(
     """
     Compute all three beta functions simultaneously.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2, Eq. 1.13
         
     Returns
@@ -170,7 +170,7 @@ class FixedPointResult:
     """
     Result of fixed-point computation or verification.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.3, Eq. 1.14
     """
     lambda_star: float
@@ -658,7 +658,7 @@ def run_analytical_benchmarks(tolerance: float = 1e-10) -> List[BenchmarkResult]
 
 def generate_benchmark_report(results: List[BenchmarkResult]) -> str:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """Generate human-readable benchmark report."""
     lines = [
         "=" * 70,

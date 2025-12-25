@@ -112,7 +112,7 @@ class DecoherenceRate:
     """
     Decoherence rate from fixed-point dynamics.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §5.1, Appendix I.2
         
     Attributes
@@ -249,7 +249,7 @@ class PointerBasis:
     """
     The emergent pointer basis.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §5.1
         
     The pointer basis is determined by eigenstates of minimal
@@ -303,7 +303,7 @@ class MeasurementResolution:
     """
     Resolution of the measurement problem.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §5.1
         
     The measurement problem is resolved through:
@@ -419,7 +419,7 @@ class QuantumMechanicsEmergence:
     """
     Complete emergence of quantum mechanics from IRH.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §5.1, Appendix I
         
     All aspects of quantum mechanics emerge from the
@@ -486,7 +486,7 @@ def compute_decoherence_time_estimate(
     """
     Estimate decoherence time for a physical system.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §5.1
         
     Parameters

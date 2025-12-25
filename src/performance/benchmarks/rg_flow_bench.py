@@ -192,7 +192,7 @@ def benchmark_fixed_point_search(
         
         def bench_fn():
             """
-            Theoretical Reference: IRH v21.4
+            # Theoretical Reference: IRH v21.4
             """
             return parallel_fixed_point_search(initial, max_iter=100)
         
@@ -302,7 +302,7 @@ class RGFlowBenchmarkSuite:
         """Print formatted benchmark report."""
         print("=" * 70)
         print("RG FLOW BENCHMARK REPORT")
-        print("Theoretical Reference: IRH v21.1 §1.2, docs/ROADMAP.md §3.7")
+        # print("Theoretical Reference: IRH v21.1 §1.2, docs/ROADMAP.md §3.7")
         print("=" * 70)
         
         for category, benchmarks in results.items():
@@ -320,9 +320,9 @@ class RGFlowBenchmarkSuite:
         results: Dict[str, Dict[str, BenchmarkResult]]
     ) -> Dict[str, Any]:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Get summary statistics."""
         summary = {
             'theoretical_reference': 'IRH v21.1 §1.2, docs/ROADMAP.md §3.7',

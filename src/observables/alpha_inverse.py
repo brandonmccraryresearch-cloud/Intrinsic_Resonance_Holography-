@@ -407,7 +407,7 @@ def alpha_inverse_from_fixed_point(
     """
     Simplified computation of α⁻¹ from fixed-point values.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §3.2.2, Eq. 3.4-3.5
         
     Parameters

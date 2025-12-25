@@ -266,7 +266,7 @@ class UncertaintyTracker:
     
     def __init__(self):
         """
-        Theoretical Reference: IRH v21.4 (Output Framework)
+        # Theoretical Reference: IRH v21.4 (Output Framework)
         """
         self.error_registry: Dict[str, Dict[str, Any]] = {}
     
@@ -294,7 +294,7 @@ class UncertaintyTracker:
         theoretical_ref : str
             Reference to theoretical manuscript
         
-        Theoretical Reference: IRH v21.4 (Output Framework)
+        # Theoretical Reference: IRH v21.4 (Output Framework)
         """
         if observable not in self.error_registry:
             self.error_registry[observable] = {
@@ -477,13 +477,13 @@ class IRHOutputWriter:
     
     def set_numerical_methods(self, **methods):
         
-        Theoretical Reference: IRH v21.4 (Output Framework)
+        # Theoretical Reference: IRH v21.4 (Output Framework)
         """Set numerical method choices."""
         self.provenance.numerical_methods.update(methods)
     
     def set_random_seed(self, seed: int):
         
-        Theoretical Reference: IRH v21.4 (Output Framework)
+        # Theoretical Reference: IRH v21.4 (Output Framework)
         """Set random seed for reproducibility."""
         self.provenance.random_seed = seed
     
@@ -552,7 +552,7 @@ class IRHOutputWriter:
     
     def write(self, path: Optional[str] = None):
         
-        Theoretical Reference: IRH v21.4 (Output Framework)
+        # Theoretical Reference: IRH v21.4 (Output Framework)
         """Write output to file."""
         output_path = path or self.output_path
         if output_path is None:

@@ -282,7 +282,7 @@ def verify_su3_su2_u1() -> Dict:
     """
     Verify the SU(3)×SU(2)×U(1) gauge structure.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §3.1.1
         
     Returns
@@ -364,7 +364,7 @@ class GaugeCouplingUnification:
         """
         Compute Weinberg angle at given scale.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Part 1 §3.3.1
             
         sin²θ_W = g'² / (g² + g'²)

@@ -47,7 +47,7 @@ class SU2Element:
     """
     Element of SU(2) realized as unit quaternion on S³.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1
         SU(2) ≅ S³ is the 3-sphere of unit quaternions.
         
@@ -85,11 +85,11 @@ class SU2Element:
     
     @classmethod
     def from_quaternion(cls, q: Quaternion) -> SU2Element:
+        """
+        Create SU(2) element from quaternion (will be normalized).
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
-        
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
-        """Create SU(2) element from quaternion (will be normalized)."""
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
+        """
         return cls(quaternion=q)
     
     @classmethod
@@ -97,7 +97,7 @@ class SU2Element:
 
     def from_components(cls, w: float, x: float, y: float, z: float) -> SU2Element:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Create SU(2) element from components (will be normalized)."""
         q = Quaternion(w=w, x=x, y=y, z=z)
         return cls(quaternion=q)
@@ -107,7 +107,7 @@ class SU2Element:
 
     def from_axis_angle(cls, axis: NDArray[np.float64], angle: float) -> SU2Element:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         Create SU(2) element from axis-angle representation.
         
@@ -162,9 +162,9 @@ class SU2Element:
     
     def to_quaternion(self) -> Quaternion:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Extract underlying quaternion."""
         return self.quaternion
     
@@ -177,7 +177,7 @@ class SU2Element:
                  [ β,  ᾱ]]
         where α = w + iz, β = y + ix
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         q = self.quaternion
         alpha = complex(q.w, q.z)
@@ -195,9 +195,9 @@ class SU2Element:
         """
         Compute group inverse u⁻¹ = ū (conjugate for unit quaternions).
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """
         return SU2Element(quaternion=self.quaternion.conjugate())
     
@@ -206,7 +206,7 @@ class SU2Element:
     
     def __mul__(self, other: SU2Element) -> SU2Element:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """Group multiplication: u₁ · u₂ via quaternion product."""
         if not isinstance(other, SU2Element):
             return NotImplemented
@@ -214,7 +214,7 @@ class SU2Element:
     
     def __eq__(self, other: object) -> bool:
         
-        Theoretical Reference: IRH v21.4 Part 1, §1.1
+        # Theoretical Reference: IRH v21.4 Part 1, §1.1
         """SU(2) equality (note: u and -u represent same rotation in SO(3))."""
         if not isinstance(other, SU2Element):
             return False
@@ -229,7 +229,7 @@ def haar_measure_SU2_sample(n_samples: int, rng: np.random.Generator = None) -> 
     """
     Generate samples from Haar measure on SU(2).
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.1
         Integration ∫dg uses the bi-invariant Haar measure.
     
@@ -297,7 +297,7 @@ class U1Phase:
     """
     Element of U(1)_φ - the holonomic phase group.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1
         U(1)_φ encodes the holonomic phase φ ∈ [0, 2π).
         
@@ -412,7 +412,7 @@ class GInfElement:
     """
     Element of G_inf = SU(2) × U(1)_φ - the fundamental group manifold.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1
         The cGFT field φ(g₁,g₂,g₃,g₄) takes arguments gᵢ ∈ G_inf.
         
@@ -482,7 +482,7 @@ def haar_measure_GInf_sample(n_samples: int, rng: np.random.Generator = None) ->
     """
     Generate samples from Haar measure on G_inf = SU(2) × U(1).
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.1
         The integration measure ∫[∏dg_i] is the product Haar measure.
     """
@@ -514,7 +514,7 @@ def compute_GInf_distance(g1: GInfElement, g2: GInfElement) -> float:
     """
     Compute bi-invariant distance on G_inf.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Appendix A
         The QNCD metric is constructed from this group distance.
         

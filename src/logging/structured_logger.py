@@ -116,7 +116,7 @@ class LogEntry:
 
 class StructuredLogger:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """
     Structured logger with JSON output and theoretical context.
     
@@ -256,7 +256,7 @@ class StructuredLogger:
     
     def step(self, message: str, **kwargs) -> None:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Log computation step."""
         self.log(LogLevel.STEP, message, **kwargs)
     
@@ -283,7 +283,7 @@ class StructuredLogger:
         """
         Log warning message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH21.md Appendix K, §1.0 (Structured Logging Protocol)
             Module header, lines 4-10
         
@@ -437,7 +437,7 @@ class StructuredLogger:
     
     def get_summary(self) -> Dict[str, Any]:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Get summary statistics of log entries."""
         if not self._entries:
             return {'total': 0}

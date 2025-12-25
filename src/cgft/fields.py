@@ -190,11 +190,11 @@ class QuaternionicField:
     
     def inner_product(self, other: QuaternionicField) -> complex:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """
         Compute inner product 〈φ₁|φ₂〉 = ∫φ̄₁·φ₂.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH21.md §1.1
             Inner product structure on field space.
         """
@@ -267,7 +267,7 @@ def create_field(
     **kwargs
 ) -> QuaternionicField:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """
     Factory function to create cGFT field.
     
@@ -302,7 +302,7 @@ def field_conjugate(phi: QuaternionicField) -> QuaternionicField:
     """
     Compute conjugate field φ̄.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.1
         S_kin = ∫ φ̄ · [Δ] · φ
     """
@@ -337,7 +337,7 @@ def verify_gauge_invariance(
     """
     Verify that action is gauge-invariant.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1
         S[φ] = S[k·φ] for all k ∈ G_inf
         

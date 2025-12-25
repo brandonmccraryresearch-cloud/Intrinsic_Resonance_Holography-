@@ -158,7 +158,7 @@ def mass_hierarchy() -> Dict:
     """
     Compute the full fermion mass hierarchy from topological complexity.
 
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §3.2, Table 3.1
 
     Returns

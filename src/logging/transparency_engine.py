@@ -352,7 +352,7 @@ class TransparencyEngine:
         content : str
             Description of computational step
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """
         self._emit(MessageType.STEP, content, **metadata)
     
@@ -457,7 +457,7 @@ class TransparencyEngine:
         """
         Emit warning message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Module header, lines 4-16
         
@@ -476,7 +476,7 @@ class TransparencyEngine:
         """
         Emit error message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Module header, lines 4-16
         
@@ -503,7 +503,7 @@ class TransparencyEngine:
         """
         Emit final result with full context.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Result reporting with provenance tracking
         
@@ -539,7 +539,7 @@ class TransparencyEngine:
         """
         Emit success message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Module header, lines 4-16
         
@@ -558,7 +558,7 @@ class TransparencyEngine:
         """
         Emit failure message.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.4 Algorithmic Transparency Mandate §1.0
             Module header, lines 4-16
         

@@ -79,7 +79,7 @@ class GaugeGroupDecomposition:
     """
     Decomposition of the Standard Model gauge group from β₁ = 12.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §3.1.1
     """
     su3_dim: int = SU3_GENERATORS  # dim(SU(3)) = 8
@@ -94,13 +94,11 @@ class GaugeGroupDecomposition:
 
 @dataclass
 class ResonanceQuotient:
-    
-    Theoretical Reference: IRH v21.4
     """
     The resonance quotient M³ = G_inf / Γ_R.
     
-    Theoretical Reference:
-        IRH v21.1 Manuscript Part 2 Appendix D.1
+    # Theoretical Reference:
+        IRH v21.4 Part 2, Appendix D.1
     
     The emergent 3-manifold is constructed as the quotient of the
     informational group manifold G_inf = SU(2) × U(1)_φ by the

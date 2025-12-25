@@ -110,11 +110,11 @@ class ParameterOptimizer:
         config : OptimizerConfig, optional
             Optimizer configuration
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         self.config = config or OptimizerConfig()
         self.history = []
@@ -144,9 +144,9 @@ class ParameterOptimizer:
         dict
             Optimization results
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         raise NotImplementedError("Subclasses must implement optimize()")
     
@@ -162,9 +162,9 @@ class ParameterOptimizer:
         ndarray
             Suggested parameter values
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         raise NotImplementedError("Subclasses must implement suggest_next()")
     
@@ -540,7 +540,7 @@ class ActiveLearningOptimizer(ParameterOptimizer):
     """
     Active Learning for selecting informative training points.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Phase 4.3
         
     Active learning selects points that maximize information gain,

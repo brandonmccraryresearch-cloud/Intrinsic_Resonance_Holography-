@@ -126,7 +126,7 @@ def integrate_U1(
     if method == 'quadrature':
         def integrand(phi):
             """
-            Theoretical Reference: IRH v21.4
+            # Theoretical Reference: IRH v21.4
             """
             return f(phi) / (2 * np.pi)
         

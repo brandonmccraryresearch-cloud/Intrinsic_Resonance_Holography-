@@ -229,9 +229,6 @@ class DiskCache:
     def __init__(
         self,
         cache_dir: Union[Path, str] = '/tmp/irh_cache',
-            """
-            Theoretical Reference: IRH v21.4
-            """
         max_size_mb: int = 1000
     ):
         self.cache_dir = Path(cache_dir)
@@ -391,9 +388,6 @@ class CacheManager:
     def __init__(
         self,
         name: str,
-            """
-            Theoretical Reference: IRH v21.4
-            """
         lru_size: int = 1000,
         disk_cache_dir: Optional[Union[Path, str]] = None,
         disk_max_mb: int = 1000

@@ -242,7 +242,7 @@ def benchmark_interaction_action(
         
         def bench_fn():
             """
-            Theoretical Reference: IRH v21.4
+            # Theoretical Reference: IRH v21.4
             """
             return _compute_interaction_action(phi)
         
@@ -288,7 +288,7 @@ def benchmark_total_action(
         
         def bench_fn():
             """
-            Theoretical Reference: IRH v21.4
+            # Theoretical Reference: IRH v21.4
             """
             return _compute_total_action(phi, laplacian_coeffs)
         
@@ -347,7 +347,7 @@ class ActionBenchmarkSuite:
         """Print formatted benchmark report."""
         print("=" * 70)
         print("cGFT ACTION BENCHMARK REPORT")
-        print("Theoretical Reference: IRH v21.1 §1.1, docs/ROADMAP.md §3.7")
+        # print("Theoretical Reference: IRH v21.1 §1.1, docs/ROADMAP.md §3.7")
         print("=" * 70)
         
         for category, benchmarks in results.items():
@@ -365,9 +365,9 @@ class ActionBenchmarkSuite:
         results: Dict[str, Dict[str, BenchmarkResult]]
     ) -> Dict[str, Any]:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Get summary statistics."""
         summary = {
             'theoretical_reference': 'IRH v21.1 §1.1, docs/ROADMAP.md §3.7',

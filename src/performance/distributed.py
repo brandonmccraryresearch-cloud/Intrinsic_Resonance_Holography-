@@ -876,7 +876,7 @@ def distributed_monte_carlo(
     """
     Distributed Monte Carlo sampling on G_inf.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript §1.1
         
         Monte Carlo sampling on the informational group manifold

@@ -59,7 +59,7 @@ def vectorized_beta_functions(
     """
     Compute beta functions for batch of coupling values.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript §1.2.2, Eq. 1.13
         
         β_λ = -2λ̃ + (9/8π²)λ̃²
@@ -108,7 +108,7 @@ def vectorized_qncd_distance(
     """
     Compute QNCD distances for batch of vector pairs.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Appendix A, Eq. A.1-A.4
         
         QNCD(x,y) = [C(xy) - min(C(x),C(y))] / max(C(x),C(y))
@@ -241,7 +241,7 @@ def optimized_matrix_operations(
     """
     Optimized batch matrix operations for RG stability analysis.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript §1.2.3 - Fixed point stability
         
     Parameters
@@ -282,7 +282,7 @@ def batch_quaternion_multiply(
     """
     Batch quaternion multiplication for SU(2) operations.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript §1.1 - G_inf = SU(2) × U(1)_φ
         
         Quaternion: q = q₀ + q₁i + q₂j + q₃k
@@ -334,7 +334,7 @@ def parallel_fixed_point_search(
     """
     Parallel Newton-Raphson search for fixed points.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript §1.2.3, Eq. 1.14
         
         Fixed point: β(λ*, γ*, μ*) = 0
@@ -433,7 +433,7 @@ class VectorizedOperations:
     """
     Container class for vectorized IRH operations.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2-1.3, docs/ROADMAP.md §3.1
         
     This class provides a unified interface for all vectorized
@@ -478,7 +478,7 @@ class VectorizedOperations:
         """
         Compute beta functions with optional caching.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript §1.2.2, Eq. 1.13
         """
         couplings = np.asarray(couplings, dtype=self._dtype)
@@ -493,7 +493,7 @@ class VectorizedOperations:
         """
         Compute QNCD distances with optional caching.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Appendix A
         """
         v1 = np.asarray(vectors1, dtype=self._dtype)
@@ -508,7 +508,7 @@ class VectorizedOperations:
         """
         Compute batch quaternion products.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript §1.1 - G_inf structure
         """
         q1 = np.asarray(q1, dtype=self._dtype)
@@ -523,7 +523,7 @@ class VectorizedOperations:
         """
         Find fixed points from multiple initial guesses.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript §1.2.3, Eq. 1.14
         """
         guesses = np.asarray(initial_guesses, dtype=self._dtype)
@@ -537,7 +537,7 @@ class VectorizedOperations:
         """
         Perform batch matrix operations.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript §1.2.3 - Stability analysis
         """
         M = np.asarray(matrices, dtype=self._dtype)
@@ -545,6 +545,6 @@ class VectorizedOperations:
     
     def get_theoretical_reference(self) -> str:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Return theoretical foundation reference."""
         return "IRH v21.1 Manuscript §1.2-1.3, docs/ROADMAP.md §3.1"

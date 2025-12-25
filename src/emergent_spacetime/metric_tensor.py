@@ -134,7 +134,7 @@ class MetricTensor:
     
     def inner_product(self, u: np.ndarray, v: np.ndarray) -> float:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Compute inner product g_μν u^μ v^ν."""
         return float(u @ self.components @ v)
     
@@ -154,7 +154,7 @@ class MetricTensor:
     
     def is_spacelike(self, v: np.ndarray) -> bool:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Check if vector is spacelike (g_μν v^μ v^ν > 0)."""
         return self.norm_squared(v) > 0
     
@@ -164,7 +164,7 @@ class MetricTensor:
     
     def to_dict(self) -> Dict[str, Any]:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Convert to dictionary for serialization."""
         return {
             'components': self.components.tolist(),
@@ -715,7 +715,7 @@ def verify_metric_properties(metric: MetricTensor) -> Dict[str, Any]:
     dict
         Verification results for symmetry, signature, invertibility
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """
     components = metric.components
     

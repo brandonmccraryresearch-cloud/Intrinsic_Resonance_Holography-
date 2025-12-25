@@ -247,7 +247,7 @@ class MPIContext:
         Any
             Broadcasted data (same on all processes)
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """
         if self._active and self.comm is not None:
             return self.comm.bcast(data, root=root)
@@ -401,7 +401,7 @@ class MPIContext:
 @dataclass
 class MPIBackend:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """
     Backend wrapper for MPI operations with automatic fallback.
     

@@ -80,7 +80,7 @@ def su2_to_hopf(q: np.ndarray) -> Tuple[float, float, float]:
     """
     Map quaternion on S³ to point on S² via Hopf fibration.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md Appendix G
         Hopf map: S³ → S²
     """
@@ -99,7 +99,7 @@ def sample_su2_haar(n_samples: int, seed: int = 42) -> np.ndarray:
     """
     Sample n_samples quaternions uniformly on S³ (Haar measure on SU(2)).
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md Appendix A
         Haar measure is the unique left-right invariant measure on SU(2).
     """
@@ -118,7 +118,7 @@ def geodesic_su2(q1: np.ndarray, q2: np.ndarray, t: np.ndarray) -> np.ndarray:
     """
     Compute geodesic on S³ from q1 to q2 at parameter values t ∈ [0, 1].
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md Appendix A (QNCD metric)
         Geodesics on S³ are great circles.
     """
@@ -509,7 +509,7 @@ def plot_g_inf_product(**kwargs) -> Tuple[Figure, Axes3D]:
     """
     Visualize G_inf = SU(2) × U(1)_φ.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.1
     """
     viz = ManifoldVisualizer()

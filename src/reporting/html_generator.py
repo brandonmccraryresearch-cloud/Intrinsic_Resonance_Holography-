@@ -335,7 +335,7 @@ class HTMLGenerator:
     """
     Generate interactive HTML reports for IRH computations.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md Appendix K
         Interactive reports with MathJax equation rendering.
     """
@@ -366,7 +366,7 @@ class HTMLGenerator:
         collapsible: bool = True
     ) -> None:
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """Add section with theoretical equations."""
         content_parts = []
         

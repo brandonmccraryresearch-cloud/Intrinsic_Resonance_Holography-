@@ -279,7 +279,7 @@ class SimpleNeuralNetwork:
         seed : int
             Random seed
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         self.layer_sizes = layer_sizes
         self.activation_name = activation
@@ -377,7 +377,7 @@ class SimpleNeuralNetwork:
         early_stopping: int = 50,
     ) -> Dict[str, Any]:
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         Train the network using mini-batch gradient descent.
         
@@ -403,7 +403,7 @@ class SimpleNeuralNetwork:
         dict
             Training history
         
-        Theoretical Reference: IRH v21.4 (ML Infrastructure)
+        # Theoretical Reference: IRH v21.4 (ML Infrastructure)
         """
         # Handle empty data case
         if len(X) == 0 or len(y) == 0:
@@ -867,7 +867,7 @@ def train_rg_flow_surrogate(
     """
     Create and train an RG flow surrogate model.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript §1.2-1.3, Phase 4.3
         
     Parameters
@@ -926,7 +926,7 @@ def predict_rg_trajectory(
     
     def rg_system(t, y):
         """
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """
         y_clipped = np.clip(y, 1e-6, 1e6)
         return _compute_betas(y_clipped)

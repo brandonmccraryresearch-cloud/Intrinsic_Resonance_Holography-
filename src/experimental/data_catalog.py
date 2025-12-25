@@ -114,7 +114,7 @@ class DataEntry:
 
 class DataCatalog:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """
     Unified experimental data catalog.
     
@@ -311,7 +311,7 @@ class DataCatalog:
     
     def add(self, key: str, value: ExperimentalValue, category: str, tags: List[str] = None):
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """
         Add a new entry to the catalog.
         

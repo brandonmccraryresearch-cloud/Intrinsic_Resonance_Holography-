@@ -140,7 +140,7 @@ class CosmicFixedPoint:
         """
         Compute universal exponent C_H from fixed-point values.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH21.md §1.3, Eq. 1.16
             
         Parameters
@@ -363,7 +363,7 @@ def compute_universal_exponent() -> Dict[str, Any]:
     """
     Compute universal exponent C_H from fixed-point values.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.3, Eq. 1.16
         
         Note: There are two related quantities:
@@ -441,7 +441,7 @@ def analyze_fixed_point_stability(tolerance: float = 1e-10) -> Dict[str, Any]:
     """
     Analyze stability of Cosmic Fixed Point.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.3
         Fixed point is IR-attractive if all eigenvalues have positive real parts
         

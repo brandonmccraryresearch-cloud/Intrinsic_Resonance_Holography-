@@ -51,7 +51,7 @@ class MarkdownGenerator:
     
     def add_paragraph(self, text: str) -> None:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Add a paragraph."""
         self.sections.append(f"{text}\n")
     
@@ -83,7 +83,7 @@ class MarkdownGenerator:
         title: str = "Results"
     ) -> None:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Add a results table."""
         lines = [
             f"### {title}\n",

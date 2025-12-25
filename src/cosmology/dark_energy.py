@@ -247,7 +247,7 @@ class VacuumEnergyCancellation:
     """
     Details of the vacuum energy cancellation mechanism.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §2.3.1
         
     The cosmological constant problem is solved through exact
@@ -271,7 +271,7 @@ def compute_vacuum_energy_cancellation() -> VacuumEnergyCancellation:
     """
     Compute the vacuum energy cancellation mechanism.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §2.3.1
         
     The cosmological constant problem is solved by exact cancellation:

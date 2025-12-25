@@ -121,7 +121,7 @@ def compute_irh_vwp_contribution() -> float:
     """
     Compute IRH contribution from VWP topology.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §8.2
         
     The muon, being a VWP with topological complexity K_μ = 207,

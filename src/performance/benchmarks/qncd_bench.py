@@ -123,7 +123,7 @@ def benchmark_qncd_single(
         
         def bench_fn():
             """
-            Theoretical Reference: IRH v21.4
+            # Theoretical Reference: IRH v21.4
             """
             return vectorized_qncd_distance(v1, v2)
         
@@ -174,7 +174,7 @@ def benchmark_qncd_batch(
         
         def bench_fn():
             """
-            Theoretical Reference: IRH v21.4
+            # Theoretical Reference: IRH v21.4
             """
             return vectorized_qncd_distance(v1, v2)
         
@@ -287,7 +287,7 @@ class QNCDBenchmarkSuite:
         """Print formatted benchmark report."""
         print("=" * 70)
         print("QNCD BENCHMARK REPORT")
-        print("Theoretical Reference: IRH v21.1 Appendix A, docs/ROADMAP.md §3.7")
+        # print("Theoretical Reference: IRH v21.1 Appendix A, docs/ROADMAP.md §3.7")
         print("=" * 70)
         
         for category, benchmarks in results.items():
@@ -305,9 +305,9 @@ class QNCDBenchmarkSuite:
         results: Dict[str, Dict[str, BenchmarkResult]]
     ) -> Dict[str, Any]:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Get summary statistics."""
         summary = {
             'theoretical_reference': 'IRH v21.1 Appendix A, docs/ROADMAP.md §3.7',

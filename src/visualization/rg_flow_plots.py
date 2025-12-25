@@ -572,7 +572,7 @@ def plot_phase_diagram_3d(
     """
     Create 3D phase diagram of RG flow.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2, Eq. 1.12
     
     Returns
@@ -592,7 +592,7 @@ def plot_rg_trajectory(
     """
     Plot a single RG trajectory from given initial conditions.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2, Eq. 1.12
     
     Parameters
@@ -621,7 +621,7 @@ def plot_rg_trajectory(
     
     def rg_flow(t, y):
         """
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """
         lambda_t, gamma_t, mu_t = y
         return [
@@ -686,7 +686,7 @@ def create_interactive_phase_diagram(
     """
     Create interactive 2D phase diagram using Plotly.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.2-1.3
     
     Returns

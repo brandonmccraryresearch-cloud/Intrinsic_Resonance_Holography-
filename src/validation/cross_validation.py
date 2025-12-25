@@ -35,7 +35,7 @@ class ConvergenceResult:
     """
     Result of a convergence study.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 2 Appendix A.5: Error ~ O(δ²) for lattice spacing δ
     """
     observable_name: str
@@ -54,7 +54,7 @@ class ConvergenceResult:
     
     def to_dict(self) -> Dict[str, Any]:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Export to dictionary for serialization."""
         return {
             "observable": self.observable_name,
@@ -75,7 +75,7 @@ class CrossValidationResult:
     """
     Result of algorithmic cross-validation between methods.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript: Critical computations verified via independent algorithms
     """
     computation_name: str
@@ -94,7 +94,7 @@ class CrossValidationResult:
     
     def to_dict(self) -> Dict[str, Any]:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Export to dictionary for serialization."""
         return {
             "computation": self.computation_name,
@@ -113,7 +113,7 @@ class ConvergenceAnalysis:
     Systematic convergence testing for all discretization parameters.
     Verifies numerical results approach continuum limit.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 2 Appendix A.5: Exponential convergence to continuum
     """
     
@@ -133,9 +133,9 @@ class ConvergenceAnalysis:
     
     def _log(self, message: str) -> None:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Log message if verbose."""
         if self.verbose:
             print(f"[CONVERGENCE] {message}")
@@ -373,7 +373,7 @@ class AlgorithmicCrossValidation:
     """
     Validate critical computations via independent algorithmic approaches.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript: Cross-validation requirements for critical computations
     """
     
@@ -396,7 +396,7 @@ class AlgorithmicCrossValidation:
         """
         Find fixed point via: (1) RG flow integration, (2) Newton-Raphson on β=0.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Eq. 1.13: Beta functions
             IRH v21.1 Manuscript Eq. 1.14: Fixed point values
         
@@ -490,7 +490,7 @@ class AlgorithmicCrossValidation:
         """
         Cross-validate Laplacian via: (1) finite differences, (2) spectral methods.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Part 1 §1.1: Laplace-Beltrami operator on SU(2)
         
         Parameters
@@ -605,7 +605,7 @@ class AlgorithmicCrossValidation:
         """
         Cross-validate beta functions via analytical and numerical derivatives.
         
-        Theoretical Reference:
+        # Theoretical Reference:
             IRH v21.1 Manuscript Eq. 1.13: One-loop beta functions
         
         Returns
@@ -704,7 +704,7 @@ class ErrorPropagation:
     
     Implements systematic uncertainty quantification with source tracking.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript: Uncertainty quantification requirements
         copilot21promtMAX.md Phase III: Output contextualization
     """

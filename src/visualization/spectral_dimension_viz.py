@@ -504,7 +504,7 @@ def create_spectral_animation(**kwargs) -> FuncAnimation:
     """
     Create animated spectral dimension visualization.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §2.1
     """
     animator = SpectralDimensionAnimator()
@@ -522,7 +522,7 @@ def create_interactive_spectral_plot(
     """
     Create interactive spectral dimension plot using Plotly.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §2.1
         
     Returns

@@ -74,7 +74,7 @@ def compute_liv_parameter() -> LIVParameter:
     """
     Compute the universal LIV parameter ξ.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §2.4.1, Eq. 2.24
         
     Mathematical Foundation:
@@ -103,7 +103,7 @@ class ModifiedDispersion:
     """
     Modified dispersion relation due to LIV.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH v21.1 Manuscript Part 1 §2.4.2, Eq. 2.25
         
     E² = p²c² + m²c⁴ + ξ × E³/E_Pl

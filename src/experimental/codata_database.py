@@ -538,7 +538,7 @@ def get_all_constants() -> Dict[str, ExperimentalValue]:
 
 def get_constants_by_source(source: str) -> Dict[str, ExperimentalValue]:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """Get all constants from a specific source."""
     return {
         name: val for name, val in CODATA_DATABASE.items()

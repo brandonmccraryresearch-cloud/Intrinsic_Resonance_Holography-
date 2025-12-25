@@ -183,7 +183,7 @@ class PreCommitValidator:
     - No hardcoded constants without references
     - Test file correspondence
     
-    Theoretical Reference:
+    # Theoretical Reference:
         copilot21promtMAX.md Phase VII: Pre-commit validation
     """
     
@@ -227,13 +227,13 @@ class PreCommitValidator:
         repo_root : Optional[Path]
             Repository root directory
         
-        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+        # Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+        # Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+        # Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
         
-        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+        # Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
         """
         self.repo_root = repo_root or Path.cwd()
         self.results: List[ValidationResult] = []
@@ -481,16 +481,16 @@ class PreCommitValidator:
 
 class RegressionDetector:
     
-    Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+    # Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
     
-    Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+    # Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
     """
     Detect regressions against certified baselines.
     
     Compares computed values against certified baselines from IRH v21.1 Manuscript
     and reports any deviations exceeding specified tolerances.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         copilot21promtMAX.md Phase VII: Regression Detection
         IRH v21.1 Manuscript - All certified values
     """
@@ -722,7 +722,7 @@ class TestTierRunner:
     - T3 (Comprehensive): < 1 hour - Convergence, benchmarks
     - T4 (Falsification): < 6 hours - Full falsification suite
     
-    Theoretical Reference:
+    # Theoretical Reference:
         copilot21promtMAX.md Phase VII: Test Tiers
     """
     
@@ -892,7 +892,7 @@ class BaselineManager:
     - Update baselines with new certified values
     - Export baselines for archival
     
-    Theoretical Reference:
+    # Theoretical Reference:
         copilot21promtMAX.md Phase VII: Baseline Management
     """
     
@@ -980,7 +980,7 @@ class BaselineManager:
     
     def list_baselines(self) -> List[str]:
         
-        Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
+        # Theoretical Reference: IRH v21.4 (CI/CD Infrastructure)
         """List all baseline names."""
         return list(self.baselines.keys())
 
@@ -996,7 +996,7 @@ class CoverageReporter:
     Maps code coverage to IRH v21.1 Manuscript equation implementations
     to ensure all theoretical components are tested.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         copilot21promtMAX.md Phase VII: Coverage Reporting
     """
     

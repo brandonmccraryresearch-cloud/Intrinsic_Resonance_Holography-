@@ -266,7 +266,7 @@ def compute_spacetime_granularity(f_gw: float, distance_m: float) -> SpacetimeGr
     """
     Compute spacetime granularity effects on GWs.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §8.4
         
     Parameters

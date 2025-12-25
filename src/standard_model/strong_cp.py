@@ -97,7 +97,7 @@ class StrongCPResolution:
         dict
             PQ symmetry properties
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """
         return {
             'symmetry': 'U(1)_PQ',

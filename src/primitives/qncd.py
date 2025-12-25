@@ -156,7 +156,7 @@ def compute_QNCD(
     compressor: Callable[[bytes], bytes] = compress_zlib
 ) -> float:
     
-    Theoretical Reference: IRH v21.4
+    # Theoretical Reference: IRH v21.4
     """
     Compute Quantum Normalized Compression Distance between group elements.
     
@@ -235,7 +235,7 @@ def compute_pairwise_QNCD_sum(
     """
     Compute sum of pairwise QNCD distances.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         IRH21.md §1.1, Eq. 1.3
         Σ_{i<j} d_QNCD(gᵢgⱼ⁻¹) appears in the interaction kernel.
         

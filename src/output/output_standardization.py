@@ -852,7 +852,7 @@ class MetadataManager:
     
     Manages computational provenance and ensures reproducibility.
     
-    Theoretical Reference:
+    # Theoretical Reference:
         # Theoretical Reference: IRH v21.4
         IRH v21.1 Manuscript - Reproducibility requirement
         "Complete provenance metadata enables exact reproduction"

@@ -121,7 +121,7 @@ class ComparisonResult:
     
     def to_latex_row(self) -> str:
         
-        Theoretical Reference: IRH v21.4
+        # Theoretical Reference: IRH v21.4
         """Generate LaTeX table row."""
         status_color = {
             ComparisonStatus.EXCELLENT: r'\cellcolor{green!20}',
