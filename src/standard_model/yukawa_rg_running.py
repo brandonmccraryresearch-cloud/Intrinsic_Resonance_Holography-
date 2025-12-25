@@ -421,11 +421,10 @@ def compute_fermion_mass_with_rg(
     if engine:
         engine.step("Step 3: Apply complete Eq. 3.6")
         engine.formula(
-            "m_f = 𝓡_Y × √2 × 𝓚_f × √λ̃* × √(μ̃*/λ̃*) × v / 1000",
+            "m_f = 𝓡_Y × √2 × 𝓚_f × √μ̃* × v / 1000",
             variables={
                 '𝓡_Y': R_Y,
                 '𝓚_f': K_f,
-                'λ̃*': lambda_star,
                 'μ̃*': mu_star,
                 'v': higgs_vev,
             }
