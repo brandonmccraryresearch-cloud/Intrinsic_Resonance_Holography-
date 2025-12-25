@@ -409,19 +409,20 @@ def compute_fermion_mass_with_rg(
     # m_f = R_Y × √2 × K_f × √λ̃* × √(μ̃*/λ̃*) × ℓ_0^(-1)
     # Note: All terms are dimensionless except ℓ_0^(-1) which has units of GeV
     
-    # The formula needs proper scaling to get GeV from natural units
-    # This is a placeholder implementation - full formula requires careful dimensional analysis
+    # Complete Eq. 3.6 with all theoretical terms including √(μ̃*/λ̃*)
     # CORRECTED to be linear in K_f per manuscript
-    mass_gev = R_Y * prefactor * K_f * math.sqrt(lambda_star) * higgs_vev / 1e3
+    # Note: Currently uses empirical higgs_vev as scale factor (placeholder for full dimensional analysis)
+    mass_gev = R_Y * prefactor * K_f * math.sqrt(lambda_star) * math.sqrt(mu_star / lambda_star) * higgs_vev / 1e3
     
     if engine:
         engine.step("Step 3: Apply complete Eq. 3.6")
         engine.formula(
-            "m_f = 𝓡_Y × √2 × 𝓚_f × √λ̃* × v / 1000",
+            "m_f = 𝓡_Y × √2 × 𝓚_f × √λ̃* × √(μ̃*/λ̃*) × v / 1000",
             variables={
                 '𝓡_Y': R_Y,
                 '𝓚_f': K_f,
                 'λ̃*': lambda_star,
+                'μ̃*': mu_star,
                 'v': higgs_vev,
             }
         )
