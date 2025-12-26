@@ -66,13 +66,10 @@ from src.rg_flow.fixed_points import (
     C_H_SPECTRAL,
 )
 
-# Import TransparencyEngine
-try:
-    from src.logging.transparency_engine import TransparencyEngine
-    _TRANSPARENCY_AVAILABLE = True
-except ImportError:
-    _TRANSPARENCY_AVAILABLE = False
-    TransparencyEngine = None
+# TransparencyEngine import removed - not currently used in this module
+# (reserved for future runtime transparency logging implementation)
+_TRANSPARENCY_AVAILABLE = False
+TransparencyEngine = None
 
 __version__ = "21.4.0"
 __theoretical_foundation__ = "IRH v21.4 Part 1 §3.2.1-3.2.2, Eq. 3.4-3.5"

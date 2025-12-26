@@ -26,13 +26,10 @@ from typing import Dict, Optional
 
 import numpy as np
 
-# Import TransparencyEngine
-try:
-    from src.logging.transparency_engine import TransparencyEngine
-    _TRANSPARENCY_AVAILABLE = True
-except ImportError:
-    _TRANSPARENCY_AVAILABLE = False
-    TransparencyEngine = None
+# TransparencyEngine import removed - not currently used in this module
+# (reserved for future runtime transparency logging implementation)
+_TRANSPARENCY_AVAILABLE = False
+TransparencyEngine = None
 
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH v21.1 Manuscript Part 1 §3.2, Eq. 3.6"

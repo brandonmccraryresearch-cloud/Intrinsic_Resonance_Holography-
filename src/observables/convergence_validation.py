@@ -298,9 +298,10 @@ def compare_with_experiment(
         IRH v21.4 §3.2.2 (Alpha inverse computation and validation)
     
     Experimental Reference:
-        CODATA 2022: α⁻¹ = 137.035999177(21)
+        CODATA 2022: Fine-structure constant α⁻¹ with precision ±21 (last digits)
         Source: https://physics.nist.gov/cgi-bin/cuu/Value?alphinv
-        JUSTIFICATION: This is experimental data, not computed - required for comparison
+        Value dynamically imported from src.experimental.codata_database
+        JUSTIFICATION: Experimental data required for validation comparison
         
     Parameters
     ----------
