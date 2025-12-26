@@ -454,6 +454,11 @@ def get_qncd_correction_for_alpha(
     """
     Get QNCD geometric factor for α⁻¹ calculation.
     
+    Theoretical Reference:
+        IRH v21.4 Part 1 §3.2.2, Eq. 3.4
+        IRH v21.4 Part 1 §3.2.3 (Algorithmic Transparency)
+        Appendix E.4 (Integral Equations for 𝓖_QNCD)
+    
     Convenience function returning just the correction value
     for direct use in alpha_inverse computation.
     

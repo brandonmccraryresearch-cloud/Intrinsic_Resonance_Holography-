@@ -228,6 +228,10 @@ def compute_all_coefficients(
     """
     Compute coefficients A_0, A_1, ..., A_{max_order}.
     
+    Theoretical Reference:
+        IRH v21.4 Part 1 §3.2.2, Eq. 3.4
+        (Logarithmic enhancement series coefficients)
+    
     Parameters
     ----------
     max_order : int
@@ -311,6 +315,8 @@ def estimate_series_remainder(
     Estimate contribution from truncated terms beyond n_computed.
     
     Theoretical Reference:
+        IRH v21.4 Part 1 §3.2.2, Eq. 3.4
+        (Series truncation and remainder estimation)
         Standard series remainder estimation
         
     For a series Σ A_n / ln^n with |A_n+1| < |A_n| × r (ratio r < 1),
@@ -533,6 +539,10 @@ def get_log_enhancement_for_alpha(
 ) -> float:
     """
     Get logarithmic enhancement factor for α⁻¹ calculation.
+    
+    Theoretical Reference:
+        IRH v21.4 Part 1 §3.2.2, Eq. 3.4
+        (Logarithmic enhancement series Σₙ Aₙ/ln^n)
     
     Convenience function returning just the series sum
     for direct use in alpha_inverse computation.

@@ -66,11 +66,6 @@ from src.rg_flow.fixed_points import (
     C_H_SPECTRAL,
 )
 
-# TransparencyEngine import removed - not currently used in this module
-# (reserved for future runtime transparency logging implementation)
-_TRANSPARENCY_AVAILABLE = False
-TransparencyEngine = None
-
 __version__ = "21.4.0"
 __theoretical_foundation__ = "IRH v21.4 Part 1 §3.2.1-3.2.2, Eq. 3.4-3.5"
 __implementation_status__ = "COMPUTED - Using approximations for non-perturbative terms"

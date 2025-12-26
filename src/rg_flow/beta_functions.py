@@ -29,11 +29,6 @@ from typing import Tuple, Optional
 
 import numpy as np
 
-# TransparencyEngine import removed - not currently used in this module
-# (reserved for future runtime transparency logging implementation)
-_TRANSPARENCY_AVAILABLE = False
-TransparencyEngine = None
-
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §1.2.2, Eq. 1.13"
 
