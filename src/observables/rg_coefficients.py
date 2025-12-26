@@ -36,7 +36,7 @@ _repo_root = Path(__file__).resolve().parents[2]
 if str(_repo_root) not in sys.path:
     sys.path.insert(0, str(_repo_root))
 
-from src.rg_flow.beta_functions import BetaFunctions, compute_beta_lambda, compute_beta_gamma
+from src.rg_flow.beta_functions import BetaFunctions
 from src.rg_flow.fixed_points import LAMBDA_STAR, GAMMA_STAR, MU_STAR
 
 __version__ = "21.4.0"

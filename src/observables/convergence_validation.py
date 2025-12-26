@@ -24,7 +24,14 @@ from dataclasses import dataclass
 from typing import List, Tuple
 
 import numpy as np
-import matplotlib.pyplot as plt
+
+# Optional matplotlib for plotting
+try:
+    import matplotlib.pyplot as plt
+    _MATPLOTLIB_AVAILABLE = True
+except ImportError:
+    _MATPLOTLIB_AVAILABLE = False
+    plt = None
 
 # Import computation modules
 import sys
