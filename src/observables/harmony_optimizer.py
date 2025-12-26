@@ -301,6 +301,10 @@ class HarmonyOptimizer:
         """
         Initialize HarmonyOptimizer.
         
+        Theoretical Reference:
+            IRH v21.4 §3.2.2 (Vertex corrections 𝒱)
+            Implements multi-loop graviton correction optimization
+        
         Parameters
         ----------
         config : Optional[HarmonyConfig]

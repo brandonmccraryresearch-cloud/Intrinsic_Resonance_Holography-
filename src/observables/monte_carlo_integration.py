@@ -52,7 +52,13 @@ except ImportError:
         u1: float
         
     def compute_qncd_distance(g1, g2):
-        """Fallback QNCD using simple string compression."""
+        """
+        Fallback QNCD using simple string compression.
+        
+        Theoretical Reference:
+            IRH v21.4 Appendix A (QNCD metric definition)
+            Simplified implementation for when primitives unavailable
+        """
         import zlib
         s1 = str((g1.su2, g1.u1)).encode()
         s2 = str((g2.su2, g2.u1)).encode()
