@@ -10,7 +10,7 @@ This test suite verifies that the updated `fermion_masses.py` module:
 
 import pytest
 import math
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 from src.standard_model.fermion_masses import (
     compute_fermion_mass,
     yukawa_coupling,
