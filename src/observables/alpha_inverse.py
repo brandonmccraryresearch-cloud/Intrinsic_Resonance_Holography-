@@ -3,8 +3,8 @@ Fine-Structure Constant Derivation
 
 THEORETICAL FOUNDATION: IRH v21.4 Part 1 §3.2.1-3.2.2, Eq. 3.4-3.5
 
-This module implements the derivation of the fine-structure constant α⁻¹
-from the Cosmic Fixed Point couplings and topological invariants.
+This module implements the complete derivation of the fine-structure constant α⁻¹
+from the Cosmic Fixed Point couplings with all non-perturbative corrections.
 
 IMPLEMENTATION STATUS:
     This implementation computes α⁻¹ using the formula from Eq. 3.4-3.5:
@@ -432,7 +432,7 @@ def _compute_topological_factor(beta_1: int, n_inst: int) -> float:
 
 def _compute_alpha_inverse_full(fixed_point: CosmicFixedPoint) -> tuple:
     """
-    Compute α⁻¹ using full formula from Eq. 3.4-3.5.
+    Compute α⁻¹ using complete formula from Eq. 3.4.
     
     Theoretical Formula (Eq. 3.4-3.5):
         α⁻¹ = (4π²γ̃*/λ̃*) × [1 + (μ̃*/48π²)Σₙ Aₙ/ln^n(Λ_UV²/k²) + 𝒢_QNCD + 𝒱]
@@ -483,6 +483,7 @@ def _compute_alpha_inverse_full(fixed_point: CosmicFixedPoint) -> tuple:
     # α⁻¹ = leading × [1 + (log_corr + g_qncd + v_vertex)/leading]
     alpha_inv = leading * (1 + (log_corr + g_qncd + v_vertex) / leading)
     
+    # Prepare detailed component breakdown
     components = {
         'method': 'full',
         'IMPLEMENTATION_STATUS': 'COMPUTED with approximations',

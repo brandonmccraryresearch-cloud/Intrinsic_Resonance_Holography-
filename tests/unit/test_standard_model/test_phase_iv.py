@@ -22,7 +22,7 @@ import numpy as np
 from src.standard_model import (
     # Constants
     K_1, K_2, K_3, BETTI_1, HIGGS_VEV, HIGGS_MASS_EXP, K_NU,
-    TOPOLOGICAL_COMPLEXITY,
+    TOPOLOGICAL_COMPLEXITY_REFERENCE,
     
     # Gauge groups
     GaugeGroup, StandardModelGaugeStructure, GaugeCouplingUnification,
@@ -139,11 +139,11 @@ class TestFermionMasses:
     
     def test_electron_complexity(self):
         """K_e = 1 (reference value)."""
-        assert TOPOLOGICAL_COMPLEXITY['electron'] == 1.0
+        assert TOPOLOGICAL_COMPLEXITY_REFERENCE['electron'] == 1.0
     
     def test_muon_electron_ratio(self):
         """K_μ/K_e matches mass ratio squared."""
-        ratio = TOPOLOGICAL_COMPLEXITY['muon'] / TOPOLOGICAL_COMPLEXITY['electron']
+        ratio = TOPOLOGICAL_COMPLEXITY_REFERENCE['muon'] / TOPOLOGICAL_COMPLEXITY_REFERENCE['electron']
         # m_μ/m_e ≈ 206.77, so K_μ/K_e should also be ≈ 206.77
         assert abs(ratio - 206.77) < 1.0
     
@@ -169,7 +169,7 @@ class TestFermionMasses:
         """Full mass hierarchy computation."""
         result = mass_hierarchy()
         assert 'masses' in result
-        assert len(result['masses']) == len(TOPOLOGICAL_COMPLEXITY)
+        assert len(result['masses']) == len(TOPOLOGICAL_COMPLEXITY_REFERENCE)
     
     def test_verify_mass_ratios(self):
         """Mass ratios are computed."""
