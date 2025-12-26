@@ -1938,7 +1938,7 @@ If audit is skipped:
 #### docs/ Directory Cleanup
 - [ ] Review all .md files for redundancy
 - [ ] Consolidate overlapping content
-- [ ] Ensure all references point to IRH v21.4 (not v21.4 or other versions)
+- [ ] Ensure all references point to IRH v21.4 (not v21.1 or other versions)
 - [ ] Verify cross-references between docs are valid
 - [ ] Update dates to reflect actual completion (December 2025, not future dates)
 - [ ] Move or archive outdated documents
@@ -2013,7 +2013,7 @@ If audit is skipped:
 - ✅ Preserved agent configurations and workflow files
 - ✅ Archived redundant documentation files to .github/archive_dec2025/
 - ✅ Updated workflows to reference copilot-instructions.md
-- ✅ Fixed all v21.4 → v21.1 references
+- ✅ Fixed all v21.1 → v21.4 references
 
 **Files Processed:**
 - [x] THEORETICAL_CORRESPONDENCE_MANDATE.md → Core principles consolidated
@@ -2041,7 +2041,7 @@ If audit is skipped:
 
 **Tasks:**
 - [x] Updated compliance_check.yml to reference copilot-instructions.md
-- [x] Fixed all v21.4 → v21.1 references in workflows
+- [x] Fixed all v21.1 → v21.4 references in workflows
 - [x] Updated documentation references in workflows
 - [x] Verified workflow structure with new documentation layout
 
@@ -2233,7 +2233,7 @@ Code WILL BE REJECTED if:
 - IRH v21.4 Manuscript Part 1: `Intrinsic-Resonance-Holography-21.4-Part1.md`
 - IRH v21.4 Manuscript Part 2: `Intrinsic-Resonance-Holography-21.4-Part2.md`
 
-**NOTE:** All references to "v21.4" in older documentation are INCORRECT and should be updated to "v21.1"
+**NOTE:** All references to earlier manuscript versions (e.g., "v21.1") in older documentation are INCORRECT and should be updated to "v21.4"
 
 ### Archived Documentation (December 26, 2025)
 
