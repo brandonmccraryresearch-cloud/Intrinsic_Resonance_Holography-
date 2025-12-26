@@ -2184,6 +2184,21 @@ Code WILL BE REJECTED if:
 
 **NOTE:** All references to "v21.4" in older documentation are INCORRECT and should be updated to "v21.1"
 
+### Archived Documentation (December 26, 2025)
+
+The following files were consolidated into this document and archived to `.github/archive_dec2025/`:
+- `THEORETICAL_CORRESPONDENCE_MANDATE.md` - Core content integrated into "Theoretical Correspondence Mandate" section
+- `MANDATORY_AUDIT_PROTOCOL.md` - Core content already present in "Mandatory Audit Protocol" section
+- `COMPLIANCE_SYSTEM_README.md` - Overview content distributed throughout this document
+- `COMPREHENSIVE_AUDIT_REPORT.md` - Action items extracted, findings documented in "Current Repository Status"
+- `COMPREHENSIVE_TECHNICAL_AUDIT.md` - Latest audit findings retained in "Mandatory Audit Protocol" section
+- `COMPLIANCE_IMPLEMENTATION_COMPLETE.md` - Historical status, archived
+- `COMPLIANCE_QUICK_REFERENCE.md` - Key points integrated throughout
+- `PHASE_2_STATUS.md` - Historical phase tracking, archived
+- `PHASE_2_USER_SUMMARY.md` - Historical summary, archived
+
+**Note:** `MATHEMATICIAN_AGENT_GUIDE.md` was moved to `docs/` as it remains useful reference documentation.
+
 ---
 
 *"Trust, but verify. Then verify again."* — The Mathematical Sentinel

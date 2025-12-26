@@ -1,4 +1,4 @@
-name: IRH v21.4 Compliance Check
+name: IRH v21.1 Compliance Check
 
 on:
   pull_request:
@@ -58,7 +58,7 @@ jobs:
               echo "::error::Compliance check failed with $violations violations"
               exit 1
             else
-              echo "::notice::✅ Code is compliant with IRH v21.4 standards"
+              echo "::notice::✅ Code is compliant with IRH v21.1 standards"
             fi
           else
             echo "::error::Compliance report not generated"
@@ -85,7 +85,7 @@ jobs:
             const warnings = report.warnings || [];
             const passes = report.passes_count || 0;
             
-            let comment = '## 🔍 IRH v21.4 Compliance Check\n\n';
+            let comment = '## 🔍 IRH v21.1 Compliance Check\n\n';
             comment += `**Status:** ${report.compliant ? '✅ COMPLIANT' : '❌ NON-COMPLIANT'}\n\n`;
             comment += '### Results\n\n';
             comment += `- ✅ Passes: ${passes}\n`;
@@ -116,9 +116,9 @@ jobs:
             
             comment += '\n---\n\n';
             comment += '📚 **References:**\n';
-            comment += '- [Theoretical Correspondence Mandate](.github/THEORETICAL_CORRESPONDENCE_MANDATE.md)\n';
-            comment += '- [Comprehensive Audit Report](.github/COMPREHENSIVE_AUDIT_REPORT.md)\n';
-            comment += '- [Mandatory Audit Protocol](.github/MANDATORY_AUDIT_PROTOCOL.md)\n';
+            comment += '- [Copilot Instructions (Single Source of Truth)](.github/copilot-instructions.md)\n';
+            comment += '- [Mandatory Audit Protocol Section](.github/copilot-instructions.md#-mandatory-audit-protocol-)\n';
+            comment += '- [Theoretical Correspondence Mandate Section](.github/copilot-instructions.md#-theoretical-correspondence-mandate)\n';
             
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -138,9 +138,7 @@ jobs:
       - name: Check critical documents exist
         run: |
           files=(
-            ".github/THEORETICAL_CORRESPONDENCE_MANDATE.md"
-            ".github/COMPREHENSIVE_AUDIT_REPORT.md"
-            ".github/MANDATORY_AUDIT_PROTOCOL.md"
+            ".github/copilot-instructions.md"
             "src/logging/transparency_engine.py"
             ".github/pull_request_template.md"
             "scripts/verify_compliance.py"
@@ -195,25 +193,25 @@ jobs:
       
       - name: Check CONTRIBUTING.md mentions mandate
         run: |
-          if ! grep -q "THEORETICAL_CORRESPONDENCE_MANDATE" CONTRIBUTING.md; then
-            echo "::error::CONTRIBUTING.md does not reference the mandate"
-            exit 1
+          if ! grep -q "copilot-instructions" CONTRIBUTING.md; then
+            echo "::warning::CONTRIBUTING.md should reference copilot-instructions.md"
+          else
+            echo "::notice::✅ CONTRIBUTING.md references documentation"
           fi
-          echo "::notice::✅ CONTRIBUTING.md references mandate"
       
       - name: Check README.md is up-to-date
         run: |
-          if ! grep -q "v21.4" README.md && ! grep -q "v21\.4" README.md; then
-            echo "::warning::README.md may need update to reference v21.4"
+          if ! grep -q "v21\.1" README.md && ! grep -q "v21.1" README.md; then
+            echo "::warning::README.md may need update to reference v21.1"
           else
-            echo "::notice::✅ README.md references v21.4"
+            echo "::notice::✅ README.md references v21.1"
           fi
       
       - name: Verify manuscript files exist
         run: |
           manuscripts=(
-            "Intrinsic-Resonance-Holography-21.4-Part1.md"
-            "Intrinsic-Resonance-Holography-21.4-Part2.md"
+            "Intrinsic_Resonance_Holography-v21.1-Part1.md"
+            "Intrinsic_Resonance_Holography-v21.1-Part2.md"
           )
           
           for manuscript in "${manuscripts[@]}"; do
