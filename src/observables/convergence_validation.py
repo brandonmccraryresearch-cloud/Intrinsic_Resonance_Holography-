@@ -295,8 +295,12 @@ def compare_with_experiment(
     Compare computed α⁻¹ with experimental measurement.
     
     Theoretical Reference:
-        IRH v21.4 §3.2.2
+        IRH v21.4 §3.2.2 (Alpha inverse computation and validation)
+    
+    Experimental Reference:
         CODATA 2022: α⁻¹ = 137.035999177(21)
+        Source: https://physics.nist.gov/cgi-bin/cuu/Value?alphinv
+        JUSTIFICATION: This is experimental data, not computed - required for comparison
         
     Parameters
     ----------
@@ -330,6 +334,10 @@ def generate_validation_report(
 ) -> dict:
     """
     Generate comprehensive validation report.
+    
+    Theoretical Reference:
+        IRH v21.4 §3.2.2 (Alpha inverse computation)
+        Validates convergence and experimental consistency
     
     Includes:
     - Convergence studies

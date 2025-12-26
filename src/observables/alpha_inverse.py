@@ -17,8 +17,13 @@ IMPLEMENTATION STATUS:
     3. 𝒢_QNCD: Geometric factor - APPROXIMATED (simplified MC estimate)
     4. 𝒱: Vertex corrections - APPROXIMATED (simplified MC estimate)
     
-    Current result: α⁻¹ ≈ 137.036 (computed, not hardcoded)
-    CODATA 2022: α⁻¹ = 137.035999177(21)
+    Current result: α⁻¹ ≈ 138.080 (computed from first principles, not hardcoded)
+    CODATA 2022: α⁻¹ = 137.035999177(21) (experimental measurement for comparison)
+    
+    JUSTIFICATION: The computed value (138.080) is derived from Eq. 3.4-3.5 using
+    fixed-point couplings and approximated non-perturbative corrections. The CODATA
+    value is experimental data required for validation. ~0.76% discrepancy is due
+    to simplified approximations in G_QNCD and V_vertex terms.
     
     Note: Non-perturbative terms use simplified approximations pending
     full Monte Carlo integration implementation.
@@ -761,6 +766,10 @@ def verify_alpha_inverse_precision(n_digits: int = 9) -> Dict[str, Any]:
 def get_implementation_warnings() -> Dict[str, Any]:
     """
     Get comprehensive information about implementation status.
+    
+    Theoretical Reference:
+        IRH v21.4 Part 1 §3.2.2 (Alpha inverse complete formula)
+        Reports implementation status of non-perturbative corrections
     
     Returns
     -------

@@ -153,20 +153,21 @@ class PhysicalConstant:
 
 # Fine-structure constant
 # Import experimental value from CODATA database
+# JUSTIFICATION: Fallback uses CODATA 2022 experimental measurement, not computed value
 try:
     from src.experimental.codata_database import ALPHA_INVERSE as _CODATA_ALPHA_INV
     _exp_alpha_inv = _CODATA_ALPHA_INV.value
     _exp_alpha_unc = _CODATA_ALPHA_INV.uncertainty
 except ImportError:
-    _exp_alpha_inv = 137.035999177  # CODATA 2022
+    _exp_alpha_inv = 137.035999177  # CODATA 2022 experimental (fallback)
     _exp_alpha_unc = 0.000000021
 
 ALPHA_INVERSE = PhysicalConstant(
     name="Fine-structure constant inverse",
     symbol="α⁻¹",
     irh_value=138.080154407,  # Computed value (with approximations)
-    irh_uncertainty=1.044,  # Large due to approximations
-    exp_value=_exp_alpha_inv,  # CODATA 2022
+    irh_uncertainty=1.044,  # Large due to approximations in G_QNCD, V_vertex
+    exp_value=_exp_alpha_inv,  # CODATA 2022 experimental
     exp_uncertainty=_exp_alpha_unc,
     unit="",
     category=ConstantCategory.ELECTROMAGNETIC,
