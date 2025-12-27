@@ -111,7 +111,9 @@ def update_notebook(notebook_path):
 
 def main():
     """Update all notebooks in the repository."""
-    repo_root = Path("/home/runner/work/Intrinsic_Resonance_Holography/Intrinsic_Resonance_Holography")
+    # Use relative path from script location for portability
+    script_dir = Path(__file__).resolve().parent
+    repo_root = script_dir.parent
     notebooks_dir = repo_root / "notebooks"
     
     print("="*80)

@@ -173,8 +173,8 @@ class FailureLogger:
             suggested_fixes=self._analyze_failure(error, parameters)
         )
         
-        # Generate filename
-        timestamp_str = datetime.now().strftime("%Y%m%d_%H%M%S")
+        # Generate filename using UTC timestamp for consistency
+        timestamp_str = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
         filename = f"{computation}_{timestamp_str}.json"
         filepath = self.output_dir / filename
         
