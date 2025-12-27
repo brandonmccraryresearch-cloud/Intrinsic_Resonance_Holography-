@@ -213,7 +213,7 @@ def compute_fermion_mass(
     # For now, use manuscript-calibrated scaling
     mass_gev = mass_gev * (higgs_vev / ELECTROWEAK_SCALE)
     
-    engine.result(f"Fermion mass m_{fermion}", mass_gev, unit="GeV")
+    engine.result(f"Fermion mass m_{fermion} (GeV)", mass_gev)
 
     # Prepare detailed component breakdown
     components = {
