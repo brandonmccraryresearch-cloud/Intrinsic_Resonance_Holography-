@@ -176,7 +176,7 @@ def compute_fermion_mass(
         K_f = TOPOLOGICAL_COMPLEXITY_REFERENCE[fermion]
         K_f_source = "manuscript reference (Table 3.1)"
     
-    engine.value("K_f", K_f, description=K_f_source)
+    engine.value(f"K_f ({K_f_source})", K_f)
 
     # Step 2: Compute Yukawa RG running factor 𝓡_Y
     engine.step("Step 2: Computing Yukawa RG running factor 𝓡_Y")
@@ -193,7 +193,7 @@ def compute_fermion_mass(
         R_Y = 1.0  # No RG running
         R_Y_source = "not included (use_rg_running=False)"
     
-    engine.value("R_Y", R_Y, description=R_Y_source)
+    engine.value(f"R_Y ({R_Y_source})", R_Y)
 
     # Step 3: Apply complete formula (Eq. 3.6)
     engine.step("Step 3: Applying complete formula (Eq. 3.6)")
