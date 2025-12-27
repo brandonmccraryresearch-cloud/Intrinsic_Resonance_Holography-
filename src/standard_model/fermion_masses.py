@@ -31,6 +31,15 @@ import numpy as np
 from src.topology.complexity_operator import get_topological_complexity
 from src.standard_model.yukawa_rg_running import compute_yukawa_rg_running
 
+# Import transparency engine for algorithmic transparency
+import sys
+from pathlib import Path
+_repo_root = Path(__file__).resolve().parents[2]
+if str(_repo_root) not in sys.path:
+    sys.path.insert(0, str(_repo_root))
+
+from src.logging.transparency_engine import TransparencyEngine, DETAILED
+
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH v21.4 Manuscript Part 1 §3.2, Eq. 3.6"
 
@@ -141,7 +150,23 @@ def compute_fermion_mass(
     if fermion not in FERMION_GENERATIONS:
         raise ValueError(f"Unknown fermion: {fermion}")
 
+    # Initialize transparency engine for computation tracking
+    engine = TransparencyEngine(verbosity=DETAILED)
+    engine.info(
+        f"Computing fermion mass for {fermion}",
+        reference="IRH v21.4 Part 1, §3.2, Eq. 3.6"
+    )
+    engine.formula(
+        "m_f = 𝓡_Y × √2 × 𝓚_f × √λ̃* × √(μ̃*/λ̃*) × ℓ_0^{-1}",
+        variables={
+            'fermion': fermion,
+            'use_rg_running': use_rg_running,
+            'use_dynamic_K_f': use_dynamic_K_f,
+        }
+    )
+
     # Step 1: Get topological complexity 𝓚_f
+    engine.step("Step 1: Obtaining topological complexity 𝓚_f")
     if use_dynamic_K_f:
         # Compute dynamically from complexity operator (Appendix E.1)
         K_f = get_topological_complexity(fermion=fermion, verbosity=0)
@@ -150,8 +175,11 @@ def compute_fermion_mass(
         # Use manuscript reference value
         K_f = TOPOLOGICAL_COMPLEXITY_REFERENCE[fermion]
         K_f_source = "manuscript reference (Table 3.1)"
+    
+    engine.value("K_f", K_f, description=K_f_source)
 
     # Step 2: Compute Yukawa RG running factor 𝓡_Y
+    engine.step("Step 2: Computing Yukawa RG running factor 𝓡_Y")
     if use_rg_running:
         rg_result = compute_yukawa_rg_running(
             K_f=K_f,
@@ -164,8 +192,11 @@ def compute_fermion_mass(
     else:
         R_Y = 1.0  # No RG running
         R_Y_source = "not included (use_rg_running=False)"
+    
+    engine.value("R_Y", R_Y, description=R_Y_source)
 
     # Step 3: Apply complete formula (Eq. 3.6)
+    engine.step("Step 3: Applying complete formula (Eq. 3.6)")
     # m_f = 𝓡_Y × √2 × 𝓚_f × √λ̃* × √(μ̃*/λ̃*) × ℓ_0^{-1}
     
     prefactor_sqrt2 = math.sqrt(2)
@@ -181,6 +212,8 @@ def compute_fermion_mass(
     # This requires dimensional analysis matching to experimental scales
     # For now, use manuscript-calibrated scaling
     mass_gev = mass_gev * (higgs_vev / ELECTROWEAK_SCALE)
+    
+    engine.result(f"Fermion mass m_{fermion}", mass_gev, unit="GeV")
 
     # Prepare detailed component breakdown
     components = {

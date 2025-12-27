@@ -29,6 +29,15 @@ from typing import Tuple, Optional
 
 import numpy as np
 
+# Import transparency engine for algorithmic transparency
+import sys
+from pathlib import Path
+_repo_root = Path(__file__).resolve().parents[2]
+if str(_repo_root) not in sys.path:
+    sys.path.insert(0, str(_repo_root))
+
+from src.logging.transparency_engine import TransparencyEngine, DETAILED
+
 __version__ = "21.0.0"
 __theoretical_foundation__ = "IRH21.md §1.2.2, Eq. 1.13"
 
@@ -198,12 +207,33 @@ class BetaFunctions:
         >>> all(abs(b) < 1e-10 for b in betas)
         True
         """
-        lambda_t, gamma_t, mu_t = couplings
-        return (
-            self.beta_lambda(lambda_t),
-            self.beta_gamma(lambda_t, gamma_t),
-            self.beta_mu(lambda_t, gamma_t, mu_t)
+        # Initialize transparency engine for computation tracking
+        engine = TransparencyEngine(verbosity=DETAILED)
+        engine.info(
+            "Computing all β-functions",
+            reference="IRH21.md §1.2.2, Eq. 1.13"
         )
+        
+        lambda_t, gamma_t, mu_t = couplings
+        
+        engine.formula(
+            "β_λ = -2λ̃ + (9/8π²)λ̃², β_γ = (3/4π²)λ̃γ̃, β_μ = 2μ̃ + (1/2π²)λ̃μ̃",
+            variables={
+                'lambda_tilde': lambda_t,
+                'gamma_tilde': gamma_t,
+                'mu_tilde': mu_t,
+            }
+        )
+        
+        beta_l = self.beta_lambda(lambda_t)
+        beta_g = self.beta_gamma(lambda_t, gamma_t)
+        beta_m = self.beta_mu(lambda_t, gamma_t, mu_t)
+        
+        engine.value("β_λ", beta_l)
+        engine.value("β_γ", beta_g)
+        engine.value("β_μ", beta_m)
+        
+        return (beta_l, beta_g, beta_m)
     
     def jacobian(
         self, 
