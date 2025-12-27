@@ -212,7 +212,7 @@ def yukawa_coupling(fermion: str, higgs_vev: float = HIGGS_VEV) -> Dict:
     Compute Yukawa coupling for a fermion per Eq. 3.6.
 
     Theoretical Reference:
-        IRH v21.1 Manuscript Part 1 §3.2, Eq. 3.6
+        IRH v21.4 Manuscript Part 1 §3.2, Eq. 3.6
         y_f = √(2) × m_f / v
 
     Mathematical Foundation:
@@ -239,7 +239,7 @@ def yukawa_coupling(fermion: str, higgs_vev: float = HIGGS_VEV) -> Dict:
 
     Notes
     -----
-    Implements Eq. 3.6 from IRH v21.1 Manuscript: y_f = √(2) m_f / v
+    Implements Eq. 3.6 from IRH v21.4 Manuscript: y_f = √(2) m_f / v
 
     The Yukawa coupling hierarchy emerges directly from the
     topological complexity spectrum 𝒦_f without fine-tuning.
@@ -254,7 +254,7 @@ def yukawa_coupling(fermion: str, higgs_vev: float = HIGGS_VEV) -> Dict:
         'yukawa': yukawa,
         'mass_GeV': mass_gev,
         'K_f': mass_result['K_f'],
-        'theoretical_reference': 'IRH v21.1 Manuscript Part 1 §3.2, Eq. 3.6',
+        'theoretical_reference': 'IRH v21.4 Manuscript Part 1 §3.2, Eq. 3.6',
     }
 
 
@@ -263,7 +263,7 @@ def mass_hierarchy() -> Dict:
     Compute the full fermion mass hierarchy from topological complexity.
 
     # Theoretical Reference:
-        IRH v21.1 Manuscript Part 1 §3.2, Table 3.1
+        IRH v21.4 Manuscript Part 1 §3.2, Table 3.1
 
     Returns
     -------
@@ -286,7 +286,7 @@ def mass_hierarchy() -> Dict:
 
     return {
         'masses': hierarchy,
-        'theoretical_reference': 'IRH v21.1 Manuscript Part 1 §3.2, Table 3.1',
+        'theoretical_reference': 'IRH v21.4 Manuscript Part 1 §3.2, Table 3.1',
     }
 
 
